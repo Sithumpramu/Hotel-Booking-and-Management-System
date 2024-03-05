@@ -32,4 +32,7 @@ router.patch('/resetPassword/:token',resetpwd)
 
 
 
+
+
+
 module.exports = router

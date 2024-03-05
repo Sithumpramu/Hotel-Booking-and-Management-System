@@ -11,6 +11,7 @@ import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
 import ManagerDash from "./Pages/Staff/ManagerDash";
+import StaffDash from "./Pages/Staff/StaffDash";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -49,9 +50,13 @@ function App() {
             path="/AdminDashbord"
             element={<AdminDash />}
           />
-            <Route
+          <Route
             path="/ManagerDashbord"
             element={<ManagerDash />}
+          />
+          <Route
+            path="/StaffDashbord"
+            element={<StaffDash />}
           />
         </Routes>
       </BrowserRouter>

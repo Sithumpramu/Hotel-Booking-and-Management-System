@@ -10,25 +10,43 @@ const createToken = (_id) => {
 
 // login a user
 const loginUser = async (req, res) => {
-  const {email, password} = req.body
+  const { email, password } = req.body;
 
   try {
-    const user = await User.login(email, password)
+    const user = await User.login(email, password);
 
-    // create a token
-    const token = createToken(user._id)
-    res.status(200).json({email, token})
+    // Determine the user's role based on your logic
+    const role = determineRole(email);
+
+    // Create a token
+    const token = createToken(user._id);
+
+    // Send back the user's role along with the token
+    res.status(200).json({ email, token, role });
   } catch (error) {
-    res.status(400).json({error: error.message})
+    res.status(400).json({ error: error.message });
   }
-}
+};
+
+const determineRole = (email) => {
+  // Your logic to determine the role based on the email
+  if (email.includes('admin')) {
+    return 'admin';
+  } else if (email.includes('manager')) {
+    return 'manager';
+  } else if (email.includes('staff')) {
+    return 'staff';
+  }else{
+    return 'user'
+  }
+};
 
 // signup a user
 const signupUser = async (req, res) => {
-  const {email, password,name} = req.body
+  const {email, password,name,role} = req.body
 
   try {
-    const user = await User.signup(email, password,name)
+    const user = await User.signup(email, password,name,role)
 
     // create a token
     const token = createToken(user._id)
