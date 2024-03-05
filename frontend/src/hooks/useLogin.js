@@ -55,10 +55,10 @@ export const useLogin = () => {
   // Function to determine the role based on email
   const determineRole = (email) => {
     // Example: Check if the email contains the word 'staff' or 'manager'
-    if (email.includes('staff')) {
-      return 'staff';
-    } else if (email.includes('manager')) {
+    if (email.includes('manager')) {
       return 'manager';
+    } else if (email.includes('admin')) {
+      return 'staff';
     } else {
       return 'user';
     }
@@ -67,10 +67,10 @@ export const useLogin = () => {
   // Function to determine the dashboard based on role and email
   const determineDashboard = (role, email) => {
     // Example: Navigate to 'AdminDashbord' for staff, 'ManagerDashbord' for manager, and default to '/'
-    if (role === 'staff') {
-      return '/AdminDashbord';
-    } else if (role === 'manager') {
+    if (role === 'manager') {
       return '/ManagerDashbord';
+    } else if (role === 'staff') {
+      return '/AdminDashbord';
     } else {
       return '/';
     }

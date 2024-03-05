@@ -10,6 +10,7 @@ import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
+import ManagerDash from "./Pages/Staff/ManagerDash";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -47,6 +48,10 @@ function App() {
           <Route
             path="/AdminDashbord"
             element={<AdminDash />}
+          />
+            <Route
+            path="/ManagerDashbord"
+            element={<ManagerDash />}
           />
         </Routes>
       </BrowserRouter>
