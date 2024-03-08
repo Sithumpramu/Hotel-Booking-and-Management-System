@@ -11,6 +11,8 @@ node_modules/
 /.package.json
 .package.json
 package.json
+./package.json
+package.json/
 .pnp.js
 
 # testing
