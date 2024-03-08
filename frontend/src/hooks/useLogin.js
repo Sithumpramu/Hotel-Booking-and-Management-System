@@ -52,8 +52,8 @@ export const useLogin = () => {
       case 'manager':
         navigation('/ManagerDashbord');
         break;
-      case 'staff':
-        navigation('/StaffDashbord')  
+      case 'reception':
+        navigation('/AdminDashbord')  
       default:
         navigation('/');
     }

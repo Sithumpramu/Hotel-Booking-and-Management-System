@@ -35,7 +35,7 @@ const userSchema = new Schema({
 
     role: {
       type: String,
-      enum: ['user', 'admin', 'manager','staff'], // Enum for possible roles
+      enum: ['user', 'admin', 'manager','reception'], // Enum for possible roles
       default: 'user', // Default role is 'user'
     },
 

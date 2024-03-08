@@ -34,8 +34,8 @@ const determineRole = (email) => {
     return 'admin';
   } else if (email.includes('manager')) {
     return 'manager';
-  } else if (email.includes('staff')) {
-    return 'staff';
+  } else if (email.includes('reception')) {
+    return 'reception';
   }else{
     return 'user'
   }
