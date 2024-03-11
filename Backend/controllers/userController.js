@@ -15,13 +15,12 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.login(email, password);
 
-    // Determine the user's role based on your logic
+    // Determine the user's role
     const role = determineRole(email);
 
     // Create a token
     const token = createToken(user._id);
 
-    // Send back the user's role along with the token
     res.status(200).json({ email, token, role });
   } catch (error) {
     res.status(400).json({ error: error.message });

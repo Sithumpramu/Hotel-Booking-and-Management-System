@@ -16,9 +16,6 @@ function Home(){
     element.style.transform = 'scale(1)';
   };
 
-  const handlelogout = ()=>{
-    logout()
-  }
 
   
     const location = useLocation();

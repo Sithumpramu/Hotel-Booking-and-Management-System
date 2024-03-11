@@ -50,6 +50,14 @@ userSchema.statics.signup = async function(email, password,name,role) {
       throw Error('All fields must be filled')
     }
 
+    //remove restricted words
+    const restrictedwords = ['staff','manager','admin'];
+    const containsRestrictedWord = restrictedwords.some(word => email.toLowerCase().includes(word));
+
+    if (containsRestrictedWord) {
+      throw Error('Email cannot contain restricted words.');
+    }
+
     const exists = await this.findOne({ email })
   
     if (exists) {
