@@ -24,10 +24,13 @@ export const AuthContextProvider = ({ children }) => {
 
     if (user) {
       dispatch({ type: 'LOGIN', payload: user }) 
+      if (user.email.includes('admin')|| user.email.includes('staff') || user.email.includes('manager')) {
+        dispatch({ type: 'LOGOUT'}) 
+      }
     }
   }, [])
 
-  console.log('AuthContext state:', state)
+
   
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
