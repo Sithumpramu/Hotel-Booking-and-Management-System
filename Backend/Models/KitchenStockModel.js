@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
-const validator = require('validator')
+const validator = require('validator');
+const { Double } = require("mongodb");
 
 const stockSchema = mongoose.Schema(
   {
@@ -15,12 +16,12 @@ const stockSchema = mongoose.Schema(
       trim: true,
     },
     quantity: {
-      type: String,
+      type: Double,
       required: [true, "Please add a quantity"],
       trim: true,
     },
     price: {
-      type: String,
+      type: Double,
       required: [true, "Please add a price"],
       trim: true,
     },
