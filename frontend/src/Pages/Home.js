@@ -57,9 +57,6 @@ function Home(){
     return(
       <div >
 
-
-       
-        {/* Pictures changing  */}
         <div className="container d-flex justify-content-center mt-3 vh-75">
             <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">

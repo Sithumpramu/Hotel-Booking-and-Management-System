@@ -61,18 +61,14 @@ const signupUser = async (req, res) => {
 const getmanagers = async (req,res) =>{
 try {
     const selectedFields = ['name' ,'email', 'role'];
-    // Fetch staff members from the database based on the 'staff' role
     const staffMembers = await User.find({ role: 'manager' }).select(selectedFields);
 
-    // Check if there are staff members
     if (staffMembers.length === 0) {
       return res.status(404).json({ message: 'No manager members found' });
     }
 
-    // Respond with the list of staff members
     res.status(200).json(staffMembers);
   } catch (error) {
-    // Handle errors and respond with an error message
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -81,23 +77,18 @@ try {
 const getstaff = async (req,res) =>{
   try {
       const selectedFields = ['name' ,'email', 'role'];
-      // Fetch staff members from the database based on the 'staff' role
       const staffMembers = await User.find({ role: 'staff' }).select(selectedFields);
-  
-      // Check if there are staff members
+
       if (staffMembers.length === 0) {
         return res.status(404).json({ message: 'No staff members found' });
       }
   
-      // Respond with the list of staff members
       res.status(200).json(staffMembers);
     } catch (error) {
-      // Handle errors and respond with an error message
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });
     }
   };
-
 
 
 //get single user
@@ -312,4 +303,4 @@ try{
   }
 
 
-module.exports = { signupUser, loginUser, getmanagers, getstaff, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}
+module.exports = { signupUser, loginUser, getmanagers ,  getstaff, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}

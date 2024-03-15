@@ -12,6 +12,7 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
 import ManagerDash from "./Pages/Staff/ManagerDash";
 import StaffDash from "./Pages/Staff/StaffDash";
+import Staffmanage from "./Pages/Staff/staffManage";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -57,6 +58,10 @@ function App() {
           <Route
             path="/StaffDashbord"
             element={<StaffDash />}
+          />
+          <Route
+            path="/Staffmanage"
+            element={<Staffmanage/>}
           />
         </Routes>
       </BrowserRouter>
