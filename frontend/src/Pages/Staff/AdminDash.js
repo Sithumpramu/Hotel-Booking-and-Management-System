@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FaBed, FaUsers, FaUserCog } from 'react-icons/fa';
+import { FaUsers, FaUserCog } from 'react-icons/fa';
 import { useLogout } from '../../hooks/useLogout'
 import { IoMdCalendar, IoMdSettings } from 'react-icons/io';
 
