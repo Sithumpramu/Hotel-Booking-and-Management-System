@@ -1,25 +1,20 @@
 import useManagerList from "../../hooks/useDisplaystaff"
+import Adminsidebar from "../../components/AdminSidebar";
 function UserManage(){
     const { userList,isLoading, error } = useManagerList();
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+      }
+    
+      if (error) {
+        return <div>Error: {error}</div>;
+      }
+    
     return(
         <div>
        <div className=" bg-info-subtle vh-100 row m-0 p-0">
-       <div className="col-3 m-0 p-0">
-       <ul className="nav flex-column bg-black vh-100">
-       <img src="logo.jpg"style={{width:"150px", position:"relative", left:"107px"}} className="mt-4"></img>
-       <div className="d-flex flex-column bg-info h-25 mt-5 justify-content-around">
-         <li className="nav-item ">
-           <a className="nav-link active" aria-current="page" href="#">Manage Users</a>
-         </li>
-         <li className="nav-item">
-           <a className="nav-link " aria-current="page" href="#">Manage Staff</a>
-         </li>
-         <li className="nav-item">
-           <a className="nav-link" aria-current="page" href="#">Create Staff</a>
-         </li>
-       </div>
-       </ul>
-       </div>
+       <Adminsidebar/>
        <div className="col">
          <div className="row">
       <h2 className="mb-5 mt-3">User Accounts</h2>

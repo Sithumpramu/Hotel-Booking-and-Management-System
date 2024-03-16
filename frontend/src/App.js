@@ -14,6 +14,7 @@ import ManagerDash from "./Pages/Staff/ManagerDash";
 import StaffDash from "./Pages/Staff/StaffDash";
 import Staffmanage from "./Pages/Staff/staffManage";
 import Usermanage from "./Pages/Staff/UserManage";
+import AccountManage from "./Pages/Staff/AccountManage";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -67,6 +68,10 @@ function App() {
           <Route
             path="/Usermanage"
             element={<Usermanage/>}
+          />
+           <Route
+            path="/Accountmanage"
+            element={<AccountManage/>}
           />
         </Routes>
       </BrowserRouter>
