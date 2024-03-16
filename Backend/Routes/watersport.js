@@ -20,7 +20,7 @@ router.route("/add").post((req,res)=>{
 
 })
 
-router.route("/").get((req,res)=>{
+router.route("/find").get((req,res)=>{
     Watersport.find().then((Activities)=>{
         res.json(activities)
     }).catch((err)=>{
