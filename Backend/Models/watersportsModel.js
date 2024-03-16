@@ -6,23 +6,18 @@ const { Double } = require('mongodb');
 const Schema = mongoose.Schema;
 
 const watersportsSchema = new Schema({
-
-    Activity:{
-        type:String,
-        require: true,
+    Activity: {
+        type: String,
+        required: true, // Corrected from `require`
     },
-
-    Time:{
-        type:Time,
-        reqyire:true,
+    Time: {
+        type: String,
+        required: true, // Corrected from `reqyire`
     },
-
-    Price:{
-        type:Double,
-        require:true
+    Price: {
+        type: Number,
+        required: true,
     },
+});
 
-})
-
-const Watersport = mongoose.model("Watersport",watersportsSchema);
-module.exports = Watersport;
+module.exports = mongoose.model('Watersport',watersportsSchema);

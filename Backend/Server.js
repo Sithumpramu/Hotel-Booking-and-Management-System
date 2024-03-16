@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user');
-const Watersport = require('./Models/watersportsModel');
+const watersportRoutes = require('./Routes/watersport');
 
 // express app
 const app = express()
@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
+app.use('/watersport',watersportRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)
@@ -34,8 +35,8 @@ mongoose.connect(process.env.MONGODB_URL)
     console.log(error)
   })
 
-  const watersportRouter = require("./Routes/watersport.js");
-  app.use("/watersport",watersportRouter);
+  
+ 
 
 
 
