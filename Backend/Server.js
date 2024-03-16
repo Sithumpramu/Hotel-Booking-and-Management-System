@@ -3,7 +3,8 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
-const userRoutes = require('./Routes/user')
+const userRoutes = require('./Routes/user');
+const Watersport = require('./Models/watersportsModel');
 
 // express app
 const app = express()
@@ -32,6 +33,9 @@ mongoose.connect(process.env.MONGODB_URL)
   .catch((error) => {
     console.log(error)
   })
+
+  const watersportRouter = require("./Routes/watersport.js");
+  app.use("/watersport",watersportRouter);
 
 
 

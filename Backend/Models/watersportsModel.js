@@ -12,9 +12,17 @@ const watersportsSchema = new Schema({
         require: true,
     },
 
+    Time:{
+        type:Time,
+        reqyire:true,
+    },
+
     Price:{
         type:Double,
         require:true
     },
 
 })
+
+const Watersport = mongoose.model("Watersport",watersportsSchema);
+module.exports = Watersport;
