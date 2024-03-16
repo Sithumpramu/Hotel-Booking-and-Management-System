@@ -19,3 +19,14 @@ router.route("/add").post((req,res)=>{
     })
 
 })
+
+router.route("/").get((req,res)=>{
+    Watersport.find().then((Activities)=>{
+        res.json(activities)
+    }).catch((err)=>{
+        console.log(err)
+    })
+
+})
+
+module.exports = router;
