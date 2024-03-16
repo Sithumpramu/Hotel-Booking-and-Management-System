@@ -1,8 +1,6 @@
 import useManagerList from "../../hooks/useDisplaystaff"
-
-function Staffmanage(){
- const { managerList, staffList,isLoading, error } = useManagerList();
-
+function UserManage(){
+    const { userList,isLoading, error } = useManagerList();
     return(
         <div>
        <div className=" bg-info-subtle vh-100 row m-0 p-0">
@@ -24,34 +22,16 @@ function Staffmanage(){
        </div>
        <div className="col">
          <div className="row">
-      <h2 className="mb-5 mt-3">Staff Accounts</h2>
+      <h2 className="mb-5 mt-3">User Accounts</h2>
            <div className="col">
-           <h5 className="mb-4">Managers</h5>
-            {managerList.map(manager => (
+            {userList.map(user => (
               <div>
                 <div>
-                  <div>Name: {manager.name}</div>
-                  <div>Email: {manager.email}</div>
-                  <div>Role: {manager.role}</div>
+                  <div>Name: {user.name}</div>
+                  <div>Email: {user.email}</div>
                 </div>
                 <div>
                   <button className="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
-                </div>
-                <hr />
-              </div>
-            ))}
-           </div>
-           <div className="col">
-            <h5 className="mb-4">Staff</h5>
-            {staffList.map(staff => (
-              <div>
-                <div>
-                  <div>Name: {staff.name}</div>
-                  <div>Email: {staff.email}</div>
-                  <div>Role: {staff.role}</div>
-                </div>
-                <div>
-                  <button className="btn btn-danger mt-2"  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
                 </div>
                 <hr />
               </div>
@@ -95,4 +75,4 @@ function Staffmanage(){
     )
 }
 
-export default Staffmanage
+export default UserManage;

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 const useManagerList = () => {
   const [managerList, setManagerList] = useState([]);
   const [staffList, setStaffList] = useState([]);
+  const [userList, setuserList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,6 +27,14 @@ const useManagerList = () => {
         }
         const staffData = await staffResponse.json();
         setStaffList(staffData);
+
+
+        const userResponse = await fetch('http://localhost:4000/user/users');
+        if (!userResponse.ok) {
+          throw new Error('Failed to fetch staff list');
+        }
+        const userData = await userResponse.json();
+        setuserList(userData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -36,7 +45,7 @@ const useManagerList = () => {
     fetchManagerAndStaffList();
   }, []);
 
-  return { managerList, staffList, isLoading, error };
+  return { managerList, staffList,userList, isLoading, error };
 };
 
 export default useManagerList;

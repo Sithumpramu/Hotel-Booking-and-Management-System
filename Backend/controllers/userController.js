@@ -57,58 +57,6 @@ const signupUser = async (req, res) => {
 }
 
 
-//get managers
-const getmanagers = async (req,res) =>{
-try {
-    const selectedFields = ['name' ,'email', 'role'];
-    const staffMembers = await User.find({ role: 'manager' }).select(selectedFields);
-
-    if (staffMembers.length === 0) {
-      return res.status(404).json({ message: 'No manager members found' });
-    }
-
-    res.status(200).json(staffMembers);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
-
-const getstaff = async (req,res) =>{
-  try {
-      const selectedFields = ['name' ,'email', 'role'];
-      const staffMembers = await User.find({ role: 'staff' }).select(selectedFields);
-
-      if (staffMembers.length === 0) {
-        return res.status(404).json({ message: 'No staff members found' });
-      }
-  
-      res.status(200).json(staffMembers);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  };
-
-
-//get single user
-const getsingleuser = async (req,res) =>{
-
-  const {id} = req.params
-
-  if(!mongoose.Types.ObjectId.isValid(id)){
-    res.status(404).json({error: 'invalid id'})
-  }
-
-  const user = await User.findById(id)
-
-  if(!user){
-    res.status(404).json({error: 'No such user'})
-  }
-
-  res.status(200).json(user)
-}
-
 
 //delete user
 const deleteuser = async (req, res) => {
@@ -303,4 +251,79 @@ try{
   }
 
 
-module.exports = { signupUser, loginUser, getmanagers ,  getstaff, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}
+
+
+
+
+  //get managers
+const getmanagers = async (req,res) =>{
+  try {
+      const selectedFields = ['name' ,'email', 'role'];
+      const staffMembers = await User.find({ role: 'manager' }).select(selectedFields);
+  
+      if (staffMembers.length === 0) {
+        return res.status(404).json({ message: 'No manager members found' });
+      }
+  
+      res.status(200).json(staffMembers);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+  
+  const getstaff = async (req,res) =>{
+    try {
+        const selectedFields = ['name' ,'email', 'role'];
+        const staffMembers = await User.find({ role: 'staff' }).select(selectedFields);
+  
+        if (staffMembers.length === 0) {
+          return res.status(404).json({ message: 'No staff members found' });
+        }
+    
+        res.status(200).json(staffMembers);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    };
+  
+  
+    const getusers = async (req,res) =>{
+      try {
+          const selectedFields = ['name' ,'email'];
+          const userMembers = await User.find({ role: 'user' }).select(selectedFields);
+    
+          if (userMembers.length === 0) {
+            return res.status(404).json({ message: 'No members found' });
+          }
+      
+          res.status(200).json(userMembers);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal server error' });
+        }
+      };
+    
+  
+  //get single user
+  const getsingleuser = async (req,res) =>{
+  
+    const {id} = req.params
+  
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      res.status(404).json({error: 'invalid id'})
+    }
+  
+    const user = await User.findById(id)
+  
+    if(!user){
+      res.status(404).json({error: 'No such user'})
+    }
+  
+    res.status(200).json(user)
+  }
+  
+
+
+module.exports = { signupUser, loginUser, getmanagers ,getusers ,  getstaff, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}

@@ -36,7 +36,7 @@ return(
    </div>
   <div className="row d-flex justify-content-around h-25">
     <div className="bg-primary col-2 pt-4"><FaUsers size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="/Staffmanage">Staff Management</a></div>
-    <div className="bg-primary col-2  pt-4 "><FaUserCog size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="#">User Management</a></div>
+    <div className="bg-primary col-2  pt-4 "><FaUserCog size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="/Usermanage">User Management</a></div>
     <div className="bg-primary col-2  pt-4"><IoMdSettings size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="#">Account Manage</a></div>
   </div> 
     
