@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useAccountCreate } from '../../hooks/useAccountCreate';
 
-function SignupPage() {
+function CreatePage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('');
+  const {create, error, isLoading} = useAccountCreate()
+  const isAdminCreation = true;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Signup form submitted');
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await create(email, password, confirmPassword,name,role,isAdminCreation)
   };
 
   return (
@@ -18,10 +21,7 @@ function SignupPage() {
         <div className="col-md-6 mt-5">
           <h2 className="mb-4">Assign Users</h2>
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name</label>
-              <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-            </div>
+
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email address</label>
               <input type="email" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -35,6 +35,10 @@ function SignupPage() {
               <input type="password" className="form-control" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
             </div>
             <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+            </div>
+            <div className="mb-3">
               <label htmlFor="role" className="form-label">Role</label>
               <select className="form-select pe-3 text-center" id="role" value={role} onChange={(e) => setRole(e.target.value)} required>
                 <option value="">Select Role</option>
@@ -43,7 +47,8 @@ function SignupPage() {
                 <option value="admin">Admin</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-primary">Create</button>
+            <button type="submit" className="btn btn-primary mt-3" disabled={isLoading} >Create</button><br></br>
+            {error && <div className="error bg-danger mt-4" style={{color:"white"}}>{error}</div>}
           </form>
         </div>
       </div>
@@ -51,4 +56,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export default CreatePage;

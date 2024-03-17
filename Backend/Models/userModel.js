@@ -39,10 +39,15 @@ const userSchema = new Schema({
       default: 'user', 
     },
 
+    isAdminCreation: {
+      type: Boolean,
+      default: false
+  }
+
 })
 
 // static signup method
-userSchema.statics.signup = async function(email, password,name,role) {
+userSchema.statics.signup = async function(email, password,name,role,isAdminCreation=false) {
 
     // validation
 
@@ -51,13 +56,14 @@ userSchema.statics.signup = async function(email, password,name,role) {
     }
 
     //remove restricted words
+    if (!isAdminCreation) {
     const restrictedwords = ['staff','manager','admin'];
     const containsRestrictedWord = restrictedwords.some(word => email.toLowerCase().includes(word));
 
     if (containsRestrictedWord) {
       throw Error('Email cannot contain restricted words.');
     }
-
+  }
     const exists = await this.findOne({ email })
   
     if (exists) {
@@ -78,10 +84,11 @@ userSchema.statics.signup = async function(email, password,name,role) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
   
-    const user = await this.create({ email, password: hash,name,role })
+    const user = await this.create({ email, password: hash,name,role ,isAdminCreation})
   
     return user
   }
+
   
   // static login method
   userSchema.statics.login = async function(email, password) {

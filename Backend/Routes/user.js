@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 // controller functions
-const { loginUser, signupUser, getsingleuser,getmanagers, getusers, getstaff, deleteuser, Updateuserpwd ,forgotpwd, resetpwd} = require('../controllers/userController')
+const { loginUser, signupUser, getsingleuser,getmanagers, getusers, getstaff, deleteuser, Updateuserpwd ,forgotpwd, resetpwd,CreatestaffUser} = require('../controllers/userController')
 
 
 

@@ -42,10 +42,10 @@ const determineRole = (email) => {
 
 // signup a user
 const signupUser = async (req, res) => {
-  const {email, password,name,role} = req.body
+  const {email, password,name,role,isAdminCreation} = req.body
 
   try {
-    const user = await User.signup(email, password,name,role)
+    const user = await User.signup(email, password,name,role,isAdminCreation)
 
     // create a token
     const token = createToken(user._id)
@@ -58,9 +58,10 @@ const signupUser = async (req, res) => {
 
 
 
+
 //delete user
 const deleteuser = async (req, res) => {
-  const { email } = req.params; // Change id to email
+  const { email } = req.params; 
 
   if (!email) {
     return res.status(400).json({ error: 'Invalid email' });
