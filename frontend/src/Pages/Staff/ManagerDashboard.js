@@ -38,3 +38,5 @@ function Dashboard(){
       </nav>  
     )
 }
+
+export default Dashboard;

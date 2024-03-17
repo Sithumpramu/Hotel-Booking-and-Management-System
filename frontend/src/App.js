@@ -10,6 +10,7 @@ import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import Watersport from './Pages/Staff/WatersportManagement';
+import ManagerDashboard from './Pages/Staff/ManagerDashboard';
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -50,6 +51,11 @@ function App() {
             element={<Watersport />}
           />
         </Routes>
+        <Route
+            path="/dashboard"
+            element={<ManagerDashboard />}
+          />
+        
       </BrowserRouter>
     </div>
   );
