@@ -1,0 +1,97 @@
+.btn
+{
+    /*border: 0.1rem solid black;
+    margin: 1rem;*/
+    display: inline-block;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background: #197BBD;
+    text-decoration: none;
+    
+
+}
+
+.btn:hover
+{
+    background: #B5E2FA;
+    color: rgb(0, 0, 0);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+th{
+    text-align: center;
+    color: #B5E2FA;
+    background: #197BBD;
+    width: 10rem;
+    
+}
+
+td{
+    text-align: center;
+    width: 10rem;
+}
+
+h1{
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.category .box-container
+{
+    border:0px solid;
+    display:grid;
+    gap:1.5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    grid-template-columns: repeat(auto-fit, minmax(1fr));
+}
+
+.category .box-container .box
+{
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding:3rem 3rem 3rem 3rem;
+    background: #fff;
+    outline-offset: -1rem;
+    outline: gray;
+    text-align: center;
+    box-shadow: gray;
+    width:10rem;
+}
+
+.category .box-container .box:hover
+{
+    box-shadow:1px 1px 10px 4px rgb(135, 193, 222);
+    
+}
+
+.category .box-container .box img
+{
+
+   height:8rem; 
+   
+}
+
+.category .box-container .box p
+{
+    font-size: 1rem;
+    color:rgb(0, 0, 0);
+    
+}
+
+.category .box-container .box h3
+{
+    font-size: 1.5rem;
+    color:rgb(18, 19, 20);
+}
+

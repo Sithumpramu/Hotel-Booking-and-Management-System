@@ -29,10 +29,10 @@ const getActivity = async (req, res) => {
 // Function to delete an activity by name
 const deleteActivity = async (req, res) => {
     try {
-        const { name } = req.params; // Assuming you're getting the activity name from the route parameter
-        const result = await Watersport.deleteOne({ Activity: name });
+        const { activityName } = req.params; // Assuming you're getting the activity name from the route parameter
+        const result = await Watersport.findOneAndDelete({ Activity: activityName });
 
-        if (result.deletedCount === 0) {
+        if (!result) {
             return res.status(404).json({ message: "Activity not found" });
         }
 

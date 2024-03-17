@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
+import Watersport from './Pages/Staff/WatersportManagement';
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -43,6 +44,10 @@ function App() {
           <Route
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
+          />
+          <Route
+            path="/watersport"
+            element={<Watersport />}
           />
         </Routes>
       </BrowserRouter>
