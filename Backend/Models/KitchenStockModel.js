@@ -5,30 +5,29 @@ const { Double } = require("mongodb");
 
 const stockSchema = mongoose.Schema(
   {
+    itemNo: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
-      required: [true, "Please add a name"],
-      trim: true,
+      required: true,
     },
     category: {
       type: String,
-      required: [true, "Please add a category"],
-      trim: true,
+      required: true, 
     },
     quantity: {
-      type: Double,
-      required: [true, "Please add a quantity"],
-      trim: true,
+      type: Number,
+      required: true,
     },
     price: {
       type: Double,
-      required: [true, "Please add a price"],
-      trim: true,
+      required: true,
     },
     description: {
       type: String,
-      required: [true, "Please add a description"],
-      trim: true,
+      required: true,
     },
   },
   {
