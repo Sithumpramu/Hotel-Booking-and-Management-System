@@ -42,7 +42,7 @@ function CreatePage() {
               <label htmlFor="role" className="form-label">Role</label>
               <select className="form-select pe-3 text-center" id="role" value={role} onChange={(e) => setRole(e.target.value)} required>
                 <option value="">Select Role</option>
-                <option value="user">Staff</option>
+                <option value="staff">Staff</option>
                 <option value="manager">Manager</option>
                 <option value="admin">Admin</option>
               </select>
