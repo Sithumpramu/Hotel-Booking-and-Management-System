@@ -7,6 +7,7 @@ const {
   addStock,
   getStocks,
   deleteStock,
+  getsingleStock,
 } = require('../controllers/kitchenStockController');
 
 
@@ -17,6 +18,7 @@ router.post('/add', addStock);
 //get stocks route
 router.get('/',getStocks);
 //get a single stock route
+router.get('/:id', getsingleStock)
 
 //delete stock route
 router.delete('/delete/:stockName',deleteStock);
