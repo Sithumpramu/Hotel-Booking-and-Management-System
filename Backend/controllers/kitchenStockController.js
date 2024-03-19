@@ -146,6 +146,24 @@ const getsingleStock = async (req,res) =>{
   res.status(200).json(stock)
 }
 
+//update stocks
+const updateStock = async (req, res) => {
+  try{
+  const { name, category, quantity, price, description } = req.body;
+  const{id}  = req.params;
+
+  const update = await Stock.findByIdAndUpdate(id, updateStock)
+   if(!update){
+    return res.status(404).json({ message: "Product not found" });
+   }
+      res.status(200).json({message: "Inventory updated"});
+  }
+  catch(error){
+      res.status(500).json({error:error.message});
+  }
+
+}
+
 
 
 // delete stocks
@@ -155,10 +173,10 @@ const deleteStock = async (req, res) => {
         const result = await Stock.findOneAndDelete({ name: stockName });
 
         if (!result) {
-            return res.status(404).json({ message: "Activity not found" });
+            return res.status(404).json({ message: "Product not found" });
         }
 
-        res.status(200).json({ message: "Activity deleted successfully" });
+        res.status(200).json({ message: "Product deleted successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
