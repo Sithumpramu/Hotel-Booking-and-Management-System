@@ -5,23 +5,20 @@ const router = express.Router()
 //controller functions
 const {
   addStock,
-  updateStock,
   getStocks,
-  getStock,
   deleteStock,
 } = require('../controllers/kitchenStockController');
 
-const { upload } = require("");
 
 //add stock route
 router.post('/add', addStock);
 //update stock route
-router.patch('/update/:id',updateStock);
+
 //get stocks route
 router.get('/',getStocks);
 //get a single stock route
-router.get('/:id', getStock);
+
 //delete stock route
-router.delete('/delete/:id',deleteStock);
+router.delete('/stocks/:stockName',deleteStock);
 
 module.exports = router;
