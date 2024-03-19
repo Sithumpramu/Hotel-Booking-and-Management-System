@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
+app.use('/kitchenStock', kicthenStockRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)
@@ -32,6 +33,8 @@ mongoose.connect(process.env.MONGODB_URL)
   .catch((error) => {
     console.log(error)
   })
+  
+
 
 
 
