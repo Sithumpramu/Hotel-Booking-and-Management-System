@@ -1,4 +1,19 @@
-function AddActivity(){
+import { useState } from "react"
+import { addNew } from "../hooks/addNew"
+
+const AddActivity = () => {
+    const [Activity, setName] = useState('')
+    const [Time, setTime] = useState('')
+    const [Price, setPrice] = useState('')
+    const [Description, setDescription] = useState('')
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    
+        await AddActivity(Activity, Time,Price,Description)
+      }
+
+function myfunction(){
     return(
         <div>
             <form>
@@ -23,5 +38,5 @@ function AddActivity(){
         </div>
 
     )}
-
+}
     export default AddActivity;

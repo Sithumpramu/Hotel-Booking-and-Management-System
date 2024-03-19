@@ -25,6 +25,29 @@ const getActivity = async (req, res) => {
 };
 
 
+// Function to update an existing activity
+const updateActivity = async (req, res) => {
+    const { activityName } = req.params; // The name of the activity to update
+    const { Activity, Time, Price, Description } = req.body; // The new data for the activity
+
+    try {
+        const updatedActivity = await Watersport.findOneAndUpdate(
+            { Activity: activityName }, // Find a document by its activity name
+            { Activity, Time, Price, Description }, // The new values
+            { new: true } // Option to return the document after update
+        );
+
+        if (!updatedActivity) {
+            return res.status(404).json({ message: "Activity not found" });
+        }
+
+        res.status(200).json(updatedActivity);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 
 // Function to delete an activity by name
 const deleteActivity = async (req, res) => {
@@ -42,4 +65,4 @@ const deleteActivity = async (req, res) => {
     }
 };
 
-module.exports = { AddActivity, getActivity,deleteActivity };
+module.exports = {AddActivity, getActivity,deleteActivity,updateActivity};
