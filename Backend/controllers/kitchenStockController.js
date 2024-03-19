@@ -1,40 +1,43 @@
 const { default: mongoose } = require('mongoose')
-const asyncHandler = require("express-async-handler");
 const Stock = require("../Models/KitchenStockModel");
 
 
 
 // Add Stock
-const addStock = asyncHandler(async (req, res) => {
+const addStock = async (req, res) => {
   const { name, category, quantity, price, description } = req.body;
 
-  //   Validation
-  if (!name || !category || !quantity || !price || !description) {
-    res.status(400);
-    throw new Error("Please fill in all fields");
-  }
-
   // Add Stock
+  try{
   const stock = await Stock.add({
-    user: req.user.id,
     name,
     category,
     quantity,
     price,
-    description,
+    description
   });
+  res.status(201).json(newActivity);
+}
+catch (error){
+    res.status(400).json({ error: error.message });
+}
 
-  res.status(201).json(stock);
-});
+  
+};
 
 // Get all Stocks
-const getStocks = asyncHandler(async (req, res) => {
-  const stocks = await Stock.find({ user: req.user.id }).sort("-createdAt");
+const getStocks = async (req, res) => {
+    try{
+  const stocks = await Stock.find({ });
   res.status(200).json(stocks);
-});
+    }
+    catch(error){
+        res.status(500).json({ error: error.message });
+    }
+};
 
 // Get single product
-const getStock = asyncHandler(async (req, res) => {
+const getStock = async (req, res) => {
   const stock = await Stock.findById(req.params.id);
   // if product doesnt exist
   if (!product) {
@@ -47,24 +50,25 @@ const getStock = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
   res.status(200).json(product);
-});
+};
 
 // Delete Product
-const deleteStock = asyncHandler(async (req, res) => {
-  const stock = await Stock.findById(req.params.id);
+const deleteStock = async (req, res) => {
+    try{
+        const{stockName} = req.params;
+        const result = await Stock.findOneAndDelete({name: stockName});
   // if product doesnt exist
-  if (!stock) {
-    res.status(404);
-    throw new Error("Product not found");
+  if (!result) {
+    res.status(404).json({message:"Product not found"});
   }
   // Match product to its user
-  if (stock.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-  await stock.remove();
-  res.status(200).json({ message: "Product deleted." });
-});
+  res.status(200).json({message:"Activity deleted successfully"});
+}
+  catch(error){
+    res.status(500).json({error: error.message})
+}
+  
+};
 
 // Update Product
 const updateStock = asyncHandler(async (req, res) => {
