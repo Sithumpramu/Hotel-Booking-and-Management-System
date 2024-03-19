@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
-const kicthenStockRoutes = require ('./Routes/kitchenStock')
+const kitchenStockRoutes = require ('./Routes/kitchenStock')
 
 // express app
 const app = express()
