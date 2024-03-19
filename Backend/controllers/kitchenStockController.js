@@ -39,13 +39,13 @@ const getsingleStock = async (req,res) =>{
   }
 
   res.status(200).json(stock)
-}
+};
 
 //update stocks
 const updateStock = async (req, res) => {
-  
-  const { name, category, quantity, price, description } = req.body;
+
   const{stockName}  = req.params;
+  const { name, category, quantity, price, description } = req.body;
 
   try{
   const update = await Stock.findByIdAndUpdate(
@@ -62,7 +62,7 @@ const updateStock = async (req, res) => {
       res.status(500).json({error:error.message});
   }
 
-}
+};
 
 
 
