@@ -2,38 +2,30 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 
-const stockSchema = mongoose.Schema(
+const Schema = mongoose.Schema;
+const stockSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Please add a name"],
-      trim: true,
+      required: true,
     },
     category: {
       type: String,
-      required: [true, "Please add a category"],
-      trim: true,
+      required:true,
     },
     quantity: {
       type: Number,
-      required: [true, "Please add a quantity"],
-      trim: true,
+      required:true,
     },
     price: {
       type: Number,
-      required: [true, "Please add a price"],
-      trim: true,
+      required: true,
     },
     description: {
       type: String,
-      required: [true, "Please add a description"],
-      trim: true,
+      required: true,
     },
   },
-  {
-    timestamps: true,
-  }
-);
 
-const Stock = mongoose.model("Stock", stockSchema);
-module.exports = Stock;
+);
+module.exports = mongoose.model('Stock', stockSchema)
