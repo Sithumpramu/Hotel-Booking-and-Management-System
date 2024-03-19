@@ -152,7 +152,7 @@ const updateStock = async (req, res) => {
   const { name, category, quantity, price, description } = req.body;
   const{id}  = req.params;
 
-  const update = await Stock.findByIdAndUpdate(id, updateStock)
+  const update = await Stock.findByIdAndUpdate(id)
    if(!update){
     return res.status(404).json({ message: "Product not found" });
    }
@@ -182,4 +182,4 @@ const deleteStock = async (req, res) => {
     }
 };
 
-module.exports = { addStock, getStocks,getsingleStock,deleteStock };
+module.exports = { addStock, getStocks,getsingleStock,updateStock,deleteStock };
