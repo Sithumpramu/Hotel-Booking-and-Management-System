@@ -1,30 +1,33 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
-const validator = require('validator');
-const { Double } = require("mongodb");
+const validator = require('validator')
 
-const Schema = mongoose.Schema;
-const stockSchema = new Schema(
+const stockSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Please add a name"],
+      trim: true,
     },
     category: {
       type: String,
-      required: true, 
+      required: [true, "Please add a category"],
+      trim: true,
     },
     quantity: {
       type: Number,
-      required: true,
+      required: [true, "Please add a quantity"],
+      trim: true,
     },
     price: {
       type: Number,
-      required: true,
+      required: [true, "Please add a price"],
+      trim: true,
     },
     description: {
       type: String,
-      required: true,
+      required: [true, "Please add a description"],
+      trim: true,
     },
   },
   {
@@ -32,4 +35,5 @@ const stockSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Stock", stockSchema);
+const Stock = mongoose.model("Stock", stockSchema);
+module.exports = Stock;
