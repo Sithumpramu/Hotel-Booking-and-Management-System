@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
-app.use('/kitchenStock', kicthenStockRoutes)
+app.use('/kitchenStock', kitchenStockRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)
