@@ -5,10 +5,6 @@ const { Double } = require("mongodb");
 
 const stockSchema = mongoose.Schema(
   {
-    itemNo: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
