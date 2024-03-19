@@ -19,6 +19,6 @@ router.get('/',getStocks);
 //get a single stock route
 
 //delete stock route
-router.delete('/stocks/:stockName',deleteStock);
+router.delete('/delete/:stockName',deleteStock);
 
 module.exports = router;
