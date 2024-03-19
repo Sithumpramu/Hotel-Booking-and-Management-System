@@ -50,11 +50,12 @@ function App() {
             path="/watersport"
             element={<Watersport />}
           />
-        </Routes>
-        <Route
-            path="/dashboard"
+          <Route
+            path="/ManagerDashboard"
             element={<ManagerDashboard />}
           />
+        </Routes>
+        
         
       </BrowserRouter>
     </div>

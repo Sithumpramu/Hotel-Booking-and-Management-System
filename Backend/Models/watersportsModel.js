@@ -18,6 +18,10 @@ const watersportsSchema = new Schema({
         type: Number,
         required: true,
     },
+    Description: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Watersport',watersportsSchema);
