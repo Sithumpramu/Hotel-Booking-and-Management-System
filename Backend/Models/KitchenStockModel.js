@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 const validator = require('validator');
 const { Double } = require("mongodb");
 
-const stockSchema = mongoose.Schema(
+const Schema = mongoose.Schema;
+const stockSchema = new Schema(
   {
     name: {
       type: String,
@@ -31,5 +32,4 @@ const stockSchema = mongoose.Schema(
   }
 );
 
-const Stock = mongoose.model("Stock", stockSchema);
-module.exports = Stock;
+module.exports = mongoose.model("Stock", stockSchema);
