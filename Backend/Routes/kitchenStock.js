@@ -14,14 +14,14 @@ const {
 const { upload } = require("");
 
 //add stock route
-router.post("/add", protect, addStock);
+router.post("/add", addStock);
 //update stock route
-router.patch("/update/:id", protect, updateStock);
+router.patch("/update/:id",updateStock);
 //get stocks route
-router.get("/", protect, getStocks);
+router.get("/",getStocks);
 //get a single stock route
-router.get("/:id", protect, getStock);
+router.get("/:id", getStock);
 //delete stock route
-router.delete("/delete/:id", protect, deleteStock);
+router.delete("/delete/:id",deleteStock);
 
 module.exports = router;
