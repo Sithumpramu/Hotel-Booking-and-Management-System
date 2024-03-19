@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose')
 const User = require('../Models/userModel')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
-const nodemailer = require('nodemailer')
+const { sendEmail } = require('../Utils/email');
 
 const createToken = (_id) => {
   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
@@ -28,7 +28,7 @@ const loginUser = async (req, res) => {
 };
 
 const determineRole = (email) => {
-  // Your logic to determine the role based on the email
+  // login based on the email
   if (email.includes('admin')) {
     return 'admin';
   } else if (email.includes('manager')) {
@@ -159,34 +159,19 @@ const forgotpwd = async (req,res)=>{
   //hash
   user.hashtoken= crypto.createHash('sha256').update(resettoken).digest('hex');
  
-  user.hashtokenexpires =  Date.now() + 60000000; 
+  user.hashtokenexpires =  Date.now() + 600000; 
   await user.save()
-
-  console.log(resettoken)
  
 
-  const transporter = nodemailer.createTransport({
-    host:process.env.EmailHost,
-    port:process.env.EmailPort,
-    auth:{
-       user:process.env.EmailUser,
-       pass:process.env.EmailPassword,
-    }
-  })
-
-  
-  const mailOptions = {
-    from: "support@Cd.com",
-    to: email,
-    subject: 'Password Reset',
-    text: 'You are receiving this email because you (or someone else) have requested to reset the password for your account.\n\n'
+   const subject= 'Password Reset';
+   const text= 'You are receiving this email because you (or someone else) have requested to reset the password for your account.\n\n'
     + `Please click on the following link, or paste it into your browser to complete the process:\n\n`
     + `http://localhost:3000/user/resetPassword/${resettoken}\n\n`
-    + `If you did not request this, please ignore this email and your password will remain unchanged.`,
-  }
+    + `If you did not request this, please ignore this email and your password will remain unchanged.`;
   
   
-    await transporter.sendMail(mailOptions);
+  
+    await sendEmail(email,subject,text);
     res.status(200).json({ status: 'Password reset link sent to your email' });
 
     } catch (error) {
