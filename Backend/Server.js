@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user');
 const watersportRoutes = require('./Routes/watersport');
+const WatersportReservationRoutes = require('./Routes/WatersportReservation');
 
 // express app
 const app = express()
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use('/user', userRoutes)
 app.use('/watersport',watersportRoutes)
+app.use('/watersportReservation',WatersportReservationRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)

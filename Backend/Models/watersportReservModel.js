@@ -27,7 +27,7 @@ const ReservationSchema = new Schema({
         required: true,
     },
     AdvancePayment: {
-        type: Double,
+        type: Number,
         required: true,
     },
     
