@@ -5,7 +5,7 @@ const router = express.Router()
 //controller functions
 const {
   addStock,
-  updateStock,
+ // updateStock,
   getStocks,
   getStock,
   deleteStock,
@@ -15,7 +15,7 @@ const {
 //add stock route
 router.post("/add",  addStock);
 //update stock route
-router.patch("/update/:id",  updateStock);
+//router.patch("/update/:id",  updateStock);
 //get stocks route
 router.get("/",  getStocks);
 //get a single stock route

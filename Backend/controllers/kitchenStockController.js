@@ -71,7 +71,7 @@ const deleteStock = async (req, res) => {
 };
 
 // Update Product
-const updateStock = asyncHandler(async (req, res) => {
+/*const updateStock = async (req, res) => {
   const { name, category, quantity, price, description } = req.body;
   const { id } = req.params;
 
@@ -105,7 +105,7 @@ const updateStock = asyncHandler(async (req, res) => {
   );
 
   res.status(200).json(updatedProduct);
-});
+};*/
 
 module.exports = {
   addStock,
