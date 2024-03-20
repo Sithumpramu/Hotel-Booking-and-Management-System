@@ -1,14 +1,23 @@
-import useManagerList from "../../hooks/useDisplaystaff"
+import React, { useState } from 'react';
+import useManagerList from "../../hooks/useDisplaystaff";
 import Adminsidebar from "../../components/AdminSidebar";
+import { useDelete } from '../../hooks/useAccountDelete';
+
 function Staffmanage(){
  const { managerList, staffList,isLoading, error } = useManagerList();
-
+ const {deleteUser} = useDelete()
+ const [emailToDelete, setEmailToDelete] = useState('');
  if (isLoading) {
   return <div>Loading...</div>;
 }
 
 if (error) {
   return <div>Error: {error}</div>;
+}
+
+const handledelete = async (email) => {
+  await deleteUser(emailToDelete) 
+  setEmailToDelete('');
 }
 
     return(
@@ -28,7 +37,7 @@ if (error) {
                   <div>Role: {manager.role}</div>
                 </div>
                 <div>
-                  <button className="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-danger mt-2" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
                 </div>
                 <hr />
               </div>
@@ -44,7 +53,7 @@ if (error) {
                   <div>Role: {staff.role}</div>
                 </div>
                 <div>
-                  <button className="btn btn-danger mt-2"  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-danger mt-2"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
                 </div>
                 <hr />
               </div>
@@ -68,14 +77,14 @@ if (error) {
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                      This is Permenent. You can not recover account after deletion.
+                    Are you sure you want to delete this user?
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                      
-                       <form action=""  method="post">
+                       <form action=""  method="delete">
                         
-                        <button  className="btn btn-outline-danger" >DELETE</button>
+                        <button  className="btn btn-outline-danger" onClick={handledelete}>DELETE</button>
                       
                        </form>
                     
