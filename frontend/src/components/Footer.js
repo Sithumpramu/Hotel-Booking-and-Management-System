@@ -31,7 +31,7 @@ function Footer(){
                  <div className="col-md-4">
                    <h2 className="mb-4">Contact Us</h2>
                    <ul className="list-unstyled">
-                     <li><i className="fas fa-map-marker-alt me-2"></i>123 Main Street, City, Country</li>
+                     <li><i className="fas fa-map-marker-alt me-2"></i>Galle Road, Kaluwamodara, Aluthgama, Sri Lanka</li>
                      <li><i className="fas fa-phone-alt me-2"></i>+123 456 7890</li>
                      <li><i className="fas fa-envelope me-2"></i>info@example.com</li>
                    </ul>

@@ -41,16 +41,6 @@ function Home(){
   
 
 
-  function navigateToPage() {
-    var dropdown = document.getElementById("pageSelector");
-    var selectedValue = dropdown.options[dropdown.selectedIndex].value;
-
-    if (selectedValue === "page1") {
-      window.location.href = "";
-    } else if (selectedValue === "page2") {
-      window.location.href = "https://www.youtube.com/";
-    }
-  }
 
 
   
@@ -58,15 +48,19 @@ function Home(){
       <div >
 
         <div className="container d-flex justify-content-center mt-3 vh-75">
-            <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
+            <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="change1.png" className="d-block w-75 mx-auto" alt="Image 1"></img>
+                        <img src="4.jpg" className="d-block w-100 mx-auto" alt="Image 1" ></img>
                     </div>
                     <div className="carousel-item">
-                        <img src="change2.png" className="d-block w-75 mx-auto" alt="Image 2"></img>
+                        <img src="carouselImg2.jpg" className="d-block w-100 mx-auto" alt="Image 2" ></img>
                     </div>
-                     {/* Add more carousel items with additional images  */}
+                    <div className="carousel-item">
+                        <img src="carouselImg3.jpg" className="d-block w-100 mx-auto" alt="Image 3" ></img>
+                    </div>
+
+                     
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -80,11 +74,7 @@ function Home(){
         </div>
 
         <div className="booknow d-flex justify-content-center mt-4 w-100">
-          <select id="pageSelector" className="me-4 rounded">
-          <option value="page1">Kalutara</option>
-          <option value="page2">Kataragama</option>
-          </select>
-          <button className="btn btn-secondary"  onClick={navigateToPage}>Book Now</button>
+          <a href=""className="btn btn-secondary" >Book Now</a>
         </div>
 
         <div className="middle row d-flex justify-content-around">

@@ -75,39 +75,36 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 fs-5">
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Accomadation</a>
+              </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Dining</a>
               </li>
              
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown me-3">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Reservation
+                  Offers and Packages
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Accomadation</a></li>
-                  <li><a className="dropdown-item" href="#">Dine-in</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
+                  <li><a className="dropdown-item" href="#">Offers</a></li>
+                  <li><a className="dropdown-item" href="#">Packages</a></li>
                 </ul>
               </li>
 
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
 
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Packages & offers
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Accomadation</a></li>
-                  <li><a className="dropdown-item" href="#">Dine-in</a></li>
-      
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
               
             </ul>
+            <form class="d-flex mt-2" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
 
            {user &&(
             <div>
