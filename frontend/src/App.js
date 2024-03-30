@@ -14,6 +14,7 @@ import ManagerDashboard from './Pages/Staff/ManagerDashboard';
 import AddActivity from './Pages/Staff/AddActivity';
 import WatersportManage from "./Pages/Staff/WatersportManagement";
 
+
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -64,6 +65,7 @@ function App() {
             path="/WatersportsManagement"
             element={<WatersportManage />}
           />
+                 
         </Routes>
         
         

@@ -1,8 +1,10 @@
+import React from 'react';
 import useActivityList from "../../hooks/useActivityList";
+import useActivityDelete from "../..hooks/useDeleteActivity";
 
 function WatersportManage(){
     const { ActivityList,isLoading, error } = useActivityList();
-    //const {deleteActivity} = useActivityDelete()
+    const {deleteActivity} = useActivityDelete();
     //const [emailToDelete, setEmailToDelete] = useState('');
 
     if (isLoading) {
@@ -11,6 +13,11 @@ function WatersportManage(){
     
     if (error) {
         return <div>Error: {error}</div>;
+    }
+
+    const handleDelete = async (activityId) => {
+      await deleteActivity(activityId) 
+      
     }
 
     return(
@@ -25,7 +32,7 @@ function WatersportManage(){
 
               {ActivityList.map(Watersport => (
 
-              <div className="card" style={{width: "18rem"}}>
+              <div className="card" key={Watersport.id} style={{width: "18rem"}}>
                   
                   <div class="card-body">
                       <img src="..." class="card-img-top" alt="..."/>
@@ -33,7 +40,8 @@ function WatersportManage(){
                       <p class="card-text">{Watersport.Time}</p>
                       <p class="card-text">{Watersport.Price}</p>
                       <p class="card-text">{Watersport.Description}</p>
-                      <a href="#" class="btn btn-primary">Delete</a>
+                     
+                      <a href="#" class="btn btn-primary" onClick={() =>  handleDelete(Watersport.id)}>Delete</a>
                   </div>
                 
               </div>
