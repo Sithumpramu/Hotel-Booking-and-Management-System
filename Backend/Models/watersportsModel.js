@@ -8,11 +8,11 @@ const Schema = mongoose.Schema;
 const watersportsSchema = new Schema({
     Activity: {
         type: String,
-        required: true, // Corrected from `require`
+        required: true,
     },
     Time: {
         type: String,
-        required: true, // Corrected from `reqyire`
+        required: true,
     },
     Price: {
         type: Number,

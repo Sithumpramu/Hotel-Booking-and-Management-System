@@ -11,6 +11,7 @@ import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import Watersport from './Pages/Staff/WatersportManagement';
 import ManagerDashboard from './Pages/Staff/ManagerDashboard';
+import AddActivity from './Pages/Staff/AddActivity';
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -53,6 +54,10 @@ function App() {
           <Route
             path="/ManagerDashboard"
             element={<ManagerDashboard />}
+          />
+          <Route
+            path="/AddActivity"
+            element={<AddActivity />}
           />
         </Routes>
         
