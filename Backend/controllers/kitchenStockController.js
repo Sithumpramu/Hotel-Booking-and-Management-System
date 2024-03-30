@@ -1,3 +1,108 @@
+/*const { default: mongoose } = require('mongoose')
+const Stock = require("../Models/KitchenStockModel");
+const jwt = require('jsonwebtoken')
+
+
+
+// Add Stock
+const addStock = async (req, res) => {
+  const { name, category, quantity, price, description } = req.body;
+
+  try {
+    const stock = await Stock.add(name,category,quantity,price,description)
+
+       res.status(200)
+  } 
+  catch (error) {
+    res.status(400).json({error: error.message})
+  }
+
+}
+
+// Get all Stocks
+const getStocks = async (req, res) => {
+  const stocks = await Stock.find({})
+  res.status(200).json(stocks);
+};
+
+// Get single product
+const getStock = async (req, res) => {
+  const stock = await Stock.findById(req.params.id);
+  // if product doesnt exist
+  if (!stock) {
+    res.status(404).json({error: 'no such product'});
+  }
+  // Match product to its user
+ /* if (stock.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
+  }
+  res.status(200).json(stock);
+};
+
+// Delete Product
+const deleteStock =async (req, res) => {
+  const stock = await Stock.findById(req.params.id);
+  // if product doesnt exist
+  if (!stock) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+  // Match product to its user
+  if (stock.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
+  }
+  await stock.remove();
+  res.status(200).json({ message: "Product deleted." });
+};
+
+// Update Product
+const updateStock = async (req, res) => {
+  const { name, category, quantity, price, description } = req.body;
+  const { id } = req.params;
+
+  const stock = await Stock.findById(id);
+
+  // if product doesnt exist
+  if (!stock) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+  // Match product to its user
+  if (stock.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
+  }
+
+  // Update Product
+  const updatedStock = await Stock.findByIdAndUpdate(
+    { _id: id },
+    {
+      name,
+      category,
+      quantity,
+      price,
+      description,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json(updatedProduct);
+};
+
+module.exports = {
+  addStock,
+  getStocks,
+  getStock,
+  deleteStock,
+  updateStock,
+};*/
+
+
 const { default: mongoose } = require('mongoose')
 const Stock = require("../Models/KitchenStockModel");
 
@@ -39,30 +144,46 @@ const getsingleStock = async (req,res) =>{
   }
 
   res.status(200).json(stock)
-};
+}
 
 //update stocks
 const updateStock = async (req, res) => {
 
-  const{stockName}  = req.params;
   const { name, category, quantity, price, description } = req.body;
+  const{id}  = req.params;
 
   try{
-  const update = await Stock.findByIdAndUpdate(
-    {name: stockName},
-    {name, category, quantity, price, description},
-    {new: true}
-  );
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'Invalid ID' });
+        }
+
+  const update = await Stock.findById(id)
+
    if(!update){
     return res.status(404).json({ message: "Product not found" });
    }
-      res.status(200).json(update);
+
+   const updateFields = {};
+   if (name) updateFields.name = name;
+   if (category) updateFields.category = category;
+   if (quantity) updateFields.quantity = quantity;
+   if (price) updateFields.price = price;
+   if (description) updateFields.description = description;
+
+   
+   if (Object.keys(updateFields).length > 0) {
+       const updatedStocks = await Stock.findByIdAndUpdate(id, { $set: updateFields }, { new: true });
+       res.json(updatedStocks);
+   } else {
+       res.json({ message: 'No changes detected' });
+   }
   }
   catch(error){
       res.status(500).json({error:error.message});
   }
 
-};
+}
 
 
 

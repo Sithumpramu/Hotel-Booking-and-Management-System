@@ -15,7 +15,7 @@ const {
 //add stock route
 router.post('/add', addStock);
 //update stock route
-router.put('/update/:stockName',updateStock);
+router.put('/update/:id',updateStock);
 
 //get stocks route
 router.get('/',getStocks);
