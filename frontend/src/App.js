@@ -35,15 +35,15 @@ function App() {
           />
           <Route
             path="/Signup"
-            element={<Layout><Signup /></Layout>}
+            element={<Signup />}
           />
           <Route
             path="/Login"
-            element={<Layout><Login /></Layout>}
+            element={<Login />}
           />
           <Route
             path="/ForgotPwd"
-            element={<Layout><ForgotPassword /></Layout>}
+            element={<ForgotPassword />}
           />
           <Route
             path="/user/resetPassword/:token"

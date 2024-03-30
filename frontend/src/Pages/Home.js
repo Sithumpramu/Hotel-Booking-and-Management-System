@@ -3,8 +3,10 @@ import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import useImageFetch from '../hooks/useImgfetch';
 
-function Home(){
+function Home({ imageName }){
+  const imageUrl = useImageFetch(imageName); 
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const navigate = useNavigate();
@@ -47,21 +49,23 @@ function Home(){
     return(
       <div >
 
-        <div className="container d-flex justify-content-center mt-3 vh-75">
-            <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div className="container d-flex justify-content-center mt-3">
+        {imageUrl && (
+        <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="4.jpg" className="d-block w-100 mx-auto" alt="Image 1" ></img>
+                        <img src={"carouselImg1.jpg"} alt={`Image: ${imageName}`}className="d-block w-100 mx-auto"  ></img>
                     </div>
                     <div className="carousel-item">
-                        <img src="carouselImg2.jpg" className="d-block w-100 mx-auto" alt="Image 2" ></img>
+                        <img src={"carouselImg2.jpg"} alt={`Image: ${imageName}`} className="d-block w-100 mx-auto"  ></img>
                     </div>
                     <div className="carousel-item">
-                        <img src="carouselImg3.jpg" className="d-block w-100 mx-auto" alt="Image 3" ></img>
+                        <img src={"carouselImg3.jpg"} alt={`Image: ${imageName}`} className="d-block w-100 mx-auto" ></img>
                     </div>
 
                      
                 </div>
+
                 <button className="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
@@ -70,9 +74,10 @@ function Home(){
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div>)}
         </div>
 
+      
         <div className="booknow d-flex justify-content-center mt-4 w-100">
           <a href=""className="btn btn-secondary" >Book Now</a>
         </div>

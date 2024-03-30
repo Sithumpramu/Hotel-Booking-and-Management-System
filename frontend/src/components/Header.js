@@ -20,17 +20,7 @@ const Header = () => {
    
 
 
-  // Define an array of routes where the header should be hidden
-  const hiddenHeaderRoutes = ['/Signup', '/Login','/Forgot','/user/resetPassword/:token'];
 
-  // Check if the current location matches any of the routes where the header should hidden
-  const hideHeader = hiddenHeaderRoutes.some(route => location.pathname.includes(route));
-
-  // If hideHeader is true, return null to hide the header
-  if (hideHeader) {
-    return null;
-  }
-  
     const handleSubmit = async (e) => {
       e.preventDefault();
       await Update(password,newpassword)    

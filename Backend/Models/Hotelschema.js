@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-// Define hotel schema
-const hotelSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const hotelSchema = new Schema({
     name: { 
         type: String,
          required: true 
@@ -15,11 +15,11 @@ const hotelSchema = new mongoose.Schema({
          required: true 
     },
     email: {
-        type: email, 
+        type: String, 
         required: true 
     },
     phoneno: {
-     type: Number, 
+     type: String, 
      required: true 
     },
     images: [{ type: String }], 
@@ -27,6 +27,6 @@ const hotelSchema = new mongoose.Schema({
   });
   
   // Create hotel model
-  const Hotel = mongoose.model('Hotel', hotelSchema);
+  const Hotel = mongoose.model('HotelDetails', hotelSchema);
   
   module.exports = Hotel;
