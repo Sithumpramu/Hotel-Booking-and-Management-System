@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useAuthContext } from './useAuthContext';
 
 const useActivityDelete = () => {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const { dispatch } = useAuthContext();
 
-  const deleteActivity = async (activityId) => {
+  const deleteActivity = async (activityName) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/activities/${activityId}`, {
+      const response = await fetch(`http://localhost:4000/activities/${activityName}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
