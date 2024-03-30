@@ -1,6 +1,8 @@
-function Watersport(){
+import useActivityList from "../../hooks/useActivityList";
+
+function WatersportManage(){
     const { ActivityList,isLoading, error } = useActivityList();
-    const {deleteActivity} = useActivityDelete()
+    //const {deleteActivity} = useActivityDelete()
     //const [emailToDelete, setEmailToDelete] = useState('');
 
     if (isLoading) {
@@ -11,35 +13,36 @@ function Watersport(){
         return <div>Error: {error}</div>;
     }
 
-      const handledelete = async (email) => {
-        await deleteUser(emailToDelete) 
-        setEmailToDelete('');
-      }
-
     return(
           <div>
               <h1>Watersport Activities</h1>
 
-              <button className="btn btn-primary">Add New Activity</button>
+              
+              <a href="/AddActivity" className="btn btn-primary mb-5" >Add New Activity</a>
+              
 
-              <div class="card" style={{width: "18rem"}}>
-                {ActivityList.map(Watersport => (
+              <div className="d-flex align-items-center justify-content-around mb-3" >
+
+              {ActivityList.map(Watersport => (
+
+              <div className="card" style={{width: "18rem"}}>
                   
                   <div class="card-body">
                       <img src="..." class="card-img-top" alt="..."/>
-                      <h5 class="card-title">{Watersportatersports.Activity}</h5>
+                      <h5 class="card-title">{Watersport.Activity}</h5>
                       <p class="card-text">{Watersport.Time}</p>
-                      <p class="card-text">{Watersportatersports.Price}</p>
-                      <p class="card-text">{Watersports.Description}</p>
+                      <p class="card-text">{Watersport.Price}</p>
+                      <p class="card-text">{Watersport.Description}</p>
                       <a href="#" class="btn btn-primary">Delete</a>
                   </div>
-                ))}
-              </div>
-       
-    
-          </div>
-          )
                 
+              </div>
+              
+              ))}
+       
+              </div>
+          </div>
+          )              
 }
 
-export default Watersport;
+export default WatersportManage;

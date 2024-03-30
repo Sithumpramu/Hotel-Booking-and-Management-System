@@ -12,6 +12,7 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import Watersport from './Pages/Staff/WatersportManagement';
 import ManagerDashboard from './Pages/Staff/ManagerDashboard';
 import AddActivity from './Pages/Staff/AddActivity';
+import WatersportManage from "./Pages/Staff/WatersportManagement";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -58,6 +59,10 @@ function App() {
           <Route
             path="/AddActivity"
             element={<AddActivity />}
+          />
+          <Route
+            path="/WatersportsManagement"
+            element={<WatersportManage />}
           />
         </Routes>
         
