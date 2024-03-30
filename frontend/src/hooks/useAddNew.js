@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-export const useAddNew = () => {
+const useAddNew = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); 
   const navigate = useNavigate(); 
@@ -32,3 +32,5 @@ export const useAddNew = () => {
 
   return { addActivity, isLoading, error };
 };
+
+export default useAddNew;

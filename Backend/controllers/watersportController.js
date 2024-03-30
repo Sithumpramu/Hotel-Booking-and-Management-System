@@ -6,7 +6,6 @@ const AddActivity = async (req, res) => {
     const { Activity, Time, Price, Description } = req.body;
   
     try {
-      // Use the `create` method to add a new document to the collection
       const newActivity = await Watersport.create({ Activity, Time, Price, Description });
       res.status(201).json(newActivity); // Respond with the created document
     } catch (error) {

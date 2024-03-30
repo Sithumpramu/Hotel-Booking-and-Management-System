@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useAddNew } from "../../hooks/useAddNew";
+import useAddNew  from "../../hooks/useAddNew";
 
 const AddNew = () => {
     const [Activity, setName] = useState('')
@@ -28,7 +28,7 @@ const AddNew = () => {
 
     return(
         <div>
-            <form>
+            <form onSubmit={handleSubmit} method='Post'>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Activity Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e)=>{setName(e.target.value);}}/>
@@ -45,11 +45,12 @@ const AddNew = () => {
                     <label for="exampleInputEmail1" class="form-label">Description</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e)=>{setDescription(e.target.value);}}/>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit" onClick={() => { validation(); handleSubmit(); }}>Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit" onClick={() => { validation(); }}>Submit</button>
 
                 <p id="Error"></p>
             </form>
         </div>
 
     )}
+
     export default AddNew;
