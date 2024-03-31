@@ -4,11 +4,13 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useUpdate } from '../hooks/useUpdate';
 import { useDelete } from '../hooks/useDelete';
 import { useLocation } from 'react-router-dom';
+import useImageFetch from '../hooks/useImgfetch';
 
-const Header = () => {
+const Header = (imageName) => {
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const location = useLocation();
+  const imageUrl = useImageFetch(imageName); 
 
    const [password, setPassword] = useState('')
    const [newpassword, setNewPassword] = useState('') 
@@ -58,9 +60,10 @@ const Header = () => {
 
     return(
       <div >
-        <nav className="navbar navbar-expand-lg bg-body-tertiary border border border-primary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3" >
           <div className="container-fluid">
-          <img src="Sunset Araliya horizontal.png" style={{width:"170px", height:"70px"}}></img>
+          {imageUrl && (
+          <img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`} style={{width:"170px", height:"70px"}}></img>)}
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -91,20 +94,17 @@ const Header = () => {
 
               
             </ul>
-            <form class="d-flex mt-2" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
+
 
            {user &&(
             <div>
               <a data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample" class="btn btn-outline-primary mt-2 ms-5 me-3">Profile</a>
-              <a href ="" id="userStatus" className="btn btn-secondary ms-4 mt-2" onClick={handlelogout}>Logout</a>
+              <a href ="" id="userStatus" className="btn ms-4 mt-2" style={{backgroundColor:"rgb(85, 180, 254)"}} onClick={handlelogout}>Logout</a>
             </div>
             )}
             {!user &&(
             <div>
-            <a href ="/Login" id="userStatus" className="btn btn-secondary ms-4 mt-2">Sign in</a>
+            <a href ="/Login" id="userStatus" className="btn  ms-4 mt-2" style={{backgroundColor:"rgb(85, 180, 254)"}}>Sign in</a>
             </div>
             )}
             </div>

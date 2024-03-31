@@ -30,14 +30,15 @@ const handledelete = async (email) => {
            <div className="col">
            <h5 className="mb-4">Managers</h5>
             {managerList.map(manager => (
-              <div>
+              <div className="card pt-3">
                 <div>
                   <div>Name: {manager.name}</div>
                   <div>Email: {manager.email}</div>
                   <div>Role: {manager.role}</div>
                 </div>
-                <div>
-                  <button className="btn btn-danger mt-2" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                <div className="d-flex justify-content-around">
+                  <button className="btn btn-sm btn-danger mt-4" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-sm btn-dark mt-4" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Update</button>
                 </div>
                 <hr />
               </div>
@@ -46,14 +47,15 @@ const handledelete = async (email) => {
            <div className="col">
             <h5 className="mb-4">Staff</h5>
             {staffList.map(staff => (
-              <div>
+              <div className='card pt-3'>
                 <div>
                   <div>Name: {staff.name}</div>
                   <div>Email: {staff.email}</div>
                   <div>Role: {staff.role}</div>
                 </div>
-                <div>
-                  <button className="btn btn-danger mt-2"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                <div className="d-flex justify-content-around">
+                  <button className="btn btn-sm btn-danger mt-4"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-sm btn-dark mt-4"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Update</button>
                 </div>
                 <hr />
               </div>
@@ -77,7 +79,7 @@ const handledelete = async (email) => {
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                    Are you sure you want to delete this user?
+                    Are you sure you want to delete this Staff?
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

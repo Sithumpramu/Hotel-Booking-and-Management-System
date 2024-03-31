@@ -47,11 +47,11 @@ function Home({ imageName }){
 
   
     return(
-      <div >
+      <div className="container-fluid">
 
         <div className="container d-flex justify-content-center mt-3">
         {imageUrl && (
-        <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img src={"carouselImg1.jpg"} alt={`Image: ${imageName}`}className="d-block w-100 mx-auto"  ></img>
@@ -77,125 +77,155 @@ function Home({ imageName }){
             </div>)}
         </div>
 
-      
+       
         <div className="booknow d-flex justify-content-center mt-4 w-100">
-          <a href=""className="btn btn-secondary" >Book Now</a>
+          <a href=""className="btn mb-5 mt-4" style={{backgroundColor:"rgb(85, 180, 254)"}} >Book Now</a>
         </div>
 
-        <div className="middle row d-flex justify-content-around">
+        <div className=" row d-flex justify-content-center">
+        {imageUrl && (
         <div
-          className="card text-bg-dark mt-4"
-          style={{width: '45vw'}}
+          className="card mt-4"
+          style={{width: '40vw'}}
           onMouseOver={(e) => handleZoomIn(e.currentTarget.querySelector('.card-img'))}
           onMouseOut={(e) => handleZoomOut(e.currentTarget.querySelector('.card-img'))}
         >
-          <img src="kal.jpg" className="card-img" alt="..." style={{width: '46vw',transition: 'transform 0.3s'}}/>
+          <img src={"Room.jpg"} alt={`Image: ${imageName}`} className="card-img"  style={{width: '100%',transition: 'transform 0.3s'}}/>
           <div className="card-img-overlay">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural lead-in
-              to additional content. This content is a little bit longer.
+          
+            <h5 className="card-title text-white">Rooms</h5>
+            <p className="card-text text-white fs-6 fw-bold bg-black">
+            "Discover your sanctuary away from home, where tranquility meets modern convenience."
             </p>
-            <a href="" className="text-white fw-bold">
-              View
+            <a href="" className="text-white fw-bold  btn btn-primary">
+              Explore
             </a>
           </div>
-        </div>
-
+        </div>)}
+        {imageUrl && (
         <div
-          className="card text-bg-dark mt-4"
-          style={{width: '45vw'}}
+          className="card mt-4"
+          style={{width: '40vw'}}
           onMouseOver={(e) => handleZoomIn(e.currentTarget.querySelector('.card-img'))}
           onMouseOut={(e) => handleZoomOut(e.currentTarget.querySelector('.card-img'))}
         >
-          <img src="kal.jpg" className="card-img" alt="..." style={{width: '46vw',transition: 'transform 0.3s'}}/>
+          <img src={"Hall.jpg"} alt={`Image: ${imageName}`} className="card-img"  style={{width: '100%',transition: 'transform 0.3s'}}/>
           <div className="card-img-overlay">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural lead-in
-              to additional content. This content is a little bit longer.
+          
+            <h5 className="card-title  text-white">Event Hall</h5>
+            <p className="card-text text-white fs-6 fw-bold bg-black">
+            "Elevate your events to unforgettable heights, where every occasion becomes a memory."
             </p>
-            <a href="" className="text-white fw-bold">
-              View
+            <a href="" className="text-white fw-bold  btn btn-primary">
+              Explore
             </a>
           </div>
-        </div>
+        </div>)}
       </div>
 
-       
-        <h1 className="text-center mb-5 mt-5 custom-font">Facilities you will always enjoy</h1>
-
-         <div className="row mt-3 justify-content-around">
-            <div className="card" style={{width: "18rem"}}>
-               <img src="image.jpg" className="card-img-top pt-3" alt="..."></img>
-               <div className="card-body">
-                 <h5 className="card-title text-center">Wedding hall</h5>
-                
-               </div>
-               
-               <div className="card-body d-flex justify-content-center">
-                 <a href="#" className="text-decoration-none">Card link</a>
-                 <a href="#" className="text-decoration-none ms-4">Another link</a>
-               </div>
-             </div>
-         
-                   
-             <div className="card" style={{width: "18rem"}}>
-               <img src="image.jpg" className="card-img-top pt-3" alt="..."></img>
-               <div className="card-body">
-                 <h5 className="card-title text-center">Wedding hall</h5>
-                
-               </div>
-               
-               <div className="card-body d-flex justify-content-center">
-                 <a href="#" className="text-decoration-none">Card link</a>
-                 <a href="#" className="text-decoration-none ms-4">Another link</a>
-               </div>
-             </div>
-             
-                   
-            <div className="card" style={{width: "18rem"}}>
-               <img src="image.jpg" className="card-img-top pt-3" alt="..."></img>
-               <div className="card-body">
-                 <h5 className="card-title text-center">Wedding hall</h5>
-                
-               </div>
-               
-               <div className="card-body d-flex justify-content-center">
-                 <a href="#" className="text-decoration-none">Card link</a>
-                 <a href="#" className="text-decoration-none ms-4">Another link</a>
-               </div>
-             </div>
-         
-             <div className="card" style={{width: "18rem"}}>
-               <img src="image.jpg" className="card-img-top pt-3" alt="..."></img>
-               <div className="card-body">
-                 <h5 className="card-title text-center">Wedding hall</h5>
-                
-               </div>
-               
-               <div className="card-body d-flex justify-content-center">
-                 <a href="#" className="text-decoration-none">Card link</a>
-                 <a href="#" className="text-decoration-none ms-4">Another link</a>
-               </div>
-             </div>
-             
+      <div className=" row d-flex justify-content-center">
+      {imageUrl && (
+        <div
+          className="card mt-4"
+          style={{width: '40vw'}}
+          onMouseOver={(e) => handleZoomIn(e.currentTarget.querySelector('.card-img'))}
+          onMouseOut={(e) => handleZoomOut(e.currentTarget.querySelector('.card-img'))}
+        >
+          <img src={"Restaurent.jpg"} alt={`Image: ${imageName}`} className="card-img"  style={{width: '100%',transition: 'transform 0.3s'}}/>
+          <div className="card-img-overlay">
+          
+            <h5 className="card-title  text-white">Unmatched Taste</h5>
+            <p className="card-text text-white fs-6 fw-bold bg-black">
+            "Savor every moment with our culinary delights, where every dish is a journey of flavors."
+            </p>
+            <a href="" className="text-white fw-bold  btn btn-primary">
+              Explore
+            </a>
           </div>
+        </div>)}
+        {imageUrl && (
+        <div
+          className="card mt-4"
+          style={{width: '40vw'}}
+          onMouseOver={(e) => handleZoomIn(e.currentTarget.querySelector('.card-img'))}
+          onMouseOut={(e) => handleZoomOut(e.currentTarget.querySelector('.card-img'))}
+        >
+          <img src={"Watersports.jpg"} alt={`Image: ${imageName}`} className="card-img"  style={{width: '100%',transition: 'transform 0.3s'}}/>
+          <div className="card-img-overlay">
+        
+            <h5 className="card-title  text-white">Entertainment</h5>
+            <p className="card-text text-white fs-6 fw-bold bg-black">
+            "Dive into adventure with watersports activities, where every wave brings excitement."
+            </p>
+            <a href="" className="text-white fw-bold btn btn-primary">
+              Explore
+            </a>
+          </div>
+        </div>)}
+      </div>
 
 
-           {/* quote about hotel chain  */}
+       
+        <h1 className="text-center mb-5 mt-5 custom-font">Benifits you will always enjoy</h1>
+        {imageUrl && (
+         <div className="row mt-3 justify-content-around">
+            <div className="card" style={{width: "14rem", height:"20rem"}}>
+               <img src={"Accomadation.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+               <div className="card-body">
+                 <h5 className="card-title text-center">Comfortable Accommodations</h5>
+                
+               </div>
+               
+             </div>
+         
+                   
+             <div className="card" style={{width: "14rem", height:"20rem"}}>
+               <img src={"Bestprice.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+               <div className="card-body">
+                 <h5 className="card-title text-center">Best Rate Guarantee</h5>
+                
+               </div>
+               
+
+             </div>
+             
+                   
+            <div className="card" style={{width: "14rem", height:"20rem"}}>
+               <img src={"choice.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+               <div className="card-body">
+                 <h5 className="card-title text-center">Flexibility Choices</h5>
+                
+               </div>
+
+ 
+             </div>
+         
+             <div className="card" style={{width: "14rem", height:"20rem"}}>
+               <img src={"offer.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+               <div className="card-body">
+                 <h5 className="card-title text-center">Special Offers and Rewards</h5>
+                
+               </div>
+               
+
+              
+             </div>
+            
+          </div>
+ )} 
+
+         
            <div className="card text-bg-dark mt-5">
-             <img src="katha.jpg" className="card-img" alt="..." style={{width: "99vw", height: "50vh"}}></img>
+           {imageUrl && (
+             <img src={"Panorama.jpg"} alt={`Image: ${imageName}`} className="card-img" style={{ height: "50vh"}}></img>)}
              <div className="card-img-overlay">
                
-               <p className="card-text">"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"</p>
-               <a href="" className="text-white fw-bold btn btn-outline-primary">BooK Now</a>
+               <h4 className="card-text">"Experience comfort beyond measure, book your stay today!"</h4>
+               <a href="" className="text-white fw-bold btn btn-outline-primary">Book Now</a>
              </div>
            </div>
 
-           <div>
-            <a className='btn btn-info' onClick={HandleButtonClick }>Test button</a>
-           </div>
+
 
             
     
