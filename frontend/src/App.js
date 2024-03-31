@@ -13,6 +13,7 @@ import Watersport from './Pages/Staff/WatersportManagement';
 import ManagerDashboard from './Pages/Staff/ManagerDashboard';
 import AddActivity from './Pages/Staff/AddActivity';
 import WatersportManage from "./Pages/Staff/WatersportManagement";
+import AddReserv from "./Pages/Staff/addWatersportReserv";
 
 
 // Layout component with header and footer
@@ -64,6 +65,10 @@ function App() {
           <Route
             path="/WatersportsManagement"
             element={<WatersportManage />}
+          />
+          <Route
+            path="/WatersportsReservation"
+            element={<AddReserv />} 
           />
                  
         </Routes>

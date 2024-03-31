@@ -31,8 +31,10 @@ const useAddNew = () => {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("/");
+        navigate("/WatersportsManagement");
+        alert('Activity Added successfully');
       }
+      
     } catch (error) {
       setError("An unexpected error occurred");
     } finally {

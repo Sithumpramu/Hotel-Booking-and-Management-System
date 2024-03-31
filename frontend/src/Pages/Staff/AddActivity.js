@@ -48,7 +48,7 @@ const AddNew = () => {
                     <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e)=>{setDescription(e.target.value);}}/>
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" className="form-label">Default file input example</label>
+                    <label for="formFile" className="form-label">Image File</label>
                     <input className="form-control" type="file" id="formFile" onChange={(e)=>{setImage(e.target.files[0]);}}/>
                 </div>
                 <button type="submit" className="btn btn-primary" id="submit" onClick={() => { validation(); }}>Submit</button>
@@ -56,6 +56,8 @@ const AddNew = () => {
                 <p id="Error"></p>
             </form>
         </div>
+
+        
 
         
         </div>

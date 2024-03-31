@@ -9,7 +9,7 @@ function WatersportManage() {
   const [nameToDelete, setNameToDelete] = useState("");
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="alert alert-primary" role="alert">Loading...</div>;
   }
 
   if (error) {
@@ -18,7 +18,7 @@ function WatersportManage() {
 
   const handleDelete = async () => {
     await deleteActivity(nameToDelete);
-    console.log(isLoading, "handleDelete loading");
+    //console.log(isLoading, "handleDelete loading");
     setNameToDelete("");
   };
 
@@ -88,7 +88,7 @@ function WatersportManage() {
               ></button>
             </div>
             <div className="modal-body">
-              Are you sure you want to delete this user?
+              Are you sure you want to delete this Activity?
             </div>
             <div className="modal-footer">
               <button
