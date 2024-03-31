@@ -1,8 +1,15 @@
 
 import React, { useState } from 'react';
 import useImageFetch from '../hooks/useImgfetch';
+import { useLogout } from '../hooks/useLogout';
 function Adminsidebar(imageName){
   const imageUrl = useImageFetch(imageName); 
+  const {logout}=useLogout()
+
+  const handlelogout = ()=>{
+      logout()
+    }
+  
     return(
         <div className="col-3 m-0 p-0">
         <ul className="nav flex-column bg-black pe-1 vh-100">
@@ -22,7 +29,10 @@ function Adminsidebar(imageName){
             <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord">Home</a>
           </li>
         </div>
+        <div className=""><a href ="" id="userStatus" className="btn mt-5" sty onClick={handlelogout} style={{backgroundColor:"rgb(85, 180, 254)", position:"relative", top:"190px"}}>Logout</a></div>
         </ul>
+        
+
         </div>
     )
 }
