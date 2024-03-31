@@ -27,17 +27,17 @@ function UserManage(){
        <div className="col">
          <div className="row">
       <h2 className="mb-5 mt-3">User Accounts</h2>
-           <div className="col">
+           <div className="col d-flex justify-content-center align-items-center">
             {userList.map(user => (
-              <div className="card pt-3">
+              <div className="card pt-3 w-50 ">
                 <div>
                   <div>Name: {user.name}</div>
                   <div>Email: {user.email}</div>
                 </div>
                 <div>
-                  <button className="btn btn-sm btn-danger mt-4" onClick={() =>  setEmailToDelete(user.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-sm btn-danger mt-4 mb-3" onClick={() =>  setEmailToDelete(user.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
                 </div>
-                <hr />
+
               </div>
             ))}
            </div>

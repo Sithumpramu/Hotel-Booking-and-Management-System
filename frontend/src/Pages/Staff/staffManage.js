@@ -50,27 +50,27 @@ const handleSubmit = async (email) => {
                   <div>Role: {manager.role}</div>
                 </div>
                 <div className="d-flex justify-content-around">
-                  <button className="btn btn-sm btn-danger mt-4" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
-                  <button className="btn btn-sm btn-dark mt-4" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal2" >Update</button>
+                  <button className="btn btn-sm btn-danger mt-4 mb-3" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-sm btn-dark mt-4 mb-3" onClick={() =>  setEmailToDelete(manager.email)} data-bs-toggle="modal" data-bs-target="#Modal2" >Update</button>
                 </div>
-                <hr />
+              
               </div>
             ))}
            </div>
            <div className="col">
             <h5 className="mb-4">Staff</h5>
             {staffList.map(staff => (
-              <div className='card pt-3'>
+              <div className='card pt-3 mb-4'>
                 <div>
                   <div>Name: {staff.name}</div>
                   <div>Email: {staff.email}</div>
                   <div>Role: {staff.role}</div>
                 </div>
                 <div className="d-flex justify-content-around">
-                  <button className="btn btn-sm btn-danger mt-4"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
-                  <button className="btn btn-sm btn-dark mt-4"    onClick={() =>  setEmailToDelete(staff.email)} data-bs-toggle="modal" data-bs-target="#Modal2" >Update</button>
+                  <button className="btn btn-sm btn-danger mt-4 mb-3"    onClick={() =>  setEmailToDelete(staff.email)}  data-bs-toggle="modal" data-bs-target="#Modal">Delete</button>
+                  <button className="btn btn-sm btn-dark mt-4 mb-3"    onClick={() =>  setEmailToDelete(staff.email)} data-bs-toggle="modal" data-bs-target="#Modal2" >Update</button>
                 </div>
-                <hr />
+              
               </div>
             ))}
            </div>

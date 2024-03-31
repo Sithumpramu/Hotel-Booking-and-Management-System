@@ -1,9 +1,10 @@
 import { useState } from 'react'
-
+import { useNavigate } from "react-router-dom";
 
 export const useAccountCreate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
+  const navigation = useNavigate();
 
 
   const create  = async (email, password,confirmPassword,name,role,isAdminCreation) => {
@@ -31,7 +32,7 @@ export const useAccountCreate = () => {
 
       // update loading state
       setIsLoading(false)
-
+      navigation('/AdminDashbord');
       
     }
   }

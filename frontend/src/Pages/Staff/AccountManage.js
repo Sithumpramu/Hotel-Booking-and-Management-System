@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useAccountCreate } from '../../hooks/useAccountCreate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 function CreatePage() {
   const [name, setName] = useState('');
@@ -9,17 +12,28 @@ function CreatePage() {
   const [role, setRole] = useState('');
   const {create, error, isLoading} = useAccountCreate()
   const isAdminCreation = true;
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     await create(email, password, confirmPassword,name,role,isAdminCreation)
   };
 
+  const handleTogglePwd=()=>{
+    setShowPassword(!showPassword);
+  }
+
+  const handleToggleRePwd=()=>{
+    setShowRePassword(!showRePassword);
+  }
+
   return (
-    <div className="container">
+    <div className="container-fluid mt-5  bg-body-tertiary border">
       <div className="row justify-content-center">
         <div className="col-md-6 mt-5">
-          <h2 className="mb-4">Assign Users</h2>
+          <h2 className="mb-4">Assign Staff Users</h2>
           <form onSubmit={handleSubmit}>
 
             <div className="mb-3">
@@ -28,11 +42,29 @@ function CreatePage() {
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
-              <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div className="row">
+              <div className="col-11"><input type={showPassword ? 'text' : 'password'} className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div>
+              <div className='col mt-1'>
+              <button
+                         type="button"
+                         onClick={handleTogglePwd}>
+                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
+              </div>
+              </div>
             </div>
             <div className="mb-3">
               <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-              <input type="password" className="form-control" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+              <div className="row">
+              <div className='col-11'><input type={showRePassword ? 'text' : 'password'} className="form-control" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /></div>
+              <div className='col mt-1'>                    
+              <button
+                         type="button"
+                         onClick={handleToggleRePwd}>
+                         <FontAwesomeIcon icon={showRePassword ? faEyeSlash : faEye} />
+              </button>
+              </div>
+              </div>
             </div>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name</label>
@@ -47,7 +79,7 @@ function CreatePage() {
                 <option value="admin">Admin</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-primary mt-3" disabled={isLoading} >Create</button><br></br>
+            <button type="submit" className="btn btn-primary mt-3 " disabled={isLoading} >Create</button><br></br>
             {error && <div className="error bg-danger mt-4" style={{color:"white"}}>{error}</div>}
           </form>
         </div>
