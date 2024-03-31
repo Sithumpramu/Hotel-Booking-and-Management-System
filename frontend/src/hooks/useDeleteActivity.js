@@ -14,7 +14,7 @@ const useActivityDelete = () => {
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/activities/${activityName}`, {
+      const response = await fetch(`http://localhost:4000/watersport/activities/${activityName}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
