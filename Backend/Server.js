@@ -4,6 +4,7 @@ const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
+const RoomReservation = require('./Routes/RoomReservation')
 
 // express app
 const app = express()
@@ -20,6 +21,8 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
+app.use('/roomreservation', RoomReservation)
+app.use('/room', room)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)
@@ -33,5 +36,7 @@ mongoose.connect(process.env.MONGODB_URL)
     console.log(error)
   })
 
+
+  
 
 
