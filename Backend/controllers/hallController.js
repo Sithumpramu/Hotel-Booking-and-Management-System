@@ -60,7 +60,7 @@ const createHall = async (req, res) => {
 
 const updateHall = async (req, res) => {
     const { id } = req.params;
-    const { Name, description, capacity, price } = req.body;
+    const { Name, description, capacity, price ,facilities} = req.body;
 
     try {
         // Validate if the provided ID is a valid MongoDB ObjectId
@@ -80,6 +80,7 @@ const updateHall = async (req, res) => {
         if (description) updateFields.description = description;
         if (capacity) updateFields.capacity = capacity;
         if (price) updateFields.price = price;
+        if(facilities)updateFields.facilities=facilities;
 
         // Update the hall only if at least one field has changed
         if (Object.keys(updateFields).length > 0) {

@@ -26,6 +26,11 @@ const hallSchema = new Schema({
       type: String,
       require:true
     },
+    photos: [],
+    facilities:[],
+
+    hallNumber:[{
+        Roomnumber:Number,unavailableDates:{Type:[Date]} }]
   
 
 })
