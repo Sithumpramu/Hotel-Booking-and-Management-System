@@ -39,7 +39,7 @@ const AddItem = () => {
         }
         console.log(data);
     
-        axios.post("http://localhost:4000/inventory/add", data)
+        axios.post("http://localhost:8000/inventory/add", data)
         .then((res) => {
           alert("Item added to inventory");
           navigate(-1);
