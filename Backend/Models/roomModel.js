@@ -18,7 +18,7 @@ const roomSchema = new Schema({
     },
 
     Max: {
-      type: int,
+      type: Number,
       default: null
     },
 
@@ -28,7 +28,7 @@ const roomSchema = new Schema({
     },
 
     Price: {
-      type: int,
+      type: Number,
       default: null
     },
 

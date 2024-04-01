@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
 const RoomReservation = require('./Routes/RoomReservation')
+const room = require('./Routes/room')
 
 // express app
 const app = express()

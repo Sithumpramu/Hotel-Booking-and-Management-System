@@ -1,12 +1,12 @@
 const { default: mongoose } = require('mongoose')
-const Room = require('../Models/RoomReservationModel')
+const roomreservation = require('../Models/RoomReservationModel')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const nodemailer = require('nodemailer')
 
 //get all reservations
 const getreservation = async (req,res) =>{
-  const room = await RoomReservation.find({})//get all data
+  const room = await roomreservation.find({})//get all data
   res.status(200).json(room)//send to browser
 }
 
@@ -19,7 +19,7 @@ const getsinglereservation = async (req,res) =>{
     res.status(404).json({error: 'invalid id'})
   }
 
-  const room = await RoomReservation.findById(id)
+  const room = await roomreservation.findById(id)
 
   if(!room){
     res.status(404).json({error: 'No such reservation'})
@@ -34,7 +34,7 @@ const roomReservation = async (req, res) => {
     const {Checkindate,Checkoutdate,Rtype,NoOfGuests} = req.body
   
     try {
-      const room = await RoomReservation.room(Checkindate,Checkoutdate,Rtype,NoOfGuests)
+      const room = await roomreservation.room(Checkindate,Checkoutdate,Rtype,NoOfGuests)
   
       
     } catch (error) {
@@ -53,7 +53,7 @@ const cancelreservation = async (req, res) => {
 
   try {
     // Find and delete the room reservation
-    const room = await RoomReservation.findOneAndDelete({ id });
+    const room = await roomreservation.findOneAndDelete({ id });
 
     if (!room) {
       return res.status(404).json({ error: 'No such reservation' });

@@ -1,14 +1,17 @@
-//Add a room
-const room = async (req, res) => {
-    const {Rname,Rtype,Max,status,Price} = req.body
-  
-    try {
-      const rooms = await room.room(Rname,Rtype,Max,status,Price)
-  
-      
-    } catch (error) {
-      res.status(400).json({error: error.message})
-    }
-  }
+const { default: mongoose } = require('mongoose')
+const room = require('../Models/roomModel')
 
-  module.exports={room}  
+//Add a room
+const roomAdd = async (req, res) => {
+  const { Rname, Rtype, Max, Status, Price } = req.body; // Correct the variable name 'status' to 'Status'
+
+  try {
+      const newRoom = new Room({ Rname, Rtype, Max, Status, Price }); // Create a new room object
+      await newRoom.save(); // Save the new room to the database
+      res.status(201).json(newRoom); // Respond with the newly created room
+  } catch (error) {
+      res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { roomAdd };
