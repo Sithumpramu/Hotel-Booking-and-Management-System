@@ -9,6 +9,9 @@ import Footer from './components/Footer';
 import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
+import HallList from "./Pages/staff/HallList";
+import ViewHall from "./Pages/staff/ViewHall";
+import EditHall from "./Pages/staff/EditHall";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -44,6 +47,22 @@ function App() {
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
           />
+           <Route
+            path="/halls"
+            element={<HallList />}
+          />
+          <Route
+            path="/ViewHall/:id"
+            element={<ViewHall />}s
+          />
+           <Route
+            path="/EditHall/:id"
+            element={<EditHall />}
+          />
+        
+        
+        
+         
         </Routes>
       </BrowserRouter>
     </div>
