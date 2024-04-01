@@ -31,16 +31,16 @@ const getsinglereservation = async (req,res) =>{
 
 //make a room reservation
 const roomReservation = async (req, res) => {
-    const {Checkindate,Checkoutdate,Rtype,NoOfGuests} = req.body
-  
-    try {
-      const room = await roomreservation.room(Checkindate,Checkoutdate,Rtype,NoOfGuests)
-  
-      
-    } catch (error) {
-      res.status(400).json({error: error.message})
-    }
+  const { Checkindate,Checkoutdate,Rtype,NoOfGuests } = req.body; // Correct the variable name 'status' to 'Status'
+
+  try {
+      const newReservation = new roomreservation({ Checkindate,Checkoutdate,Rtype,NoOfGuests }); // Create a new room object
+      await newReservation.save(); // Save the new room to the database
+      res.status(201).json(newReservation); // Respond with the newly created room
+  } catch (error) {
+      res.status(400).json({ error: error.message });
   }
+};
 
 
 //cancel a reservation
@@ -53,7 +53,7 @@ const cancelreservation = async (req, res) => {
 
   try {
     // Find and delete the room reservation
-    const room = await roomreservation.findOneAndDelete({ id });
+    const room = await roomreservation.findOneAndDelete( id );
 
     if (!room) {
       return res.status(404).json({ error: 'No such reservation' });

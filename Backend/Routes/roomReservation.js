@@ -6,7 +6,7 @@ const { roomReservation, getreservation, getsinglereservation, cancelreservation
 
 // Define routes using controller functions as middleware
 router.get('/getreservation', getreservation);
-router.get('/getonereservation', getsinglereservation);
+router.get('/getonereservation/:id', getsinglereservation);
 router.post('/roomreservation', roomReservation);
 router.delete('/cancelreservation/:id', cancelreservation); // Assuming you need to pass an ID to cancel reservation
 

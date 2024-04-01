@@ -3,10 +3,10 @@ const room = require('../Models/roomModel')
 
 //Add a room
 const roomAdd = async (req, res) => {
-  const { Rname, Rtype, Max, Status, Price } = req.body; // Correct the variable name 'status' to 'Status'
+  const { Rname, Rtype, capacity, status, price } = req.body; // Correct the variable name 'status' to 'Status'
 
   try {
-      const newRoom = new Room({ Rname, Rtype, Max, Status, Price }); // Create a new room object
+      const newRoom = new room({ Rname, Rtype, capacity, status, price }); // Create a new room object
       await newRoom.save(); // Save the new room to the database
       res.status(201).json(newRoom); // Respond with the newly created room
   } catch (error) {

@@ -17,17 +17,17 @@ const roomSchema = new Schema({
         require:true
     },
 
-    Max: {
+    capacity: {
       type: Number,
       default: null
     },
 
-    Status:{
+    status:{
         type:String,
         require:true
     },
 
-    Price: {
+    price: {
       type: Number,
       default: null
     },

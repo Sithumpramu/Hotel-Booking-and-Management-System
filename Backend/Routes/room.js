@@ -8,6 +8,6 @@ const { roomAdd } = require('../controllers/roomController');
 
 
 // post a new workout
-router.post('/', roomAdd); 
+router.post('/roomAdd', roomAdd); 
 
 module.exports = router;
