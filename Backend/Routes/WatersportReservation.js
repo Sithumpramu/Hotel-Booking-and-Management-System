@@ -1,15 +1,17 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const router = express.Router()
+const express = require("express");
+const mongoose = require("mongoose");
+const router = express.Router();
 
-const {AddReserv} = require('../controllers/watersportReservController')
-
-
+const {
+    addReservation, 
+    getReservations
+  } = require("../controllers/SportReservController");
 
 
 //add new activity
-router.post('/add', AddReserv)
+router.post('/add', addReservation);
 
-
+//read activities
+router.get("/", getReservations);
 
 module.exports = router;

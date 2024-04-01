@@ -18,16 +18,16 @@ const ReservationSchema = new Schema({
         type: String,
         required: true,
     },
-    ActivityName:{
-        type: String,
-        required: true,
-    },
     checkinTime:{
         type: String,
         required: true,
     },
     AdvancePayment: {
         type: Number,
+        required: true,
+    },
+    activityIds: {
+        type: Array,
         required: true,
     },
     

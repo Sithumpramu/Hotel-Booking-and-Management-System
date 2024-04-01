@@ -12,7 +12,6 @@ const {
 const upload = multer({ storage: multer.memoryStorage() });
 
 //add new activity
-// router.post('/add', AddActivity);
 router.post("/add", upload.single("Image"), AddActivity);
 
 //read activities

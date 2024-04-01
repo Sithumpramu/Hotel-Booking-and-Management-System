@@ -14,7 +14,8 @@ import ManagerDashboard from './Pages/Staff/ManagerDashboard';
 import AddActivity from './Pages/Staff/AddActivity';
 import WatersportManage from "./Pages/Staff/WatersportManagement";
 import AddReserv from "./Pages/Staff/addWatersportReserv";
-
+import SelectActivity from "./Pages/Staff/SelectActivity";
+import WatersportReservations from "./Pages/Staff/watersportReservations";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -67,10 +68,17 @@ function App() {
             element={<WatersportManage />}
           />
           <Route
-            path="/WatersportsReservation"
+            path="/addWatersportsReservation"
             element={<AddReserv />} 
           />
-                 
+          <Route
+            path="/selectActivity"
+            element={<SelectActivity />} 
+          />
+            <Route
+            path="/watersportReservations"
+            element={<WatersportReservations />} 
+          />     
         </Routes>
         
         
