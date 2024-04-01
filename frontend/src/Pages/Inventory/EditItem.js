@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../../component/Header';
 
 export const EditItem = () => {
     const params = useParams();
@@ -42,7 +41,7 @@ export const EditItem = () => {
         
         
     
-        axios.put(`http://localhost:8000/inventory/update/${params.id}`, data)
+        axios.put(`http://localhost:4000/inventory/update/${params.id}`, data)
         .then((res) => {
           alert("Data submited successfully");
           navigate(-1);
@@ -50,7 +49,7 @@ export const EditItem = () => {
       }
       
       useEffect(() => {
-        axios.get(`http://localhost:8000/inventory/get/${params.id}`).then((res) => {
+        axios.get(`http://localhost:4000/inventory/get/${params.id}`).then((res) => {
           if(res.data){
             setState({
               itemID: res.data.itemID,
@@ -67,7 +66,7 @@ export const EditItem = () => {
   return (
     <>
     <div class="col">
-        <Header dashboard={"Room Inventory Management System"} />
+        {/* <h1 dashboard={"Room Inventory Management System"} /> */}
     </div>
     <div class="container-fluid">
       <div class="row flex-nowrap">
@@ -151,3 +150,4 @@ export const EditItem = () => {
   </>
   )
 }
+export default EditItem

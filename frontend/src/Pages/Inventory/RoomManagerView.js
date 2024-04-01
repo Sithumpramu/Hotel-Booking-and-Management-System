@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../../component/Header';
 import axios from 'axios'
 
 const RoomManagerView = () => {
@@ -8,7 +7,7 @@ const RoomManagerView = () => {
     })
 
     useEffect(() => {
-        axios.get("http://localhost:8000/inventory/").then(res =>{
+        axios.get("http://localhost:4000/inventory/").then(res =>{
             if(res.data){
               setState({
                 inventory:res.data
@@ -19,7 +18,7 @@ const RoomManagerView = () => {
       
       
         const onDelete = (id) => {
-          axios.delete(`http://localhost:8000/inventory/delete/${id}`)
+          axios.delete(`http://localhost:4000/inventory/delete/${id}`)
           .then((res) => {
             alert("Deleted successfully");
             
@@ -29,7 +28,7 @@ const RoomManagerView = () => {
   return (
     <>
       <div class="col">
-          <Header dashboard={"Room Inventory Management System"} />
+          {/* <Header dashboard={"Room Inventory Management System"} /> */}
       </div>
       <div class="container-fluid pt-5">
         <div class="row flex-nowrap">

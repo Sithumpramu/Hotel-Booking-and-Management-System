@@ -3,8 +3,8 @@ import './App.css';
 
 import AddItem from "./Pages/Inventory/AddItem";
 import EditItem from "./Pages/Inventory/EditItem";
-import HotelView from "./Pages/inventory/HotelView";
-import RoomManagerView from "./Pages/inventory/RoomManagerView";
+import HotelView from "./Pages/Inventory/HotelView";
+import RoomManagerView from "./Pages/Inventory/RoomManagerView";
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
 import Login from './components/Login';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Header from '../../component/Header';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,7 +39,7 @@ const AddItem = () => {
         }
         console.log(data);
     
-        axios.post("http://localhost:8000/inventory/add", data)
+        axios.post("http://localhost:4000/inventory/add", data)
         .then((res) => {
           alert("Item added to inventory");
           navigate(-1);
@@ -50,7 +49,7 @@ const AddItem = () => {
   return (
     <>
     <div class="col">
-        <Header dashboard={"Room Inventory Management System"} />
+        {/* <Header dashboard={"Room Inventory Management System"} /> */}
     </div>
     <div class="container-fluid">
       <div class="row flex-nowrap">

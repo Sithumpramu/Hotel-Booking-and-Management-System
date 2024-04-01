@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../../component/Header';
 import axios from 'axios';
 
 const HotelView = () => {
@@ -19,7 +18,7 @@ const HotelView = () => {
   return (
     <>
       <div class="col">
-          <Header dashboard={"Room Inventory Management System"} />
+          {/* <Header dashboard={"Room Inventory Management System"} /> */}
       </div>
       <div class="container-fluid">
         <div class="row flex-nowrap">
