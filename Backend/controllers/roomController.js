@@ -4,8 +4,8 @@ const room = require('../Models/roomModel')
 
 //get all rooms
 const getRoom= async (req,res) =>{
-  const room = await room.find({})//get all data
-  res.status(200).json(room)//send to browser
+  const rooms = await room.find({})//get all data
+  res.status(200).json(rooms)//send to browser
 }
 
 //get single room
@@ -17,13 +17,13 @@ const getsingleRoom = async (req,res) =>{
     res.status(404).json({error: 'invalid id'})
   }
 
-  const room = await room.findById(id)
+  const rooms = await room.findById(id)
 
-  if(!room){
+  if(!rooms){
     res.status(404).json({error: 'No such room'})
   }
 
-  res.status(200).json(room)
+  res.status(200).json(rooms)
 }
 
 
@@ -51,9 +51,9 @@ const deleteRoom = async (req, res) => {
 
   try {
     // Find and delete the room reservation
-    const room = await room.findOneAndDelete( id );
+    const rooms = await room.findOneAndDelete( id );
 
-    if (!room) {
+    if (!rooms) {
       return res.status(404).json({ error: 'No such room' });
     }
 
@@ -76,8 +76,8 @@ const updateRoom = async (req, res) => {
       }
 
       // Check if the room exists in the database
-      const room = await room.findById(id);
-      if (!room) {
+      const rooms = await room.findById(id);
+      if (!rooms) {
           return res.status(404).json({ error: 'Room not found' });
       }
 
@@ -92,8 +92,8 @@ const updateRoom = async (req, res) => {
 
       // Update the room only if at least one field has changed
       if (Object.keys(updateFields).length > 0) {
-          const updatedRoom = await room.findByIdAndUpdate(id, { $set: updateFields }, { new: true });
-          res.json(updatedHall);
+          const rooms = await room.findByIdAndUpdate(id, { $set: updateFields }, { new: true });
+          res.json(rooms);
       } else {
           res.json({ message: 'No changes detected' });
       }
