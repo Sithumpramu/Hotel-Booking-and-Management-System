@@ -1,6 +1,10 @@
 import React from "react";
 import './App.css';
 
+import AddItem from "./Pages/Inventory/AddItem";
+import EditItem from "./Pages/Inventory/EditItem";
+import HotelView from "./Pages/inventory/HotelView";
+import RoomManagerView from "./Pages/inventory/RoomManagerView";
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
 import Login from './components/Login';
@@ -47,6 +51,22 @@ function App() {
           <Route
             path="/AdminDashbord"
             element={<AdminDash />}
+          />
+          <Route
+            path="/AddItem"
+            element={<AddItem />}
+          />
+          <Route
+            path="/EditItem"
+            element={<EditItem/>}
+          />
+          <Route
+            path="/HotelView"
+            element={<HotelView/>}
+          />
+          <Route
+            path="/RoomManagerView"
+            element={<RoomManagerView/>}
           />
         </Routes>
       </BrowserRouter>
