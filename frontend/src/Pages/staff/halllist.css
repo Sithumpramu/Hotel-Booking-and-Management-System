@@ -1,0 +1,71 @@
+/* AvailableHalls.css */
+.text-light-blue {
+    color: #66c2ff; /* Light blue color */
+  }
+  .serif {
+    font-family: serif; /* Apply serif font family */
+  }
+  .hover-bg-light-blue:hover {
+    background-color: #add8e6; /* Baby blue color */
+  }
+  .btn-primary {
+    background-color: black;
+    border-color: black;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #666;
+  }
+  .btn-secondary {
+    background-color: #87CEEB; /* Baby blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px; /* Round */
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .btn-secondary:hover {
+    background-color: #4682B4; /* Darker shade of baby blue on hover */
+  }
+  /* Custom CSS for EditHall component */
+.input-group-text {
+    background-color: #d1ecf1; /* Lighter background color */
+  }
+  
+  .input-group-text:hover {
+    background-color: #bee1e6; /* Darker background color on hover */
+  }
+  
+  .form-control {
+    border-radius: 20px; /* Make input fields more rounded */
+  }
+  
+  .form-control:hover {
+    background-color: #e9ecef; /* Darken background color on hover */
+  }
+  .btn-save-changes {
+    border-radius: 50px; /* Super round */
+    font-size: 18px; /* Larger font size */
+    padding: 12px 24px; /* Larger padding */
+    background-color: #add8e6; /* Baby blue */
+    color: black; /* Black text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .btn-save-changes:hover {
+    background-color: black; /* Black on hover */
+    color: #add8e6; /* Baby blue text on hover */
+  }
+  .textarea-input {
+    background-color: #f0f0f0; /* Slightly darker white */
+  }
+  
+  .textarea-input:hover {
+    background-color: #e0e0e0; /* Lighter than hover */
+  }
+  
+  
