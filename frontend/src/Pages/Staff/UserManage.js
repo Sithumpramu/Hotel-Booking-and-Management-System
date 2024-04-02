@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useManagerList from "../../hooks/useDisplaystaff";
 import Adminsidebar from "../../components/AdminSidebar";
-import { useDelete } from '../../hooks/useAccountDelete';
+import { useDelete } from '../../hooks/Staff/useAccountDelete';
 
 function UserManage(){
     const { userList,isLoading, error } = useManagerList();
