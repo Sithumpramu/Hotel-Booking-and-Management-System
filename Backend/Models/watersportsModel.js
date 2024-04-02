@@ -25,7 +25,7 @@ const watersportsSchema = new Schema({
   },
   Description: {
     type: String,
-    required: true,
+    required: false,
   },
   Image: imageSchema,
 });

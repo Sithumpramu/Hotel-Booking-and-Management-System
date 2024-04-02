@@ -4,14 +4,18 @@ const router = express.Router();
 
 const {
     addReservation, 
-    getReservations
+    getReservations,
+    deleteReservation
   } = require("../controllers/SportReservController");
 
 
-//add new activity
+//add new reservation
 router.post('/add', addReservation);
 
-//read activities
+//read reservations
 router.get("/", getReservations);
+
+//delete a reservation
+router.delete("/reservations/:id", deleteReservation);
 
 module.exports = router;

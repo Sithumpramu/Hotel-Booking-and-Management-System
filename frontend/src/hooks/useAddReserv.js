@@ -40,7 +40,7 @@ const useAddReserv = () => {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("/WatersportsReservation");
+        navigate("/watersportReservations");
       }
     } catch (error) {
       setError("An unexpected error occurred");

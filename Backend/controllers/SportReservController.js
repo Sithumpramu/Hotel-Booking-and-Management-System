@@ -26,4 +26,31 @@ const getReservations = async (req, res) => {
   }
 };
 
-module.exports = { addReservation, getReservations };
+// Function to delete a reservation
+const deleteReservation = async (req, res) => {
+  try {
+    const { id } = req.params; 
+    console.log(id, "Attempting to delete reservation");
+
+    // Validate the ID format
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      console.log(id, "Invalid ID format");
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
+
+    const result = await watersportReservModel.findByIdAndDelete(id);
+
+    if (!result) {
+      console.log(id, "Reservation not found");
+      return res.status(404).json({ message: "Reservation not found" });
+    }
+
+    console.log(id, "Reservation deleted successfully");
+    res.status(200).json({ message: "Reservation deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting reservation:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { addReservation, getReservations, deleteReservation };

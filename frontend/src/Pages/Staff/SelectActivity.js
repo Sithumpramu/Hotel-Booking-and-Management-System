@@ -11,7 +11,7 @@ function SelectActivity() {
 
   const handleAddClick = (activityIds) => {
     // Navigate to the next page and pass the activityId
-    navigate("/WatersportsReservation", { state: { activityIds } });
+    navigate("/addWatersportsReservation", { state: { activityIds } });
   };
 
   //const [isDisabled, setIsDisabled] = useState(false);
@@ -52,12 +52,12 @@ function SelectActivity() {
         <h1 className="mb-4 mt-5">Watersport Activities</h1>
 
         <div className="d-flex align-items-center justify-content-around mb-3">
-          <table className="table" style={{ width: "35rem" }}>
-            <tr>
+          <table className="table table-info" style={{ width: "35rem" }}>
+            <tr >
               <td></td>
-              <th scope="col">Activity Name</th>
-              <th scope="col">Estimated Time</th>
-              <th scope="col">Price</th>
+              <th className="border border-black" scope="col">Activity Name</th>
+              <th className="border border-black" scope="col">Estimated Time</th>
+              <th className="border border-black" scope="col">Price</th>
             </tr>
 
             {ActivityList.map((Watersport) => (
@@ -66,12 +66,12 @@ function SelectActivity() {
                   <td>
                     <input
                       type="checkbox"
-                      onClick={(event) => getActivities(event, Watersport._id)}
+                      onClick={(event) => getActivities(event, Watersport.Activity)}
                     ></input>
                   </td>
-                  <td>{Watersport.Activity}</td>
-                  <td>{Watersport.Time}</td>
-                  <td>Rs.{Watersport.Price}.00</td>
+                  <td className="border border-black">{Watersport.Activity}</td>
+                  <td className="border border-black">{Watersport.Time}</td>
+                  <td className="border border-black">Rs.{Watersport.Price}.00</td>
                   {/* <td>
                     <button className="btn btn-primary">Add</button>
                   </td> */}
