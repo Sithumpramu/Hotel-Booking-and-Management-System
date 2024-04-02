@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 
 const roomreservationSchema = new Schema({
 
-
     Checkindate:{
         type:Date,
         require:true

@@ -7,9 +7,9 @@ const Schema = mongoose.Schema;
 const roomSchema = new Schema({
 
 
-    Rname:{
-        type:String,
-        require:true
+    Rid:{
+      type:Number,
+      require:true
     },
 
     Rtype:{
@@ -17,20 +17,30 @@ const roomSchema = new Schema({
         require:true
     },
 
+    description: {
+      type: String,
+      default:true
+    },
+
     capacity: {
       type: Number,
       default: null
     },
 
-    status:{
-        type:String,
-        require:true
-    },
+    NoOfBeds:{
+      type:Number,
+      require:true
+  },
 
     price: {
       type: Number,
       default: null
     },
+
+    status:{
+      type:String,
+      require:true
+  },
 
 })
 

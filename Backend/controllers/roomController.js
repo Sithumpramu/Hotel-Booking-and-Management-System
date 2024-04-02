@@ -30,10 +30,10 @@ const getsingleRoom = async (req,res) =>{
 
 //Add a room
 const roomAdd = async (req, res) => {
-  const { Rname, Rtype, capacity, status, price } = req.body; // Correct the variable name 'status' to 'Status'
+  const { Rid,Rtype, description, capacity, NoOfBeds, price, status } = req.body; // Correct the variable name 'status' to 'Status'
 
   try {
-      const newRoom = new room({ Rname, Rtype, capacity, status, price }); // Create a new room object
+      const newRoom = new room({ Rid, Rtype, description, capacity, NoOfBeds, price, status  }); // Create a new room object
       await newRoom.save(); // Save the new room to the database
       res.status(201).json(newRoom); // Respond with the newly created room
   } catch (error) {
@@ -67,7 +67,7 @@ const deleteRoom = async (req, res) => {
 //update a room
 const updateRoom = async (req, res) => {
   const { id } = req.params;
-  const { Rname, Rtype, capacity, status, price} = req.body;
+  const { Rid, Rtype, description, capacity, NoOfBeds, price, status } = req.body;
 
   try {
       // Validate if the provided ID is a valid MongoDB ObjectId
@@ -83,9 +83,11 @@ const updateRoom = async (req, res) => {
 
       // Build the update object based on fields that have changed
       const updateFields = {};
+      if (Rid) updateFields.Rid = Rid;
       if (Rtype) updateFields.Rtype = Rtype;
-      if (Rname) updateFields.Rname = Rname;
+      if (description) updateFields.description = description;
       if (capacity) updateFields.capacity = capacity;
+      if (NoOfBeds) updateFields.NoOfBeds = NoOfBeds;
       if (price) updateFields.price = price;
       if (status) updateFields.status = status;
       
