@@ -5,7 +5,7 @@ import { useUpdate } from '../hooks/useUpdate';
 import { useDelete } from '../hooks/useDelete';
 import { useLocation } from 'react-router-dom';
 
-const Header = () => {
+const Header = () => { 
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const location = useLocation();

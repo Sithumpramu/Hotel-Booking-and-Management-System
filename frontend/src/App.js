@@ -1,6 +1,8 @@
 import React from "react";
 import './App.css';
 
+
+//pages &components
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
 import Login from './components/Login';
@@ -10,10 +12,21 @@ import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
+import DiningDash from "./Pages/DiningDash";
+import DiningNavbar from "./components/DiningNavbar"
+
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
     <Header />
+    {children}
+    <Footer />
+  </div>
+);
+
+const Layout2 = ({ children }) => (
+  <div>
+    <DiningNavbar/>
     {children}
     <Footer />
   </div>
@@ -47,6 +60,10 @@ function App() {
           <Route
             path="/AdminDashbord"
             element={<AdminDash />}
+          />
+          <Route
+          path="/DiningDashboard"
+          element={<Layout2><DiningDash/></Layout2>}
           />
         </Routes>
       </BrowserRouter>
