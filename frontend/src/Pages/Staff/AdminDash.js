@@ -3,8 +3,8 @@ import { FaUsers, FaUserCog } from 'react-icons/fa';
 import { IoMdCalendar, IoMdSettings } from 'react-icons/io';
 import Adminsidebar from "../../components/AdminSidebar";
 
-function AdminDash(){
 
+function AdminDash(){
 
 return(
 
@@ -18,9 +18,22 @@ return(
     <div className="card col-2 pt-4 d-flex justify-content-center align-items-center"><FaUsers size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="/Staffmanage">Staff Management</a></div>
     <div className=" card col-2  pt-4 d-flex justify-content-center align-items-center"><FaUserCog size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="/Usermanage">User Management</a></div>
     <div className="card col-2  pt-4 d-flex justify-content-center align-items-center"><IoMdSettings size={50}/><a className="nav-link mt-5 fs-5" aria-current="page" href="/Accountmanage">Account Manage</a></div>
-   
-  </div> 
+  </div>
+
+
   <hr></hr>
+  <iframe
+          style={{
+            background: '#FFFFFF',
+            border: 'none',
+            borderRadius: '2px',
+            boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)',
+            width: '640px',
+            height: '380px'
+          }}
+          src="https://charts.mongodb.com/charts-project-0-sqqdz/embed/charts?id=660ab80c-c20d-4b70-84cf-523695f27b2a&maxDataAge=3600&theme=light&autoRefresh=true"
+          title="MongoDB Chart"
+        ></iframe>
     
 </div>
 </div>
