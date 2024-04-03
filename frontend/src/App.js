@@ -9,6 +9,14 @@ import Footer from './components/Footer';
 import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
+import Room from "./Pages/rooms";
+import Reservation from "./Pages/reservation";
+import Details from "./Pages/CustomerDetails"
+import AdminPanel from "./components/RoomManager";
+import Profile from "./Pages/Staff/Profile";
+import Bookings from "./Pages/Staff/Bookings";
+import AddRoom from "./Pages/Staff/AddRoom.js";
+import MyBookings from "./Pages/MyBookings";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -43,6 +51,45 @@ function App() {
           <Route
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
+          />
+          <Route
+            path="/rooms"
+            element={<Layout><Room/></Layout>}
+          />
+
+          <Route
+            path="/reservation"
+            element={<Layout><Reservation/></Layout>}
+          />
+
+           <Route
+            path="/CustomerDetails"
+            element={<Layout><Details/></Layout>}
+          />
+
+            <Route
+            path="/RoomManager"
+            element={<Layout><AdminPanel/></Layout>}
+          />
+
+           <Route
+            path="/Profile"
+            element={<Layout><Profile/></Layout>}
+          />
+
+           <Route
+            path="/Bookings"
+            element={<Layout><Bookings/></Layout>}
+          />
+
+          <Route
+            path="/AddRoom"
+            element={<Layout><AddRoom/></Layout>}
+          />
+
+           <Route
+            path="/MyBookings"
+            element={<Layout><MyBookings/></Layout>}
           />
         </Routes>
       </BrowserRouter>
