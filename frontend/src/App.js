@@ -1,21 +1,23 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 
-import Home from './Pages/Home';
-import Signup from './Pages/signup';
-import Login from './components/Login';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import PasswordReset from './Pages/PasswordReset'
-import {Route, Routes, BrowserRouter} from "react-router-dom";
+import Home from "./Pages/Home";
+import Signup from "./Pages/signup";
+import Login from "./components/Login";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import PasswordReset from "./Pages/PasswordReset";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
-import Watersport from './Pages/Staff/WatersportManagement';
-import ManagerDashboard from './Pages/Staff/ManagerDashboard';
-import AddActivity from './Pages/Staff/AddActivity';
+import Watersport from "./Pages/Staff/WatersportManagement";
+import ManagerDashboard from "./Pages/Staff/ManagerDashboard";
+import AddActivity from "./Pages/Staff/AddActivity";
 import WatersportManage from "./Pages/Staff/WatersportManagement";
 import AddReserv from "./Pages/Staff/addWatersportReserv";
 import SelectActivity from "./Pages/Staff/SelectActivity";
 import WatersportReservations from "./Pages/Staff/watersportReservations";
+import ReceptionNavbar from "./components/receptionNavbar";
+import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -33,55 +35,56 @@ function App() {
         <Routes>
           <Route
             path=""
-            element={<Layout><Home /></Layout>}
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
           />
           <Route
             path="/Signup"
-            element={<Layout><Signup /></Layout>}
+            element={
+              <Layout>
+                <Signup />
+              </Layout>
+            }
           />
           <Route
             path="/Login"
-            element={<Layout><Login /></Layout>}
+            element={
+              <Layout>
+                <Login />
+              </Layout>
+            }
           />
           <Route
             path="/ForgotPwd"
-            element={<Layout><ForgotPassword /></Layout>}
+            element={
+              <Layout>
+                <ForgotPassword />
+              </Layout>
+            }
           />
           <Route
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
           />
+
+          <Route path="/watersport" element={<Watersport />} />
+          <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
+          <Route path="/AddActivity" element={<AddActivity />} />
+          <Route path="/WatersportsManagement" element={<WatersportManage />} />
+          <Route path="/addWatersportsReservation" element={<AddReserv />} />
+          <Route path="/selectActivity" element={<SelectActivity />} />
           <Route
-            path="/watersport"
-            element={<Watersport />}
-          />
-          <Route
-            path="/ManagerDashboard"
-            element={<ManagerDashboard />}
-          />
-          <Route
-            path="/AddActivity"
-            element={<AddActivity />}
-          />
-          <Route
-            path="/WatersportsManagement"
-            element={<WatersportManage />}
-          />
-          <Route
-            path="/addWatersportsReservation"
-            element={<AddReserv />} 
-          />
-          <Route
-            path="/selectActivity"
-            element={<SelectActivity />} 
-          />
-            <Route
             path="/watersportReservations"
-            element={<WatersportReservations />} 
-          />     
+            element={<WatersportReservations />}
+          />
+
+          <Route path="/navBar" element={<ReceptionNavbar />} />
+          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
+
         </Routes>
-        
-        
       </BrowserRouter>
     </div>
   );

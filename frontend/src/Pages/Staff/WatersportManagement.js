@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import useActivityList from "../../hooks/useActivityList";
 import useActivityDelete from "../../hooks/useDeleteActivity";
+import ReceptionNavbar from "../../components/receptionNavbar";
 
 function WatersportManage() {
   const { ActivityList, isLoading, error } = useActivityList();
@@ -23,7 +24,10 @@ function WatersportManage() {
   };
 
   return (
-    <div>
+    <div className="row">
+      <ReceptionNavbar />
+    <div  className="col">
+      
       <div>
         <h1 className="mb-4 mt-5">Watersport Activities</h1>
 
@@ -111,6 +115,7 @@ function WatersportManage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

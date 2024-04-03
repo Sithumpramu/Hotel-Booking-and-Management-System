@@ -5,7 +5,8 @@ const router = express.Router();
 const {
     addReservation, 
     getReservations,
-    deleteReservation
+    deleteReservation,
+    updateReservation
   } = require("../controllers/SportReservController");
 
 
@@ -17,5 +18,9 @@ router.get("/", getReservations);
 
 //delete a reservation
 router.delete("/reservations/:id", deleteReservation);
+
+//Update a reservation
+router.put("/reservations/:id", updateReservation);
+
 
 module.exports = router;
