@@ -28,7 +28,7 @@ return(
             border: 'none',
             borderRadius: '2px',
             boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)',
-            width: '640px',
+            width: '540px',
             height: '380px'
           }}
           src="https://charts.mongodb.com/charts-project-0-sqqdz/embed/charts?id=660ab80c-c20d-4b70-84cf-523695f27b2a&maxDataAge=3600&theme=light&autoRefresh=true"

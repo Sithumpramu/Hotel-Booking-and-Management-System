@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useManagerList from "../../hooks/useDisplaystaff";
+import useManagerList from "../../hooks/Staff/useDisplaystaff";
 import Adminsidebar from "../../components/AdminSidebar";
 import { useDelete } from '../../hooks/Staff/useAccountDelete';
 
