@@ -10,6 +10,7 @@ import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AddStock from './Pages/Staff/AddStock';
+import KitchenInventory from "./Pages/Staff/KitchenInventory";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -48,6 +49,10 @@ function App() {
           <Route
             path="/AddStock"
             element={<AddStock />}
+          />
+           <Route
+            path="/KitchenInventory"
+            element={<KitchenInventory />}
           />
         </Routes>
       </BrowserRouter>
