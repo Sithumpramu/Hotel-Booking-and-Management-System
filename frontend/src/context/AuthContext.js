@@ -24,9 +24,10 @@ export const AuthContextProvider = ({ children }) => {
 
     if (user) {
       dispatch({ type: 'LOGIN', payload: user }) 
-      if (user.email.includes('admin')|| user.email.includes('staff') || user.email.includes('manager')) {
-        dispatch({ type: 'LOGOUT'}) 
-      }
+      // if (user.email.includes('admin')|| user.email.includes('staff') || user.email.includes('manager')) {
+      //   dispatch({ type: 'LOGOUT'}) 
+      // }
+      
     }
   }, [])
 

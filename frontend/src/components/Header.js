@@ -68,7 +68,7 @@ const Header = (imageName) => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 fs-5">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 fs-6">
               <li className="nav-item me-3">
                 <a className="nav-link active" aria-current="page" href="/">Home</a>
               </li>
@@ -98,8 +98,8 @@ const Header = (imageName) => {
 
            {user &&(
             <div>
-              <a data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample" class="btn btn-outline-primary mt-2 ms-5 me-3">Profile</a>
-              <a href ="" id="userStatus" className="btn ms-4 mt-2" style={{backgroundColor:"rgb(85, 180, 254)"}} onClick={handlelogout}>Logout</a>
+              <a data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample" class="btn btn-outline-primary ms-5 me-3 btn-sm" style={{position:"relative", top:"5px"}}>Profile</a>
+              <a href ="" id="userStatus" className="btn ms-4 mt-2 btn-sm" style={{backgroundColor:"rgb(85, 180, 254)"}} onClick={handlelogout}>Logout</a>
             </div>
             )}
             {!user &&(
@@ -129,11 +129,11 @@ const Header = (imageName) => {
                    <hr></hr>
                  <form onSubmit={handleSubmit} method="post" className="mt-4">
                      <h5 className="mb-4 ps-1">Change Password</h5>
-                     <div className="row ps-2 bg-secondary">
+                     <div className="row ps-2 ">
                        <input type={showPassword ? 'text' : 'password'} placeholder="Current Password" id="Password1" name="Password1" className="w-75 col-9" onChange={(e)=>{setPassword(e.target.value);}}></input>
                        <div className="btn col" onClick={handleTogglePwd}>{showPassword ? 'Hide' : 'Show'}</div>
                      </div><br/>
-                     <div className="row ps-2 bg-secondary">
+                     <div className="row ps-2">
                        <input type={showNewPassword ? 'text' : 'password'} placeholder="New Password" id="Password2" name="Password2" className=" w-75 col-9" onChange={(e)=>{setNewPassword(e.target.value);}}></input>
                        <div className="btn col" onClick={handleToggleNewPwd}>{showNewPassword ? 'Hide' : 'Show'}</div>
                      </div>
@@ -144,9 +144,12 @@ const Header = (imageName) => {
                      {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
                   </form>
                   <hr></hr>
-                    <div style={{position: "relative", top: "60px"}}>
-                      <h5 className="ps-1">Delete account</h5>
-                      <div type="submit" className="btn btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
+                   <div style={{position: "relative", top: "30px"}}>
+                      <h5 className="ps-1">My Reservations</h5>
+                      <div type="submit" className="btn btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
+                    </div>
+                    <div style={{position: "relative", top: "100px"}}>
+                      <div type="submit" className="btn btn-sm btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
                     </div>
                
                   </div>

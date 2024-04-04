@@ -82,7 +82,7 @@ function Home({ imageName }){
           <a href=""className="btn mb-5 mt-4" style={{backgroundColor:"rgb(85, 180, 254)"}} >Book Now</a>
         </div>
 
-        <div className=" row d-flex justify-content-center">
+        {/* <div className=" row d-flex justify-content-center">
         {imageUrl && (
         <div
           className="card mt-4"
@@ -97,7 +97,7 @@ function Home({ imageName }){
             <p className="card-text text-white fs-6 fw-bold bg-black">
             "Discover your sanctuary away from home, where tranquility meets modern convenience."
             </p>
-            <a href="" className="text-white fw-bold  btn btn-primary">
+            <a href="" className="text-white fw-bold  btn ">
               Explore
             </a>
           </div>
@@ -162,8 +162,30 @@ function Home({ imageName }){
             </a>
           </div>
         </div>)}
-      </div>
+      </div> */}
+   
+          <div className="card" style={{width:"35vw"}}>
+            <img src="Room.jpg" alt="" className="card-img-top" />
+            <div className="card-img-overlay d-flex align-items-end">
+              <div className="card-overlay-content text-light">
+                <h3 className="card-title">title</h3>
+                <p className="card-description">description</p>
+                <button className="btn btn-primary">buttonText</button>
+              </div>
+            </div>
+          </div>
 
+          <div className="card" style={{width:"35vw"}}>
+            <img src="Room.jpg" alt="" className="card-img-top" />
+            <div className="card-img-overlay d-flex align-items-end">
+              <div className="card-overlay-content text-light">
+                <h3 className="card-title">title</h3>
+                <p className="card-description">description</p>
+                <button className="btn btn-primary">buttonText</button>
+              </div>
+            </div>
+          </div>
+    
 
        
         <h1 className="text-center mb-5 mt-5 custom-font">Benifits you will always enjoy</h1>
