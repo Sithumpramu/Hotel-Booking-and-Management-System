@@ -144,12 +144,13 @@ const Header = (imageName) => {
                      {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
                   </form>
                   <hr></hr>
-                   <div style={{position: "relative", top: "30px"}}>
+                   <div style={{position: "relative", top: "23px"}}>
                       <h5 className="ps-1">My Reservations</h5>
-                      <div type="submit" className="btn btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
+                      <div type="submit" className="btn btn-danger mt-3 mb-5" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
                     </div>
+                   <hr></hr>
                     <div style={{position: "relative", top: "100px"}}>
-                      <div type="submit" className="btn btn-sm btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
+                      <div type="submit" className="btn btn-sm btn-danger mt-1" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
                     </div>
                
                   </div>

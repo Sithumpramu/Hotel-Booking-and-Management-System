@@ -10,6 +10,18 @@ function Home({ imageName }){
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const navigate = useNavigate();
+  const [hoveredElement, setHoveredElement] = useState(null);
+
+
+
+  const handleMouseOver = (elementId) => {
+    setHoveredElement(elementId);
+  };
+
+  const handleMouseOut = () => {
+    setHoveredElement(null);
+  };
+
   const handleZoomIn = (element) => {
     element.style.transform = 'scale(1.1)';
   };
@@ -50,7 +62,7 @@ function Home({ imageName }){
       <div className="container-fluid">
 
         <div className="container d-flex justify-content-center mt-3">
-        {imageUrl && (
+       
         <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -74,7 +86,7 @@ function Home({ imageName }){
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
-            </div>)}
+            </div>
         </div>
 
        
@@ -82,8 +94,8 @@ function Home({ imageName }){
           <a href=""className="btn mb-5 mt-4" style={{backgroundColor:"rgb(85, 180, 254)"}} >Book Now</a>
         </div>
 
-        {/* <div className=" row d-flex justify-content-center">
-        {imageUrl && (
+        {/* <div className=" col d-flex justify-content-center">
+        
         <div
           className="card mt-4"
           style={{width: '40vw'}}
@@ -91,18 +103,17 @@ function Home({ imageName }){
           onMouseOut={(e) => handleZoomOut(e.currentTarget.querySelector('.card-img'))}
         >
           <img src={"Room.jpg"} alt={`Image: ${imageName}`} className="card-img"  style={{width: '100%',transition: 'transform 0.3s'}}/>
-          <div className="card-img-overlay">
-          
+          <div className="card-img-overlay text-start">
             <h5 className="card-title text-white">Rooms</h5>
             <p className="card-text text-white fs-6 fw-bold bg-black">
             "Discover your sanctuary away from home, where tranquility meets modern convenience."
             </p>
-            <a href="" className="text-white fw-bold  btn ">
+            <a href="" className="text-white fw-bold btn btn-outline-primary ">
               Explore
             </a>
           </div>
-        </div>)}
-        {imageUrl && (
+        </div>
+      
         <div
           className="card mt-4"
           style={{width: '40vw'}}
@@ -116,15 +127,15 @@ function Home({ imageName }){
             <p className="card-text text-white fs-6 fw-bold bg-black">
             "Elevate your events to unforgettable heights, where every occasion becomes a memory."
             </p>
-            <a href="" className="text-white fw-bold  btn btn-primary">
+            <a href="" className="text-white fw-bold  btn btn-outline-primary">
               Explore
             </a>
           </div>
-        </div>)}
+        </div>
       </div>
 
-      <div className=" row d-flex justify-content-center">
-      {imageUrl && (
+      <div className=" col d-flex justify-content-center">
+    
         <div
           className="card mt-4"
           style={{width: '40vw'}}
@@ -138,12 +149,12 @@ function Home({ imageName }){
             <p className="card-text text-white fs-6 fw-bold bg-black">
             "Savor every moment with our culinary delights, where every dish is a journey of flavors."
             </p>
-            <a href="" className="text-white fw-bold  btn btn-primary">
+            <a href="" className="text-white fw-bold  btn btn-outline-primary">
               Explore
             </a>
           </div>
-        </div>)}
-        {imageUrl && (
+        </div>
+      
         <div
           className="card mt-4"
           style={{width: '40vw'}}
@@ -157,37 +168,112 @@ function Home({ imageName }){
             <p className="card-text text-white fs-6 fw-bold bg-black">
             "Dive into adventure with watersports activities, where every wave brings excitement."
             </p>
-            <a href="" className="text-white fw-bold btn btn-primary">
+            <a href="" className="text-white fw-bold btn btn-outline-primary">
               Explore
             </a>
           </div>
-        </div>)}
+        </div>
       </div> */}
-   
-          <div className="card" style={{width:"35vw"}}>
-            <img src="Room.jpg" alt="" className="card-img-top" />
-            <div className="card-img-overlay d-flex align-items-end">
-              <div className="card-overlay-content text-light">
-                <h3 className="card-title">title</h3>
-                <p className="card-description">description</p>
-                <button className="btn btn-primary">buttonText</button>
-              </div>
-            </div>
-          </div>
 
-          <div className="card" style={{width:"35vw"}}>
-            <img src="Room.jpg" alt="" className="card-img-top" />
-            <div className="card-img-overlay d-flex align-items-end">
-              <div className="card-overlay-content text-light">
-                <h3 className="card-title">title</h3>
-                <p className="card-description">description</p>
-                <button className="btn btn-primary">buttonText</button>
-              </div>
-            </div>
+      <div className='row mt-4'>
+         <div className='col d-flex justify-content-center align-items-center'>
+                <div 
+                  className="card" 
+                  style={{ width: "35vw" }}   
+                  onMouseOver={(e) => {
+                    handleZoomIn(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOver(1);
+                  }}
+                  onMouseOut={(e) => {
+                    handleZoomOut(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOut();
+                  }}
+                >
+                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+                 
+                  <div className="card-img-overlay d-flex align-items-end">
+                    <div className="card-overlay-content text-light">
+                      <h4 className="card-title">Comfortable</h4>
+                      {hoveredElement === 1 && (<div className="bg-dark py-3">
+                      <p className="card-description fs-6 fw-bold">"Discover your sanctuary away from home, where tranquility meets modern convenience."</p>
+                      <button className="btn btn-primary">Explore</button></div>)}
+                    </div>
+                  </div>
+                </div>
+      
+                <div className="card ms-4" style={{width:"35vw"}} 
+                  onMouseOver={(e) => {
+                    handleZoomIn(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOver(2);
+                  }}
+                  onMouseOut={(e) => {
+                    handleZoomOut(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOut();
+                  }}
+                >
+                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+     
+                  <div className="card-img-overlay d-flex align-items-end" >
+                    <div className="card-overlay-content text-light">
+                      <h4 className="card-title">Elegant</h4>
+                      {hoveredElement === 2 && (<div className='bg-dark py-3'>
+                      <p className="card-description  fs-6 fw-bold">"Elevate your events to unforgettable heights, where every occasion becomes a memory."</p>
+                      <button className="btn btn-primary">Explore</button></div>)}
+                    </div>
+                  </div>
+                </div>
+          
           </div>
-    
+      
+          <div className='col d-flex justify-content-center align-items-center mt-4'>
+            <div className="card" 
+                    style={{width:"35vw"}} 
+                    onMouseOver={(e) => {
+                    handleZoomIn(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOver(3);
+                  }}
+                  onMouseOut={(e) => {
+                    handleZoomOut(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOut();
+                  }}
+             >
+                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+              
+                  <div className="card-img-overlay d-flex align-items-end" >
+                    <div className="card-overlay-content text-light">
+                      <h4 className="card-title">Unmatched Taste</h4>
+                      {hoveredElement === 3 && (<div className='bg-dark py-3 px-2'>
+                      <p className="card-description fs-6 fw-bold">"Savor every moment with our culinary delights, where every dish is a journey of flavors."</p>
+                      <button className="btn btn-primary">Explore</button></div>)}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="card ms-4" style={{width:"35vw"}}
+                  onMouseOver={(e) => {
+                    handleZoomIn(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOver(4);
+                  }}
+                  onMouseOut={(e) => {
+                    handleZoomOut(e.currentTarget.querySelector('.card-img'));
+                    handleMouseOut();
+                  }}
+                  >
+                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+               
+                  <div className="card-img-overlay d-flex align-items-end" >
+                    <div className="card-overlay-content text-light">
+                      <h4 className="card-title">Entertainment</h4>
+                      {hoveredElement === 4 && (<div className='bg-dark py-3 px-2'>
+                      <p className="card-description fs-6 fw-bold">"Dive into adventure with watersports activities, where every wave brings excitement."</p>
+                      <button className="btn btn-primary">Explore</button></div>)}
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
 
-       
+
         <h1 className="text-center mb-5 mt-5 custom-font">Benifits you will always enjoy</h1>
         {imageUrl && (
          <div className="row mt-3 justify-content-around">
@@ -238,8 +324,8 @@ function Home({ imageName }){
 
          
            <div className="card text-bg-dark mt-5">
-           {imageUrl && (
-             <img src={"Panorama.jpg"} alt={`Image: ${imageName}`} className="card-img" style={{ height: "50vh"}}></img>)}
+           
+             <img src={"Panorama.jpg"} alt={`Image: ${imageName}`} className="card-img" style={{ height: "50vh"}}></img>
              <div className="card-img-overlay">
                
                <h4 className="card-text">"Experience comfort beyond measure, book your stay today!"</h4>
