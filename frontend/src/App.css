@@ -37,3 +37,21 @@
   }
 }
 
+.card{
+  margin-top: 5rem;
+  width: 18rem;
+  height: 22rem;
+ 
+}
+
+.col{
+  height: 20rem;
+}
+
+.card-img-top{
+  height:13rem
+}
+
+.cards-wrapper{
+  column-gap: 8rem;
+}
