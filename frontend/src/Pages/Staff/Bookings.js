@@ -1,11 +1,12 @@
 import React from 'react';
-
+import ManagerPanel from '../../components/RoomManagerNavbar';
 function Bookings() {
     return (
         <div>
+            <ManagerPanel/>
             <h2>Bookings</h2>
             <div className="card">
-                {/* List of bookings */}
+                {}
                 <div className="booking">
                     <p>Room Type: </p>
                     <p>Booking ID: </p>
@@ -18,7 +19,7 @@ function Bookings() {
             </div>
 
             <div className="card">
-                {/* List of bookings */}
+                {}
                 <div className="booking">
                     <p>Room Type: </p>
                     <p>Booking ID: </p>

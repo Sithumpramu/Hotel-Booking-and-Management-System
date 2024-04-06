@@ -12,11 +12,12 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";
 import Details from "./Pages/CustomerDetails"
-import AdminPanel from "./components/RoomManager";
+import AdminPanel from "./components/RoomManagerNavbar.js";
 import Profile from "./Pages/Staff/Profile";
 import Bookings from "./Pages/Staff/Bookings";
 import AddRoom from "./Pages/Staff/AddRoom.js";
 import MyBookings from "./Pages/MyBookings";
+import UpdateDelete from "./Pages/Staff/UpdateDeleteRoom.js";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -67,29 +68,31 @@ function App() {
             element={<Layout><Details/></Layout>}
           />
 
-            <Route
-            path="/RoomManager"
-            element={<Layout><AdminPanel/></Layout>}
-          />
+
 
            <Route
             path="/Profile"
-            element={<Layout><Profile/></Layout>}
+            element={<Profile/>}
           />
 
            <Route
             path="/Bookings"
-            element={<Layout><Bookings/></Layout>}
+            element={<Bookings/>}
           />
 
           <Route
             path="/AddRoom"
-            element={<Layout><AddRoom/></Layout>}
+            element={<AddRoom/>}
           />
 
            <Route
             path="/MyBookings"
             element={<Layout><MyBookings/></Layout>}
+          />
+
+           <Route
+            path="UpdateDeleteRoom"
+            element={<UpdateDelete/>}
           />
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import './Rooms.css'; // Import your CSS file for styling
+
 
 function Rooms() {
     const [checkInDate, setCheckInDate] = useState('');
@@ -8,11 +8,11 @@ function Rooms() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add your form submission logic here
+        
     }
 
     return (
-        <div className="background">
+        <div className="background vh-100 d-flex justify-content-center align-items-center" style={{backgroundImage:'url("katha.jpg")'}}>
             <div className="card">
                 
                 <form onSubmit={handleSubmit}>

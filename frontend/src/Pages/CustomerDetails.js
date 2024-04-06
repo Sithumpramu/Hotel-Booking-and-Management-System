@@ -11,7 +11,7 @@ function Rooms() {
     const [city, setCity] = useState('');
 
     const handleSubmit = async (e) => {
-        // Handle form submission
+       
     };
 
     return (
