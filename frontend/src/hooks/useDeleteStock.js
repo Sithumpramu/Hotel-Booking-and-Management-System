@@ -23,7 +23,7 @@ const useDeleteStock = () => {
           
           setIsLoading(false);
           setStatus(data.status);
-          window.location.reload()
+          window.location.reload();
 
           /*else {
             navigate("/KitchenInventory");

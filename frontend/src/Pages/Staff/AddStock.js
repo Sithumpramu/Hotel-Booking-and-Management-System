@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import useAddStock  from "../../hooks/useAddStock";
 
 const AddStock = () => {
-    const location = useLocation();
-    const activityIds = location.state?.activityIds;
-
-    console.log(activityIds,"activityId")
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
@@ -20,7 +15,7 @@ const AddStock = () => {
         e.preventDefault();
         if (!validate()) return;
     
-        await addStock(name, category, quantity, price, description, activityIds);
+        await addStock(name, category, quantity, price, description);
     };
 
     const validate = () => {
