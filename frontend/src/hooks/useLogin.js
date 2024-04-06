@@ -14,19 +14,11 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      // Determine the role based on the email or any other criteria
-      const role = determineRole(email);
-
-      const response = await fetch(
-        role === 'staff'
-          ? 'http://localhost:4000/staff/login'
-          : 'http://localhost:4000/user/login',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch('http://localhost:4000/user/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
@@ -44,37 +36,31 @@ export const useLogin = () => {
       // Update loading state
       setIsLoading(false);
 
-      // Navigate to the appropriate dashboard
-      navigation(determineDashboard(role, email));
+      // Navigate to the appropriate dashboard based on the role
+      navigateUser(data.role);
     } catch (error) {
       setError(error.message);
       setIsLoading(false);
     }
   };
 
-  // Function to determine the role based on email
-  const determineRole = (email) => {
-    // Example: Check if the email contains the word 'staff' or 'manager'
-    if (email.includes('staff')) {
-      return 'staff';
-    } else if (email.includes('manager')) {
-      return 'manager';
-    } else {
-      return 'user';
+  const navigateUser = (role) => {
+    switch (role) {
+      case 'admin':
+        navigation('/AdminDashbord');
+        break;
+      case 'manager':
+        navigation('/ManagerDashbord');
+        break;
+      case 'staff':
+        navigation('/StaffDashbord')  
+        break;
+      default:
+        navigation('/');
     }
   };
 
-  // Function to determine the dashboard based on role and email
-  const determineDashboard = (role, email) => {
-    // Example: Navigate to 'AdminDashbord' for staff, 'ManagerDashbord' for manager, and default to '/'
-    if (role === 'staff') {
-      return '/AdminDashbord';
-    } else if (role === 'manager') {
-      return '/ManagerDashbord';
-    } else {
-      return '/';
-    }
-  };
+ 
 
   return { login, isLoading, error };
 };

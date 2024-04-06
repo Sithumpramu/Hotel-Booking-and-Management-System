@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 // controller functions
-const { loginUser, signupUser, getsingleuser, getuser, deleteuser, Updateuserpwd ,forgotpwd, resetpwd} = require('../controllers/userController')
+const { loginUser, signupUser, getsingleuser,getmanagers, getusers, getstaff, deleteuser, Updateuserpwd ,forgotpwd, resetpwd,CreatestaffUser} = require('../controllers/userController')
 
 
 
@@ -12,8 +12,15 @@ router.post('/login', loginUser)
 // signup route
 router.post('/signup', signupUser)
 
+//get managers
+router.get('/managers', getmanagers )
+
+//get staff
+router.get('/staff', getstaff )
+
 //get users
-router.get('/', getuser )
+router.get('/users',getusers)
+
 
 //get user
 router.get('/:id', getsingleuser)
@@ -29,6 +36,9 @@ router.post('/forgotPassword',forgotpwd)
 
 //reset pwd
 router.patch('/resetPassword/:token',resetpwd)
+
+
+
 
 
 

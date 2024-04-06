@@ -2,8 +2,9 @@ import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import useImageFetch from '../hooks/useImgfetch';
 
-const Signup = () => {
+const Signup = ({imageName}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
@@ -11,6 +12,7 @@ const Signup = () => {
   const {signup, error, isLoading} = useSignup()
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
+  const imageUrl = useImageFetch(imageName);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -86,9 +88,10 @@ const Signup = () => {
         
         
         return(
-          <div className="container  container d-flex align-items-center justify-content-center vh-100">
-            <img src="logo.jpg" alt="logo" style={{width: "200px", position:"absolute", top:"4.5vh"}}></img>
-            <div className="container-fluid bg-secondary w-50 pt-4 rounded d-flex justify-content-center align-items-center">
+          <div className="container-fluid d-flex align-items-center justify-content-center vh-100" style={{backgroundImage: 'url("Wave.svg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+            {imageUrl && (
+            <img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`} style={{width: "200px", position:"absolute", top:"2vh"}}></img>)}
+            <div className="container bg-body-tertiary w-50 pt-4 rounded d-flex justify-content-center align-items-center mt-5">
                 <form action ="" method="post" style={{width:"25vw"}} onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label for="Email1" className="form-label">Email address</label>
@@ -156,4 +159,4 @@ const Signup = () => {
             )
         }
         
-        export default Signup;
+export default Signup;
