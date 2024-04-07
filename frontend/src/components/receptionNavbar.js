@@ -1,58 +1,94 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 //import useImageFetch from '../hooks/useImgfetch';
-import { useLogout } from '../hooks/useLogout';
-import { useUpdate } from '../hooks/useUpdate';
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogout } from "../hooks/useLogout";
+import { useUpdate } from "../hooks/useUpdate";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-function ReceptionNavbar(){
-  //const imageUrl = useImageFetch(imageName); 
-  const {Update ,error,status,isLoading} = useUpdate()
-  const {logout}=useLogout()
-  const [password, setPassword] = useState('')
-  const [newpassword, setNewPassword] = useState('') 
-  const {user}=useAuthContext()
+function ReceptionNavbar() {
+  //const imageUrl = useImageFetch(imageName);
+  const { Update, error, status, isLoading } = useUpdate();
+  const { logout } = useLogout();
+  const [password, setPassword] = useState("");
+  const [newpassword, setNewPassword] = useState("");
+  const { user } = useAuthContext();
 
-  const handlelogout = ()=>{
-      logout()
-    }
+  const handlelogout = () => {
+    logout();
+  };
 
-
-  
-
-
-    return(
-        <div className="col-3 m-0 p-0">
-        <ul className="nav flex-column bg-black pe-1 vh-100">
-        
+  return (
+    <div className="col-2 m-0 p-0">
+      <ul className="nav flex-column bg-black pe-1 vh-100">
         {/* <div className="d-flex justify-content-center align-items-center"><img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`}  style={{width:"150px"}} className="mt-4 "></img></div> */}
-        <div className="d-flex flex-column  mt-5 justify-content-around fs-5" style={{height:"250px"}}>
+        <div
+          className="d-flex flex-column  mt-5 justify-content-around fs-5"
+          style={{ height: "250px" }}
+        >
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/ReceptionDashboard">Home</a>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/ReceptionDashboard"
+            >
+              Home
+            </a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/WatersportsManagement">Watersports Management</a>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/WatersportsManagement"
+            >
+              Watersports Management
+            </a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/selectActivity">Watersport Reservations</a>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/selectActivity"
+            >
+              Watersport Reservations
+            </a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord">Room Resrvations</a>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/AdminDashbord"
+            >
+              Room Resrvations
+            </a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord">Dining Resrvations</a>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/AdminDashbord"
+            >
+              Dining Resrvations
+            </a>
           </li>
-
         </div>
-        <div className=""><a href ="" id="userStatus" className="btn mt-5" sty onClick={handlelogout} style={{backgroundColor:"rgb(85, 180, 254)", position:"relative", top:"190px"}}>Logout</a></div>
-        </ul>
+        <div className="">
+          <a
+            href=""
+            id="userStatus"
+            className="btn mt-5"
+            sty
+            onClick={handlelogout}
+            style={{
+              backgroundColor: "rgb(85, 180, 254)",
+              position: "relative",
+              top: "190px",
+            }}
+          >
+            Logout
+          </a>
+        </div>
+      </ul>
 
-
-
-
-
-        
-        {/* <div className="modal fade" id="Modal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+      {/* <div className="modal fade" id="Modal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
           <div className="modal-dialog">
           <form onSubmit={handleSubmit}>
             <div className="modal-content">
@@ -86,8 +122,8 @@ function ReceptionNavbar(){
             </div></form>
           </div>
        </div> */}
-        </div>
-    )
+    </div>
+  );
 }
 
 export default ReceptionNavbar;

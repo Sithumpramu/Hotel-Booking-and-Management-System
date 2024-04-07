@@ -240,6 +240,19 @@ function WatersportReservations() {
                           </a>
                         )}
                       </td>
+
+                      <td>
+                        <a
+                          href="#"
+                          className="btn btn-success"
+                          data-bs-toggle="modal"
+                          data-bs-target="#Modal"
+                          onClick={() => setNameToDelete(reservation._id)}
+                        >
+                          CheckOut
+                        </a>
+                      </td>
+
                     </tr>
                   </tbody>
                 ))}

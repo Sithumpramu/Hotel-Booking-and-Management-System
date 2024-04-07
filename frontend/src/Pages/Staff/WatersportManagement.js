@@ -37,10 +37,10 @@ function WatersportManage() {
 
         <div className="d-flex align-items-center justify-content-around mb-3">
           {ActivityList.map((Watersport) => (
-            <div className="card" style={{ width: "18rem" }}>
+            <div className="card">
               <div className="card-body">
                 {Watersport.Image && Watersport.Image.data && (
-                  <img style={{ width: "15rem" }}
+                  <img style={{ width: "10rem" }}
                     src={`data:${Watersport.Image.contentType};base64,${btoa(
                       String.fromCharCode.apply(
                         null,
