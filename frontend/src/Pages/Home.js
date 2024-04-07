@@ -66,13 +66,13 @@ function Home({ imageName }){
         <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src={"carouselImg1.jpg"} alt={`Image: ${imageName}`}className="d-block w-100 mx-auto"  ></img>
+                        <img src="carouselImg1.jpg" className="d-block w-100 mx-auto"  ></img>
                     </div>
                     <div className="carousel-item">
-                        <img src={"carouselImg2.jpg"} alt={`Image: ${imageName}`} className="d-block w-100 mx-auto"  ></img>
+                        <img src="carouselImg2.jpg" className="d-block w-100 mx-auto"  ></img>
                     </div>
                     <div className="carousel-item">
-                        <img src={"carouselImg3.jpg"} alt={`Image: ${imageName}`} className="d-block w-100 mx-auto" ></img>
+                        <img src="carouselImg3.jpg" className="d-block w-100 mx-auto" ></img>
                     </div>
 
                      
@@ -113,7 +113,7 @@ function Home({ imageName }){
                  
                   <div className="card-img-overlay d-flex align-items-end">
                     <div className="card-overlay-content text-light">
-                      <h4 className="card-title">Comfortable</h4>
+                      <h4 className="card-title" style={{backgroundColor:"rgb(85, 180, 254)"}}>Comfortable</h4>
                       {hoveredElement === 1 && (<div className="bg-dark py-3">
                       <p className="card-description fs-6 fw-bold">"Discover your sanctuary away from home, where tranquility meets modern convenience."</p>
                       <button className="btn btn-primary">Explore</button></div>)}
@@ -131,11 +131,11 @@ function Home({ imageName }){
                     handleMouseOut();
                   }}
                 >
-                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+                  <img src="Hall.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
      
                   <div className="card-img-overlay d-flex align-items-end" >
                     <div className="card-overlay-content text-light">
-                      <h4 className="card-title">Elegant</h4>
+                      <h4 className="card-title" style={{backgroundColor:"rgb(85, 180, 254)"}}>Elegant</h4>
                       {hoveredElement === 2 && (<div className='bg-dark py-3'>
                       <p className="card-description  fs-6 fw-bold">"Elevate your events to unforgettable heights, where every occasion becomes a memory."</p>
                       <button className="btn btn-primary">Explore</button></div>)}
@@ -157,11 +157,11 @@ function Home({ imageName }){
                     handleMouseOut();
                   }}
              >
-                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+                  <img src="Restaurent.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
               
                   <div className="card-img-overlay d-flex align-items-end" >
                     <div className="card-overlay-content text-light">
-                      <h4 className="card-title">Unmatched Taste</h4>
+                      <h4 className="card-title" style={{backgroundColor:"rgb(85, 180, 254)"}}>Unmatched Taste</h4>
                       {hoveredElement === 3 && (<div className='bg-dark py-3 px-2'>
                       <p className="card-description fs-6 fw-bold">"Savor every moment with our culinary delights, where every dish is a journey of flavors."</p>
                       <button className="btn btn-primary">Explore</button></div>)}
@@ -179,11 +179,11 @@ function Home({ imageName }){
                     handleMouseOut();
                   }}
                   >
-                  <img src="Room.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
+                  <img src="Watersport.jpg" alt="" className="card-img" style={{width: '100%',transition: 'transform 0.3s'}}/>
                
                   <div className="card-img-overlay d-flex align-items-end" >
                     <div className="card-overlay-content text-light">
-                      <h4 className="card-title">Entertainment</h4>
+                      <h4 className="card-title" style={{backgroundColor:"rgb(85, 180, 254)"}}>Entertainment</h4>
                       {hoveredElement === 4 && (<div className='bg-dark py-3 px-2'>
                       <p className="card-description fs-6 fw-bold">"Dive into adventure with watersports activities, where every wave brings excitement."</p>
                       <button className="btn btn-primary">Explore</button></div>)}
@@ -195,20 +195,20 @@ function Home({ imageName }){
 
 
         <h1 className="text-center mb-5 mt-5 custom-font">Benifits you will always enjoy</h1>
-        {imageUrl && (
-         <div className="row mt-3 justify-content-around">
-            <div className="card" style={{width: "14rem", height:"20rem"}}>
-               <img src={"Accomadation.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+
+         <div className="row mt-3 justify-content-around ">
+            <div className="card" style={{width: "11rem", height:"17rem"}}>
+               <img src="Accomadation.png" className="card-img-top pt-3" ></img>
                <div className="card-body">
-                 <h5 className="card-title text-center">Comfortable Accommodations</h5>
+                 <h5 className="card-title text-center">Comfortable Rooms</h5>
                 
                </div>
                
              </div>
          
                    
-             <div className="card" style={{width: "14rem", height:"20rem"}}>
-               <img src={"Bestprice.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+             <div className="card" style={{width: "11rem", height:"17rem"}}>
+               <img src="Bestprice.png" className="card-img-top pt-3" ></img>
                <div className="card-body">
                  <h5 className="card-title text-center">Best Rate Guarantee</h5>
                 
@@ -218,8 +218,8 @@ function Home({ imageName }){
              </div>
              
                    
-            <div className="card" style={{width: "14rem", height:"20rem"}}>
-               <img src={"choice.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+            <div className="card" style={{width: "11rem", height:"17rem"}}>
+               <img src="choice.png" className="card-img-top pt-3" ></img>
                <div className="card-body">
                  <h5 className="card-title text-center">Flexibility Choices</h5>
                 
@@ -228,8 +228,8 @@ function Home({ imageName }){
  
              </div>
          
-             <div className="card" style={{width: "14rem", height:"20rem"}}>
-               <img src={"offer.png"} alt={`Image: ${imageName}`} className="card-img-top pt-3" ></img>
+             <div className="card" style={{width: "11rem", height:"17rem"}}>
+               <img src="offer.png" className="card-img-top pt-3" ></img>
                <div className="card-body">
                  <h5 className="card-title text-center">Special Offers and Rewards</h5>
                 
@@ -240,7 +240,7 @@ function Home({ imageName }){
              </div>
             
           </div>
- )} 
+  
 
          
            <div className="card text-bg-dark mt-5">

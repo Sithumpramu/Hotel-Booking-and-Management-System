@@ -16,7 +16,7 @@ import Staffmanage from "./Pages/Staff/staffManage";
 import Usermanage from "./Pages/Staff/UserManage";
 import AccountManage from "./Pages/Staff/AccountManage";
 import InitialRedirect from "./context/initialDirect";
-import Rooms from "./Pages/Rooms";
+
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -79,10 +79,7 @@ function App() {
             path="/Accountmanage"
             element={<AccountManage/>}
           />
-                     <Route
-            path="/Rooms"
-            element={<Rooms/>}
-          />
+
         </Routes>
       </BrowserRouter>
     </div>
