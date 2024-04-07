@@ -19,6 +19,14 @@ import WatersportReservations from "./Pages/Staff/watersportReservations";
 import ReceptionNavbar from "./components/receptionNavbar";
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
+import AdminDash from "./Pages/Staff/AdminDash";
+import ManagerDash from "./Pages/Staff/ManagerDash";
+import StaffDash from "./Pages/Staff/StaffDash";
+import Staffmanage from "./Pages/Staff/staffManage";
+import Usermanage from "./Pages/Staff/UserManage";
+import AccountManage from "./Pages/Staff/AccountManage";
+import InitialRedirect from "./context/initialDirect";
+import Rooms from "./Pages/Rooms";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -33,48 +41,24 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="" element={<InitialRedirect />} />
           <Route
-            path=""
+            path="/Dashboard"
             element={
               <Layout>
-                
                 <Home />
               </Layout>
             }
           />
-          <Route
-            path="/Signup"
-            element={
-              <Layout>
-                <Signup />{" "}
-              </Layout>
-            }
-          />
-          <Route
-            path="/Login"
-            element={
-              <Layout>
-                <Login />
-              </Layout>
-            }
-          />
-          <Route
-            path="/ForgotPwd"
-            element={
-              <Layout>
-                <ForgotPassword />
-              </Layout>
-            }
-          />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/ForgotPwd" element={<ForgotPassword />} />
           <Route
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
           />
 
-          <Route 
-            path="/watersport" 
-            element={<Watersport />} 
-            />
+          <Route path="/watersport" element={<Watersport />} />
           <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
@@ -87,6 +71,13 @@ function App() {
 
           <Route path="/navBar" element={<ReceptionNavbar />} />
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
+          <Route path="/AdminDashbord" element={<AdminDash />} />
+          <Route path="/ManagerDashbord" element={<ManagerDash />} />
+          <Route path="/StaffDashbord" element={<StaffDash />} />
+          <Route path="/Staffmanage" element={<Staffmanage />} />
+          <Route path="/Usermanage" element={<Usermanage />} />
+          <Route path="/Accountmanage" element={<AccountManage />} />
+          <Route path="/Rooms" element={<Rooms />} />
         </Routes>
       </BrowserRouter>
     </div>
