@@ -1,11 +1,10 @@
 const { default: mongoose } = require("mongoose");
-const Watersport = require("../Models/watersportReservModel");
 const watersportReservModel = require("../Models/watersportReservModel");
 
 // Function to add a new reservation
 const addReservation = async (req, res) => {
   console.log("addReservation");
-  const { CusName, TelNo, Address, checkinDate, checkinTime, activityIds } =
+  const { CusName, TelNo, Address, checkinDate, checkinTime, Qty, activityIds } =
     req.body;
 
   try {
@@ -15,7 +14,7 @@ const addReservation = async (req, res) => {
       Address,
       checkinDate,
       checkinTime,
-      // AdvancePayment,
+      Qty,
       activityIds,
     });
     res.status(201).json(newReserv); // Respond with the created document
