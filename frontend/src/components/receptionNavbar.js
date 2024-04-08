@@ -11,9 +11,16 @@ function ReceptionNavbar() {
   const [password, setPassword] = useState("");
   const [newpassword, setNewPassword] = useState("");
   const { user } = useAuthContext();
+  let selectedId = localStorage.getItem("selectedMenuId")
+    ? localStorage.getItem("selectedMenuId")
+    : "Home";
 
   const handlelogout = () => {
     logout();
+  };
+
+  const setSelectedId = (id) => {
+    localStorage.setItem("selectedMenuId", id);
   };
 
   return (
@@ -24,20 +31,32 @@ function ReceptionNavbar() {
           className="d-flex flex-column  mt-5 justify-content-around fs-5"
           style={{ height: "250px" }}
         >
-          <li className="nav-item border">
+          <li
+            className={`${
+              selectedId === "Home" ? `active` : `nav-item border`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
               href="/ReceptionDashboard"
+              onClick={() => setSelectedId("Home")}
             >
               Home
             </a>
           </li>
-          <li className="nav-item border">
+          <li
+            className={`${
+              selectedId === "Watersports Management"
+                ? `active`
+                : `nav-item border`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
               href="/WatersportsManagement"
+              onClick={() => setSelectedId("Watersports Management")}
             >
               Watersports Management
             </a>
