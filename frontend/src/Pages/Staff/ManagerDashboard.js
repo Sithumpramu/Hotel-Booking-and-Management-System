@@ -6,6 +6,8 @@ function Dashboard(){
   const handlelogout = ()=>{
     logout()
   }
+
+  const userEmail = localStorage.getItem('email');
     return(
       <div>
         <div className="border border-3 pb-3" style={{backgroundColor:" #f8f9fa"}}>        
@@ -13,10 +15,10 @@ function Dashboard(){
         <div className=""><a href ="" id="userStatus" className="btn" sty onClick={handlelogout} style={{backgroundColor:"rgb(85, 180, 254)", position:"relative", top:"0px"}}>Logout</a></div>
       
         </div>
-        <div class="d-grid gap-2 col-3 mx-auto" style={{position:"relative" ,top:"140px"}}>
-          <a href="" className="btn btn-outline-primary mb-3 lh-lg" type="button">Room Manager</a>
-          <a href="" className="btn btn-outline-primary mb-3 lh-lg" type="button">Restaurant Manager</a>
-          <a href="" className="btn btn-outline-primary mb-3 lh-lg" type="button">Event & Activity manager</a>
+        <div class="d-grid gap-4 col-3 mx-auto" style={{position:"relative" ,top:"140px"}}>
+        <a href={userEmail && userEmail.includes('roommanager') ? "/ManagerDash" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('roommanager') ? "" : "disabled"}`} type="button">Room Manager</a>
+        <a href={userEmail && userEmail.includes('restaurantmanager') ? "" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('restaurantmanager') ? "" : "disabled"}`} type="button">Restaurant Manager</a>
+        <a href={userEmail && userEmail.includes('eventactivitymanager') ? "" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('eventactivitymanager') ? "" : "disabled"}`} type="button">Event & Activity Manager</a>
         </div>
         <div>
        
