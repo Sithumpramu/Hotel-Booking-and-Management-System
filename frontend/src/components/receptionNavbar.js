@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 //import useImageFetch from '../hooks/useImgfetch';
 import { useLogout } from "../hooks/useLogout";
-import { useUpdate } from "../hooks/useUpdate";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 function ReceptionNavbar() {
   //const imageUrl = useImageFetch(imageName);
-  const { Update, error, status, isLoading } = useUpdate();
   const { logout } = useLogout();
-  const [password, setPassword] = useState("");
-  const [newpassword, setNewPassword] = useState("");
-  const { user } = useAuthContext();
   let selectedId = localStorage.getItem("selectedMenuId")
     ? localStorage.getItem("selectedMenuId")
     : "Home";
@@ -25,7 +20,7 @@ function ReceptionNavbar() {
 
   return (
     <div className="col-2 m-0 p-0">
-      <ul className="nav flex-column bg-black pe-1 vh-100">
+      <ul className="nav flex-column bg-black pe-1 vh-100 position-fixed">
         {/* <div className="d-flex justify-content-center align-items-center"><img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`}  style={{width:"150px"}} className="mt-4 "></img></div> */}
         <div
           className="d-flex flex-column  mt-5 justify-content-around fs-5"

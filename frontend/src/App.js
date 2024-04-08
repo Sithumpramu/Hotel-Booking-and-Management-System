@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 
-
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import Watersport from "./Pages/Staff/WatersportManagement";
@@ -14,23 +13,13 @@ import WatersportReservations from "./Pages/Staff/watersportReservations";
 import ReceptionNavbar from "./components/receptionNavbar";
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
-
 // Layout component with header and footer
-const Layout = ({ children }) => (
-  <div>
-    <Header />
-    {children}
-    <Footer />
-  </div>
-);
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          
-
           <Route path="/watersport" element={<Watersport />} />
           <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
           <Route path="/AddActivity" element={<AddActivity />} />
@@ -44,10 +33,6 @@ function App() {
 
           <Route path="/navBar" element={<ReceptionNavbar />} />
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
-
-          
-          <Route path="/ManagerDashbord" element={<ManagerDash />} />
-          
         </Routes>
       </BrowserRouter>
     </div>
