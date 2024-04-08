@@ -26,11 +26,7 @@ function ReceptionNavbar() {
           className="d-flex flex-column  mt-5 justify-content-around fs-5"
           style={{ height: "250px" }}
         >
-          <li
-            className={`${
-              selectedId === "Home" ? `active` : `nav-item border`
-            }`}
-          >
+          <li className={`${selectedId === "Home" ? `bg-primary` : `nav-item border`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -40,13 +36,9 @@ function ReceptionNavbar() {
               Home
             </a>
           </li>
+          
           <li
-            className={`${
-              selectedId === "Watersports Management"
-                ? `active`
-                : `nav-item border`
-            }`}
-          >
+            className={`${selectedId === "Watersports Management" ? `bg-primary` : `nav-item border`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -56,16 +48,30 @@ function ReceptionNavbar() {
               Watersports Management
             </a>
           </li>
-          <li className="nav-item border">
+
+          <li className={`${selectedId === "Watersports Reservations" ? `bg-primary` : `nav-item border`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
-              href="/selectActivity"
+              href="/watersportReservations"
+              onClick={() => setSelectedId("Watersports Reservations")}
             >
               Watersport Reservations
             </a>
           </li>
-          <li className="nav-item border">
+
+          <li className={`${selectedId === "Add a Watersport Reservation" ? `bg-primary` : `nav-item border`}`}>
+            <a
+              className="nav-link text-white fs-6"
+              aria-current="page"
+              href="/selectActivity"
+              onClick={() => setSelectedId("Add a Watersport Reservation")}
+            >
+              Add Watersport Reservations
+            </a>
+          </li>
+
+          <li className={`${selectedId === "Room Reservations" ? `bg-primary` : `nav-item border`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -73,6 +79,7 @@ function ReceptionNavbar() {
             >
               Room Resrvations
             </a>
+
           </li>
           <li className="nav-item border">
             <a
