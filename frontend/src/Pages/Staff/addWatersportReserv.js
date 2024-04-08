@@ -14,7 +14,7 @@ const AddReserv = () => {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
-  // const [AdvancePayment, setAdvancePayment] = useState("");
+  const [Qty, setQty] = useState("");
 
   const { addReserv } = useAddReserv();
 
@@ -28,14 +28,14 @@ const AddReserv = () => {
       Address,
       checkinDate,
       checkinTime,
-      // AdvancePayment,
+      Qty,
       activityIds
     );
   };
 
   const validate = () => {
     const allFieldsFilled =
-      CusName && TelNo && Address && checkinDate && checkinTime;
+      CusName && TelNo && Address && checkinDate && checkinTime && Qty;
     const errorElement = document.getElementById("Error");
     if (!allFieldsFilled) {
       errorElement.innerHTML = "All fields must be filled.";
@@ -112,17 +112,17 @@ const AddReserv = () => {
                   onChange={(e) => setcheckinTime(e.target.value)}
                 />
               </div>
-              {/* <div className="mb-3">
-                <label htmlFor="advancePayment" className="form-label">
-                  Advance Payment
+              <div className="mb-3">
+                <label htmlFor="Qty" className="form-label">
+                  No.of.people
                 </label>
                 <input
                   type="number"
                   className="form-control"
-                  id="advancePayment"
-                  onChange={(e) => setAdvancePayment(e.target.value)}
+                  id="Qty"
+                  onChange={(e) => setQty(e.target.value)}
                 />
-              </div> */}
+              </div>
 
               <button
                 type="submit"

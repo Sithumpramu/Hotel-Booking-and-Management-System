@@ -20,7 +20,7 @@ function WatersportReservations() {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
-  // const [AdvancePayment, setAdvancePayment] = useState("");
+  const [Qty, setQty] = useState("");
   const [activityIds, setActivityIds] = useState([]);
 
   if (isLoading) {
@@ -48,7 +48,7 @@ function WatersportReservations() {
     setAddress(reservation.Address);
     setcheckinDate(reservation.checkinDate);
     setcheckinTime(reservation.checkinTime);
-    // setAdvancePayment(reservation.AdvancePayment);
+    setQty(reservation.Qty);
     setActivityIds(reservation.activityIds);
   };
 
@@ -60,7 +60,7 @@ function WatersportReservations() {
       Address,
       checkinDate,
       checkinTime,
-      // AdvancePayment,
+      Qty,
       activityIds
     );
   };
@@ -87,7 +87,7 @@ function WatersportReservations() {
                   <th scope="col">Address</th>
                   <th scope="col">CheckIn Date</th>
                   <th scope="col">CheckIn Time</th>
-                  {/* <th scope="col">Advance Payment</th> */}
+                  <th scope="col">Qty</th>
                   <th scope="col">Activities</th>
                   <th></th>
                   <th></th>
@@ -181,22 +181,22 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      {/* <td>
+                      <td>
                         {nameToUpdate === reservation._id ? (
                           <input
                             class="tabledit-input form-control input-sm"
                             type="number"
-                            name="AdvancePayment"
-                            defaultValue={reservation.AdvancePayment}
+                            name="Qty"
+                            defaultValue={reservation.Qty}
                             disabled=""
                             onChange={(e) => {
-                              setAdvancePayment(e.target.value);
+                              setQty(e.target.value);
                             }}
                           ></input>
                         ) : (
-                          <td>{reservation.AdvancePayment}</td>
+                          <td>{reservation.Qty}</td>
                         )}
-                      </td> */}
+                      </td>
 
                       <td>
                         {nameToUpdate === reservation._id ? (
