@@ -133,7 +133,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                          className="tabledit-input form-control input-sm"
                             type="text"
                             name="Address"
                             defaultValue={reservation.Address}
@@ -150,7 +150,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                          className="tabledit-input form-control input-sm"
                             type="Date"
                             name="checkinDate"
                             defaultValue={reservation.checkinDate}
@@ -167,7 +167,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                          className="tabledit-input form-control input-sm"
                             type="Time"
                             name="checkinTime"
                             defaultValue={reservation.checkinTime}
@@ -184,7 +184,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="number"
                             name="Qty"
                             defaultValue={reservation.Qty}
@@ -201,7 +201,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <select
-                            class="form-select"
+                            className="form-select"
                             aria-label="Default select example"
                             multiple
                             defaultValue={reservation.activityIds}

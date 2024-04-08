@@ -60,9 +60,11 @@ function WatersportManage() {
                         />
                       )}
                       <h5 className="card-title">{Watersport.Activity}</h5>
-                      <p className="card-text">{Watersport.Time}</p>
-                      <p className="card-text">Rs.{Watersport.Price}.00</p>
-                      <p className="card-text">{Watersport.Description}</p>
+                      <p className="card-text fw-medium">{Watersport.Time}</p>
+                      <p className="card-text fw-medium">Rs.{Watersport.Price}.00</p>
+                      Each Extra Person :
+                      <p className="card-text fw-medium text-dark bg-warning bg-opacity-50"> Rs.{Watersport.ExtraPrice}.00</p>
+                      <p className="card-text fw-medium">{Watersport.Description}</p>
                       <a
                         href="#"
                         className="btn btn-danger"

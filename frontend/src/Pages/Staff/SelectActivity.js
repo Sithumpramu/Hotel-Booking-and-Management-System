@@ -52,6 +52,9 @@ function SelectActivity() {
                   <th className="border border-black" scope="col">
                     Price
                   </th>
+                  <th className="border border-black" scope="col">
+                    ExtraPrice
+                  </th>
                 </tr>
 
                 {ActivityList.map((Watersport) => (
@@ -80,6 +83,10 @@ function SelectActivity() {
                       
                       <td className="border border-black">
                         Rs.{Watersport.Price}.00
+                      </td>
+
+                      <td className="border border-black">
+                        Rs.{Watersport.ExtraPrice}.00
                       </td>
                     </tr>
                   </tbody>

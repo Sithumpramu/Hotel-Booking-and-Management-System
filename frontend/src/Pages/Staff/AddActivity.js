@@ -7,19 +7,20 @@ const AddNew = () => {
   const [Time, setTime] = useState("");
   const [Price, setPrice] = useState("");
   const [Description, setDescription] = useState("");
+  const [ExtraPrice, setExtraPrice] = useState("");
   const [Image, setImage] = useState("");
   const { addActivity, isLoading, error } = useAddNew();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addActivity(Activity, Time, Price, Description, Image);
+    await addActivity(Activity, Time, Price, Description, ExtraPrice, Image);
   };
 
   function validation() {
     var submit = document.getElementById("submit");
 
-    if (Activity === "" && Time === "" && Price === "" && Description === "") {
+    if (Activity === "" && Time === "" && Price === "" && Description === "" && ExtraPrice === "") {
       // document.getElementById("emailError").innerHTML = "Can't be empty";
 
       document.getElementById("Error").innerHTML = "All fields must be filled.";
@@ -91,6 +92,19 @@ const AddNew = () => {
                   aria-describedby="emailHelp"
                   onChange={(e) => {
                     setDescription(e.target.value);
+                  }}
+                />
+              </div>
+              <div class="mb-3">
+                <label for="ExtraPrice" className="form-label">
+                Extra Person Price
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="ExtraPrice"
+                  onChange={(e) => {
+                    setExtraPrice(e.target.value);
                   }}
                 />
               </div>
