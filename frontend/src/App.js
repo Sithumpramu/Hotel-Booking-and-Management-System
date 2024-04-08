@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
 
-import Home from "./Pages/Home";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
@@ -19,7 +15,6 @@ import ReceptionNavbar from "./components/receptionNavbar";
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
 
-import Rooms from "./Pages/Rooms";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -34,22 +29,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<InitialRedirect />} />
-          <Route
-            path="/Dashboard"
-            element={
-              <Layout>
-                <Home />
-              </Layout>
-            }
-          />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/ForgotPwd" element={<ForgotPassword />} />
-          <Route
-            path="/user/resetPassword/:token"
-            element={<PasswordReset />}
-          />
+          
 
           <Route path="/watersport" element={<Watersport />} />
           <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
@@ -64,11 +44,10 @@ function App() {
 
           <Route path="/navBar" element={<ReceptionNavbar />} />
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
-          <Route path="/AdminDashbord" element={<AdminDash />} />
+
+          
           <Route path="/ManagerDashbord" element={<ManagerDash />} />
           
-     
-          <Route path="/Rooms" element={<Rooms />} />
         </Routes>
       </BrowserRouter>
     </div>
