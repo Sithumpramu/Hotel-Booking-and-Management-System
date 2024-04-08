@@ -5,7 +5,7 @@ const watersportReservModel = require("../Models/watersportReservModel");
 // Function to add a new reservation
 const addReservation = async (req, res) => {
   console.log("addReservation");
-  const { CusName, TelNo, Address, checkinDate, checkinTime, AdvancePayment, activityIds } =
+  const { CusName, TelNo, Address, checkinDate, checkinTime, activityIds } =
     req.body;
 
   try {
@@ -15,7 +15,7 @@ const addReservation = async (req, res) => {
       Address,
       checkinDate,
       checkinTime,
-      AdvancePayment,
+      // AdvancePayment,
       activityIds,
     });
     res.status(201).json(newReserv); // Respond with the created document

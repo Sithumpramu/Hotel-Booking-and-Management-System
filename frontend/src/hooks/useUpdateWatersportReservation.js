@@ -13,7 +13,7 @@ const useUpdateReserv = () => {
     Address,
     checkinDate,
     checkinTime,
-    AdvancePayment,
+    // AdvancePayment,
     activityIds
   ) => {
     console.log("updateReserv");
@@ -24,7 +24,7 @@ const useUpdateReserv = () => {
       Address,
       checkinDate,
       checkinTime,
-      AdvancePayment,
+      // AdvancePayment,
       activityIds,
     };
 

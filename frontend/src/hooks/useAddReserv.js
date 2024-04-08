@@ -12,7 +12,7 @@ const useAddReserv = () => {
     Address,
     checkinDate,
     checkinTime,
-    AdvancePayment,
+    // AdvancePayment,
     activityIds
   ) => {
     const reservationDetails = {
@@ -21,7 +21,7 @@ const useAddReserv = () => {
       Address,
       checkinDate,
       checkinTime,
-      AdvancePayment,
+      // AdvancePayment,
       activityIds,
     };
 

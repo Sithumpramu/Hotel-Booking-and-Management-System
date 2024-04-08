@@ -14,7 +14,7 @@ const AddReserv = () => {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
-  const [AdvancePayment, setAdvancePayment] = useState("");
+  // const [AdvancePayment, setAdvancePayment] = useState("");
 
   const { addReserv } = useAddReserv();
 
@@ -28,14 +28,14 @@ const AddReserv = () => {
       Address,
       checkinDate,
       checkinTime,
-      AdvancePayment,
+      // AdvancePayment,
       activityIds
     );
   };
 
   const validate = () => {
     const allFieldsFilled =
-      CusName && TelNo && Address && checkinDate && checkinTime && AdvancePayment;
+      CusName && TelNo && Address && checkinDate && checkinTime;
     const errorElement = document.getElementById("Error");
     if (!allFieldsFilled) {
       errorElement.innerHTML = "All fields must be filled.";
@@ -112,7 +112,7 @@ const AddReserv = () => {
                   onChange={(e) => setcheckinTime(e.target.value)}
                 />
               </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label htmlFor="advancePayment" className="form-label">
                   Advance Payment
                 </label>
@@ -122,7 +122,7 @@ const AddReserv = () => {
                   id="advancePayment"
                   onChange={(e) => setAdvancePayment(e.target.value)}
                 />
-              </div>
+              </div> */}
 
               <button
                 type="submit"

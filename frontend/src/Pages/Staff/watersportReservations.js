@@ -20,7 +20,7 @@ function WatersportReservations() {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
-  const [AdvancePayment, setAdvancePayment] = useState("");
+  // const [AdvancePayment, setAdvancePayment] = useState("");
   const [activityIds, setActivityIds] = useState([]);
 
   if (isLoading) {
@@ -48,7 +48,7 @@ function WatersportReservations() {
     setAddress(reservation.Address);
     setcheckinDate(reservation.checkinDate);
     setcheckinTime(reservation.checkinTime);
-    setAdvancePayment(reservation.AdvancePayment);
+    // setAdvancePayment(reservation.AdvancePayment);
     setActivityIds(reservation.activityIds);
   };
 
@@ -60,7 +60,7 @@ function WatersportReservations() {
       Address,
       checkinDate,
       checkinTime,
-      AdvancePayment,
+      // AdvancePayment,
       activityIds
     );
   };
@@ -80,14 +80,14 @@ function WatersportReservations() {
             <h1 className="mb-4 mt-5">Watersport Reservations</h1>
 
             <div className="d-flex align-items-center justify-content-around mb-3">
-              <table className="table" style={{ width: "65rem" }}>
+              <table className="table" style={{ width: "75rem" }}>
                 <tr className="border border-black" scope="col">
                   <th scope="col">Customer Name</th>
                   <th scope="col">Contact No</th>
                   <th scope="col">Address</th>
                   <th scope="col">CheckIn Date</th>
                   <th scope="col">CheckIn Time</th>
-                  <th scope="col">Advance Payment</th>
+                  {/* <th scope="col">Advance Payment</th> */}
                   <th scope="col">Activities</th>
                   <th></th>
                   <th></th>
@@ -181,7 +181,7 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      {/* <td>
                         {nameToUpdate === reservation._id ? (
                           <input
                             class="tabledit-input form-control input-sm"
@@ -196,7 +196,7 @@ function WatersportReservations() {
                         ) : (
                           <td>{reservation.AdvancePayment}</td>
                         )}
-                      </td>
+                      </td> */}
 
                       <td>
                         {nameToUpdate === reservation._id ? (
