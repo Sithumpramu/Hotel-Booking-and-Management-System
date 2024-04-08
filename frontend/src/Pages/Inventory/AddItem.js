@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AddItem = () => {
@@ -38,13 +37,23 @@ const AddItem = () => {
             stockCount: stockCount,
         }
         console.log(data);
-    
-        axios.post("http://localhost:8000/inventory/add", data)
-        .then((res) => {
-          alert("Item added to inventory");
-          navigate(-1);
+
+        fetch('http://localhost:4000/roominventory/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         })
-      }
+          .then((response) => response.json())
+          .then((data) => {
+            alert('Item added to inventory');
+            navigate(-1);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      };
     
   return (
     <>

@@ -1,68 +1,71 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const HotelView = () => {
-    const [state, setState] = useState({
-        inventory: []
-    })
+  const [inventory, setInventory] = useState([]);
 
-    useEffect(() => {
-        axios.get("http://localhost:8000/inventory/").then(res =>{
-            if(res.data){
-              setState({
-                inventory:res.data
-              })
-            }
-          })
-        }, [state]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/roominventory/');
+        if (response.ok) {
+          const data = await response.json();
+          setInventory(data);
+        } else {
+          throw new Error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
-      <div class="col">
-          {/* <Header dashboard={"Room Inventory Management System"} /> */}
+      <div className="col">
+        {/* <Header dashboard={"Room Inventory Management System"} /> */}
       </div>
-      <div class="container-fluid">
-        <div class="row flex-nowrap">
-          <div class="col py-3">
-
-            {/* details */}
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                    <th scope="col">Item ID</th>
-                    <th scope="col">Item Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Unit_Price</th>
-                    <th scope="col">Stock Count</th>
-                    <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {state.inventory.map((inventory, index) => (
-                    <tr key={index}>
-                    <td>{inventory.itemID}</td>
-                    <td>{inventory.itemName}</td>
-                    <td>{inventory.description}</td>
-                    <td>{inventory.unit_price}</td>
-                    <td>{inventory.stockCount}</td>
+      <div className="container-fluid">
+        <div className="row flex-nowrap">
+          <div className="col py-3">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Item ID</th>
+                  <th scope="col">Item Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Unit_Price</th>
+                  <th scope="col">Stock Count</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {inventory.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.itemID}</td>
+                    <td>{item.itemName}</td>
+                    <td>{item.description}</td>
+                    <td>{item.unit_price}</td>
+                    <td>{item.stockCount}</td>
                     <td>
-                    <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-success btn-sm">
-                        <a href={`/pages/inventory/edit/${inventory._id}`} style={{textDecoration: 'none', color:'white'}}>
-                            update
-                        </a>
-                    </button>
-                    </div>
+                      <div className="d-grid gap-2">
+                        <button type="button" className="btn btn-success btn-sm">
+                          <a href={`/pages/inventory/edit/${item._id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                            Update
+                          </a>
+                        </button>
+                      </div>
                     </td>
-                    </tr>
+                  </tr>
                 ))}
-                </tbody>
-                </table>
-
-            </div>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HotelView
+export default HotelView;
