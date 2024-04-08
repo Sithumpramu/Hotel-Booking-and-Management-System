@@ -58,7 +58,7 @@ function App() {
           
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
           <Route path="/AdminDashbord" element={<AdminDash />} />
-          <Route path="/ManagerDashbord" element={<ManagerDash />} />
+          <Route path="/ManagerDash" element={<ManagerDash />} />
           <Route path="/StaffDashbord" element={<StaffDash />} />
           <Route path="/Staffmanage" element={<Staffmanage />} />
           <Route path="/Usermanage" element={<Usermanage />} />
