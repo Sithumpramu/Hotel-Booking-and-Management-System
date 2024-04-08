@@ -28,7 +28,7 @@ function WatersportManage() {
   };
 
   return (
-    <div className="row">
+    <div className="row p-0">
       <ReceptionNavbar />
       <div className="col">
         <div>
