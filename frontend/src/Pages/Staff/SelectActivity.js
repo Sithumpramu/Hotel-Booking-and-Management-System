@@ -15,25 +15,6 @@ function SelectActivity() {
     navigate("/addWatersportsReservation", { state: { activityIds } });
   };
 
-  //const [isDisabled, setIsDisabled] = useState(false);
-
-  // const disable = () => {
-  //   setIsDisabled(true);
-  //   // Add any other logic you need to handle when the button is clicked
-  // };
-
-  // if (isLoading) {
-  //   return (
-  //     <div className="alert alert-primary" role="alert">
-  //       Loading...
-  //     </div>
-  //   );
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
-
   const getActivities = (event, id) => {
     const checked = event.target.checked;
     if (checked) {
@@ -56,14 +37,17 @@ function SelectActivity() {
             <h1 className="mb-4 mt-5">Watersport Activities</h1>
 
             <div className="d-flex align-items-center justify-content-around mb-3">
-              <table className="table table-info" style={{ width: "35rem" }}>
+              <table className="table table-info" style={{ width: "50rem" }}>
                 <tr>
-                  <td></td>
+                  <th></th>
                   <th className="border border-black" scope="col">
                     Activity Name
                   </th>
                   <th className="border border-black" scope="col">
                     Estimated Time
+                  </th>
+                  <th className="border border-black" scope="col">
+                    Description
                   </th>
                   <th className="border border-black" scope="col">
                     Price
@@ -81,21 +65,28 @@ function SelectActivity() {
                           }
                         ></input>
                       </td>
+
                       <td className="border border-black">
                         {Watersport.Activity}
                       </td>
-                      <td className="border border-black">{Watersport.Time}</td>
+
+                      <td className="border border-black">
+                        {Watersport.Time}
+                      </td>
+
+                      <td className="border border-black">
+                        {Watersport.Description}
+                      </td>
+                      
                       <td className="border border-black">
                         Rs.{Watersport.Price}.00
                       </td>
-                      {/* <td>
-                    <button className="btn btn-primary">Add</button>
-                  </td> */}
                     </tr>
                   </tbody>
                 ))}
               </table>
             </div>
+
             <button
               className="btn btn-primary"
               onClick={() => handleAddClick(idList)}
