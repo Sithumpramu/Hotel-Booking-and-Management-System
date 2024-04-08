@@ -42,7 +42,7 @@ function WatersportManage() {
             {/* <div className="row"> */}
               {ActivityList.map((Watersport) => (
                 <div className="col-lg-3">
-                  <div className="card">
+                  <div className="card mb-4">
                     <div className="card-body">
                       {Watersport.Image && Watersport.Image.data && (
                         <img

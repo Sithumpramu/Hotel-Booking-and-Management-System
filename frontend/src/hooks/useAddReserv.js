@@ -10,6 +10,7 @@ const useAddReserv = () => {
     CusName,
     TelNo,
     Address,
+    checkinDate,
     checkinTime,
     AdvancePayment,
     activityIds
@@ -18,6 +19,7 @@ const useAddReserv = () => {
       CusName,
       TelNo,
       Address,
+      checkinDate,
       checkinTime,
       AdvancePayment,
       activityIds,

@@ -18,6 +18,10 @@ const ReservationSchema = new Schema({
         type: String,
         required: true,
     },
+    checkinDate:{
+        type: String,
+        required: true,
+    },
     checkinTime:{
         type: String,
         required: true,

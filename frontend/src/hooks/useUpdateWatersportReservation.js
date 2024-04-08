@@ -11,6 +11,7 @@ const useUpdateReserv = () => {
     CusName,
     TelNo,
     Address,
+    checkinDate,
     checkinTime,
     AdvancePayment,
     activityIds
@@ -21,6 +22,7 @@ const useUpdateReserv = () => {
       CusName,
       TelNo,
       Address,
+      checkinDate,
       checkinTime,
       AdvancePayment,
       activityIds,

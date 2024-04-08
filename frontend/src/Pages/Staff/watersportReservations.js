@@ -18,6 +18,7 @@ function WatersportReservations() {
   const [CusName, setCusName] = useState("");
   const [TelNo, setTelNo] = useState("");
   const [Address, setAddress] = useState("");
+  const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
   const [AdvancePayment, setAdvancePayment] = useState("");
   const [activityIds, setActivityIds] = useState([]);
@@ -45,6 +46,7 @@ function WatersportReservations() {
     setCusName(reservation.CusName);
     setTelNo(reservation.TelNo);
     setAddress(reservation.Address);
+    setcheckinDate(reservation.checkinDate);
     setcheckinTime(reservation.checkinTime);
     setAdvancePayment(reservation.AdvancePayment);
     setActivityIds(reservation.activityIds);
@@ -56,6 +58,7 @@ function WatersportReservations() {
       CusName,
       TelNo,
       Address,
+      checkinDate,
       checkinTime,
       AdvancePayment,
       activityIds
@@ -78,36 +81,25 @@ function WatersportReservations() {
 
             <div className="d-flex align-items-center justify-content-around mb-3">
               <table className="table" style={{ width: "65rem" }}>
-                <tr>
-                  <th className="border border-black" scope="col">
-                    Customer Name
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Contact No
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Address
-                  </th>
-                  <th className="border border-black" scope="col">
-                    checkIn Time
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Advance Payment
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Activities
-                  </th>
+                <tr className="border border-black" scope="col">
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Contact No</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">CheckIn Date</th>
+                  <th scope="col">CheckIn Time</th>
+                  <th scope="col">Advance Payment</th>
+                  <th scope="col">Activities</th>
                   <th></th>
                   <th></th>
                 </tr>
 
                 {reservationList.map((reservation) => (
                   <tbody key={reservation._id}>
-                    <tr>
+                    <tr className="border border-black" scope="col">
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="text"
                             name="CusName"
                             defaultValue={reservation.CusName}
@@ -124,7 +116,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                            class="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="number"
                             name="TelNo"
                             defaultValue={reservation.TelNo}
@@ -152,6 +144,23 @@ function WatersportReservations() {
                           ></input>
                         ) : (
                           <td>{reservation.Address}</td>
+                        )}
+                      </td>
+
+                      <td>
+                        {nameToUpdate === reservation._id ? (
+                          <input
+                            class="tabledit-input form-control input-sm"
+                            type="Date"
+                            name="checkinDate"
+                            defaultValue={reservation.checkinDate}
+                            disabled=""
+                            onChange={(e) => {
+                              setcheckinDate(e.target.value);
+                            }}
+                          ></input>
+                        ) : (
+                          <td>{reservation.checkinDate}</td>
                         )}
                       </td>
 

@@ -26,7 +26,7 @@ function ReceptionNavbar() {
           className="d-flex flex-column  mt-5 justify-content-around fs-5"
           style={{ height: "250px" }}
         >
-          <li className={`${selectedId === "Home" ? `bg-primary` : `nav-item border`}`}>
+          <li className={`${selectedId === "Home" ? `bg-secondary` : `nav-item border`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -38,7 +38,7 @@ function ReceptionNavbar() {
           </li>
           
           <li
-            className={`${selectedId === "Watersports Management" ? `bg-primary` : `nav-item border`}`}>
+            className={`${selectedId === "Watersports Management" ? `bg-secondary` : `nav-item border my-2`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -49,7 +49,7 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Watersports Reservations" ? `bg-primary` : `nav-item border`}`}>
+          <li className={`${selectedId === "Watersports Reservations" ? `bg-secondary` : `nav-item border my-2`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -60,7 +60,7 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Add a Watersport Reservation" ? `bg-primary` : `nav-item border`}`}>
+          <li className={`${selectedId === "Add a Watersport Reservation" ? `bg-secondary` : `nav-item border my-2`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -71,7 +71,7 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Room Reservations" ? `bg-primary` : `nav-item border`}`}>
+          <li className={`${selectedId === "Room Reservations" ? `bg-secondary` : `nav-item border my-2`}`}>
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -108,41 +108,6 @@ function ReceptionNavbar() {
           </a>
         </div>
       </ul>
-
-      {/* <div className="modal fade" id="Modal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-          <div className="modal-dialog">
-          <form onSubmit={handleSubmit}>
-            <div className="modal-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">Admin Profile</h1>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={resetfeilds}></button>
-              </div>
-              {user &&(
-                  <div>
-                 <h6>Email:<span class="ms-1">{user.email}</span></h6>
-                 </div>
-                 )}
-              <div className="modal-body">
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password:</label>
-                  <input type="password" className="form-control" id="Password1" placeholder="Enter your password" onChange={(e)=>{setPassword(e.target.value);}}/>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="confirmPassword" className="form-label">New Password:</label>
-                  <input type="password" className="form-control" id="Password2" placeholder="Enter New password" onChange={(e)=>{setNewPassword(e.target.value);}} />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              
-                  <button className="btn btn-outline-primary" type="submit" disabled={isLoading}>Update</button>
-                  {error && <div className="error bg-danger my-2" style={{color:"white"}}>{error}</div>}
-                  {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
-               
-              </div>
-            </div></form>
-          </div>
-       </div> */}
     </div>
   );
 }

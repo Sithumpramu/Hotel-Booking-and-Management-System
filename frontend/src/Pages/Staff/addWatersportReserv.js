@@ -12,6 +12,7 @@ const AddReserv = () => {
   const [CusName, setCusName] = useState("");
   const [TelNo, setTelNo] = useState("");
   const [Address, setAddress] = useState("");
+  const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
   const [AdvancePayment, setAdvancePayment] = useState("");
 
@@ -25,6 +26,7 @@ const AddReserv = () => {
       CusName,
       TelNo,
       Address,
+      checkinDate,
       checkinTime,
       AdvancePayment,
       activityIds
@@ -33,7 +35,7 @@ const AddReserv = () => {
 
   const validate = () => {
     const allFieldsFilled =
-      CusName && TelNo && Address && checkinTime && AdvancePayment;
+      CusName && TelNo && Address && checkinDate && checkinTime && AdvancePayment;
     const errorElement = document.getElementById("Error");
     if (!allFieldsFilled) {
       errorElement.innerHTML = "All fields must be filled.";
@@ -86,6 +88,17 @@ const AddReserv = () => {
                   className="form-control"
                   id="address"
                   onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="checkinDate" className="form-label">
+                  Check-in Date
+                </label>
+                <input
+                  type="Date"
+                  className="form-control"
+                  id="checkinDate"
+                  onChange={(e) => setcheckinDate(e.target.value)}
                 />
               </div>
               <div className="mb-3">
