@@ -3,10 +3,10 @@ import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import useImageFetch from '../hooks/useImgfetch';
 
-function Home({ imageName }){
-  const imageUrl = useImageFetch(imageName); 
+
+function Home(){
+ 
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const navigate = useNavigate();
@@ -245,7 +245,7 @@ function Home({ imageName }){
          
            <div className="card text-bg-dark mt-5">
            
-             <img src={"Panorama.jpg"} alt={`Image: ${imageName}`} className="card-img" style={{ height: "50vh"}}></img>
+             <img src="Panorama.jpg" className="card-img" style={{ height: "50vh"}}></img>
              <div className="card-img-overlay">
                
                <h4 className="card-text">"Experience comfort beyond measure, book your stay today!"</h4>

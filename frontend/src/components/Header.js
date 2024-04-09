@@ -4,13 +4,13 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useUpdate } from '../hooks/useUpdate';
 import { useDelete } from '../hooks/useDelete';
 import { useLocation } from 'react-router-dom';
-import useImageFetch from '../hooks/useImgfetch';
 
-const Header = (imageName) => {
+
+const Header = () => {
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const location = useLocation();
-  const imageUrl = useImageFetch(imageName); 
+
 
    const [password, setPassword] = useState('')
    const [newpassword, setNewPassword] = useState('') 
@@ -62,8 +62,8 @@ const Header = (imageName) => {
       <div >
         <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3" >
           <div className="container-fluid">
-          {imageUrl && (
-          <img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`} style={{width:"170px", height:"70px"}}></img>)}
+         
+          <img src="Sunset Araliya horizontal.png" style={{width:"170px", height:"70px"}}></img>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

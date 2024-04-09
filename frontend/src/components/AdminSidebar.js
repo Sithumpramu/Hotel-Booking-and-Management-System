@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import useImageFetch from '../hooks/useImgfetch';
+
 import { useLogout } from '../hooks/useLogout';
 import { useUpdate } from '../hooks/useUpdate';
 import { useAuthContext } from '../hooks/useAuthContext'
-function Adminsidebar(imageName){
-  const imageUrl = useImageFetch(imageName); 
+function Adminsidebar(){
+
   const {Update ,error,status,isLoading} = useUpdate()
   const {logout}=useLogout()
   const [password, setPassword] = useState('')
@@ -33,8 +33,8 @@ function Adminsidebar(imageName){
     return(
         <div className="col-3 m-0 p-0">
         <ul className="nav flex-column bg-black pe-1 vh-100">
-        {imageUrl && (
-        <div className="d-flex justify-content-center align-items-center"><img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`}  style={{width:"150px"}} className="mt-4 "></img></div>)}
+      
+        <div className="d-flex justify-content-center align-items-center"><img src="Sunset Araliya horizontal.png" style={{width:"150px"}} className="mt-4 "></img></div>
         <div className="d-flex flex-column  mt-5 justify-content-around fs-5" style={{height:"250px"}}>
           <li className="nav-item border">
             <a className="nav-link text-white fs-6" aria-current="page" href="/Staffmanage">Staff Management</a>

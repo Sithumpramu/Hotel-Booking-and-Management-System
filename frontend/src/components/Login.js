@@ -2,14 +2,14 @@ import React, {useState,useEffect} from "react";
 
 import { useLogin } from "../hooks/useLogin";
 import { useLocation, useNavigate } from 'react-router-dom';
-import useImageFetch from '../hooks/useImgfetch';
 
 
-  const Login = ({ imageName }) => {
+
+  const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin()
-    const imageUrl = useImageFetch(imageName); 
+    
     
   
     const handleSubmit = async (e) => {
@@ -24,8 +24,8 @@ import useImageFetch from '../hooks/useImgfetch';
 
     return(
     <div className="container-fluid d-flex align-items-center justify-content-center vh-100 " style={{backgroundImage: 'url("Wave.svg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-      {imageUrl && (
-         <img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`} style={{width: "200px", position:"absolute", top:"12vh"}}></img>)}
+      
+         <img src="Sunset Araliya horizontal.png" style={{width: "200px", position:"absolute", top:"12vh"}}></img>
         <div className="container bg-body-tertiary w-50 pt-4 rounded">
           <form action="" onSubmit={handleSubmit} >
            <div className="mb-3">
