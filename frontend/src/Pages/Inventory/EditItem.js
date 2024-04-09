@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const EditItem = () => {
-  const params = useParams();
+  const { id } = useParams(); // Fetching id from URL params
   const navigate = useNavigate();
   const [state, setState] = useState({
     itemID: '',
@@ -23,17 +23,15 @@ export const EditItem = () => {
     const { itemID, itemName, description, unit_price, stockCount } = state;
 
     const data = {
-      itemID: itemID,
-      itemName: itemName,
-      description: description,
-      unit_price: unit_price,
-      stockCount: stockCount,
+      itemID,
+      itemName,
+      description,
+      unit_price,
+      stockCount,
     };
 
-    const {  } = params;
-
     try {
-      const response = await fetch(`http://localhost:4000/roominventory/update/${itemID}`, {
+      const response = await fetch(`http://localhost:4000/roominventory/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -51,8 +49,6 @@ export const EditItem = () => {
       console.error('Error:', error);
     }
   };
-
-
 
   return (
     <>
