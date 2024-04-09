@@ -39,15 +39,11 @@ router.route("/").get((req, res) => {
 
 //updating data
 router.route('/update/:id').put(async (req, res) => {
-    let id = req.params.id;
-    const {
-    itemID,
-    itemName,
-    description,
-    unit_price,
-    stockCount
+    const {id}= req.params;
+    const {itemID,itemName,description,unit_price,stockCount
     } = req.body;
 
+    try{
     const updateRoomInventory = {
         itemID,
         itemName,
@@ -56,14 +52,22 @@ router.route('/update/:id').put(async (req, res) => {
         stockCount
     }
 
-    const update = await roominventory.findByIdAndUpdate(id, updateRoomInventory)
-    .then(() => {
-        res.status(200).send({status: "Room inventory is updated"})
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).send({status: "Error with updating data", error: err.message});
-    }) 
-})
+    const update = await roominventory.findOneAndUpdate(
+        { itemID:id},
+        {updateRoomInventory},
+        {new:true}
+    );
+    // .then(() => {
+    //     res.status(200).send({status: "Room inventory is updated"})
+    if (!update) {
+        return res.status(404).json({ message: "error" });
+      }
+  
+      res.status(200).json(update);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
 
 
 //deleting data
