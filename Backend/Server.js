@@ -3,8 +3,6 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
-const watersportRoutes = require('./Routes/watersport');
-const WatersportReservationRoutes = require('./Routes/WatersportReservation');
 const userRoutes = require('./Routes/user')
 const hotelRoutes = require('./Routes/HotelSchema')
 
@@ -23,8 +21,6 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
-app.use('/watersport',watersportRoutes)
-app.use('/watersportReservation',WatersportReservationRoutes)
 app.use('/hotel', hotelRoutes)
 
 // connect to db
