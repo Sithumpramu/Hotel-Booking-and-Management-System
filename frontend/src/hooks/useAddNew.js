@@ -6,7 +6,7 @@ const useAddNew = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addActivity = async (Activity, Time, Price, Description, ExtraPrice, ImageFile) => {
+  const addActivity = async (Activity, Time, Price, Description, qtyPerRound, ExtraPrice, ImageFile) => {
     setIsLoading(true);
     setError(null);
 
@@ -17,6 +17,7 @@ const useAddNew = () => {
     formData.append("Time", Time);
     formData.append("Price", Price);
     formData.append("Description", Description);
+    formData.append("qtyPerRound", qtyPerRound);
     formData.append("ExtraPrice", ExtraPrice);
     if (ImageFile) {
       formData.append("Image", ImageFile);

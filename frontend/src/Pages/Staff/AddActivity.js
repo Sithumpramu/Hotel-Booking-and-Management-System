@@ -7,6 +7,7 @@ const AddNew = () => {
   const [Time, setTime] = useState("");
   const [Price, setPrice] = useState("");
   const [Description, setDescription] = useState("");
+  const [qtyPerRound, setqtyPerRound] = useState("");
   const [ExtraPrice, setExtraPrice] = useState("");
   const [Image, setImage] = useState("");
   const { addActivity, isLoading, error } = useAddNew();
@@ -14,13 +15,13 @@ const AddNew = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addActivity(Activity, Time, Price, Description, ExtraPrice, Image);
+    await addActivity(Activity, Time, Price, Description, qtyPerRound, ExtraPrice, Image);
   };
 
   function validation() {
     var submit = document.getElementById("submit");
 
-    if (Activity === "" && Time === "" && Price === "" && Description === "" && ExtraPrice === "") {
+    if (Activity === "" && Time === "" && Price === "" && Description === "" && qtyPerRound === "" && ExtraPrice === "") {
       // document.getElementById("emailError").innerHTML = "Can't be empty";
 
       document.getElementById("Error").innerHTML = "All fields must be filled.";
@@ -92,6 +93,20 @@ const AddNew = () => {
                   aria-describedby="emailHelp"
                   onChange={(e) => {
                     setDescription(e.target.value);
+                  }}
+                />
+              </div>
+              <div class="mb-3">
+                <label for="qtyPerRound" className="form-label">
+                  Qty Per Round
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="qtyPerRound"
+                  aria-describedby="emailHelp"
+                  onChange={(e) => {
+                    setqtyPerRound(e.target.value);
                   }}
                 />
               </div>
