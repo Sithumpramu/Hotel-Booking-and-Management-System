@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const EditItem = () => {
-  const { id } = useParams(); // Fetching id from URL params
   const navigate = useNavigate();
   const [state, setState] = useState({
     itemID: '',
@@ -31,8 +30,8 @@ export const EditItem = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:4000/roominventory/update/${id}`, {
-        method: 'PUT',
+      const response = await fetch(`http://localhost:4000/roominventory/update/${itemID}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
