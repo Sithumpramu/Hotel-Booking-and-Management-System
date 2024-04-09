@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./halllist.css"; // Import custom CSS file for additional styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBed, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons';
+
 
 const ViewHall = () => {
   const { id } = useParams(); // Extract the id parameter from the URL
@@ -26,69 +28,84 @@ const ViewHall = () => {
   }, [id]); // Make sure to re-run the effect whenever the id changes
 
   return (
-    <div className="container">
-      <div className="mt-5 mb-4">
-        <h1 className="fw-bold display-4 text-light-blue serif">Hall Details</h1>
-      </div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          {/* Carousel for Photos */}
-          <div className="d-flex justify-content-center">
-            <div id="hallCarousel" className="carousel slide mb-4" data-bs-ride="carousel">
-              <div className="carousel-inner">
-                {hall.photos.map((photo, index) => (
-                  <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                    <img src={photo} className="d-block w-100" style={{ width: '600px', height: '399px', objectFit: 'cover' }} alt={`Hall Photo ${index + 1}`} />
-                  </div>
-                ))}
+    <div>
+   
+      <div className="container">
+        <div className="mt-5 mb-4">
+          <h1 className="fw-bold display-4 text-light-blue serif" style={{ fontSize: "2.5rem" }}>venue Details</h1>
+        </div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="row">
+            {/* Image Carousel */}
+            <div className="col-md-6 mb-4">
+              <div id="hallCarousel" className="carousel slide" data-bs-ride="carousel">
+                <div className="carousel-inner">
+                  {hall.photos.map((photo, index) => (
+                    <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                      <img src={photo} className="d-block w-100 rounded hall-image" style={{ width: '600px', height: '399px', objectFit: 'cover', transition: 'transform 0.3s ease-in-out' }} alt={`Hall Photo ${index + 1}`} />
+                    </div>
+                  ))}
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#hallCarousel" data-bs-slide="prev">
+                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#hallCarousel" data-bs-slide="next">
+                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
               </div>
-              <button className="carousel-control-prev" type="button" data-bs-target="#hallCarousel" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#hallCarousel" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-              </button>
+            </div>
+
+            {/* Description, Price, Capacity Card */}
+            <div className="col-md-6 mb-4 serif">
+              <div className="card border-0 hall-info-card">
+                <div className="card-body">
+                  <h5 className="card-title fw-bold" style={{ fontSize: "2.5rem" }}>Description</h5>
+                  <p className="card-text">{hall.description}</p>
+                  <h5 className="card-title fw-bold" style={{ fontSize: "2.25rem" }}>Price</h5>
+                  <p className="card-text">{hall.price}</p>
+                  <h5 className="card-title mt-4 fw-bold" style={{ fontSize: "2.25rem" }}>Capacity</h5>
+                  <p className="card-text">{hall.capacity}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Facilities Card */}
+            <div className="col-md-6 mb-4 serif">
+              <div className="card border-0 hall-info-card">
+                <div className="card-body justify-content-center align-items-center " >
+                  <h5 className="card-title fw-bold" style={{ fontSize: "2.25rem" }}>Facilities</h5>
+                  <div className="d-flex align-items-center">
+                    {/* Map through facilities and render each */}
+                    {hall.facilities.map((facility, index) => (
+                      <div key={index} className="me-4">
+                        {/* Render facility icon and name */}
+                        {facility === 'Free WiFi' && <FontAwesomeIcon icon={faWifi} className="fs-8 me-1 mr-6" />}
+                        {facility === 'Al La Carte Menu' && <FontAwesomeIcon icon={faUtensils} className="fs-8 me-1 mr-3 " />}
+                        {/* Add more conditions for other facilities */}
+                        {/* Render facility name */}
+                        <span className="fs-4">{facility}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Description */}
-          <div className="mb-4 text-center" style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <h2>Description:</h2>
-            <p style={{ wordWrap: 'break-word' }}>{hall.description}</p>
-          </div>
+        )}
 
-          {/* Facilities */}
-          <div className="mb-4">
-            <h2>Facilities:</h2>
-            <p>{hall.facilities.join(', ')}</p>
-          </div>
-
-          {/* Capacity */}
-          <div className="mb-4">
-            <h2>Capacity:</h2>
-            <p>{hall.capacity}</p>
-          </div>
-
-          {/* Price */}
-          <div>
-            <h2>Price:</h2>
-            <p>{hall.price}</p>
-          </div>
-
-          {/* Availability Check Card */}
-          <div className="card position-fixed bottom-0 end-0 m-3" style={{ maxWidth: '300px' }}>
-            <div className="card-body">
-              <h5 className="card-title">Check Availability</h5>
-              <p className="card-text">Click here to check availability for your dates</p>
-              <button className="btn btn-secondary">Check Availability</button>
-            </div>
+        {/* Availability Check Card */}
+        <div className="card position-fixed bottom-0 end-0 m-3 serif" style={{ maxWidth: '300px' }}>
+          <div className="card-body">
+            <h5 className="card-title">Check Availability</h5>
+            <p className="card-text">Click here to check availability for your dates</p>
+            <button className="btn btn-secondary">Check Availability</button>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

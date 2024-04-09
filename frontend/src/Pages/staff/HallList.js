@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; // Import useState and useEffect from react
 import "./halllist.css"; // Import custom CSS file for additional styling
 import { Link } from "react-router-dom";
-import Navbar from '../../components/Navbar';
+
 import SearchHeader from '../../components/SearchHeader';
 import Footer from '../../components/Footer';
 
@@ -27,7 +27,7 @@ const HallList = () => {
 
   return (
     <div>
-<Navbar/>
+
     
     <div className="container">
       <div className="mt-5 mb-4">

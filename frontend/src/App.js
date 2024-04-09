@@ -12,7 +12,7 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import HallList from "./Pages/staff/HallList";
 import ViewHall from "./Pages/staff/ViewHall";
 import EditHall from "./Pages/staff/EditHall";
-import UserHall from "./Pages/UserHall";
+
 import HallAdminDash from "./Pages/staff/HallAdminDash";
 import AllHallList from "./Pages/staff/AllHalls";
 import HallReservationForm from "./Pages/staff/HallReservationForm";
@@ -65,10 +65,7 @@ function App() {
             path="/EditHall/:id"
             element={<EditHall />}
           />
-          <Route
-            path="/UserHall"
-            element={<UserHall />}
-          />
+          
             <Route
             path="/HallAdminDash"
             element={<HallAdminDash />}
