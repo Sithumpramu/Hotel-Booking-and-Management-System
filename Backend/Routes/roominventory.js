@@ -38,8 +38,8 @@ router.route("/").get((req, res) => {
 
 
 //updating data
-router.route('/update/:id').put(async (req, res) => {
-    const {id}= req.params;
+router.route('/update/:ID').patch(async (req, res) => {
+    const {ID}= req.params;
     const {itemID,itemName,description,unit_price,stockCount
     } = req.body;
 
@@ -53,8 +53,8 @@ router.route('/update/:id').put(async (req, res) => {
     }
 
     const update = await roominventory.findOneAndUpdate(
-        { itemID:id},
-        {updateRoomInventory},
+        {itemID:ID},
+        updateRoomInventory ,
         {new:true}
     );
     // .then(() => {
