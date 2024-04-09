@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import Inventorysidebar from '../../components/InventoryManagerSideBar';
 const HotelView = () => {
   const [inventory, setInventory] = useState([]);
 
@@ -23,10 +23,10 @@ const HotelView = () => {
 
   return (
     <>
-      <div className="col">
-        {/* <Header dashboard={"Room Inventory Management System"} /> */}
-      </div>
-      <div className="container-fluid">
+      <div className="row m-0 p-0">
+    <Inventorysidebar/>
+      
+      <div className="container-fluid col">
         <div className="row flex-nowrap">
           <div className="col py-3">
             <table className="table table-striped">
@@ -63,7 +63,7 @@ const HotelView = () => {
             </table>
           </div>
         </div>
-      </div>
+      </div></div>
     </>
   );
 };

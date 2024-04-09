@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Inventorysidebar from '../../components/InventoryManagerSideBar';
 
 const AddItem = () => {
     const navigate = useNavigate();
@@ -57,10 +58,13 @@ const AddItem = () => {
     
   return (
     <>
-    <div class="col">
-        {/* <Header dashboard={"Room Inventory Management System"} /> */}
-    </div>
-    <div class="container-fluid">
+    <div class="row m-0 p-0">
+    
+      <Inventorysidebar/>
+  
+    
+   
+    <div class="container-fluid col">
       <div class="row flex-nowrap">
         <div class="col py-3">
             <div class="mt-5 mb-5 ">
@@ -138,7 +142,7 @@ const AddItem = () => {
 
           </div>
       </div>
-    </div>
+    </div> </div>
   </>
   )
 }

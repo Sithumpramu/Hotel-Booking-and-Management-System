@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Inventorysidebar from '../../components/InventoryManagerSideBar';
+
 
 export const EditItem = () => {
   const navigate = useNavigate();
@@ -51,10 +53,10 @@ export const EditItem = () => {
 
   return (
     <>
-      <div className="col">
-        {/* <h1 dashboard={"Room Inventory Management System"} /> */}
-      </div>
-      <div className="container-fluid">
+      <div className="row m-0 p-0">
+       <Inventorysidebar/>
+      
+      <div className="container-fluid col">
         <div className="row flex-nowrap">
           <div className="col py-3">
             <div className="mt-5 mb-5 ">
@@ -127,7 +129,7 @@ export const EditItem = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></div>
     </>
   );
 };

@@ -14,6 +14,7 @@ import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
+import Inventorysidebar from "./components/InventoryManagerSideBar";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -68,6 +69,7 @@ function App() {
             path="/RoomManagerView"
             element={<RoomManagerView/>}
           />
+
         </Routes>
       </BrowserRouter>
     </div>

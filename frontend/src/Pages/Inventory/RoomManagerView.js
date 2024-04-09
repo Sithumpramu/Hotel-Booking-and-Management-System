@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import Inventorysidebar from '../../components/InventoryManagerSideBar';
 const RoomManagerView = () => {
   const [inventory, setInventory] = useState([]);
 
@@ -38,10 +38,10 @@ const RoomManagerView = () => {
 
   return (
     <>
-      <div className="col">
-        {/* <Header dashboard={"Room Inventory Management System"} /> */}
-      </div>
-      <div className="container-fluid pt-5">
+      <div className="row m-0 p-0">
+        <Inventorysidebar/>
+      
+      <div className="container-fluid pt-5 col">
         <div className="row flex-nowrap">
           <div className="col py-3">
             <table className="table table-striped">
@@ -84,7 +84,7 @@ const RoomManagerView = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div></div>
     </>
   );
 };
