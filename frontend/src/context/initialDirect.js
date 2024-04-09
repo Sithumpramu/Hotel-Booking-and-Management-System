@@ -11,9 +11,9 @@ const InitialRedirect = () => {
       if ( user.email.includes('admin')) {
         navigation('/AdminDashbord');
       } else if ( user.email.includes('staff')) {
-        navigation('/StaffDashbord');
+        navigation('/ReceptionDashboard');
       } else if ( user.email.includes('manager')) {
-        navigation('/ManagerDashbord');
+        navigation('/ManagerDashboard');
       } else {
         navigation('/Dashboard');
       }

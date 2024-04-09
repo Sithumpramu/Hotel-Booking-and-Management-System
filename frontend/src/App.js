@@ -30,54 +30,30 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-         <Route
-            path=""
-            element={<InitialRedirect />} 
-          />
-          <Route
-            path="/Dashboard"
-            element={<Layout><Home /></Layout>}
-          />
-          <Route
-            path="/Signup"
-            element={<Signup />}
-          />
-          <Route
-            path="/Login"
-            element={<Login />}
-          />
-          <Route
-            path="/ForgotPwd"
-            element={<ForgotPassword />}
-          />
-          <Route
-            path="/user/resetPassword/:token"
-            element={<PasswordReset />}
-          />
-          <Route
-            path="/AdminDashbord"
-            element={<AdminDash />}
-          />
-          <Route
-            path="/ManagerDashbord"
-            element={<ManagerDash />}
-          />
-          <Route
-            path="/StaffDashbord"
-            element={<StaffDash />}
-          />
-          <Route
-            path="/Staffmanage"
-            element={<Staffmanage/>}
-          />
-          <Route
-            path="/Usermanage"
-            element={<Usermanage/>}
-          />
-           <Route
-            path="/Accountmanage"
-            element={<AccountManage/>}
-          />
+          <Route path="" element={<InitialRedirect />} />
+          <Route path="/Dashboard" element={<Layout><Home /></Layout> }/>
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/ForgotPwd" element={<ForgotPassword />} />
+          <Route path="/user/resetPassword/:token" element={<PasswordReset />}/>
+
+          <Route path="/watersport" element={<Watersport />} />
+          <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
+          <Route path="/AddActivity" element={<AddActivity />} />
+          <Route path="/WatersportsManagement" element={<WatersportManage />} />
+          <Route path="/addWatersportsReservation" element={<AddReserv />} />
+          <Route path="/selectActivity" element={<SelectActivity />} />
+          <Route path="/watersportReservations" element={<WatersportReservations />}/>
+
+          
+          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
+          <Route path="/AdminDashbord" element={<AdminDash />} />
+          <Route path="/ManagerDash" element={<ManagerDash />} />
+          <Route path="/StaffDashbord" element={<StaffDash />} />
+          <Route path="/Staffmanage" element={<Staffmanage />} />
+          <Route path="/Usermanage" element={<Usermanage />} />
+          <Route path="/Accountmanage" element={<AccountManage />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
