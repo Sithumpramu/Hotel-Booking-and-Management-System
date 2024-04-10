@@ -1,8 +1,14 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
+const { Double } = require("mongodb");
 
 const Schema = mongoose.Schema;
+
+const imageSchema = new Schema({
+  data: Buffer,
+  contentType: String,
+});
 
 const roomSchema = new Schema({
 
@@ -41,8 +47,9 @@ const roomSchema = new Schema({
       type:String,
       require:true
   },
+  Image:imageSchema,
 
-})
+});
 
 module.exports = mongoose.model ('room', roomSchema )
 

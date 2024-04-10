@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PasswordReset from './Pages/PasswordReset'
 import {Route, Routes, BrowserRouter} from "react-router-dom";
+
 import ForgotPassword from "./Pages/ForgotPwd";
 import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";

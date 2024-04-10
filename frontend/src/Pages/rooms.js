@@ -1,80 +1,37 @@
-import React from 'react';
+
+import React, { useState } from "react";
+import RoomList from "../hooks/useRoomList";
+
 
 function Room() {
+    const { rooms } = RoomList();
+
     return (
         <div>
             <div className='row bs' >
-                <div className="col-md-4">
-                    <img src={"kal.jpg"} className="smallimg"alt="Room 1"/>
-                </div>
-                <div className="col-md-7">
-                    <h1>Room ID and Type</h1>
-                    <p>Description</p>
-                    <p>Capacity</p>
-                    <p>Number of Beds</p>
-                    <p>Price</p>
+                {rooms.map((rooms) => (
+                    <div className="col-md-7">
+                        <div className="card">
+                            <div className="card-body">
+                                <p className="card-text">{rooms.Rid}</p>
+                                <p className="card-text">{rooms.Rtype}</p>
+                                <p className="card-text">{rooms.description}</p>
+                                <p className="card-text">{rooms.capacity}</p>
+                                <p className="card-text">{rooms.NoOfBeds}</p>
+                                <p className="card-text">{rooms.price}</p>
+                                <p className="card-text">{rooms.status}</p>
 
-                    <div style={{ float: 'right' }}>
-                        <button className="btn1">Book Now</button>
+                                <div style={{ float: 'right' }}>
+                                    <button className="btn1">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
-
-            <div className='row bs' >
-                <div className="col-md-4">
-                    <img src="kal.jpg" className="smallimg" alt="Room 2"/>
-                </div>
-                <div className="col-md-7">
-                    <h1>Room ID and Type</h1>
-                    <p>Description</p>
-                    <p>Capacity</p>
-                    <p>Number of Beds</p>
-                    <p>Price</p>
-
-                    <div style={{ float: 'right' }}>
-                        <button className="btn1">Book Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='row bs' >
-                <div className="col-md-4">
-                    <img src={"kal.jpg"} className="smallimg" alt="Room 1"/>
-                </div>
-                <div className="col-md-7">
-                    <h1>Room ID and Type</h1>
-                    <p>Description</p>
-                    <p>Capacity</p>
-                    <p>Number of Beds</p>
-                    <p>Price</p>
-
-                    <div style={{ float: 'right' }}>
-                        <button className="btn1">Book Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='row bs' >
-                <div className="col-md-4">
-                    <img src={"kal.jpg"} className="smallimg" alt="Room 1"/>
-                </div>
-                <div className="col-md-7">
-                    <h1>Room ID and Type</h1>
-                    <p>Description</p>
-                    <p>Capacity</p>
-                    <p>Number of Beds</p>
-                    <p>Price</p>
-
-                    <div style={{ float: 'right' }}>
-                        <button className="btn1">Book Now</button>
-                    </div>
-                </div>
-            </div>
-           
         </div>
-
-        
     );
 }
+
 
 export default Room;

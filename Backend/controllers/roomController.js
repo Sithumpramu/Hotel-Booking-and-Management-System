@@ -4,8 +4,16 @@ const room = require('../Models/roomModel')
 
 //get all rooms
 const getRoom= async (req,res) =>{
-  const rooms = await room.find({})//get all data
+
+  try{
+    const rooms = await room.find({})//get all data
+
   res.status(200).json(rooms)//send to browser
+  } 
+  catch (error){
+    res.status(400).json({ error: error.message });
+  }
+  
 }
 
 //get single room
@@ -31,15 +39,44 @@ const getsingleRoom = async (req,res) =>{
 //Add a room
 const roomAdd = async (req, res) => {
   const { Rid,Rtype, description, capacity, NoOfBeds, price, status } = req.body; // Correct the variable name 'status' to 'Status'
+  let imageData = {};
 
-  try {
-      const newRoom = new room({ Rid, Rtype, description, capacity, NoOfBeds, price, status  }); // Create a new room object
-      await newRoom.save(); // Save the new room to the database
-      res.status(201).json(newRoom); // Respond with the newly created room
-  } catch (error) {
-      res.status(400).json({ error: error.message });
+  console.log(req.file, "file");
+
+  if(req.file){
+    imageData = {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+    };
+  }else{
+    return re.status(400).json({error: "No image file provided."});
   }
-}
+
+  try{
+    const newRoom = await room.create({
+      Rid,
+      Rtype,
+      description,
+      capacity,
+      NoOfBeds,
+      price,
+      status,
+      Image: imageData,
+    });
+    res.status(201).json(newRoom);
+  }catch (error){
+    res.status(400).json({error: error.message});
+  }
+
+  
+  // try {
+  //     const newRoom = new room({ Rid, Rtype, description, capacity, NoOfBeds, price, status  }); // Create a new room object
+  //     await newRoom.save(); // Save the new room to the database
+  //     res.status(201).json(newRoom); // Respond with the newly created room
+  // } catch (error) {
+  //     res.status(400).json({ error: error.message });
+  // }
+};
 
 //delete a room
 const deleteRoom = async (req, res) => {
