@@ -10,7 +10,7 @@ const useAddRoom = () => {
     setIsLoading(true);
     setError(null);
 
-    console.log(ImageFile,"file")
+    console.log(ImageFile,"Image")
 
     const formData = new FormData();
     formData.append("Rid", Rid);
@@ -21,7 +21,7 @@ const useAddRoom = () => {
     formData.append("price", price);
     formData.append("status", status);
     if (ImageFile) {
-      formData.append("Image", ImageFile);
+    formData.append("Image", ImageFile);
     }
 
     try {
