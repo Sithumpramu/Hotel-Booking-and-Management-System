@@ -6,20 +6,26 @@ const useAddRoom = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addRoom = async (Rid, Rtype, description, capacity, NoOfBeds, price, status) => {
+  const addRoom = async (
+    Rid,
+    Rtype,
+    description,
+    capacity,
+    NoOfBeds,
+    price,
+    status
+  ) => {
     const roomDetails = {
       Rid,
-      Rtype, 
-      description, 
+      Rtype,
+      description,
       capacity,
-       NoOfBeds, 
-       price, 
-       status
+      NoOfBeds,
+      price,
+      status,
     };
     setIsLoading(true);
     setError(null);
-
-    
 
     // console.log(ImageFile,"file")
 
@@ -38,6 +44,7 @@ const useAddRoom = () => {
     try {
       const response = await fetch("http://localhost:4000/room/roomAdd", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(roomDetails),
       });
 
@@ -46,9 +53,8 @@ const useAddRoom = () => {
         setError(json.error);
       } else {
         navigate("/Rooms");
-        alert('Room Added successfully');
+        alert("Room Added successfully");
       }
-      
     } catch (error) {
       setError("An unexpected error occurred");
     } finally {
@@ -56,7 +62,6 @@ const useAddRoom = () => {
     }
   };
 
-  
   return { addRoom, isLoading, error };
 };
 

@@ -14,7 +14,7 @@ const roomSchema = new Schema({
 
 
   Rid: {
-    type: Number,
+    type: String,
     required: true,
   },
 
