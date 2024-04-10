@@ -33,11 +33,11 @@ function App() {
           <Route path="" element={<InitialRedirect />} />
           <Route path="/Dashboard" element={<Layout><Home /></Layout> }/>
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/ForgotPwd" element={<ForgotPassword />} />
+
           <Route path="/user/resetPassword/:token" element={<PasswordReset />}/>
 
-
+          
+          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
           <Route path="/AdminDashbord" element={<AdminDash />} />
           <Route path="/ManagerDash" element={<ManagerDash />} />
           <Route path="/StaffDashbord" element={<StaffDash />} />
