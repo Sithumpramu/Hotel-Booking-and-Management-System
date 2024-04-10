@@ -1,34 +1,27 @@
+import { useLogout } from '../../hooks/useLogout';
+
 function Dashboard(){
+  const {logout}=useLogout()
+
+  const handlelogout = ()=>{
+    logout()
+  }
+
+  const userEmail = localStorage.getItem('email');
     return(
       <div>
-
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-
-        <br></br>
-
-        <h1>Welcome to Manager Dashboard!</h1>
-
-        <br></br>
-
-        <div class="d-grid gap-2 col-3 mx-auto">
-          <button class="btn btn-outline-info" type="button">User Manager</button>
-          <button class="btn btn-outline-info" type="button">Room Manager</button>
-          <button class="btn btn-outline-info" type="button">Restaurant Manager</button>
-          <button class="btn btn-outline-info" type="button">Event & Activity manager</button>
-          <button class="btn btn-outline-info" type="button">Financial Manager</button>
+        <div className="border border-3 pb-3" style={{backgroundColor:" #f8f9fa"}}>        
+        <h3 className="my-5">Welcome to Manager Dashboard!</h3>
+        <div className=""><a href ="" id="userStatus" className="btn" sty onClick={handlelogout} style={{backgroundColor:"rgb(85, 180, 254)", position:"relative", top:"0px"}}>Logout</a></div>
+      
+        </div>
+        <div class="d-grid gap-4 col-3 mx-auto" style={{position:"relative" ,top:"140px"}}>
+        <a href={userEmail && userEmail.includes('roommanager') ? "/ManagerDash" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('roommanager') ? "" : "disabled"}`} type="button">Room Manager</a>
+        <a href={userEmail && userEmail.includes('restaurantmanager') ? "" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('restaurantmanager') ? "" : "disabled"}`} type="button">Restaurant Manager</a>
+        <a href={userEmail && userEmail.includes('eventactivitymanager') ? "" : "#"} className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${userEmail && userEmail.includes('eventactivitymanager') ? "" : "disabled"}`} type="button">Event & Activity Manager</a>
+        </div>
+        <div>
+       
         </div>
       </div>
       
