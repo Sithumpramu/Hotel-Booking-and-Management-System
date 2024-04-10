@@ -17,10 +17,10 @@ router.post('/add', addReservation);
 router.get("/", getReservations);
 
 //delete a reservation
-router.delete("/reservations/:id", deleteReservation);
+router.delete("/reservations/:email", deleteReservation);
 
 //Update a reservation
-router.put("/reservations/:id", updateReservation);
+router.put("/reservations/:email", updateReservation);
 
 
 module.exports = router;
