@@ -6,7 +6,7 @@ const useAddRoom = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addRoom = async (Rid, Rtype, description, capacity, NoOfBeds, price, status, ImageFile ) => {
+  const addRoom = async (Rid, Rtype, description, capacity, NoOfBeds, price, status, ImageFile) => {
     setIsLoading(true);
     setError(null);
 

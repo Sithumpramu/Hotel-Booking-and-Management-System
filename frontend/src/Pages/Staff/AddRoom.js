@@ -25,7 +25,7 @@ const AddNewRoom = () => {
         var submit = document.getElementById("submit");
 
         if (Rid === "" && Rtype === "" && description === "" && capacity === "" && NoOfBeds === "" && price === "" &&
-            status === "" && Image === "") {
+            status === "") {
             document.getElementById("Error").innerHTML = "All fields must be filled.";
         }
     }
