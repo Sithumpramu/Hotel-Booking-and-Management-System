@@ -39,18 +39,18 @@ const getsingleRoom = async (req, res) => {
 //Add a room
 const roomAdd = async (req, res) => {
   const { Rid, Rtype, description, capacity, NoOfBeds, price, status } = req.body; // Correct the variable name 'status' to 'Status'
-  let imageData = {};
+  //let imageData = {};
 
-  console.log(req.file, "file");
+  // console.log(req.file, "file");
 
-  if (req.file) {
-    imageData = {
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    };
-  } else {
-    return re.status(400).json({ error: "No image file provided." });
-  }
+  // if (req.file) {
+  //   imageData = {
+  //     data: req.file.buffer,
+  //     contentType: req.file.mimetype,
+  //   };
+  // } else {
+  //   return re.status(400).json({ error: "No image file provided." });
+  // }
 
   try {
     const newRoom = await room.create({
@@ -61,7 +61,7 @@ const roomAdd = async (req, res) => {
       NoOfBeds,
       price,
       status,
-      Image: imageData,
+      //Image: imageData,
     });
 
     res.status(201).json(newRoom);

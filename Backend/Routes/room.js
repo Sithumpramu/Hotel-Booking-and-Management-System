@@ -5,7 +5,7 @@ const multer = require("multer");
 
 // controller functions
 const { roomAdd, deleteRoom,getRoom, getsingleRoom, updateRoom } = require('../controllers/roomController'); 
-const upload = multer({ storage: multer.memoryStorage() });
+//const upload = multer({ storage: multer.memoryStorage() });
 
 //get all rooms
 router.get('/getRoom',getRoom); 
@@ -14,7 +14,9 @@ router.get('/getRoom',getRoom);
 router.get('/getsingleRoom/:id', getsingleRoom); 
 
 //add a room
-router.post('/roomAdd', upload.single("Image"), roomAdd); 
+router.post('/roomAdd', 
+// upload.single("Image"),
+ roomAdd); 
 
 //delete a room
 router.delete('/deleteRoom/:id', deleteRoom); 

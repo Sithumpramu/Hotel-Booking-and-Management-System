@@ -5,51 +5,51 @@ const { Double } = require("mongodb");
 
 const Schema = mongoose.Schema;
 
-const imageSchema = new Schema({
-  data: Buffer,
-  contentType: String,
-});
+// const imageSchema = new Schema({
+//   data: Buffer,
+//   contentType: String,
+// });
 
 const roomSchema = new Schema({
 
 
-    Rid:{
-      type:Number,
-      require:true
-    },
-
-    Rtype:{
-        type:String,
-        require:true
-    },
-
-    description: {
-      type: String,
-      default:true
-    },
-
-    capacity: {
-      type: Number,
-      default: null
-    },
-
-    NoOfBeds:{
-      type:Number,
-      require:true
+  Rid: {
+    type: Number,
+    required: true,
   },
 
-    price: {
-      type: Number,
-      default: null
-    },
-
-    status:{
-      type:String,
-      require:true
+  Rtype: {
+    type: String,
+    required: true,
   },
-  Image:imageSchema,
+
+  description: {
+    type: String,
+    required: true,
+  },
+
+  capacity: {
+    type: Number,
+    required: true,
+  },
+
+  NoOfBeds: {
+    type: Number,
+    required: true,
+  },
+
+  price: {
+    type: Number,
+    required: true,
+  },
+
+  status: {
+    type: String,
+    required: true
+  },
+  //Image:imageSchema,
 
 });
 
-module.exports = mongoose.model ('room', roomSchema )
+module.exports = mongoose.model('room', roomSchema)
 
