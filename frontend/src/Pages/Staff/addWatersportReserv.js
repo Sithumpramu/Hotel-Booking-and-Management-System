@@ -102,89 +102,100 @@ const AddReserv = () => {
     <div className="row">
       <ReceptionNavbar />
       <div className="col">
-        <div>
+        <div className="m-3">
           <h3>Selected Activities</h3>
         </div>
 
         <div>
-          <div className="d-flex align-items-center justify-content-center mb-3 mt-5">
-            <div className="row">
-              <div className="col">
-                <table style={{ width: "38rem" }}>
-                  <tr className="border border-black" scope="col">
-                    <th scope="col">Activity Name</th>
-                    <th scope="col">Price per round</th>
-                    <th scope="col">Qty per round</th>
-                    <th scope="col">No.of.People</th>
-                    <th scope="col">No.of.Rounds</th>
-                    <th scope="col">Total Price</th>
-                  </tr>
+          <div>
+            <div className="row d-flex align-items-center justify-content-center">
+              <table style={{ width: "48rem" }}>
+                <tr>
+                  <th className="border border-black">Activity Name</th>
+                  <th className="border border-black">Price per round (Rs.)</th>
+                  <th className="border border-black">Qty per round</th>
+                  <th className="border border-black">No.of.People</th>
+                  <th className="border border-black">Rounds</th>
+                  <th className="border border-black">Total Price (Rs.)</th>
+                </tr>
 
-                  {activityList &&
-                    activityList.map((activity) => (
-                      <tbody key={activity.id}>
-                        <tr className="border border-black" scope="col">
-                          <td>{activity.id}</td>
-                          <td>{activity.Price}</td>
-                          <td>{activity.qtyPerRound}</td>
-                          <td className="border border-black">
-                            {nameToUpdate === activity.id ? (
-                              <input
-                                className="tabledit-input form-control input-sm"
-                                type="number"
-                                name="Qty"
-                                value={Qty}
-                                disabled=""
-                                onChange={(e) => {
-                                  setQty(e.target.value);
-                                }}
-                              ></input>
-                            ) : (
-                              activity.Qty || activity.qtyPerRound
+                {activityList &&
+                  activityList.map((activity) => (
+                    <tbody key={activity.id}>
+                      <tr>
+                        <td className="border border-black">{activity.id}</td>
+                        <td className="border border-black">
+                          {activity.Price}.00
+                        </td>
+                        <td className="border border-black">
+                          {activity.qtyPerRound}
+                        </td>
+                        <td className="border border-black">
+                          {nameToUpdate === activity.id ? (
+                            <input
+                              className="tabledit-input form-control input-sm"
+                              type="number"
+                              name="Qty"
+                              value={Qty}
+                              disabled=""
+                              onChange={(e) => {
+                                setQty(e.target.value);
+                              }}
+                            ></input>
+                          ) : (
+                            activity.Qty || activity.qtyPerRound
+                          )}
+
+                          {nameToUpdate === activity.id ? (
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => updateDetails(activity)}
+                            >
+                              Save
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-primary ms-3"
+                              onClick={() => getUpdateData(activity)}
+                            >
+                              Update
+                            </button>
+                          )}
+                        </td>
+
+                        <td className="border border-black">
+                          {activity.noOfRides ||
+                            Math.ceil(
+                              (activity.Qty || activity.qtyPerRound) /
+                                activity.qtyPerRound
                             )}
+                        </td>
 
-                            {nameToUpdate === activity.id ? (
-                              <button
-                                className="btn btn-primary"
-                                onClick={() => updateDetails(activity)}
-                              >
-                                Save
-                              </button>
-                            ) : (
-                              <button
-                                className="btn btn-primary"
-                                onClick={() => getUpdateData(activity)}
-                              >
-                                Update
-                              </button>
+                        <td className="border border-black">
+                          {activity.Price *
+                            Math.ceil(
+                              (activity.Qty || activity.qtyPerRound) /
+                                activity.qtyPerRound
                             )}
-                          </td>
+                          .00
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
+              </table>
 
-                          <td>
-                            {activity.noOfRides ||
-                              Math.ceil(
-                                (activity.Qty || activity.qtyPerRound) /
-                                  activity.qtyPerRound
-                              )}
-                          </td>
-
-                          <td>
-                            {activity.Price *
-                              Math.ceil(
-                                (activity.Qty || activity.qtyPerRound) /
-                                  activity.qtyPerRound
-                              )}
-                          </td>
-                        </tr>
-                      </tbody>
-                    ))}
-                </table>
-
-                {/* display total bill */}
-                <div>Total Bill: {totalPrice}</div>
+              {/* display total bill */}
+              <div className="mt-2 mb-4 bg-warning bg-opacity-50">
+                {" "}
+                <span className="fw-bolder text-danger">Total Bill: </span>
+                <span className="fw-bolder">Rs.{totalPrice}.00</span>
               </div>
 
-              <div className="col">
+              <p className="text-primary fw-bolder fs-4">
+                Customer Details Form
+              </p>
+
+              <div className="row d-flex align-items-center justify-content-center">
                 <form
                   onSubmit={handleSubmit}
                   method="Post"
@@ -243,22 +254,21 @@ const AddReserv = () => {
                       type="number"
                       className="form-control"
                       id="checkinHour"
-                      min="0"
-                      max="23" // For a 24-hour format; adjust if you're using a 12-hour format (e.g., min="1" max="12")
-                      placeholder="Enter hour (0-23)"
+                      min="9"
+                      max="16" 
+                      placeholder="Enter hour (9-16)"
                       onChange={(e) => {
-                        // Ensure the value is within the expected range; adjust logic as needed for your application's requirements
                         const hour = Math.max(
                           0,
-                          Math.min(23, Number(e.target.value))
+                          Math.min(16, Number(e.target.value))
                         );
-                        setcheckinTime(`${hour}:00`); // Setting time in "HH:00" format. Adjust if you need a different formatting
+                        setcheckinTime(`${hour}:00`); 
                       }}
                     />
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-success"
                     id="submit"
                     onClick={validate}
                   >

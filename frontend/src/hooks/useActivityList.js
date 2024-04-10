@@ -1,4 +1,4 @@
-// useActivityList.js
+
 import { useState, useEffect } from 'react';
 
 const useActivityList = () => {
