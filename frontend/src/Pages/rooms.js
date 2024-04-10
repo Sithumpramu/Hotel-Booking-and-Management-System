@@ -22,7 +22,7 @@ function Room() {
                                 <p className="card-text">{rooms.status}</p>
 
                                 <div style={{ float: 'right' }}>
-                                    <button className="btn1">Book Now</button>
+                                    <a href="/CustomerDetails" className="btn btn-info">Book Now</a>
                                 </div>
                             </div>
                         </div>

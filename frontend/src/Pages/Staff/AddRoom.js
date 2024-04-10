@@ -11,21 +11,21 @@ const AddNewRoom = () => {
     const [NoOfBeds, setNoOfBeds] = useState("");
     const [price, setprice] = useState("");
     const [status, setstatus] = useState("");
-    const [Image, setImage] = useState("");
+    // const [Image, setImage] = useState("");
 
     const { addRoom, isLoading, error } = useAddRoom();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await addRoom(Rid, Rtype, description, capacity, NoOfBeds, price, status, Image);
+        await addRoom(Rid, Rtype, description, capacity, NoOfBeds, price, status);
     };
 
     function validation() {
         var submit = document.getElementById("submit");
 
         if (Rid === "" && Rtype === "" && description === "" && capacity === "" && NoOfBeds === "" && price === "" &&
-            status === "" && Image === "") {
+            status === "") {
             document.getElementById("Error").innerHTML = "All fields must be filled.";
         }
     }
@@ -79,7 +79,7 @@ const AddNewRoom = () => {
                         <label>
                             Capacity:
                         </label>
-                        <input type="text" 
+                        <input type="number" 
                          className=""
                          id="roomCapacity"
                          onChange={(e)=>{
@@ -118,7 +118,7 @@ const AddNewRoom = () => {
                             setstatus(e.target.value);
                         }}/>
 
-                        <label>
+                        {/* <label>
                             Image file: 
                         </label>
                         <input type="file" 
@@ -126,7 +126,7 @@ const AddNewRoom = () => {
                         id="roomImage"
                         onChange={(e)=>{
                             setImage(e.target.value);
-                        }}/>
+                        }}/> */}
 
                     </div>
 
