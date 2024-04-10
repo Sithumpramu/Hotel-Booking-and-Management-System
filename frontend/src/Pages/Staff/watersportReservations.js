@@ -20,8 +20,8 @@ function WatersportReservations() {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
-  const [Qty, setQty] = useState("");
-  const [activityIds, setActivityIds] = useState([]);
+  //const [Qty, setQty] = useState("");
+  const [activityList, setActivityList] = useState([]);
 
   if (isLoading) {
     return (
@@ -48,8 +48,8 @@ function WatersportReservations() {
     setAddress(reservation.Address);
     setcheckinDate(reservation.checkinDate);
     setcheckinTime(reservation.checkinTime);
-    setQty(reservation.Qty);
-    setActivityIds(reservation.activityIds);
+    //setQty(reservation.Qty);
+    setActivityList(reservation.activityList);
   };
 
   const updateDetails = async () => {
@@ -60,15 +60,14 @@ function WatersportReservations() {
       Address,
       checkinDate,
       checkinTime,
-      Qty,
-      activityIds
+      activityList
     );
   };
 
   const getActivityIds = (event) => {
     const selectedOptions = Array.from(event.target.selectedOptions);
     const ids = selectedOptions.map((option) => option.value);
-    setActivityIds(ids);
+    setActivityList(ids);
   };
 
   return (
@@ -87,7 +86,6 @@ function WatersportReservations() {
                   <th scope="col">Address</th>
                   <th scope="col">CheckIn Date</th>
                   <th scope="col">CheckIn Time</th>
-                  <th scope="col">Qty</th>
                   <th scope="col">Activities</th>
                   <th></th>
                   <th></th>
@@ -133,7 +131,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                          className="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="text"
                             name="Address"
                             defaultValue={reservation.Address}
@@ -150,7 +148,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                          className="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="Date"
                             name="checkinDate"
                             defaultValue={reservation.checkinDate}
@@ -167,7 +165,7 @@ function WatersportReservations() {
                       <td>
                         {nameToUpdate === reservation._id ? (
                           <input
-                          className="tabledit-input form-control input-sm"
+                            className="tabledit-input form-control input-sm"
                             type="Time"
                             name="checkinTime"
                             defaultValue={reservation.checkinTime}
@@ -182,40 +180,14 @@ function WatersportReservations() {
                       </td>
 
                       <td>
-                        {nameToUpdate === reservation._id ? (
-                          <input
-                            className="tabledit-input form-control input-sm"
-                            type="number"
-                            name="Qty"
-                            defaultValue={reservation.Qty}
-                            disabled=""
-                            onChange={(e) => {
-                              setQty(e.target.value);
-                            }}
-                          ></input>
-                        ) : (
-                          <td>{reservation.Qty}</td>
-                        )}
-                      </td>
-
-                      <td>
-                        {nameToUpdate === reservation._id ? (
-                          <select
-                            className="form-select"
-                            aria-label="Default select example"
-                            multiple
-                            defaultValue={reservation.activityIds}
-                            onChange={(e) => {
-                              getActivityIds(e);
-                            }}
-                          >
-                            {ActivityList.map((Watersport) => (
-                              <option selected>{Watersport.Activity}</option>
-                            ))}
-                          </select>
-                        ) : (
-                          <td>{reservation.activityIds.join(", ")}</td>
-                        )}
+                        {reservation.activityList.map((activity, index) => (
+                          <div key={index}>
+                            <div className="">ID: {activity.id}</div>
+                            <div>Qty: {activity.Qty}</div>
+                            <div>Number of Rides: {activity.noOfRides}</div>
+                            <div>Total Price: {activity.activityTPrice}</div>
+                          </div>
+                        ))}
                       </td>
 
                       <td>
@@ -261,7 +233,6 @@ function WatersportReservations() {
                           CheckOut
                         </a>
                       </td>
-
                     </tr>
                   </tbody>
                 ))}

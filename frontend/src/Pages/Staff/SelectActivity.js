@@ -10,21 +10,34 @@ function SelectActivity() {
 
   const [idList, setIdList] = useState([]);
 
-  const handleAddClick = (activityIds) => {
+  const handleAddClick = (activityIds, Price) => {
     // Navigate to the next page and pass the activityId
-    navigate("/addWatersportsReservation", { state: { activityIds } });
+    //navigate("/addWatersportsReservation", { state: { activityIds } });
+    navigate("/addWatersportsReservation", { state: { activityList: idList } });
   };
 
-  const getActivities = (event, id) => {
+  const getActivities = (event, id, Price, qtyPerRound) => {
     const checked = event.target.checked;
     if (checked) {
-      const ids = idList;
-      ids.push(id);
-      setIdList(ids);
+      // const ids = idList;
+      // ids.push(id);
+      setIdList((currentList) => [
+        ...currentList,
+        {
+          id,
+          Price,
+          qtyPerRound,
+          Qty: qtyPerRound,
+          activityTPrice: Price,
+          noOfRides: 1,
+        },
+      ]);
+      //setIdList(ids);
     } else {
-      const ids = idList;
-      const filteredIdList = ids.filter((filterId) => filterId === id);
-      setIdList(filteredIdList);
+      // const ids = idList;
+      // const filteredIdList = ids.filter((filterId) => filterId === id);
+      setIdList((currentList) => currentList.filter((item) => item.id !== id));
+      //setIdList(filteredIdList);
     }
   };
 
@@ -47,13 +60,10 @@ function SelectActivity() {
                     Estimated Time
                   </th>
                   <th className="border border-black" scope="col">
-                    Description
-                  </th>
-                  <th className="border border-black" scope="col">
                     Price
                   </th>
                   <th className="border border-black" scope="col">
-                    ExtraPrice
+                    Qty per Ride
                   </th>
                 </tr>
 
@@ -64,7 +74,12 @@ function SelectActivity() {
                         <input
                           type="checkbox"
                           onClick={(event) =>
-                            getActivities(event, Watersport.Activity)
+                            getActivities(
+                              event,
+                              Watersport.Activity,
+                              Watersport.Price,
+                              Watersport.qtyPerRound
+                            )
                           }
                         ></input>
                       </td>
@@ -73,20 +88,14 @@ function SelectActivity() {
                         {Watersport.Activity}
                       </td>
 
-                      <td className="border border-black">
-                        {Watersport.Time}
-                      </td>
+                      <td className="border border-black">{Watersport.Time}</td>
 
-                      <td className="border border-black">
-                        {Watersport.Description}
-                      </td>
-                      
                       <td className="border border-black">
                         Rs.{Watersport.Price}.00
                       </td>
 
                       <td className="border border-black">
-                        Rs.{Watersport.ExtraPrice}.00
+                        {Watersport.qtyPerRound}
                       </td>
                     </tr>
                   </tbody>

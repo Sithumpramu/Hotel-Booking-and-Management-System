@@ -13,7 +13,7 @@ const useAddReserv = () => {
     checkinDate,
     checkinTime,
     Qty,
-    activityIds
+    activityList
   ) => {
     const reservationDetails = {
       CusName,
@@ -22,7 +22,7 @@ const useAddReserv = () => {
       checkinDate,
       checkinTime,
       Qty,
-      activityIds,
+      activityList,
     };
 
     setIsLoading(true);

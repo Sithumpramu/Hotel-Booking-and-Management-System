@@ -4,7 +4,7 @@ const watersportReservModel = require("../Models/watersportReservModel");
 // Function to add a new reservation
 const addReservation = async (req, res) => {
   console.log("addReservation");
-  const { CusName, TelNo, Address, checkinDate, checkinTime, Qty, activityIds } =
+  const { CusName, TelNo, Address, checkinDate, checkinTime, activityList } =
     req.body;
 
   try {
@@ -14,8 +14,7 @@ const addReservation = async (req, res) => {
       Address,
       checkinDate,
       checkinTime,
-      Qty,
-      activityIds,
+      activityList,
     });
     res.status(201).json(newReserv); // Respond with the created document
   } catch (error) {
@@ -89,12 +88,10 @@ const updateReservation = async (req, res) => {
     }
 
     console.log(id, "Reservation updated successfully");
-    res
-      .status(200)
-      .json({
-        message: "Reservation updated successfully",
-        data: updatedReservation,
-      });
+    res.status(200).json({
+      message: "Reservation updated successfully",
+      data: updatedReservation,
+    });
   } catch (error) {
     console.error("Error updating reservation:", error);
     res.status(500).json({ error: error.message });
