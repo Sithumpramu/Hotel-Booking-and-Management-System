@@ -69,7 +69,7 @@ function App() {
           />
           <Route
           path="/TableReservations"
-          element={<Layout2><TableReservation/></Layout2>}
+          element={<TableReservation/>}
           /> 
            <Route
           path="/AddReservations"
