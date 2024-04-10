@@ -20,7 +20,7 @@ router.get("/", getReservations);
 router.delete("/reservations/:id", deleteReservation);
 
 //Update a reservation
-router.put("/reservations/:id", updateReservation);
+router.put("/reservations", updateReservation);
 
 
 module.exports = router;
