@@ -13,39 +13,41 @@ const useAddRoom = () => {
     capacity,
     NoOfBeds,
     price,
-    status
+    status, 
+    ImageFile
   ) => {
-    const roomDetails = {
-      Rid,
-      Rtype,
-      description,
-      capacity,
-      NoOfBeds,
-      price,
-      status,
-    };
+    // const roomDetails = {
+    //   Rid,
+    //   Rtype,
+    //   description,
+    //   capacity,
+    //   NoOfBeds,
+    //   price,
+    //   status,
+    // };
     setIsLoading(true);
     setError(null);
 
-    // console.log(ImageFile,"file")
+    console.log(ImageFile,"file")
 
-    // const formData = new FormData();
-    // formData.append("Rid", Rid);
-    // formData.append("Rtype", Rtype);
-    // formData.append("description", description);
-    // formData.append("capacity", capacity);
-    // formData.append("NoOfBeds", NoOfBeds);
-    // formData.append("price", price);
-    // formData.append("status", status);
-    // if (ImageFile) {
-    //   formData.append("Image", ImageFile);
-    // }
+    const formData = new FormData();
+    formData.append("Rid", Rid);
+    formData.append("Rtype", Rtype);
+    formData.append("description", description);
+    formData.append("capacity", capacity);
+    formData.append("NoOfBeds", NoOfBeds);
+    formData.append("price", price);
+    formData.append("status", status);
+    if (ImageFile) {
+      formData.append("Image", ImageFile);
+    }
 
     try {
       const response = await fetch("http://localhost:4000/room/roomAdd", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(roomDetails),
+        body: formData,
+        // headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify(roomDetails),
       });
 
       if (!response.ok) {
