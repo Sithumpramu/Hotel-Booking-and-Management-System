@@ -14,6 +14,8 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
 import DiningDash from "./Pages/DiningDash";
 import DiningNavbar from "./components/DiningNavbar"
+import TableReservation from "./Pages/TableReservation"
+import AddReservation from "./Pages/AddReservation"
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -64,6 +66,14 @@ function App() {
           <Route
           path="/DiningDashboard"
           element={<Layout2><DiningDash/></Layout2>}
+          />
+          <Route
+          path="/TableReservations"
+          element={<Layout2><TableReservation/></Layout2>}
+          /> 
+           <Route
+          path="/AddReservations"
+          element={<Layout2><AddReservation/></Layout2>}
           />
         </Routes>
       </BrowserRouter>

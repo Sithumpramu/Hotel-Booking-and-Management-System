@@ -55,3 +55,20 @@
 .cards-wrapper{
   column-gap: 8rem;
 }
+
+lable,input{
+  display: block;
+  
+}
+
+.createReservation{
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color:cadetblue;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
