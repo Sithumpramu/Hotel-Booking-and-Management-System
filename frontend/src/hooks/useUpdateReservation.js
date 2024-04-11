@@ -12,7 +12,7 @@ const useUpdateReservation = () => {
     Name,
     Capacity,
     email,
-    ContactNumber
+    contactNumber
   ) => {
     console.log("updateReservation");
 
@@ -21,7 +21,7 @@ const useUpdateReservation = () => {
       Name,
       Capacity,
       email,
-      ContactNumber,
+      contactNumber,
     };
 
     setIsLoading(true);
