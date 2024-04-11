@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 
 const tableSchema = new Schema ({
  Date: {
-    type:Date,
-    default: Date.now,
+    type:String,
     required:true
  },
 
