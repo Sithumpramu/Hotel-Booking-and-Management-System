@@ -9,12 +9,11 @@ const AddNewRoomReserve = () => {
   const [NoOfGuests, setNoOfGuests] = useState("");
 
 
-
-
   const { addRoomReserve, isLoading, error } = useAddRoomReserve();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
 
     await addRoomReserve(Checkindate, Checkoutdate, Rtype, NoOfGuests);
   };
@@ -36,25 +35,57 @@ const AddNewRoomReserve = () => {
           <label>
             Check-in Date:
           </label>
-          <input type="date" value={Checkindate} onChange={(e) => setCheckindate(e.target.value)} />
+          <input type="date"
+            className=""
+            id="checkindate"
+            onChange={(e) => {
+              setCheckindate(e.target.value);
+            }} />
 
           <label>
             Check-out Date:
           </label>
-          <input type="date" value={Checkoutdate} onChange={(e) => setCheckoutdate(e.target.value)} />
+          <input type="date"
+            className=""
+            id="checkoutdate"
+            onChange={(e) => {
+              setCheckoutdate(e.target.value);
+            }} />
 
           <label>
             Room Type:
           </label>
-          <input type="date" value={Rtype} onChange={(e) => setRtype(e.target.value)} />
+          <input type="text"
+            className=""
+            id="Rtype"
+            onChange={(e) => {
+              setRtype(e.target.value);
+            }} />
 
           <label>
-            Number of People:
+            Number of Guests:
           </label>
-          <input type="number" value={Rtype} onChange={(e) => setRtype(e.target.value)} />
+          <input type="number"
+            className=""
+            id="NoOfGuests"
+            onChange={(e) => {
+              setNoOfGuests(e.target.value);
+            }} />
 
+          <a href="/CustomerDetails"
+            type="submit"
+            className= "btn btn-info"
+            id="submit"
+            onClick={() => {
+              validation();
+            }}
+          >
+            Add Room
+          </a>
+
+          <p id="Error"></p>
         </form>
-        <button type="submit">Book Now</button>
+
       </div>
     </div>
   )
