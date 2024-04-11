@@ -15,9 +15,9 @@ function ReservationDetails() {
   const { addRoomReserve, isLoading, error } = useAddRoomReserve();
 
   const handleSubmit = () => {
-    // Submit reservation details to backend API (not implemented)
+   
     console.log('Submitting reservation details:', { checkinDate, checkoutDate, guests, name, email });
-    // Redirect to confirmation page (or payment page)
+
     addRoomReserve(checkinDate, checkoutDate, guests, name, email, Address, phoneno);
 };
   
@@ -34,9 +34,9 @@ function ReservationDetails() {
       <label>Email:</label>
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
       <label>Address:</label>
-        <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} /><br />
-        <label>Phone Number:</label>
-        <input type="text" value={phoneno} onChange={(e) => setPhoneno(e.target.value)} /><br />
+      <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} /><br />
+      <label>Phone Number:</label>
+      <input type="text" value={phoneno} onChange={(e) => setPhoneno(e.target.value)} /><br />
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );

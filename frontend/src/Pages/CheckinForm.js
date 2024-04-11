@@ -23,9 +23,9 @@ function CheckinForm() {
     <div>
       <h2>Enter Reservation Details</h2>
       <label>Check-in Date:</label>
-      <input type="date" value={checkinDate} onChange={(e) => setCheckinDate(e.target.value)} /><br />
+      <input type="date" value={checkinDate} onChange={(e) => setCheckinDate(e.target.value)} min={new Date().toISOString().split('T')[0]}/><br />
       <label>Check-out Date:</label>
-      <input type="date" value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)} /><br />
+      <input type="date" value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)}  min={new Date().toISOString().split('T')[0]}/><br />
       <label>Number of Guests:</label>
       <input type="number" value={guests} onChange={(e) => setGuests(e.target.value)} /><br />
       <button onClick={handleNext}>Next</button>

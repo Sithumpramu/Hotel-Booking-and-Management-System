@@ -13,10 +13,10 @@ function Rooms() {
 
   const handleRoomSelect = (roomId) => {
     // Pass selected room ID and reservation details to details page
-    const randomRoomId = Math.floor(Math.random() * 1000);
+    const randomRoomId =1;
     navigate('/CustomerDetails', {
       state: {
-        // roomId:randomRoomId,
+        roomId:randomRoomId,
         checkinDate,
         checkoutDate,
         guests
