@@ -92,7 +92,7 @@ function App() {
           />
 
            <Route
-            path="UpdateDeleteRoom"
+            path="/UpdateDeleteRoom"
             element={<UpdateDelete/>}
           />
         </Routes>
