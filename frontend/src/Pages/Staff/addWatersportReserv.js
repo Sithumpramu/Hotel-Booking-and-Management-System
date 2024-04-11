@@ -254,6 +254,7 @@ const AddReserv = () => {
                       type="Date"
                       className="form-control"
                       id="checkinDate"
+                      min={new Date().toISOString().split('T')[0]}
                       onChange={(e) => setcheckinDate(e.target.value)}
                     />
                   </div>
