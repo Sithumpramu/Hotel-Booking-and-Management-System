@@ -32,14 +32,14 @@ function AddReservation() {
   };
 
   return (
-    <div className="vh-100 row d-flex align-items-center justify-content-center">
-      <h1>Create Table Reservation</h1>
+    <div className="row d-flex align-items-center justify-content-center">
+      <h1 className="m-5">Create Table Reservation</h1>
       <form
         className="bg-primary bg-opacity-50"
         onSubmit={handleSubmit}
         style={{ width: "25rem" }}
       >
-        <lable className="form-label mt-4">Enter Date:</lable>
+        <lable className="form-label mt-3">Enter Date:</lable>
         <input
           type="date"
           id="date"
@@ -49,21 +49,21 @@ function AddReservation() {
           onChange={(e) => setDate(e.target.value)}
         />
 
-        <lable className="form-label">Enter Customer Name:</lable>
+        <lable className="form-label mt-3">Enter Customer Name:</lable>
         <input
           type="text"
           className="form-control"
           onChange={(e) => setName(e.target.value)}
         />
 
-        <lable className="form-label">No.of.Persons:</lable>
+        <lable className="form-label mt-3">No.of.Persons:</lable>
         <input
           type="number"
           className="form-control"
           onChange={(e) => setCapacity(e.target.value)}
         />
 
-        <lable className="form-label">Email:</lable>
+        <lable className="form-label mt-3">Email:</lable>
         <input
           type="email"
           id="email"
@@ -72,7 +72,7 @@ function AddReservation() {
           onChange={(e) => setemail(e.target.value)}
         />
 
-        <lable className="form-label">Contact Number:</lable>
+        <lable className="form-label mt-3">Contact Number:</lable>
         <input
           type="number"
           className="form-control"
@@ -81,7 +81,7 @@ function AddReservation() {
 
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-success m-4"
           id="submit"
           onClick={validate}
         >
