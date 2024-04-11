@@ -27,9 +27,9 @@ const tableSchema = new Schema ({
  contactNumber:{
     type: Number,
     required:true
- }
+ },
 
-}, {timestamps:true})
+});
 
 module.exports = mongoose.model('table',tableSchema)
 
