@@ -73,7 +73,7 @@ function App() {
           /> 
            <Route
           path="/AddReservations"
-          element={<Layout2><AddReservation/></Layout2>}
+          element={<AddReservation/>}
           />
         </Routes>
       </BrowserRouter>

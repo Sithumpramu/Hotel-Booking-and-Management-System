@@ -6,48 +6,40 @@ const useAddReservation = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const useAddResev = async (
-    Date,
-    Name,
-    Capacity,
-    email,
-    ContactNumber
-  ) => {
+  const AddResev = async (Date, Name, Capacity, email, contactNumber) => {
     const reservDetails = {
-        Date,
-        Name,
-        Capacity,
-        email,
-        ContactNumber
+      Date,
+      Name,
+      Capacity,
+      email,
+      contactNumber,
     };
 
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(
-        "http://localhost:4000/table/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(reservDetails),
-        }
-      );
+      const response = await fetch("http://localhost:4000/table/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservDetails),
+      });
 
       if (!response.ok) {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("/AddReservations");
+        navigate("/TableReservations");
       }
     } catch (error) {
+      console.log(error, "error");
       setError("An unexpected error occurred");
     } finally {
       setIsLoading(false);
     }
   };
 
-  return {useAddResev, isLoading, error };
+  return { AddResev, isLoading, error };
 };
 
 export default useAddReservation;
