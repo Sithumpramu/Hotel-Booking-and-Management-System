@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 import useAddReserv from "../../hooks/useAddReserv";
 import ReceptionNavbar from "../../components/receptionNavbar";
+import { checkActivityAvailability } from "../../hooks/useCheckAvailability";
 
 const AddReserv = () => {
   const location = useLocation();
@@ -9,9 +10,6 @@ const AddReserv = () => {
     location.state?.activityList || []
   );
   const [totalPrice, setTotalPrice] = useState(0);
-
-  console.log(location.state, "location.state");
-  console.log(activityList, "activityList");
 
   const [nameToUpdate, setNameToUpdate] = useState("");
   const [Qty, setQty] = useState(null);
@@ -23,9 +21,6 @@ const AddReserv = () => {
 
   const updateDetails = async (selectedActivity) => {
     const quantity = Qty && Number(Qty);
-
-    console.log(quantity, typeof quantity, "qty");
-
     const updatedActivities = activityList.map((activity) => {
       if (activity.id === selectedActivity.id) {
         // Calculate the number of rides based on the updated quantity
@@ -41,7 +36,6 @@ const AddReserv = () => {
       }
       return activity;
     });
-    console.log(updatedActivities, "updatedActivities");
     setActivityList(updatedActivities);
     setNameToUpdate(null);
     setQty(null);
@@ -66,13 +60,11 @@ const AddReserv = () => {
   const [Address, setAddress] = useState("");
   const [checkinDate, setcheckinDate] = useState("");
   const [checkinTime, setcheckinTime] = useState("");
+  const [isSlotUnvailable, setIsSlotUnvailable] = useState(false);
 
   const { addReserv } = useAddReserv();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    console.log(activityList, "activityList");
+  const handleSubmit = async () => {
     await addReserv(
       CusName,
       TelNo,
@@ -84,18 +76,40 @@ const AddReserv = () => {
     );
   };
 
-  const validate = () => {
+  const validate = async (e) => {
+    e.preventDefault();
     const allFieldsFilled =
       CusName && TelNo && Address && checkinDate && checkinTime;
-
-    const errorElement = document.getElementById("Error");
-    if (!allFieldsFilled) {
-      errorElement.innerHTML = "All fields must be filled.";
-      return false;
+    const activities = await checkActivityAvailability(
+      checkinDate,
+      checkinTime
+    );
+    const available = checkIsActivityAlreadyBooked(activities, activityList);
+    if (available) {
+      setIsSlotUnvailable(true);
     } else {
-      errorElement.innerHTML = "";
-      return true;
+      setIsSlotUnvailable(false);
+      handleSubmit();
     }
+
+    // const errorElement = document.getElementById("Error");
+    // if (!allFieldsFilled) {
+    //   errorElement.innerHTML = "All fields must be filled.";
+    //   return false;
+    // } else {
+    //   errorElement.innerHTML = "";
+    //   return true;
+    // }
+  };
+
+  const checkIsActivityAlreadyBooked = (activities, selectedActivities) => {
+    return activities && activities.some((activity) => {
+      return activity.activityList.some((alreadyBookedActivity) => {
+        return selectedActivities.some((selectedActivity) => {
+          return selectedActivity.id === alreadyBookedActivity.id;
+        });
+      });
+    });
   };
 
   return (
@@ -196,11 +210,7 @@ const AddReserv = () => {
               </p>
 
               <div className="row d-flex align-items-center justify-content-center">
-                <form
-                  onSubmit={handleSubmit}
-                  method="Post"
-                  style={{ width: "18rem" }}
-                >
+                <form onSubmit={validate} style={{ width: "18rem" }}>
                   <div className="mb-3">
                     <label htmlFor="customerName" className="form-label">
                       Customer Name
@@ -234,10 +244,12 @@ const AddReserv = () => {
                       onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
+                  
                   <div className="mb-3">
                     <label htmlFor="checkinDate" className="form-label">
                       Check-in Date
                     </label>
+                    
                     <input
                       type="Date"
                       className="form-control"
@@ -255,23 +267,27 @@ const AddReserv = () => {
                       className="form-control"
                       id="checkinHour"
                       min="9"
-                      max="16" 
+                      max="16"
                       placeholder="Enter hour (9-16)"
                       onChange={(e) => {
                         const hour = Math.max(
                           0,
                           Math.min(16, Number(e.target.value))
                         );
-                        setcheckinTime(`${hour}:00`); 
+                        setcheckinTime(`${hour}:00`);
                       }}
                     />
                   </div>
-                  <button
-                    type="submit"
-                    className="btn btn-success"
-                    id="submit"
-                    onClick={validate}
-                  >
+                  <div>
+                    {isSlotUnvailable && (
+                      <p>
+                        Sorry, this slot is not available. Please choose
+                        another.
+                      </p>
+                    )}
+                  </div>
+
+                  <button type="submit" className="btn btn-success" id="submit">
                     Submit
                   </button>
 
