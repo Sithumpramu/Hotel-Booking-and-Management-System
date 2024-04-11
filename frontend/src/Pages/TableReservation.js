@@ -27,7 +27,6 @@ const TableReservation = () => {
         return <div>Error: {error}</div>;
     }
 
-
     const getUpdateData = (reservation) => {
         setNameToUpdate(reservation._id);
         setDate(reservation.Date);
@@ -36,10 +35,10 @@ const TableReservation = () => {
         setemail(reservation.email);
         setContactNumber(reservation.ContactNumber);
         //setQty(reservation.Qty);
-        setTableList(reservation. TableList);
+       // setTableList(reservation. TableList);
     };
 
-    const updateDetails = async () => {
+   /* const updateDetails = async () => {
         await updateReserv(
             nameToUpdate,
             Date,
@@ -49,7 +48,7 @@ const TableReservation = () => {
             ContactNumber
         );
     };
-
+*/
 
     const handleDelete = async () => {
         await deleteReservation(nameToDelete);
@@ -73,8 +72,7 @@ const TableReservation = () => {
                         <p><strong>Email: </strong>{Table.email}</p>
                         <p><strong>Telephone Number: </strong>{Table.contactNumber}</p>
                         <button type="button" class="btn btn-primary"
-                        style={{ width: "10rem" }}
-                        onClick={() => getUpdateData(reservation)}>Edit Details</button>
+                        style={{ width: "10rem" }}>Edit Details</button>
                         <button type="button" class="btn btn-primary "
                             href="#"
                             className="btn btn-danger"
