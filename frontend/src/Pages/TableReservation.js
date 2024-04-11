@@ -388,7 +388,7 @@ const TableReservation = () => {
       </div>
 
       {/*delete model  */}
-      <div
+    <div
         className="modal fade"
         id="Modal"
         tabindex="-1"
