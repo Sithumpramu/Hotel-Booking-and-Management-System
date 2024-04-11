@@ -29,16 +29,16 @@ function Inventorysidebar(){
         <div className="d-flex justify-content-center align-items-center"><img src="Sunset Araliya horizontal.png"  style={{width:"150px"}} className="mt-4 "></img></div>
         <div className="d-flex flex-column  mt-5 justify-content-around fs-5" style={{height:"250px"}}>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/Staffmanage">Staff Management</a>
+            <a className="nav-link text-white fs-6" aria-current="page" href="/HotelView">Inventory Details</a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/Usermanage">User Management</a>
+            <a className="nav-link text-white fs-6" aria-current="page" href="/AddItem">Add Items</a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/Accountmanage">Account Management</a>
+            <a className="nav-link text-white fs-6" aria-current="page" href="/EditItem">Edit Items</a>
           </li>
           <li className="nav-item border">
-            <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord">Home</a>
+            <a className="nav-link text-white fs-6" aria-current="page" href="/RoomManagerView">Room Manager View</a>
           </li>
           <li className="nav-item border">
             <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord" data-bs-toggle="modal" data-bs-target="#Modal2" >Profile</a>

@@ -66,7 +66,7 @@ const RoomManagerView = () => {
                     <td>
                       <div className="d-grid gap-2">
                         <button type="button" className="btn btn-success btn-sm">
-                          <a href={`/pages/inventory/edit/${item._id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                          <a href={`/EditItem`} style={{ textDecoration: 'none', color: 'white' }}>
                             update
                           </a>
                         </button>
@@ -78,7 +78,7 @@ const RoomManagerView = () => {
               </tbody>
             </table>
             <button className="btn btn-primary">
-              <a href="/pages/inventory/add" style={{ textDecoration: 'none', color: 'white' }}>
+              <a href="AddItem" style={{ textDecoration: 'none', color: 'white' }}>
                 create new Item
               </a>
             </button>

@@ -37,7 +37,7 @@ const HotelView = () => {
                   <th scope="col">Description</th>
                   <th scope="col">Unit_Price</th>
                   <th scope="col">Stock Count</th>
-                  <th scope="col">Status</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -48,7 +48,7 @@ const HotelView = () => {
                     <td>{item.description}</td>
                     <td>{item.unit_price}</td>
                     <td>{item.stockCount}</td>
-                    <td>
+                    {/*<td>
                       <div className="d-grid gap-2">
                         <button type="button" className="btn btn-success btn-sm">
                           <a href={`/pages/inventory/edit/${item._id}`} style={{ textDecoration: 'none', color: 'white' }}>
@@ -56,7 +56,7 @@ const HotelView = () => {
                           </a>
                         </button>
                       </div>
-                    </td>
+                    </td>*/}
                   </tr>
                 ))}
               </tbody>

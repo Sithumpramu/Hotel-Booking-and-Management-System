@@ -4,6 +4,7 @@ import Inventorysidebar from '../../components/InventoryManagerSideBar';
 
 
 export const EditItem = () => {
+  const [inventory, setInventory] = useState([]);
   const navigate = useNavigate();
   const [state, setState] = useState({
     itemID: '',
@@ -30,6 +31,24 @@ export const EditItem = () => {
       unit_price,
       stockCount,
     };
+
+
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:4000/roominventory/');
+          if (response.ok) {
+            const data = await response.json();
+            setInventory(data);
+          } else {
+            throw new Error('Failed to fetch data');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+    
+      fetchData();
+  
 
     try {
       const response = await fetch(`http://localhost:4000/roominventory/update/${itemID}`, {
