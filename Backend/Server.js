@@ -4,7 +4,6 @@ const express = require('express')
 const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
-const staffRoutes = require('./Routes/staff')
 const roominventoryRoutes = require('./Routes/roominventory')
 
 // express app
@@ -22,7 +21,6 @@ app.use((req, res, next) => {
 // routes
 
 app.use('/user', userRoutes)
-app.use('/staff',staffRoutes)
 app.use('/roominventory',roominventoryRoutes)
 
 // connect to db
