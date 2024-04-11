@@ -1,25 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const validator = require("validator");
+const { Double } = require("mongodb");
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-const menuSchema = new Schema ({
+const imageSchema = new Schema({
+  data: Buffer,
+  contentType: String,
+});
 
- productName:{
-    type:String,
-    required:true
- },
+const menuSchema = new Schema({
+   productName:{
+      type:String,
+      required:true
+   },
+  
+   Price:{
+      type: Number,
+      required:true
+   },
+  
+  Image: imageSchema,
+});
 
- imageUrl: {
-    type: String,
-    required: true
-  },
-
- Price:{
-    type: Number,
-    required:true
- }
-
-}, {timestamps:true})
-
-module.exports = mongoose.model('menu',menuSchema)
+module.exports = mongoose.model("menu",menuSchema);
 

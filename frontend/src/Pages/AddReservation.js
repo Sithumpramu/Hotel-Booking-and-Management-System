@@ -1,4 +1,7 @@
 import { useState } from "react"
+import useAddReservation from "../hooks/useAddReservation"
+
+
 
 const AddReservation =()=>{
 
@@ -7,39 +10,19 @@ const AddReservation =()=>{
     const[Capacity, setCapacity] = useState ('')
     const[email, setemail] = useState ('')
     const[ContactNumber, setContactNumber] = useState ('')
-    const[error, setError] = useState (null)
+    //const[error, setError] = useState (null)
+    const{useAddResev,isLoading,error}= useAddReservation()
+   
 
     const handleSubmit = async (e) =>{
     
          e.preventDefault()
 
-         const AddReservation={Date,Name,Capacity,email,ContactNumber}
-
-         const response= await fetch('/table',{
-            method: 'POST',
-            body: JSON.stringify(AddReservation),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-         })
-
-         const json= await response.json()
-
-         if(!response.ok){
-            setError(json.error)
+         
          }
+    
 
-         if(response.ok){
-            setDate('')
-            setName('')
-            setCapacity('')
-            setemail('')
-            setContactNumber('')
-            setError(null)
-            console.log('New Reservation is created',json)
-         }
-    }
-
+    
     return(
         <div className="addreservation vh-100">
             <h1>Create Table Reservation</h1>
