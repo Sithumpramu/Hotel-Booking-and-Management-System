@@ -37,21 +37,19 @@
   }
 }
 
-.card{
-  margin-top: 5rem;
-  width: 18rem;
-  height: 22rem;
- 
+lable,input{
+  display: block;
+  
 }
 
-.col{
-  height: 20rem;
+.createReservation{
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color:cadetblue;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
-.card-img-top{
-  height:13rem
-}
-
-.cards-wrapper{
-  column-gap: 8rem;
-}
