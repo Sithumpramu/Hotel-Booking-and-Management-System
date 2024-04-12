@@ -14,6 +14,7 @@ import WatersportActivities from "./Pages/WatersportActivities";
 
 //manager's dashboard
 import Dashboard from "./Pages/Staff/ManagerDashboard";
+import TableReservation from "./Pages/Staff/DiningReservations";
 
 //Event & Activity Manager
 import AddActivity from "./Pages/Staff/AddActivity";
@@ -76,6 +77,7 @@ function App() {
             path="/watersportReservations"
             element={<WatersportReservations />}
           />
+          <Route path="/DiningReservations" element={<TableReservation />} />
 
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
           <Route path="/AdminDashbord" element={<AdminDash />} />

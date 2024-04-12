@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-//import useImageFetch from '../hooks/useImgfetch';
+
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 function ReceptionNavbar() {
-  //const imageUrl = useImageFetch(imageName);
+  
+  
   const { logout } = useLogout();
   let selectedId = localStorage.getItem("selectedMenuId")
     ? localStorage.getItem("selectedMenuId")
@@ -21,12 +22,16 @@ function ReceptionNavbar() {
   return (
     <div className="col-2">
       <ul className="nav flex-column bg-black pe-1 vh-100 position-fixed">
-        {/* <div className="d-flex justify-content-center align-items-center"><img src={"Sunset Araliya horizontal.png"} alt={`Image: ${imageName}`}  style={{width:"150px"}} className="mt-4 "></img></div> */}
+        
         <div
           className="d-flex flex-column  mt-5 justify-content-around fs-5"
           style={{ height: "250px" }}
         >
-          <li className={`${selectedId === "Home" ? `bg-secondary` : `nav-item border`}`}>
+          <li
+            className={`${
+              selectedId === "Home" ? `bg-secondary` : `nav-item border`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -36,9 +41,14 @@ function ReceptionNavbar() {
               Home
             </a>
           </li>
-          
+
           <li
-            className={`${selectedId === "Watersports Management" ? `bg-secondary` : `nav-item border my-2`}`}>
+            className={`${
+              selectedId === "Watersports Management"
+                ? `bg-secondary`
+                : `nav-item border my-2`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -49,7 +59,13 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Watersports Reservations" ? `bg-secondary` : `nav-item border my-2`}`}>
+          <li
+            className={`${
+              selectedId === "Watersports Reservations"
+                ? `bg-secondary`
+                : `nav-item border my-2`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -60,7 +76,13 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Add a Watersport Reservation" ? `bg-secondary` : `nav-item border my-2`}`}>
+          <li
+            className={`${
+              selectedId === "Add a Watersport Reservation"
+                ? `bg-secondary`
+                : `nav-item border my-2`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
@@ -71,23 +93,20 @@ function ReceptionNavbar() {
             </a>
           </li>
 
-          <li className={`${selectedId === "Room Reservations" ? `bg-secondary` : `nav-item border my-2`}`}>
+          <li
+            className={`${
+              selectedId === "Dining Reservations"
+                ? `bg-secondary`
+                : `nav-item border my-2`
+            }`}
+          >
             <a
               className="nav-link text-white fs-6"
               aria-current="page"
-              href="/AdminDashbord"
+              href="/DiningReservations"
+              onClick={() => setSelectedId("Dining Reservations")}
             >
-              Room Resrvations
-            </a>
-
-          </li>
-          <li className="nav-item border">
-            <a
-              className="nav-link text-white fs-6"
-              aria-current="page"
-              href="/AdminDashbord"
-            >
-              Dining Resrvations
+              Dining Reservations
             </a>
           </li>
         </div>
