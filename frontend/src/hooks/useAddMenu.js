@@ -30,7 +30,7 @@ const useAddMenu = () => {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("//menu");
+        navigate("/menu");
         alert("Activity Added successfully");
       }
     } catch (error) {
