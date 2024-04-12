@@ -1,25 +1,28 @@
 import React from "react";
 import "./App.css";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-//import Watersport from "./Pages/Staff/WatersportManagement";
-import ManagerDashboard from "./Pages/Staff/ManagerDashboard";
-import AddActivity from "./Pages/Staff/AddActivity";
-import WatersportManage from "./Pages/Staff/WatersportManagement";
-import AddReserv from "./Pages/Staff/addWatersportReserv";
-import SelectActivity from "./Pages/Staff/SelectActivity";
-import WatersportReservations from "./Pages/Staff/watersportReservations";
-
-import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
-import WatersportActivities from "./Pages/WatersportActivities";
-
+//client side pages
 import Home from "./Pages/Home";
 import Signup from "./Pages/signup";
 import Login from "./components/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PasswordReset from "./Pages/PasswordReset";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
+import WatersportActivities from "./Pages/WatersportActivities";
+
+//Event & Activity Manager
+import AddActivity from "./Pages/Staff/AddActivity";
+import WatersportManage from "./Pages/Staff/WatersportManagement";
+
+//Reception handling
+import AddReserv from "./Pages/Staff/addWatersportReserv";
+import SelectActivity from "./Pages/Staff/SelectActivity";
+import WatersportReservations from "./Pages/Staff/watersportReservations";
+import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
+
+//User management
 import AdminDash from "./Pages/Staff/AdminDash";
 import ManagerDash from "./Pages/Staff/ManagerDash";
 import StaffDash from "./Pages/Staff/StaffDash";
@@ -60,8 +63,6 @@ function App() {
           />
           <Route path="/Watersports" element={<WatersportActivities />} />
 
-
-          <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
           <Route path="/addWatersportsReservation" element={<AddReserv />} />
