@@ -124,14 +124,15 @@ const AddReserv = () => {
       <div className="col">
 
         <div className="mt-5 mb-4">
-          <h3>Selected Activities</h3>
+          <h3 className="text-primary fw-bolder fs-4">Selected Activities</h3>
         </div>
 
         <div>
           <div>
             <div className="row d-flex align-items-center justify-content-center">
-              <table style={{ width: "48rem" }}>
-                <tr>
+              <table style={{ width: "48rem" }} >
+                <thead className="bg-primary bg-opacity-25">
+                  <tr>
                   <th className="border border-black">Activity Name</th>
                   <th className="border border-black">Price per round (Rs.)</th>
                   <th className="border border-black">Qty per round</th>
@@ -139,6 +140,8 @@ const AddReserv = () => {
                   <th className="border border-black">Rounds</th>
                   <th className="border border-black">Total Price (Rs.)</th>
                 </tr>
+                </thead>
+                
 
                 {activityList &&
                   activityList.map((activity) => (

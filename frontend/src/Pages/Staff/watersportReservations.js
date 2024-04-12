@@ -218,7 +218,7 @@ function WatersportReservations() {
                       <td className="border border-black">
                         <div className="m-2 align">
                           <button
-                            className="btn btn-success"
+                            className="btn btn-outline-success"
                             style={{ width: "10rem" }}
                             data-bs-toggle="modal"
                             data-bs-target="#Modal"
@@ -230,7 +230,7 @@ function WatersportReservations() {
                           <div className="m-2">
                             {nameToUpdate === reservation._id ? (
                               <button
-                                className="btn btn-primary"
+                                className="btn btn-outline-primary"
                                 style={{ width: "10rem" }}
                                 onClick={() => updateDetails()}
                               >
@@ -238,7 +238,7 @@ function WatersportReservations() {
                               </button>
                             ) : (
                               <button
-                                className="btn btn-primary"
+                                className="btn btn-outline-primary"
                                 style={{ width: "10rem" }}
                                 onClick={() => getUpdateData(reservation)}
                               >
@@ -249,7 +249,7 @@ function WatersportReservations() {
 
                           <div className="m-2">
                             <button
-                              className="btn btn-danger "
+                              className="btn btn-outline-danger "
                               style={{ width: "10rem" }}
                               data-bs-toggle="modal"
                               data-bs-target="#Modal"
