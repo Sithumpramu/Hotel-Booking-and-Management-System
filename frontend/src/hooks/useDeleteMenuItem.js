@@ -8,13 +8,13 @@ const useDeleteMenu = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const deleteMenuItem = async (menuId) => {
+  const deleteMenuItem = async (Id) => {
     setIsLoading(true);
     setError(null);
 
     try {
       const response = await fetch(
-        `http://localhost:4000/menu/${menuId}`,
+        `http://localhost:4000/menu/${Id}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
