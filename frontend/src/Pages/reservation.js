@@ -1,37 +1,32 @@
 import { useState } from "react";
 import React from 'react';
-import useAddRoomReserve from "../hooks/useAddRoomReserve";
+import { useNavigate } from 'react-router-dom';
+//import useAddRoomReserve from "../hooks/useAddRoomReserve";
 
 const AddNewRoomReserve = () => {
   const [Checkindate, setCheckindate] = useState("");
   const [Checkoutdate, setCheckoutdate] = useState("");
-  const [Rtype, setRtype] = useState("");
   const [NoOfGuests, setNoOfGuests] = useState("");
 
 
-  const { addRoomReserve, isLoading, error } = useAddRoomReserve();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-
-    await addRoomReserve(Checkindate, Checkoutdate, Rtype, NoOfGuests);
+  const handleNext = () => {
+    // Pass data to rooms page
+    navigate('/Rooms', {
+      state: {
+        Checkindate,
+        Checkoutdate,
+        NoOfGuests
+      }
+    });
   };
-
-  function validation() {
-    var submit = document.getElementById("submit");
-
-    if (Checkindate === "" && Checkoutdate === "" && Rtype === "" && NoOfGuests === "") {
-      document.getElementById("Error").innerHTML = "All fields must be filled.";
-    }
-  }
-
 
   return (
     <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
       <div className="card">
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleNext}>
           <label>
             Check-in Date:
           </label>
@@ -40,7 +35,7 @@ const AddNewRoomReserve = () => {
             id="checkindate"
             onChange={(e) => {
               setCheckindate(e.target.value);
-            }} />
+            } } min={new Date().toISOString().split('T')[0]}/>
 
           <label>
             Check-out Date:
@@ -50,18 +45,9 @@ const AddNewRoomReserve = () => {
             id="checkoutdate"
             onChange={(e) => {
               setCheckoutdate(e.target.value);
-            }} />
+            }} min={new Date().toISOString().split('T')[0]} />
 
-          <label>
-            Room Type:
-          </label>
-          <input type="text"
-            className=""
-            id="Rtype"
-            onChange={(e) => {
-              setRtype(e.target.value);
-            }} />
-
+          
           <label>
             Number of Guests:
           </label>
@@ -72,16 +58,14 @@ const AddNewRoomReserve = () => {
               setNoOfGuests(e.target.value);
             }} />
 
-          <a href="/CustomerDetails"
+          <button
             type="submit"
             className= "btn btn-info"
             id="submit"
-            onClick={() => {
-              validation();
-            }}
+            onClick={handleNext}
           >
-            Add Room
-          </a>
+            Next
+          </button>
 
           <p id="Error"></p>
         </form>

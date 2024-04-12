@@ -16,19 +16,45 @@ const roomreservationSchema = new Schema({
       require:true
     },
 
-    Rtype: {
-      type:String,
-      require:true
-    },
+
 
     NoOfGuests:{
         type:String,
         require:true
     },
 
+    RoomID:{
+        type:String,
+        require:true
+    },
+
+    Name:{
+        type:String,
+        require:true
+    },
+
+    email:{
+        type:String,
+        require:true
+    },
+
+    Address:{
+        type:String,
+        require:true
+    },
+
+    phoneno:{
+        type:Number,
+        require:true
+    },
+
+
+
 
     
 })
+
+
 
 module.exports = mongoose.model('roomreservation',roomreservationSchema); //create collection
 

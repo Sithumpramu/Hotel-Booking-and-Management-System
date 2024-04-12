@@ -9,14 +9,24 @@ const useAddRoomReserve = () => {
     const addRoomReserve = async (
         Checkindate,
         Checkoutdate,
-        Rtype,
-        NoOfGuests
+        NoOfGuests,
+        firstName,
+        lastName,
+        Email,
+        Address,
+        phoneno
+
     ) => {
         const reservationDetails = {
             Checkindate,
             Checkoutdate,
             Rtype,
-            NoOfGuests
+            NoOfGuests,
+            firstName,
+            lastName,
+            Email,
+            Address,
+            phoneno
         };
 
         setIsLoading(true);

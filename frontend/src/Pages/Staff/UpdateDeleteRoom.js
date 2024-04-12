@@ -1,10 +1,35 @@
 import React, { useState } from "react";
-import RoomList from "../../hooks/useRoomList"
-//import useDeleteRoom from "../hooks/useDeleteRoom";
-import Room from "../rooms";
+import RoomList from "../../hooks/useRoomList";
+import useDeleteRoom from "../../hooks/useDeleteRoom";
 
 function DeleteRoom() {
-  const { rooms } = RoomList();
+  const { rooms, isLoading, error } = RoomList();// roomlist was there in brackets
+  const { DeleteRoom } = useDeleteRoom();
+  const [RidToDelete, setRidToDelete] = useState("");
+  //const { rooms } = RoomList();
+
+  if (isLoading) {
+    return (
+      <div className="alert alert-primary" role="alert">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const handleDelete = async () => {
+    await DeleteRoom(RidToDelete);
+    //console.log(isLoading, "handleDelete loading");
+    setRidToDelete("");
+  };
+
+
+
+
+  
 
   return (
     <div>
@@ -39,8 +64,10 @@ function DeleteRoom() {
                 </div>
                 <div className="d-flex justify-content-center align-items-center bg-secondary">
                   <div className="me-5">
-                    <button>
-                      Delete Room
+                    <button
+                       onClick={() => setRidToDelete(rooms._id)}>
+
+                      Delete Room 
                     </button>
                   </div>
                   <div><button>

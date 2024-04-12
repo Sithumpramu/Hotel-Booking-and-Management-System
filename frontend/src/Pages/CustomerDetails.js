@@ -1,57 +1,64 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAddRoomReserve from '../hooks/useAddRoomReserve';
 
 
-function Rooms() {
+function ReservationDetails() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
+
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [address, setAddress] = useState('');
-    const [country, setCountry] = useState('');
-    const [city, setCity] = useState('');
+    const [Email, setEmail] = useState('');
+    const [Address, setAddress] = useState('');
+    const [phoneno, setphoneno] = useState('');
+    const { addRoomReserve, isLoading, error } = useAddRoomReserve();
 
-    const handleSubmit = async (e) => {
-       
+    const handleSubmit = () => {
+
+        console.log('Submitting reservation details:', { Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email });
+
+        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email, Address, phoneno);
     };
 
     return (
-        <div className="container">
-            <div className="card">
+        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "url(frontend/public/kal.jpg)" }}>
+            <div className="card" style={{ backgroundColor: "white", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "600px", textAlign: "center" }}>
                 <h1>Customer Details</h1>
-                <form onSubmit={handleSubmit}>
-                    <label>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
+                    <h2>Enter Reservation Details</h2>
+                    <p>Room:</p>
+                    <p>Check-in Date: {Checkindate}</p>
+                    <p>Check-out Date: {Checkoutdate}</p>
+                    <p>Number of Guests: {NoOfGuests}</p>
+                    <label style={{ marginBottom: "10px" }}>
                         First Name:
-                        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <label>
+                    <label style={{ marginBottom: "10px" }}>
                         Last Name:
-                        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <label>
+                    <label style={{ marginBottom: "10px" }}>
                         Email:
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="Email" value={Email} onChange={(e) => setEmail(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <label>
-                        Phone Number:
-                        <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-                    </label>
-                    <label>
+                    <label style={{ marginBottom: "10px" }}>
                         Address:
-                        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                        <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <label>
-                        Country:
-                        <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
+                    <label style={{ marginBottom: "10px" }}>
+                        Phone Number:
+                        <input type="tel" value={phoneno} onChange={(e) => setphoneno(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <label>
-                        City:
-                        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-                    </label>
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={handleSubmit} style={{ backgroundColor: "#007bff", color: "white", padding: "10px", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s ease", width: "100%" }}>Submit</button>
                 </form>
             </div>
         </div>
+
     );
 }
 
-export default Rooms;
+export default ReservationDetails;

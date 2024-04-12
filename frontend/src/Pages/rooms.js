@@ -6,7 +6,7 @@ function Room() {
 
   return (
     <div>
-      <div className="row bs">
+      <div className="row" style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", marginTop: "20px", borderRadius: "5px", padding: "20px" }}>
         {rooms.map((rooms) => (
           <div className="col-md-7">
             <div className="card">
