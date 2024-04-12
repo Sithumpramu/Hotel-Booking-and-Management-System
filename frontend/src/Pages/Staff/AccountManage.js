@@ -79,7 +79,7 @@ function CreatePage() {
                 <option value="admin">Admin</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-primary mt-3 " disabled={isLoading} >Create</button><br></br>
+            <button type="submit" className="btn btn-primary mt-3 mb-4 " disabled={isLoading} >Create</button><br></br>
             {error && <div className="error bg-danger mt-4" style={{color:"white"}}>{error}</div>}
           </form>
         </div>

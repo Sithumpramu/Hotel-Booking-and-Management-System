@@ -21,9 +21,11 @@ function UserManage(){
       }
     
     return(
-        <div>
-       <div className="vh-100 row m-0 p-0">
-       <Adminsidebar/>
+      <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3 m-0 p-0">
+          <Adminsidebar />
+        </div>
        <div className="col">
          <div className="row">
       <h2 className="mb-5 mt-3">User Accounts</h2>
