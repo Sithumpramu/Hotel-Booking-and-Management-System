@@ -19,7 +19,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
       
     }
 
-
+    const prevPath = localStorage.getItem('prevPath');
+    console.log('Previous Path:', prevPath);
 
 
     return(
