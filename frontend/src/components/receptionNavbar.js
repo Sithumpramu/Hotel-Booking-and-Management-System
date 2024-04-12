@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
 
 function ReceptionNavbar() {
-  
-  
   const { logout } = useLogout();
   let selectedId = localStorage.getItem("selectedMenuId")
     ? localStorage.getItem("selectedMenuId")
@@ -22,7 +19,6 @@ function ReceptionNavbar() {
   return (
     <div className="col-2">
       <ul className="nav flex-column bg-black pe-1 vh-100 position-fixed">
-        
         <div
           className="d-flex flex-column  mt-5 justify-content-around fs-5"
           style={{ height: "250px" }}
@@ -51,7 +47,7 @@ function ReceptionNavbar() {
           >
             <a
               className="nav-link text-white fs-6"
-              aria-current="page"
+             
               href="/WatersportsManagement"
               onClick={() => setSelectedId("Watersports Management")}
             >
@@ -68,7 +64,7 @@ function ReceptionNavbar() {
           >
             <a
               className="nav-link text-white fs-6"
-              aria-current="page"
+              
               href="/watersportReservations"
               onClick={() => setSelectedId("Watersports Reservations")}
             >
@@ -85,7 +81,7 @@ function ReceptionNavbar() {
           >
             <a
               className="nav-link text-white fs-6"
-              aria-current="page"
+              
               href="/selectActivity"
               onClick={() => setSelectedId("Add a Watersport Reservation")}
             >
@@ -102,7 +98,7 @@ function ReceptionNavbar() {
           >
             <a
               className="nav-link text-white fs-6"
-              aria-current="page"
+              
               href="/DiningReservations"
               onClick={() => setSelectedId("Dining Reservations")}
             >
