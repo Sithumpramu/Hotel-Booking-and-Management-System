@@ -16,6 +16,8 @@ import DiningDash from "./Pages/DiningDash";
 import DiningNavbar from "./components/DiningNavbar"
 import TableReservation from "./Pages/TableReservation"
 import AddReservation from "./Pages/AddReservation"
+import MenuItems from "./Pages/Staff/MenuManagement"
+import AddNewMenu from "./Pages/Staff/AddMenu";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -74,6 +76,15 @@ function App() {
            <Route
           path="/AddReservations"
           element={<AddReservation/>}
+          />
+          <Route
+          path="/menu"
+          element={<MenuItems/>}
+          />
+
+<Route
+          path="/addMenu"
+          element={<AddNewMenu/>}
           />
         </Routes>
       </BrowserRouter>

@@ -1,39 +1,40 @@
-require('dotenv').config()
+require("dotenv").config();
 
-const express = require('express')
-const cors = require('cors');
-const mongoose = require('mongoose')
-const userRoutes = require('./Routes/user')
-const staffRoutes = require('./Routes/staff')
-const tableRoutes = require('./Routes/table')
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const userRoutes = require("./Routes/user");
+const staffRoutes = require("./Routes/staff");
+const tableRoutes = require("./Routes/table");
+const menuRoutes = require("./Routes/menu");
+
 // express app
-const app = express()
+const app = express();
 
 // middleware
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method)
-  next()
-})
+  console.log(req.path, req.method);
+  next();
+});
 
 // routes
 
-app.use('/user', userRoutes)
-app.use('/staff',staffRoutes)
-app.use('/table',tableRoutes)
+app.use("/user", userRoutes);
+app.use("/staff", staffRoutes);
+app.use("/table", tableRoutes);
+app.use("/menu", menuRoutes);
 // connect to db
-mongoose.connect(process.env.MONGODB_URL)
+mongoose
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     // listen for requests
-    app.listen(process.env.PORT , () => {
-      console.log('connected to db & listening on port', process.env.PORT)
-    })
+    app.listen(process.env.PORT, () => {
+      console.log("connected to db & listening on port", process.env.PORT);
+    });
   })
   .catch((error) => {
-    console.log(error)
-  })
-
-
-
+    console.log(error);
+  });

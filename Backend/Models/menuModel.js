@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const validator = require("validator");
-const { Double } = require("mongodb");
 
 const Schema = mongoose.Schema;
 
@@ -11,6 +8,11 @@ const imageSchema = new Schema({
 });
 
 const menuSchema = new Schema({
+
+   category:{
+      type:String,
+      required:true
+   },
    productName:{
       type:String,
       required:true
