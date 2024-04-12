@@ -188,54 +188,54 @@ const TableReservation = () => {
     //   </div>
 
     //   {/*delete model  */}
-      // <div
-      //   className="modal fade"
-      //   id="Modal"
-      //   tabindex="-1"
-      //   aria-labelledby="exampleModalLabel"
-      //   aria-hidden="true"
-      // >
-      //   <div className="modal-dialog modal-dialog-centered">
-      //     <div className="modal-content">
-      //       <div className="modal-header">
-      //         <h1 className="modal-title fs-5" id="exampleModalLabel">
-      //           CAUTION
-      //         </h1>
-      //         <button
-      //           type="button"
-      //           className="btn-close"
-      //           data-bs-dismiss="modal"
-      //           aria-label="Close"
-      //         ></button>
-      //       </div>
-      //       <div className="modal-body">
-      //         Are you sure you want to cancel this Reservation?
-      //       </div>
-      //       <div className="modal-footer">
-      //         <button
-      //           type="button"
-      //           className="btn btn-secondary"
-      //           data-bs-dismiss="modal"
-      //         >
-      //           Close
-      //         </button>
+    // <div
+    //   className="modal fade"
+    //   id="Modal"
+    //   tabindex="-1"
+    //   aria-labelledby="exampleModalLabel"
+    //   aria-hidden="true"
+    // >
+    //   <div className="modal-dialog modal-dialog-centered">
+    //     <div className="modal-content">
+    //       <div className="modal-header">
+    //         <h1 className="modal-title fs-5" id="exampleModalLabel">
+    //           CAUTION
+    //         </h1>
+    //         <button
+    //           type="button"
+    //           className="btn-close"
+    //           data-bs-dismiss="modal"
+    //           aria-label="Close"
+    //         ></button>
+    //       </div>
+    //       <div className="modal-body">
+    //         Are you sure you want to cancel this Reservation?
+    //       </div>
+    //       <div className="modal-footer">
+    //         <button
+    //           type="button"
+    //           className="btn btn-secondary"
+    //           data-bs-dismiss="modal"
+    //         >
+    //           Close
+    //         </button>
 
-      //         <form action="" method="delete">
-      //           <button
-      //             className="btn btn-outline-danger"
-      //             onClick={handleDelete}
-      //           >
-      //             CANCEL
-      //           </button>
-      //         </form>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
+    //         <form action="" method="delete">
+    //           <button
+    //             className="btn btn-outline-danger"
+    //             onClick={handleDelete}
+    //           >
+    //             CANCEL
+    //           </button>
+    //         </form>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     // </div>
 
     <div>
-      <h1 className="mb-4 mt-5">Watersport Reservations</h1>
+      <h1 className="mb-4 mt-5">My Reservations</h1>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>
@@ -337,18 +337,6 @@ const TableReservation = () => {
                   )}
                 </td>
 
-                <td>
-                <button
-              type="button"
-              class="btn btn-primary "
-              className="btn btn-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#Modal"
-              onClick={() => setNameToDelete(Table._id)}
-            >
-              Cancel Reservation
-            </button>
-                </td>
 
                 <td>
                   {IdToUpdate === Table._id ? (
@@ -365,22 +353,25 @@ const TableReservation = () => {
                       className="btn btn-primary"
                       onClick={() => getUpdateData(Table)}
                     >
-                      Update
+                      Update Details
                     </a>
                   )}
                 </td>
 
                 <td>
-                  <a
-                    href="#"
-                    className="btn btn-success"
+                  <button
+                    type="button"
+                    class="btn btn-primary "
+                    className="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#Modal"
                     onClick={() => setNameToDelete(Table._id)}
                   >
-                    CheckOut
-                  </a>
+                    Cancel Reservation
+                  </button>
                 </td>
+
+
               </tr>
             </tbody>
           ))}
@@ -388,7 +379,7 @@ const TableReservation = () => {
       </div>
 
       {/*delete model  */}
-    <div
+      <div
         className="modal fade"
         id="Modal"
         tabindex="-1"
