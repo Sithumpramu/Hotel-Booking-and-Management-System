@@ -23,6 +23,11 @@ const TestSchema = new Schema({
         require:true
     },
 
+    RoomID:{
+        type:String,
+        require:true
+    },
+
     Name:{
         type:String,
         require:true

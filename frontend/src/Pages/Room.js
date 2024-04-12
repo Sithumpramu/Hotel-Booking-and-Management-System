@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RoomList from "../hooks/useRoomList";
-function Rooms() {
+
+function Rooms(roomId) {
   const location = useLocation();
   const navigate = useNavigate();
   const { rooms } = RoomList();
@@ -12,50 +13,62 @@ function Rooms() {
   console.log('Number of Guests:', guests);
 
   const handleRoomSelect = (roomId) => {
-    // Pass selected room ID and reservation details to details page
-    const randomRoomId =1;
+    // Call the token check function before navigating
+    TokenCheckAndNavigate(roomId);
+  };
+
+
+  const TokenCheckAndNavigate = (roomId) => {
+    const token = localStorage.getItem('user');
+    console.log(roomId)
+    if (!token) {
+      navigate('/login'); 
+      return;
+    }
+
+    // If token is present
+    else{
     navigate('/CustomerDetails', {
       state: {
-        roomId:randomRoomId,
+        roomId:roomId,
         checkinDate,
         checkoutDate,
         guests
       }
-    });
+    });}
   };
 
 
-
   return (
-<div>
+    <div>
       <div className="row bs">
-        {rooms.map((rooms) => (
-          <div className="col-md-7">
+        {rooms.map((room) => (
+          <div className="col-md-7" key={room.id}>
             <div className="card">
               <div className="card-body">
-                {rooms.Image && rooms.Image.data && (
+                {room.Image && room.Image.data && (
                   <img
                     style={{ width: "10rem" }}
-                    src={`data:${rooms.Image.contentType};base64,${btoa(
-                      String.fromCharCode.apply(null, rooms.Image.data.data)
+                    src={`data:${room.Image.contentType};base64,${btoa(
+                      String.fromCharCode.apply(null, room.Image.data.data)
                     )}`}
                     className="card-img-top mb-1"
-                    alt={rooms.Rtype}
+                    alt={room.Rtype}
                   />
                 )}
 
-                <p className="card-text">{rooms.Rid}</p>
-                <p className="card-text">{rooms.Rtype}</p>
-                <p className="card-text">{rooms.description}</p>
-                <p className="card-text">{rooms.capacity}</p>
-                <p className="card-text">{rooms.NoOfBeds}</p>
-                <p className="card-text">{rooms.price}</p>
-                <p className="card-text">{rooms.status}</p>
+                <p className="card-text">{room.Rid}</p>
+                <p className="card-text">{room.Rtype}</p>
+                <p className="card-text">{room.description}</p>
+                <p className="card-text">{room.capacity}</p>
+                <p className="card-text">{room.NoOfBeds}</p>
+                <p className="card-text">{room.price}</p>
+                <p className="card-text">{room.status}</p>
 
                 <div style={{ float: "right" }}>
-                  <a href="/CustomerDetails" className="btn btn-info" onClick={handleRoomSelect}>
+                  <button className="btn btn-info" onClick={() => handleRoomSelect(room.Rid)}>
                     Book Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
