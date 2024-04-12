@@ -31,7 +31,9 @@ function Adminsidebar(){
       newpwd.value =null;
     }
     return(
-        <div className="col-3 m-0 p-0">
+        <div className="col-3 m-0 p-0" 
+        // style={{position:"fixed"}}
+        >
         <ul className="nav flex-column bg-black pe-1 vh-100">
       
         <div className="d-flex justify-content-center align-items-center"><img src="Sunset Araliya horizontal.png" style={{width:"150px"}} className="mt-4 "></img></div>
