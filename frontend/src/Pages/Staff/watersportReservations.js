@@ -78,23 +78,25 @@ function WatersportReservations() {
           <div>
             <h1 className="mb-4 mt-5">Watersport Reservations</h1>
 
-            <div className="d-flex align-items-center justify-content-around mb-3">
-              <table className="table" style={{ width: "75rem" }}>
-                <tr className="border border-black" scope="col">
-                  <th scope="col">Customer Name</th>
-                  <th scope="col">Contact No</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">CheckIn Date</th>
-                  <th scope="col">CheckIn Time</th>
-                  <th scope="col">Activities</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-
+            <div className="d-flex justify-content-around mb-3">
+              <table
+                className="table table-dark table-striped"
+                style={{ width: "75rem" }}
+              >
                 {reservationList.map((reservation) => (
                   <tbody key={reservation._id}>
+                    <tr className="border border-black">
+                      <td className="border border-black">Customer Name</td>
+                      <td className="border border-black">Contact No</td>
+                      <td className="border border-black">Address</td>
+                      <td className="border border-black">CheckIn Date</td>
+                      <td className="border border-black">CheckIn Time</td>
+                      <td className="border border-black">Activities</td>
+                      <td></td>
+                    </tr>
+
                     <tr className="border border-black" scope="col">
-                      <td>
+                      <td className="border border-black">
                         {nameToUpdate === reservation._id ? (
                           <input
                             className="tabledit-input form-control input-sm"
@@ -111,7 +113,7 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      <td className="border border-black">
                         {nameToUpdate === reservation._id ? (
                           <input
                             className="tabledit-input form-control input-sm"
@@ -128,7 +130,7 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      <td className="border border-black">
                         {nameToUpdate === reservation._id ? (
                           <input
                             className="tabledit-input form-control input-sm"
@@ -145,7 +147,7 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      <td className="border border-black">
                         {nameToUpdate === reservation._id ? (
                           <input
                             className="tabledit-input form-control input-sm"
@@ -162,7 +164,7 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      <td className="border border-black">
                         {nameToUpdate === reservation._id ? (
                           <input
                             className="tabledit-input form-control input-sm"
@@ -179,59 +181,84 @@ function WatersportReservations() {
                         )}
                       </td>
 
-                      <td>
+                      <td className="border border-black">
                         {reservation.activityList.map((activity, index) => (
-                          <div key={index}>
-                            <div className="">ID: {activity.id}</div>
-                            <div>Qty: {activity.Qty}</div>
-                            <div>Number of Rides: {activity.noOfRides}</div>
-                            <div>Total Price: {activity.activityTPrice}</div>
+                          <div key={index} className="text-start">
+                            <div>
+                              <span className="fst-italic">
+                                Activity Name:{" "}
+                              </span>
+                              <span className="fw-bolder">{activity.id}</span>
+                            </div>
+                            <div>
+                              <span className="fst-italic">No.of.People: </span>
+                              <span className="fw-bolder">{activity.Qty}</span>
+                            </div>
+                            <div>
+                              <span className="fst-italic">
+                                Number of Rides:{" "}
+                              </span>
+                              <span className="fw-bolder">
+                                {activity.noOfRides}
+                              </span>
+                            </div>
+                            <div>
+                              <span className="fst-italic">Price : </span>
+                              <span className="fw-bolder">
+                                Rs.{activity.activityTPrice}.00
+                              </span>
+                            </div>
+                            <div>
+                              <p></p>
+                            </div>
                           </div>
                         ))}
                       </td>
 
-                      <td>
-                        <a
-                          href="#"
-                          className="btn btn-danger"
-                          data-bs-toggle="modal"
-                          data-bs-target="#Modal"
-                          onClick={() => setNameToDelete(reservation._id)}
-                        >
-                          Cancel
-                        </a>
-                      </td>
-
-                      <td>
-                        {nameToUpdate === reservation._id ? (
-                          <a
-                            href="#"
-                            className="btn btn-primary"
-                            onClick={() => updateDetails()}
+                      <td className="border border-black">
+                        <div className="m-2 align">
+                          <button
+                            className="btn btn-success"
+                            style={{ width: "10rem" }}
+                            data-bs-toggle="modal"
+                            data-bs-target="#Modal"
+                            onClick={() => setNameToDelete(reservation._id)}
                           >
-                            Save
-                          </a>
-                        ) : (
-                          <a
-                            href="#"
-                            className="btn btn-primary"
-                            onClick={() => getUpdateData(reservation)}
-                          >
-                            Update
-                          </a>
-                        )}
-                      </td>
+                            CheckOut
+                          </button>
 
-                      <td>
-                        <a
-                          href="#"
-                          className="btn btn-success"
-                          data-bs-toggle="modal"
-                          data-bs-target="#Modal"
-                          onClick={() => setNameToDelete(reservation._id)}
-                        >
-                          CheckOut
-                        </a>
+                          <div className="m-2">
+                            {nameToUpdate === reservation._id ? (
+                              <button
+                                className="btn btn-primary"
+                                style={{ width: "10rem" }}
+                                onClick={() => updateDetails()}
+                              >
+                                Save
+                              </button>
+                            ) : (
+                              <button
+                                className="btn btn-primary"
+                                style={{ width: "10rem" }}
+                                onClick={() => getUpdateData(reservation)}
+                              >
+                                Update Details
+                              </button>
+                            )}
+                          </div>
+
+                          <div className="m-2">
+                            <button
+                              className="btn btn-danger "
+                              style={{ width: "10rem" }}
+                              data-bs-toggle="modal"
+                              data-bs-target="#Modal"
+                              onClick={() => setNameToDelete(reservation._id)}
+                            >
+                              Cancel Reservation
+                            </button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>

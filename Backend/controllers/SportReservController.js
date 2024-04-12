@@ -33,6 +33,27 @@ const getReservations = async (req, res) => {
   }
 };
 
+const getReservationsByDateTime = async (req, res) => {
+  const { selectedDate, selectedTime } = req.query;
+
+  try {
+    const activities = await watersportReservModel.find({
+      checkinDate: selectedDate,
+      checkinTime: selectedTime,
+    });
+
+    if (!activities.length) {
+      return res.status(404).json({
+        message: "No activities found for the selected date and time.",
+      });
+    }
+
+    res.status(200).json(activities);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // Function to delete a reservation
 const deleteReservation = async (req, res) => {
   try {
@@ -101,6 +122,7 @@ const updateReservation = async (req, res) => {
 module.exports = {
   addReservation,
   getReservations,
+  getReservationsByDateTime,
   deleteReservation,
   updateReservation,
 };
