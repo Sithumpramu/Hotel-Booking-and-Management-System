@@ -18,6 +18,8 @@ import TableReservation from "./Pages/TableReservation"
 import AddReservation from "./Pages/AddReservation"
 import MenuItems from "./Pages/Staff/MenuManagement"
 import AddNewMenu from "./Pages/Staff/AddMenu";
+import Updatemenu from "./Pages/Staff/UpdateMenu"
+import MenuByCategoryPage from "./Pages/DisplayMenu"
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -82,9 +84,19 @@ function App() {
           element={<MenuItems/>}
           />
 
-<Route
+          <Route
           path="/addMenu"
           element={<AddNewMenu/>}
+          />
+
+          <Route
+          path="/updateMenu"
+          element={<Updatemenu/>}
+          />
+
+          <Route
+          path="/displaymenu"
+          element={<MenuByCategoryPage/>}
           />
         </Routes>
       </BrowserRouter>

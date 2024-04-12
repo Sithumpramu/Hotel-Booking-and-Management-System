@@ -8,6 +8,7 @@ const {
   createMenuItem,
   deleteMenuItem,
   updateMenuItem,
+  getMenuItemsByCategory
 } = require("../controllers/menuController");
 
 
@@ -24,5 +25,8 @@ router.delete("/:id", deleteMenuItem);
 
 //UPDATE reservation
 router.patch("/:id", updateMenuItem);
+
+//get by category
+router.get('/:category', getMenuItemsByCategory)
 
 module.exports = router;

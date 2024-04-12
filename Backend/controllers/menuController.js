@@ -19,24 +19,24 @@ const createMenuItem = async (req, res) => {
   const { category, productName, Price } = req.body;
   let imageData = {};
 
-  console.log(req.file, "file");
+  // console.log(req.file, "file");
 
-  if (req.file) {
-    //Assuming the file is uploaded and accessible via req.file
-    imageData = {
-      data: req.file.buffer, // Buffer containing file data
-      contentType: req.file.mimetype, // Mime type of the file
-    };
-  } else {
-    return res.status(400).json({ error: "No image file provided." });
-  }
+  // if (req.file) {
+  //   //Assuming the file is uploaded and accessible via req.file
+  //   imageData = {
+  //     data: req.file.buffer, // Buffer containing file data
+  //     contentType: req.file.mimetype, // Mime type of the file
+  //   };
+  // } else {
+  //   return res.status(400).json({ error: "No image file provided." });
+  // }
 
   try {
     const newMenu = await menu.create({
         category,
       productName,
       Price,
-      Image: imageData, // Store the image data directly
+      // Image: imageData, // Store the image data directly
     });
     res.status(201).json(newMenu); // Respond with the created document
   } catch (error) {
@@ -88,10 +88,31 @@ const deleteMenuItem = async (req, res) => {
   }
 };
 
+
+// Route to get menu items by category
+const getMenuItemsByCategory = async (req, res) => {
+  const category = req.params.category;
+
+  try {
+    // Query the database for menu items by category
+    const menuItems = await menu.find({ category });
+
+    if (menuItems.length === 0) {
+      return res.status(404).json({ message: 'No menu items found for this category' });
+    }
+
+    res.status(200).json(menuItems);
+  } catch (error) {
+    console.error('Error fetching menu items by category:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllMenuDetails,
   
   createMenuItem,
   updateMenuItem,
   deleteMenuItem,
+  getMenuItemsByCategory
 };

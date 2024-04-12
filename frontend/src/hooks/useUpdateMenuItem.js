@@ -8,20 +8,18 @@ const useUpdateMenu = () => {
 
   const updateMenuItem = async (
     id,
-    Date,
-    Name,
-    Capacity,
-    email,
-    contactNumber
+    category,
+    productName,
+    Price,
+    // Image
   ) => {
     console.log("updateMenuItem");
 
     const menuItemDetails = {
-      Date,
-      Name,
-      Capacity,
-      email,
-      contactNumber,
+      category,
+      productName,
+      Price,
+      // Image
     };
 
     setIsLoading(true);
@@ -32,14 +30,14 @@ const useUpdateMenu = () => {
       const response = await fetch(`http://localhost:4000/menu/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updateMenuItem),
+        body: JSON.stringify(menuItemDetails),
       });
 
       if (!response.ok) {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("/TableReservations");
+        navigate("/menu");
         alert("Reservation details successfully!");
       }
     } catch (error) {
