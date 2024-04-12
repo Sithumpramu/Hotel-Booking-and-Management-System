@@ -8,8 +8,9 @@ import WatersportManage from "./Pages/Staff/WatersportManagement";
 import AddReserv from "./Pages/Staff/addWatersportReserv";
 import SelectActivity from "./Pages/Staff/SelectActivity";
 import WatersportReservations from "./Pages/Staff/watersportReservations";
-import ReceptionNavbar from "./components/receptionNavbar";
+
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
+import WatersportActivities from "./Pages/WatersportActivities";
 
 import Home from "./Pages/Home";
 import Signup from "./Pages/signup";
@@ -57,6 +58,9 @@ function App() {
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
           />
+          <Route path="/Watersports" element={<WatersportActivities />} />
+
+
           <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
