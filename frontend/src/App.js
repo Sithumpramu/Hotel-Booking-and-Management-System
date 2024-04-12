@@ -68,6 +68,10 @@ function App() {
 
           <Route path="/ManagerDashboard" element={<Dashboard />} />
 
+
+          {/* <Route path="/watersport" element={<Watersport />} />
+          <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
+
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
           <Route path="/addWatersportsReservation" element={<AddReserv />} />
@@ -77,7 +81,10 @@ function App() {
             element={<WatersportReservations />}
           />
 
-          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
+
+          
+          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} /> */}
+
           <Route path="/AdminDashbord" element={<AdminDash />} />
           <Route path="/ManagerDash" element={<ManagerDash />} />
           <Route path="/StaffDashbord" element={<StaffDash />} />
