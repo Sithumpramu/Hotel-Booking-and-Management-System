@@ -1,8 +1,26 @@
 import React, { useState } from "react";
 import RoomList from "../hooks/useRoomList";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Room() {
   const { rooms } = RoomList();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
+
+  console.log('Check-in Date:', Checkoutdate);
+  console.log('Check-out Date:', Checkindate);
+  console.log('Number of Guests:', NoOfGuests);
+
+  const handleRoomSelect = (Rid) => {
+  navigate('/CustomerDetails', {
+    state: {
+      Rid,
+      Checkoutdate,
+      Checkindate,
+      NoOfGuests
+    }
+  })
 
   return (
     <div>
@@ -31,7 +49,7 @@ function Room() {
                 <p className="card-text">{rooms.status}</p>
 
                 <div style={{ float: "right" }}>
-                  <a href="/CustomerDetails" className="btn btn-info">
+                  <a href="/CustomerDetails" className="btn btn-info" onClick={() => handleRoomSelect(rooms.Rid)}>
                     Book Now
                   </a>
                 </div>
@@ -42,6 +60,6 @@ function Room() {
       </div>
     </div>
   );
-}
 
+}}
 export default Room;

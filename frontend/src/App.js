@@ -17,7 +17,7 @@ import AdminPanel from "./components/RoomManagerNavbar.js";
 import Profile from "./Pages/Staff/Profile";
 import Bookings from "./Pages/Staff/Bookings";
 import AddRoom from "./Pages/Staff/AddRoom.js";
-import MyBookings from "./Pages/MyBookings";
+import Mybookings from "./Pages/MyBookings";
 import UpdateDelete from "./Pages/Staff/UpdateDeleteRoom.js";
 
 // Layout component with header and footer
@@ -88,7 +88,7 @@ function App() {
 
            <Route
             path="/MyBookings"
-            element={<Layout><MyBookings/></Layout>}
+            element={<Layout><Mybookings/></Layout>}
           />
 
            <Route

@@ -20,7 +20,6 @@ const useAddRoomReserve = () => {
         const reservationDetails = {
             Checkindate,
             Checkoutdate,
-            Rtype,
             NoOfGuests,
             firstName,
             lastName,

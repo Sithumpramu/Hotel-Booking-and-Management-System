@@ -17,13 +17,12 @@ const roomreservationSchema = new Schema({
     },
 
 
-
     NoOfGuests:{
         type:String,
         require:true
     },
 
-    RoomID:{
+    Rid:{
         type:String,
         require:true
     },

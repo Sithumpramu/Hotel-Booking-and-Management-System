@@ -9,11 +9,12 @@ const AddNewRoomReserve = () => {
   const [NoOfGuests, setNoOfGuests] = useState("");
 
 
+  
   const navigate = useNavigate();
 
   const handleNext = () => {
     // Pass data to rooms page
-    navigate('/Rooms', {
+    navigate('/rooms', {
       state: {
         Checkindate,
         Checkoutdate,

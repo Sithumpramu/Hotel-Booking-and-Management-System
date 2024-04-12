@@ -6,7 +6,7 @@ import useAddRoomReserve from '../hooks/useAddRoomReserve';
 function ReservationDetails() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
+    const { Rid,Checkindate, Checkoutdate, NoOfGuests } = location.state;
 
 
     const [firstName, setFirstName] = useState('');
@@ -20,7 +20,7 @@ function ReservationDetails() {
 
         console.log('Submitting reservation details:', { Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email });
 
-        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email, Address, phoneno);
+        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests,Rid, firstName, lastName, Email, Address, phoneno);
     };
 
     return (

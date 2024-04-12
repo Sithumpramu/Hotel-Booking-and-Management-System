@@ -9,12 +9,12 @@ const useDeleteRoomReserve = () => {
   const navigate = useNavigate();
   const { dispatch } = useAuthContext();
 
-  const deleteRoomReserve = async (reservationId) => {
+  const deleteRoomReserve = async (id) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/room/deleteRoom/${reservationId}`, {
+      const response = await fetch(`http://localhost:4000/roomreservation/cancelreservation/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });

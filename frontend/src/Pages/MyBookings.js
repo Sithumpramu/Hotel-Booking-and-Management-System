@@ -1,11 +1,11 @@
 import React from 'react';
-import RoomReservationList from '../hooks/useRoomReservationList';
+import RoomReservationList from '../hooks/useRoomReservationList'
 import useDeleteRoomReserve from '../hooks/useDeleteRoomReserve';
+import { useState } from "react"
 
-
-function useDeleteRoomReserve () {
-  const { RoomReservationList, isLoading, error } = useRoomReservationList();// roomlist was there in brackets
-  const { DeleteRoomReserve} = useDeleteRoomReserve();
+function Mybookings () {
+  const { roomreservation, isLoading, error } = RoomReservationList();// roomlist was there in brackets
+  const { deleteRoomReserve} = useDeleteRoomReserve();
   const [reservationIdToDelete, setreservationId] = useState("");
   
 
@@ -21,10 +21,10 @@ function useDeleteRoomReserve () {
     return <div>Error: {error}</div>;
   }
 
-  const handleDelete = async () => {
-    await DeleteRoomReserve(reservationIdToDelete);
-    //console.log(isLoading, "handleDelete loading");
-    setreservationIdToDelete("");
+  const handleDelete = async (id) => {
+    await deleteRoomReserve(id);
+    console.log(reservationIdToDelete);
+    setreservationId('');
   };
 
 
@@ -32,9 +32,9 @@ function useDeleteRoomReserve () {
 //function MyBookings() {
    // const {reservation} =  RoomReservationList();
     return (
-        <div>
+        <div className='vh-100'>
             <h2>My Bookings</h2>
-           {reservation.map((reservation)=> (
+           {roomreservation.map((reservation)=> (
                 <div className="card">
                 {/* List of bookings */}
                 <table className="table">
@@ -51,13 +51,15 @@ function useDeleteRoomReserve () {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{reservation.Rtype}</td>
-                            <td>{reservation.id}</td>
-                            <td>{reservation.checkindate}</td>
-                            <td>{reservation.checkoutdate}</td>
-                            <td>{reservation.price}</td>
-                            <td>{reservation.status}</td>
-                            <td><button onClick={(setreservationIdToDelete)}>Cancel</button></td>
+                            <td>{reservation._id}</td>
+                            <td>{reservation.Checkindate}</td>
+                            <td>{reservation.Checkoutdate}</td>
+                            {/* <td>{reservation.price}</td>
+                            <td>{reservation.status}</td> */}
+                            <td><button onClick={()=>{
+                              setreservationId(reservation._id);
+                              handleDelete();
+                              }}>Cancel</button></td>
                         </tr>
                         {/* Add more rows for additional bookings */}
                     </tbody>
@@ -74,4 +76,4 @@ function useDeleteRoomReserve () {
     );
 }
 
-export default useDeleteRoomReserve ;
+export default Mybookings ;
