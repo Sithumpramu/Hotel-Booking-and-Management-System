@@ -12,6 +12,9 @@ import PasswordReset from "./Pages/PasswordReset";
 import ForgotPassword from "./Pages/ForgotPwd";
 import WatersportActivities from "./Pages/WatersportActivities";
 
+//manager's dashboard
+import Dashboard from "./Pages/Staff/ManagerDashboard";
+
 //Event & Activity Manager
 import AddActivity from "./Pages/Staff/AddActivity";
 import WatersportManage from "./Pages/Staff/WatersportManagement";
@@ -62,6 +65,8 @@ function App() {
             element={<PasswordReset />}
           />
           <Route path="/Watersports" element={<WatersportActivities />} />
+
+          <Route path="/ManagerDashboard" element={<Dashboard />} />
 
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
