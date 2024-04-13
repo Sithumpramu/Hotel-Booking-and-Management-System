@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useHallData from "../../hooks/useHallData";
 
 const EditHall = () => {
+  // Get the hall id from the URL params
   const { id } = useParams();
+
+  // Use custom hook to fetch hall data and manage form state
   const {
     hallData,
     loading,
-    showNotification,
     errorMessage,
     priceError,
     handleInputChange,
@@ -17,42 +19,34 @@ const EditHall = () => {
     setShowNotification,
   } = useHallData(id);
 
+  // State for success message
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // Display loading state while fetching hall data
   if (loading || !hallData) {
     return <p>Loading...</p>;
   }
 
   return (
     <div>
-
       <div className="container">
         <div className="mt-5 mb-4">
           <h1 className="fw-bold display-4 text-light-blue serif">Edit Hall</h1>
         </div>
+
+        {/* Display error messages if any */}
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
         {priceError && <div className="alert alert-danger">{priceError}</div>}
+
+        {/* Form for editing hall */}
         <form onSubmit={handleSubmit}>
           <div className="rounded-container">
-            {showNotification && (
-              <div className="toast-container">
-                <div
-                  className="toast align-items-center text-white bg-primary"
-                  role="alert"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                >
-                  <div className="d-flex">
-                    <div className="toast-body">
-                      Hall updated successfully!
-                    </div>
-                    <button
-                      type="button"
-                      className="btn-close btn-close-white me-2 m-auto"
-                      onClick={() => setShowNotification(false)}
-                    ></button>
-                  </div>
-                </div>
-              </div>
+            {/* Display success message if any */}
+            {successMessage && (
+              <div className="alert alert-success">{successMessage}</div>
             )}
+
+            {/* Input fields for hall details */}
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Name:
@@ -146,15 +140,20 @@ const EditHall = () => {
                 onChange={(e) => handlePictureUpload(e.target.files[0])}
               />
             </div>
+
+            {/* Save Changes button */}
             <div className="mb-3 d-flex justify-content-end">
-              <button type="submit" className="btn btn-save-changes">
+              <button
+                type="submit"
+                className="btn btn-save-changes"
+                onClick={() => setSuccessMessage("Hall updated successfully!")}
+              >
                 Save Changes
               </button>
             </div>
           </div>
         </form>
       </div>
-   
     </div>
   );
 };

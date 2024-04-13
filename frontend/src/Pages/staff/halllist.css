@@ -13,13 +13,13 @@
   background-color: #eef2fc; /* Baby blue color */
 }
 .btn-primary {
-  background-color: #003f5c;
+  background-color:#006cE4;
   border-color: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color:#a9dffc;
+  background-color:gray;
 }
 .btn-secondary {
   background-color: #87CEEB; /* Baby blue */
@@ -85,6 +85,13 @@
   top: 1rem;
   right: 1rem;
   z-index: 9999;
+}
+.bg-white {
+  background-color: #ffffff; /* Set background color to white */
+}
+
+.bg-light {
+  background-color: #f8f9fa; /* Set background color to a darker white */
 }
 
 @media (max-width: 576px) {
