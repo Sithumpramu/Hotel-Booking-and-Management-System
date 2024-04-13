@@ -21,7 +21,17 @@ function ReservationDetails() {
 
 //     addRoomReserve(checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno);
 // };
+
+const RandomRoomResvID = () => {
+  const prefix = "RB"; 
+  const digits = Math.floor(Math.random() * 100000000); // Generate 8 digits
+  const paddedDigits = String(digits).padStart(8, '0'); 
+  return prefix + paddedDigits;
+};
   
+
+const RoomResvID = RandomRoomResvID ();
+
 useState(() => {
   if (user && user.email) {
     setEmail(user.email);
@@ -40,6 +50,7 @@ const handleNext = () => {
       email,
       Address,
       phoneno,
+      RoomResvID
     }
   });
 };

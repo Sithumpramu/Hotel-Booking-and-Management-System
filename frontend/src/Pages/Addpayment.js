@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 function AddPayment() {
     const { addRoomReserve, isLoading, error } = useAddRoomReserve();
     const location = useLocation();
-    const { checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno} = location.state;
+    const { checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno,RoomResvID} = location.state;
     const {user}=useAuthContext()
     const [Email, setEmail] = useState(user ? user.email : '');
     const { formData, handleOnChange } = useFormState({
@@ -42,7 +42,7 @@ function AddPayment() {
             const response = await submitOrder(formData);
             if (response.ok) {
                 console.log("Order added to cart:", await response.json());
-                addRoomReserve(checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno);
+                addRoomReserve(checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno,RoomResvID);
                 // await sendThankYouEmail(formData.email);
                 console.log("Thank you email sent to:", formData.email);
                 alert("Order added to Cart!");

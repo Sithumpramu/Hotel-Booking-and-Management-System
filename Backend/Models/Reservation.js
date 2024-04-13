@@ -49,6 +49,10 @@ const TestSchema = new Schema({
     },
 
 
+    RoomResvID:{
+        type:String,
+        require:true
+    },
 
 
     
