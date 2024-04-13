@@ -1,7 +1,7 @@
 
 import { usePaymentSubmission } from '../hooks/usePayment';
 import { useFormState } from '../hooks/usePayment';
-import './addpay.css';
+
 
 function AddPayment() {
     const { formData, handleOnChange } = useFormState({
