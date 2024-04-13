@@ -5,6 +5,10 @@ import AddItem from "./Pages/Inventory/AddItem";
 import EditItem from "./Pages/Inventory/EditItem";
 import HotelView from "./Pages/Inventory/HotelView";
 import RoomManagerView from "./Pages/Inventory/RoomManagerView";
+
+import offer from "./Pages/OffersPackages/offerPackage";
+import addOffer from "./Pages/Staff/addOffer.js";
+
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
 import Login from './components/Login';
@@ -68,6 +72,10 @@ function App() {
           <Route
             path="/RoomManagerView"
             element={<RoomManagerView/>}
+          />
+          <Route
+            path="/offerPackage"
+            element={<Layout><offer/></Layout>}
           />
 
         </Routes>
