@@ -14,7 +14,7 @@ import {
   import { useState } from "react";
   import "react-date-range/dist/styles.css"; // main css file
   import "react-date-range/dist/theme/default.css"; // theme css file
-  import { useNavigate } from "react-router-dom";
+  import { Link, useNavigate } from "react-router-dom";
   
   const SearchHeader = ({ type }) => {
     const [destination, setDestination] = useState("");
@@ -53,7 +53,11 @@ import {
             </div>
             <div className="headerListItem">
               <FontAwesomeIcon icon={faCopy} />
-              <span>Reservations</span>
+              <span>
+                <Link to="/bookHall">
+                Reservations
+                </Link>
+                </span>
             </div>
             
           </div>

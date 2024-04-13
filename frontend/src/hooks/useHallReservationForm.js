@@ -2,51 +2,72 @@ import { useState } from 'react';
 
 const useHallReservationForm = () => {
   const [formData, setFormData] = useState({
-    Email: '',
-    date: '',
-    startTime: '',
-    EndTime: '',
-    hallName: '',
-    Resources: []
+    bookingName: '',
+    eventType: '',
+    capacity: '',
+    arrangementStyle: '',
+    foodArrangement: '',
+    barArrangement: '',
+    decorArrangement: '',
   });
 
-  const handleChange = (e) => {
+  const [cateringNeeded, setCateringNeeded] = useState(false);
+  const [decorNeeded, setDecorNeeded] = useState(false);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleCateringChange = (e) => {
+    setCateringNeeded(e.target.checked);
+  };
+
+  const handleDecorChange = (e) => {
+    setDecorNeeded(e.target.checked);
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:4000/hallres/addres', {
+      // Set the fixed userid
+      const userid = '65f47fd2435e6437ddcb9eb1';
+  
+      const response = await fetch('/hallR/addres', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          userid, // Include the fixed userid in the request body
+          cateringNeeded,
+          decorNeeded,
+          // Add other necessary data fields here
+        }),
       });
+  
       if (!response.ok) {
-        throw new Error('Failed to add reservation');
+        throw new Error('Failed to create reservation');
       }
-      alert('Reservation added successfully');
-      // Reset form fields after successful submission (optional)
-      setFormData({
-        Email: '',
-        date: '',
-        startTime: '',
-        EndTime: '',
-        hallName: '',
-        Resources: []
-      });
+  
+      const data = await response.json();
+      console.log('Reservation created:', data);
+      // Optionally, you can handle the response according to your application's needs
     } catch (error) {
-      console.error('Error adding reservation:', error);
-      alert('Failed to add reservation. Please try again.');
+      console.error('Error creating reservation:', error.message);
+      // Optionally, you can handle errors gracefully (e.g., displaying an error message to the user)
     }
   };
 
-  return { formData, handleChange, handleSubmit };
+  return {
+    formData,
+    cateringNeeded,
+    decorNeeded,
+    handleInputChange,
+    handleCateringChange,
+    handleDecorChange,
+    handleSubmit,
+  };
 };
 
 export default useHallReservationForm;
