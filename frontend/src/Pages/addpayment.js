@@ -83,7 +83,6 @@ function AddPayment(){
     card_number:"",
     cvc:"",
  card_expiration:"",
-    date:"",
   
        
     })
@@ -121,7 +120,7 @@ function AddPayment(){
 
 
     return(
-        <div className="add-rooms">
+        <div className="add-paym">
         
 
     <form onSubmit={handlesubmit}>
@@ -136,8 +135,7 @@ function AddPayment(){
     <input type="number" id="cvc" name="cvc" onChange={handleonchange}/><br></br>
     <lable>Card Expiration:</lable>
     <input type="date" id="card_expiration" name="card_expiration" onChange={handleonchange}/><br></br>
-    <lable>Date:</lable>
-    <input type="date" id="date" name="date" onChange={handleonchange}/><br></br> 
+ 
 
   
     <button id="addbtn">Add Payment</button>

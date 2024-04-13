@@ -8,7 +8,6 @@ const usePayment = () => {
         card_number: "",
         cvc: "",
         card_expiration: "",
-        date: "",
     });
 
     const handleOnChange = (e) => {

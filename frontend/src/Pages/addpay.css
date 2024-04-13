@@ -1,4 +1,4 @@
-.add-rooms {
+.add-paym {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -17,17 +17,17 @@
     top:15% /* Convert text to uppercase */
   }
   
-  .add-rooms form {
+  .add-paym form {
     display: flex;
     flex-direction: column;
   }
   
-  .add-rooms label {
+  .add-paym label {
     margin-bottom: 5px;
   }
   
-  .add-rooms input[type="text"],
-  .add-rooms input[type="date"] {
+  .add-paym input[type="text"],
+  .add-paym input[type="date"] {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -35,7 +35,7 @@
     font-size: 16px;
   }
   
-  .add-rooms button {
+  .add-paym button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -45,7 +45,7 @@
     font-size: 16px;
   }
   
-  .add-rooms button:hover {
+  .add-paym button:hover {
     background-color: #0056b3;
   }
   
