@@ -44,7 +44,10 @@ export const useLogin = () => {
     }
   };
 
+  
+
   const navigateUser = (role) => {
+    const prevPath = localStorage.getItem('prevPath');
     switch (role) {
       case 'admin':
         navigation('/AdminDashbord');
@@ -56,7 +59,11 @@ export const useLogin = () => {
         navigation('/ReceptionDashboard')  
         break;
       default:
-        navigation(-1);
+        if (prevPath === '/Dashboard') {
+          navigation('/Dashboard');
+        } else {
+          navigation(-1); // Go back 
+        }
     }
   };
 

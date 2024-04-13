@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAddRoomReserve from '../hooks/useAddRoomReserve';
+// import useAddRoomReserve from '../hooks/useAddRoomReserve';
 import { useAuthContext } from '../hooks/useAuthContext'
 
 function ReservationDetails() {
@@ -13,15 +13,36 @@ function ReservationDetails() {
   const [Address, setAddress] = useState('');
   const [phoneno, setPhoneno] = useState('');
   const [email, setEmail] = useState('');
-  const { addRoomReserve, isLoading, error } = useAddRoomReserve();
+  // const { addRoomReserve, isLoading, error } = useAddRoomReserve();
 
-  const handleSubmit = () => {
+//   const handleSubmit = () => {
    
-    console.log('Submitting reservation details:', { checkinDate, checkoutDate, guests, name, email });
+//     console.log('Submitting reservation details:', { checkinDate, checkoutDate, guests, name, email });
 
-    addRoomReserve(checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno);
-};
+//     addRoomReserve(checkinDate, checkoutDate, guests,roomId, name, email, Address, phoneno);
+// };
   
+useState(() => {
+  if (user && user.email) {
+    setEmail(user.email);
+  }
+}, [user]);
+
+const handleNext = () => {
+  // Pass data to rooms page
+  navigate('/payment', {
+    state: {
+      checkinDate,
+      checkoutDate,
+      guests,
+      roomId,
+      name,
+      email,
+      Address,
+      phoneno,
+    }
+  });
+};
 
   return (
     <div>
@@ -35,7 +56,7 @@ function ReservationDetails() {
       <label>Name:</label>
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br />
       <label>Email:</label>
-      <input type="email" value={user.email} onChange={(e) => setEmail(e.target.value)} /><br />
+      <input type="email" value={user.email} onChange={(e) => setEmail(user.email)} /><br />
       <label>Address:</label>
       <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} /><br />
       <label>Phone Number:</label>
@@ -43,7 +64,7 @@ function ReservationDetails() {
       </div>
       )}
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleNext}>Submit</button>
     </div>
   );
 }

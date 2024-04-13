@@ -38,6 +38,8 @@ function Rooms(roomId) {
     });}
   };
 
+  localStorage.removeItem('prevPath');
+
 
   return (
     <div>

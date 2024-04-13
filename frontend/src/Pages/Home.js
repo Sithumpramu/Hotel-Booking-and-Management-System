@@ -37,21 +37,21 @@ function Home(){
       // Store the current location in localStorage
       localStorage.setItem('prevPath', location.pathname);
     }, [location.pathname]);
-    console.log(location.pathname)
+    
 
-    const HandleButtonClick = () => {
+    // const HandleButtonClick = () => {
 
-      const token = localStorage.getItem('user');
-      console.log(token)
+    //   const token = localStorage.getItem('user');
+    //   console.log(token)
   
-      if (!token) {
-        // Redirect to login page if token is missing
-        navigate('/Login');
-        return;
-      }
+    //   if (!token) {
+    //     // Redirect to login page if token is missing
+    //     navigate('/Login');
+    //     return;
+    //   }
   
-      navigate('/')
-    };
+    //   navigate('/')
+    // };
   
 
 

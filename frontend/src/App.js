@@ -19,6 +19,7 @@ import InitialRedirect from "./context/initialDirect";
 import CheckinForm from "./Pages/CheckinForm";
 import Rooms from "./Pages/Room";
 import ReservationDetails from "./Pages/ReservationDetails";
+import AddPayment from "./Pages/Addpayment";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -61,6 +62,7 @@ function App() {
           <Route path="/Book" element={<CheckinForm />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/CustomerDetails" element={<ReservationDetails />} />
+          <Route path="/payment" element={<AddPayment />} />
           
         </Routes>
       </BrowserRouter>

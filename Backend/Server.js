@@ -7,6 +7,7 @@ const userRoutes = require('./Routes/user')
 const hotelRoutes = require('./Routes/HotelSchema')
 const ReservRoutes = require('./Routes/Reservation')
 const room = require('./Routes/room')
+const paymentRoutes = require ('./Routes/payment')
 // express app
 const app = express()
 
@@ -25,6 +26,7 @@ app.use('/user', userRoutes)
 app.use('/hotel', hotelRoutes)
 app.use('/testreserv', ReservRoutes)
 app.use('/room', room)
+app.use('/payment', paymentRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)
