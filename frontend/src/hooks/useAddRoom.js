@@ -54,7 +54,7 @@ const useAddRoom = () => {
         const json = await response.json();
         setError(json.error);
       } else {
-        navigate("/Rooms");
+        navigate("/rooms");
         alert("Room Added successfully");
       }
     } catch (error) {
