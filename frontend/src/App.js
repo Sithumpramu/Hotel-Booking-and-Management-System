@@ -20,6 +20,9 @@ import MenuItems from "./Pages/Staff/MenuManagement"
 import AddNewMenu from "./Pages/Staff/AddMenu";
 import Updatemenu from "./Pages/Staff/UpdateMenu"
 import MenuByCategoryPage from "./Pages/DisplayMenu"
+import RestaurantNavbar from "./components/RestaurantManagerNavbar"
+import ManageTableReservation from "./Pages/Staff/TableReserManagement"
+import DisplayOrders from "./Pages/DisplayFoodOrders"
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -38,6 +41,13 @@ const Layout2 = ({ children }) => (
   </div>
 );
 
+const Layout3 = ({ children }) => (
+  <div>
+    <RestaurantNavbar/>
+    {children}
+    <Footer />
+  </div>
+);
 function App() {
   return (
     <div className="App">
@@ -73,15 +83,15 @@ function App() {
           />
           <Route
           path="/TableReservations"
-          element={<TableReservation/>}
+          element={<Layout2><TableReservation/></Layout2>}
           /> 
            <Route
           path="/AddReservations"
-          element={<AddReservation/>}
+          element={<Layout2><AddReservation/></Layout2>}
           />
           <Route
           path="/menu"
-          element={<MenuItems/>}
+          element={<Layout3><MenuItems/></Layout3>}
           />
 
           <Route
@@ -96,7 +106,15 @@ function App() {
 
           <Route
           path="/displaymenu"
-          element={<MenuByCategoryPage/>}
+          element={<Layout2><MenuByCategoryPage/></Layout2>}
+          />
+         <Route
+          path="/displayReservations"
+          element={<ManageTableReservation/>}
+          />
+           <Route
+          path="/displayOrders"
+          element={<DisplayOrders/>}
           />
         </Routes>
       </BrowserRouter>

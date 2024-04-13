@@ -18,7 +18,7 @@ const DiningDash= () => {
               <a class="nav-link" href="#">Buffets</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="DisplayMenu.js" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Food & Beverages
               </a>
               <ul class="dropdown-menu">
@@ -35,8 +35,8 @@ const DiningDash= () => {
                Table Reservations
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Create New Reservation</a></li>
-                <li><a class="dropdown-item" href="#">My Reservations</a></li>
+                <li><a class="dropdown-item" href="/AddReservations">Create New Reservation</a></li>
+                <li><a class="dropdown-item" href="/TableReservations">My Reservations</a></li>
               </ul>
             </li>
           </ul>
