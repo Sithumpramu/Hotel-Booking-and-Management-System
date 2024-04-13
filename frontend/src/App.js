@@ -16,6 +16,11 @@ import EditHall from "./Pages/staff/EditHall";
 import HallAdminDash from "./Pages/staff/HallAdminDash";
 import AllHallList from "./Pages/staff/AllHalls";
 import HallReservationForm from "./Pages/staff/HallReservationForm";
+import HallAvailabilty from "./Pages/HallAvailabilty";
+import BookHall from "./Pages/BookHall";
+import HallResources from "./Pages/staff/HallResources";
+
+import AdminBookHall from "./Pages/staff/AllHallRes";
 
 
 
@@ -79,12 +84,29 @@ function App() {
             element={<AllHallList/>}
           />
           <Route
-            path="/AddHall"
+            path="/AddHall/:id"
             element={<HallReservationForm/>}
+          />
+          <Route
+            path="/availability"
+            element={<HallAvailabilty/>}
+          />
+             <Route
+            path="/bookHall"
+            element={<BookHall/>}
+          />
+           <Route
+            path="/HallResource"
+            element={<HallResources/>}
+          />
+           <Route
+            path="/AllReservations"
+            element={<AdminBookHall/>}
           />
           
           
-          
+         
+      
           
          
           
