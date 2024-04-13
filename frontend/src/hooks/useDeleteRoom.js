@@ -9,12 +9,12 @@ const useDeleteRoom = () => {
   const navigate = useNavigate();
   const { dispatch } = useAuthContext();
 
-  const deleteRoom = async (Rid) => {
+  const deleteRoom = async (id) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/room/deleteRoom/${Rid}`, {
+      const response = await fetch(`http://localhost:4000/room/deleteRoom/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -24,7 +24,7 @@ const useDeleteRoom = () => {
       if (!response.ok) {
         throw new Error(data.error);
       }else {
-        navigate("/Rooms");
+        navigate("/UpdateDeleteRoom");
         alert('Room deleted successfully');
       }
 

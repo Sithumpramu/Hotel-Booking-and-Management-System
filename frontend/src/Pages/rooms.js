@@ -6,7 +6,7 @@ function Room() {
   const { rooms } = RoomList();
   const location = useLocation();
   const navigate = useNavigate();
-  const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
+  const { Checkindate = '', Checkoutdate = '', NoOfGuests = '' } = location.state || {};
 
   console.log('Check-in Date:', Checkoutdate);
   console.log('Check-out Date:', Checkindate);

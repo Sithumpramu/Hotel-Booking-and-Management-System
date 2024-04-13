@@ -13,12 +13,12 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";
 import Details from "./Pages/CustomerDetails"
-import AdminPanel from "./components/RoomManagerNavbar.js";
+import ManagerPanel from "./components/RoomManagerNavbar.js";
 import Profile from "./Pages/Staff/Profile";
 import Bookings from "./Pages/Staff/Bookings";
 import AddRoom from "./Pages/Staff/AddRoom.js";
 import Mybookings from "./Pages/MyBookings";
-import UpdateDelete from "./Pages/Staff/UpdateDeleteRoom.js";
+import ManageRoom from "./Pages/Staff/ManageRoom.js";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -92,8 +92,8 @@ function App() {
           />
 
            <Route
-            path="/UpdateDeleteRoom"
-            element={<UpdateDelete/>}
+            path="/ManageRoom"
+            element={<ManageRoom/>}
           />
         </Routes>
       </BrowserRouter>

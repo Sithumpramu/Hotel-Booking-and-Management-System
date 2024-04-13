@@ -18,7 +18,7 @@ const roomreservationSchema = new Schema({
 
 
     NoOfGuests:{
-        type:String,
+        type:Number,
         require:true
     },
 
@@ -27,12 +27,17 @@ const roomreservationSchema = new Schema({
         require:true
     },
 
-    Name:{
+    firstName:{
         type:String,
         require:true
     },
 
-    email:{
+    lastName:{
+        type:String,
+        require:true
+    },
+
+    Email:{
         type:String,
         require:true
     },

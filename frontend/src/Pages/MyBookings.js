@@ -4,7 +4,7 @@ import useDeleteRoomReserve from '../hooks/useDeleteRoomReserve';
 import { useState } from "react"
 
 function Mybookings () {
-  const { roomreservation, isLoading, error } = RoomReservationList();// roomlist was there in brackets
+  const { roomreservation, isLoading, error } = RoomReservationList();
   const { deleteRoomReserve} = useDeleteRoomReserve();
   const [reservationIdToDelete, setreservationId] = useState("");
   
@@ -40,12 +40,10 @@ function Mybookings () {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Room Type</th>
+                           
                             <th>Booking ID</th>
                             <th>Check-in</th>
                             <th>Check-out</th>
-                            <th>Amount</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

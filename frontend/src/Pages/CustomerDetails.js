@@ -6,8 +6,7 @@ import useAddRoomReserve from '../hooks/useAddRoomReserve';
 function ReservationDetails() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { Rid,Checkindate, Checkoutdate, NoOfGuests } = location.state;
-
+    const { Rid = '', Checkindate = '', Checkoutdate = '', NoOfGuests = '' } = location.state || {};
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -26,9 +25,9 @@ function ReservationDetails() {
     return (
         <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "url(frontend/public/kal.jpg)" }}>
             <div className="card" style={{ backgroundColor: "white", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "600px", textAlign: "center" }}>
-                <h1>Customer Details</h1>
+                <h1>Enter Customer Details</h1>
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
-                    <h2>Enter Reservation Details</h2>
+                    
                     <p>Room:</p>
                     <p>Check-in Date: {Checkindate}</p>
                     <p>Check-out Date: {Checkoutdate}</p>
