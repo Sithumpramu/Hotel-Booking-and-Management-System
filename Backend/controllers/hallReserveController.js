@@ -1,5 +1,7 @@
 const { default: mongoose } = require('mongoose')
 const HallReserve =require('../Models/HallReservation')
+const User = require('../Models/userModel'); // Import the User model
+const Hall = require('../Models/hallModel'); // Import the Hall mode
 
 const getAllReservations = async (req, res) => {
     try {
@@ -36,83 +38,104 @@ const getReservationById = async (req, res) => {
 
 const editReservation = async (req, res) => {
     try {
+        // Extract reservation ID from request parameters
         const { id } = req.params;
-        
-        // Validate if the provided ID is a valid ObjectId
+
+        // Check if the provided ID is a valid ObjectId
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ success: false, message: 'Invalid reservation ID' });
         }
-        
-        // Check if the request body is empty
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json({ success: false, message: 'Request body is empty' });
-        }
-        
-        // Validate the request body fields if provided
-        const { date, startTime, endTime, hallName } = req.body;
-        if (date && typeof date !== 'string') {
-            return res.status(400).json({ success: false, message: 'Date must be a string' });
-        }
-        if (startTime && typeof startTime !== 'string') {
-            return res.status(400).json({ success: false, message: 'Start time must be a string' });
-        }
-        if (endTime && typeof endTime !== 'string') {
-            return res.status(400).json({ success: false, message: 'End time must be a string' });
-        }
-        if (hallName && typeof hallName !== 'string') {
-            return res.status(400).json({ success: false, message: 'Hall name must be a string' });
-        }
-        
-        // Update the reservation and return the updated document
-        const updatedReservation = await HallReserve.findByIdAndUpdate(id, req.body, { new: true });
-        
-        if (!updatedReservation) {
+
+        // Check if the reservation exists
+        const existingReservation = await HallReserve.findById(id);
+        if (!existingReservation) {
             return res.status(404).json({ success: false, message: 'Reservation not found' });
         }
-        
-        res.json({ success: true, data: updatedReservation, message: 'Reservation updated successfully' });
+
+        // Destructure updated reservation data from request body
+        const { hall, hallid, userid,eventtype,capacity, selectdate, fromTime, toTime, totalhours, status, Resources } = req.body;
+
+        // Update only the fields that are provided in the request body
+        if (hall) existingReservation.hall = hall;
+        if (hallid) existingReservation.hallid = hallid;
+        if (userid) existingReservation.userid = userid;
+        if (eventtype) existingReservation.eventtype = eventtype;
+        if (capacity) existingReservation.capacity = capacity;
+        if (selectdate) existingReservation.selectdate = selectdate;
+        if (fromTime) existingReservation.fromTime = fromTime;
+        if (toTime) existingReservation.toTime = toTime;
+        if (totalhours) existingReservation.totalhours = totalhours;
+        if (status) existingReservation.status = status;
+        if (Resources) existingReservation.Resources = Resources;
+
+        // Save the updated reservation
+        const updatedReservation = await existingReservation.save();
+
+        res.status(200).json({ success: true, message: 'Reservation updated successfully', data: updatedReservation });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
 
 
 const addReservation = async (req, res) => {
     try {
-        // Check if the request body is empty
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json({ success: false, message: 'Request body is empty' });
+        // Destructure request body
+        const { hallid, userid } = req.body;
+
+        // Check if the provided userid exists
+        const userExists = await User.findById(userid);
+        if (!userExists) {
+            return res.status(400).json({ success: false, message: 'Invalid userid' });
         }
 
-        // Validate the request body fields
-        const { Email, date, startTime, EndTime, hallName, Resources } = req.body;
-        if (!Email || typeof Email !== 'string') {
-            return res.status(400).json({ success: false, message: 'Email is required and must be a string' });
-        }
-        if (!date || typeof date !== 'string') {
-            return res.status(400).json({ success: false, message: 'Date is required and must be a string' });
-        }
-        if (!startTime || typeof startTime !== 'string') {
-            return res.status(400).json({ success: false, message: 'Start time is required and must be a string' });
-        }
-        if (!EndTime || typeof EndTime !== 'string') {
-            return res.status(400).json({ success: false, message: 'End time is required and must be a string' });
-        }
-        if (!hallName || typeof hallName !== 'string') {
-            return res.status(400).json({ success: false, message: 'Hall name is required and must be a string' });
-        }
-        if (!Array.isArray(Resources)) {
-            return res.status(400).json({ success: false, message: 'Resources must be an array' });
+        // Check if the provided hallid exists
+        const hallExists = await Hall.findById(hallid);
+        if (!hallExists) {
+            return res.status(400).json({ success: false, message: 'Invalid hallid' });
         }
 
-        // Create a new reservation and save it
-        const reservation = new HallReserve(req.body);
-        await reservation.save();
+        // If userid and hallid are valid, proceed with creating the reservation
+        const { hall,eventtype,capacity, selectdate, fromTime, toTime, totalhours, status, Resources } = req.body;
+        const reservation = new HallReserve({
+            hall,
+            hallid,
+            userid,
+            eventtype,
+            capacity,
+            selectdate,
+            fromTime,
+            toTime,
+            totalhours,
+            status,
+            Resources
+        });
 
-        res.status(201).json({ success: true, message: 'Reservation added successfully' });
+        // Save the reservation
+        const savedReservation = await reservation.save();
+
+        res.status(201).json({ success: true, message: 'Reservation added successfully', data: savedReservation });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+const deleteReservation = async (req, res) => {
+    try {
+        const {id } = req.params;
 
-module.exports={addReservation,editReservation,getAllReservations,getReservationById}
+        // Check if the reservation exists
+        const reservation = await HallReserve.findById(id);
+        if (!reservation) {
+            return res.status(404).json({ success: false, message: 'Reservation not found' });
+        }
+
+        // If the reservation exists, delete it
+        await HallReserve.findByIdAndDelete(id);
+
+        res.status(200).json({ success: true, message: 'Reservation deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+module.exports={addReservation,editReservation,getAllReservations,getReservationById,deleteReservation}

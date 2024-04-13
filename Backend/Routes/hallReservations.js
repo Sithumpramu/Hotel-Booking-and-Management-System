@@ -4,7 +4,8 @@ const {
     addReservation,
     editReservation,
     getAllReservations,
-    getReservationById
+    getReservationById,
+    deleteReservation
 } = require('../controllers/hallReserveController');
 
 // Route to add a new reservation
@@ -18,5 +19,7 @@ router.get('/hallres', getAllReservations);
 
 // Route to get a reservation by ID
 router.get('/hallres/:id', getReservationById);
+
+router.delete('/hallres/:id', deleteReservation);
 
 module.exports = router;
