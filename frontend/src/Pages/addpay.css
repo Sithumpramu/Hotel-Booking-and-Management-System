@@ -14,7 +14,7 @@
     margin-bottom: 20px; /* Add some space below the heading */
     text-transform: uppercase;
     position: absolute;
-    top:15% /* Convert text to uppercase */
+    top:10% /* Convert text to uppercase */
   }
   
   .add-paym form {

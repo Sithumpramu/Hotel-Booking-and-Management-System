@@ -1,3 +1,63 @@
+
+import { usePaymentSubmission } from '../hooks/usePayment';
+import { useFormState } from '../hooks/usePayment';
+import './addpay.css';
+
+function AddPayment() {
+    const { formData, handleOnChange } = useFormState({
+        c_name: "",
+        email: "",
+        card_number: "",
+        cvc: "",
+        card_expiration: "",
+    });
+
+    const { submitOrder, sendThankYouEmail } = usePaymentSubmission();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await submitOrder(formData);
+            if (response.ok) {
+                console.log("Order added to cart:", await response.json());
+                await sendThankYouEmail(formData.email);
+                console.log("Thank you email sent to:", formData.email);
+                alert("Order added to Cart!");
+            } else {
+                throw new Error("Failed to add order");
+            }
+        } catch (error) {
+            console.error("Error adding order or sending email:", error);
+            alert("An error occurred while processing your request. Please try again later.");
+        }
+    };
+
+    return (
+        <div className="add-paym">
+            <form onSubmit={handleSubmit}>
+                <h2>Payment Form</h2>
+                <label>Customer Name:</label>
+                <input type="text" id="c_name" name="c_name" value={formData.c_name} onChange={handleOnChange} /><br />
+                <label>Email:</label>
+                <input type="text" id="email" name="email" value={formData.email} onChange={handleOnChange} /><br />
+                <label>Card Number:</label>
+                <input type="number" id="card_number" name="card_number" value={formData.card_number} onChange={handleOnChange} /><br />
+                <label>Cvc:</label>
+                <input type="number" id="cvc" name="cvc" value={formData.cvc} onChange={handleOnChange} /><br />
+                <label>Card Expiration:</label>
+                <input type="date" id="card_expiration" name="card_expiration" value={formData.card_expiration} onChange={handleOnChange} /><br />
+                <button id="addbtn">Add Payment</button>
+            </form><br />
+        </div>
+    );
+}
+
+export default AddPayment;
+
+
+
+
 /*import React from "react";
 import usePayment from "../hooks/usePayment";
 
@@ -70,7 +130,7 @@ const AddPayment = ()  =>  {
     );
 }
 
-export default AddPayment;*/
+export default AddPayment;
 import { useState } from "react";
 import axios from "axios";
 import './addpay.css'
@@ -145,4 +205,4 @@ function AddPayment(){
         </div>
     )
 }
-export default AddPayment;
+export default AddPayment;*/
