@@ -39,6 +39,9 @@ const DiningDash= () => {
                 <li><a class="dropdown-item" href="/TableReservations">My Reservations</a></li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/displayOrders">My Orders</a>
+            </li>
           </ul>
         </div>
       </div>

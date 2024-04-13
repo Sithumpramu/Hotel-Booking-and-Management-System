@@ -8,6 +8,7 @@ const staffRoutes = require("./Routes/staff");
 const tableRoutes = require("./Routes/table");
 const menuRoutes = require("./Routes/menu");
 const orderRoutes = require("./Routes/order")
+const buffetRoutes = require("./Routes/buffet")
 
 // express app
 const app = express();
@@ -28,6 +29,7 @@ app.use("/staff", staffRoutes);
 app.use("/table", tableRoutes);
 app.use("/menu", menuRoutes);
 app.use("/order", orderRoutes);
+app.use("/buffet", buffetRoutes);
 // connect to db
 mongoose
   .connect(process.env.MONGODB_URL)

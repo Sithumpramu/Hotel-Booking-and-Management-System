@@ -129,7 +129,7 @@ const DisplayOrders = () => {
                     data-bs-target="#Modal"
                     onClick={() =>  setidToDelete(Order._id)}
                   >
-                    Cancel Reservation
+                    Cancel Order
                   </button>
                 </td>
 
