@@ -11,6 +11,7 @@ import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AddStock from './Pages/Staff/AddStock';
 import KitchenInventory from "./Pages/Staff/KitchenInventory";
+import AddPayment from "./Pages/addpayment";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -53,6 +54,10 @@ function App() {
            <Route
             path="/KitchenInventory"
             element={<KitchenInventory />}
+          />
+            <Route
+            path="/AddPayment"
+            element={<AddPayment />}
           />
         </Routes>
       </BrowserRouter>
