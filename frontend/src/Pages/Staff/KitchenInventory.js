@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import useKitchenStockDisplay from '../../hooks/useKitchenStockDisplay';
 import useDeleteStock from '../../hooks/useDeleteStock';
 import useUpdateStock from '../../hooks/useUpdateStock';
@@ -15,6 +15,17 @@ function KitchenInventory () {
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
+    const [searchkey,setsearchkey]=useState('');
+    const [filterCategory, setFilterCategory] = useState('');
+
+    //display only unique categories in filter
+    useEffect(() => {
+      // Fetch unique categories when StockList changes
+      const uniqueCategories = [...new Set(StockList.map(Stock => Stock.category))];
+      if (uniqueCategories.length > 0) {
+        setFilterCategory(uniqueCategories[0]); // Select the first category by default
+      }
+    }, [StockList]);
 
 
     if (isLoading) {
@@ -43,130 +54,19 @@ function KitchenInventory () {
         await updateStock(nameToUpdate,name, category,quantity, price,description );
       };
 
-      
+  
+
+      //search and filter
+      const filteredStockList = StockList.filter(Stock => {
+        return(
+          Stock.name.toLowerCase().includes(searchkey.toLowerCase()) &&
+          (!filterCategory || Stock.category.toLowerCase() === filterCategory.toLowerCase())
+        );
+      }
+      );
 
     
-     /* return (
-        <div>
-          <div>
-            <h1 className="mb-4 mt-5">Kitchen Inventory</h1>
     
-            <a href="/AddStock" className="btn btn-primary mb-5">
-              Add New Stock
-            </a>
-    
-            <div className="d-flex align-items-center justify-content-around mb-3">
-              
-              {StockList.map((Stock) => (
-                <div className="card" style={{ width: "18rem" }}>
-                  <div className="card-body">
-                    
-                    <h5 className="card-title">{Stock.name}</h5>
-                    <p className="card-text">{Stock.category}</p>
-                    <p className="card-text">{Stock.quantity}g</p>
-                    <p className="card-text">Rs.{Stock.price}.00</p>
-                    <p className="card-text">{Stock.description}</p>
-                    <a
-                      href="#"
-                      className="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#Modal"
-                      onClick={() => setNameToDelete(Stock.name)}
-                    >
-                      Delete
-                    </a>
-                    <a
-                      href="#"
-                      className="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#Modal2"
-                      style={{ margin: "2rem" }}
-
-                    >
-                      Update
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-           {/* model  }
-      <div
-        className="modal fade"
-        id="Modal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                CAUTION
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              Are you sure you want to delete this Activity?
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-
-              <form action="" method="delete">
-                <button
-                  className="btn btn-outline-danger"
-                  onClick={handleDelete}
-                >
-                  DELETE
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="modal fade" id="Modal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-          <div className="modal-dialog">
-          <form onSubmit={handleSubmit}>
-            <div className="modal-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">Stock Update</h1>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div className="modal-body">
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password:</label>
-                  <input type="password" className="form-control" id="password" placeholder="Enter your password" onChange={(e)=>{setPassword(e.target.value);}}/>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="confirmPassword" className="form-label">New Password:</label>
-                  <input type="password" className="form-control" id="confirmPassword" placeholder="Enter New password" onChange={(e)=>{setNewPassword(e.target.value);}} />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              
-                  <button className="btn btn-outline-primary" type="submit" disabled={isLoading}>Update</button>
-                  
-               
-              </div>
-            </div></form>
-          </div>
-</div>
-
-          </div>
-);*/
 return (
   <div>
     <div>
@@ -174,6 +74,34 @@ return (
       <a href="/AddStock" className="btn btn-primary mb-5">
               Add New Stock
             </a>
+
+       {/* Search Input */}
+       <div className="d-flex justify-content-center mb-3">
+       <input
+          type="text"
+          style={{width: "50rem"}}
+          placeholder="Search..."
+          value={searchkey}
+          onChange={(e) => setsearchkey(e.target.value)}
+          className="form-control mb-3"
+        />
+        </div>
+
+        {/*Filter categories*/ }
+        <div className="d-flex justify-content-center mb-3">
+          <select
+            className="form-select"
+            style={{width: "20rem"}}
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            {/* Assuming categories are fetched from API */}
+            {StockList.map(Stock => Stock.category).filter((value, index, self) => self.indexOf(value) === index).map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+        </div>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>
@@ -197,7 +125,7 @@ return (
             <th></th>
           </tr>
 
-          {StockList.map((Stock) => (
+          {filteredStockList.map((Stock) => (
             <tbody key={Stock._id}>
               <tr>
                 <td>
@@ -375,3 +303,124 @@ return (
 
 export default KitchenInventory;
 
+ /* return (
+        <div>
+          <div>
+            <h1 className="mb-4 mt-5">Kitchen Inventory</h1>
+    
+            <a href="/AddStock" className="btn btn-primary mb-5">
+              Add New Stock
+            </a>
+    
+            <div className="d-flex align-items-center justify-content-around mb-3">
+              
+              {StockList.map((Stock) => (
+                <div className="card" style={{ width: "18rem" }}>
+                  <div className="card-body">
+                    
+                    <h5 className="card-title">{Stock.name}</h5>
+                    <p className="card-text">{Stock.category}</p>
+                    <p className="card-text">{Stock.quantity}g</p>
+                    <p className="card-text">Rs.{Stock.price}.00</p>
+                    <p className="card-text">{Stock.description}</p>
+                    <a
+                      href="#"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Modal"
+                      onClick={() => setNameToDelete(Stock.name)}
+                    >
+                      Delete
+                    </a>
+                    <a
+                      href="#"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Modal2"
+                      style={{ margin: "2rem" }}
+
+                    >
+                      Update
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+           {/* model  }
+      <div
+        className="modal fade"
+        id="Modal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                CAUTION
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              Are you sure you want to delete this Activity?
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+
+              <form action="" method="delete">
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={handleDelete}
+                >
+                  DELETE
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="modal fade" id="Modal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+          <div className="modal-dialog">
+          <form onSubmit={handleSubmit}>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">Stock Update</h1>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password:</label>
+                  <input type="password" className="form-control" id="password" placeholder="Enter your password" onChange={(e)=>{setPassword(e.target.value);}}/>
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="confirmPassword" className="form-label">New Password:</label>
+                  <input type="password" className="form-control" id="confirmPassword" placeholder="Enter New password" onChange={(e)=>{setNewPassword(e.target.value);}} />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              
+                  <button className="btn btn-outline-primary" type="submit" disabled={isLoading}>Update</button>
+                  
+               
+              </div>
+            </div></form>
+          </div>
+</div>
+
+          </div>
+);*/
