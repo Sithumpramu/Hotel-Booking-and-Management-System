@@ -12,13 +12,13 @@ function Rooms(roomId) {
   console.log('Check-out Date:', checkoutDate);
   console.log('Number of Guests:', guests);
 
-  const handleRoomSelect = (roomId) => {
+  const handleRoomSelect = (roomId,price) => {
     // Call the token check function before navigating
-    TokenCheckAndNavigate(roomId);
+    TokenCheckAndNavigate(roomId,price);
   };
 
 
-  const TokenCheckAndNavigate = (roomId) => {
+  const TokenCheckAndNavigate = (roomId,price) => {
     const token = localStorage.getItem('user');
     console.log(roomId)
     if (!token) {
@@ -33,7 +33,8 @@ function Rooms(roomId) {
         roomId:roomId,
         checkinDate,
         checkoutDate,
-        guests
+        guests,
+        price: price
       }
     });}
   };
@@ -50,10 +51,16 @@ function Rooms(roomId) {
               <div className="card-body">
                 {room.Image && room.Image.data && (
                   <img
+                    // style={{ width: "10rem" }}
+                    // src={`data:${room.Image.contentType};base64,${btoa(
+                    //   String.fromCharCode.apply(null, room.Image.data.data)
+                    // )}`}
                     style={{ width: "10rem" }}
-                    src={`data:${room.Image.contentType};base64,${btoa(
-                      String.fromCharCode.apply(null, room.Image.data.data)
-                    )}`}
+                    src={URL.createObjectURL(
+                      new Blob([ room.Image.data], {
+                        type: room.Image.contentType
+                      })
+                    )}
                     className="card-img-top mb-1"
                     alt={room.Rtype}
                   />
@@ -68,11 +75,12 @@ function Rooms(roomId) {
                 <p className="card-text">{room.status}</p>
 
                 <div style={{ float: "right" }}>
-                  <button className="btn btn-info" onClick={() => handleRoomSelect(room.Rid)}>
+                  <button className="btn btn-info" onClick={() => handleRoomSelect(room.Rid, room.price)}>
                     Book Now
                   </button>
                 </div>
               </div>
+              
             </div>
           </div>
         ))}

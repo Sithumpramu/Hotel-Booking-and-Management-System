@@ -6,7 +6,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 function ReservationDetails() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { checkinDate , checkoutDate, guests ,roomId} = location.state;
+  const { checkinDate , checkoutDate, guests ,roomId,price} = location.state;
   const {user}=useAuthContext()
 
   const [name, setName] = useState('');
@@ -29,6 +29,7 @@ const RandomRoomResvID = () => {
   return prefix + paddedDigits;
 };
   
+console.log(price)
 
 const RoomResvID = RandomRoomResvID ();
 
@@ -50,7 +51,8 @@ const handleNext = () => {
       email,
       Address,
       phoneno,
-      RoomResvID
+      RoomResvID,
+      price
     }
   });
 };

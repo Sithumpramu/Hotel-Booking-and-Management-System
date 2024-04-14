@@ -54,6 +54,11 @@ const TestSchema = new Schema({
         require:true
     },
 
+    price:{
+        type:Number,
+        require:true
+    }
+
 
     
 })

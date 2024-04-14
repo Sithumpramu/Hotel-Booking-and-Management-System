@@ -17,7 +17,7 @@ const paymentSchema = new Schema(
     },
     cvc:{
         type: Number,
-        required: true,
+        
     },
     card_expiration:{
         type: String,

@@ -14,7 +14,9 @@ const useAddRoomReserve = () => {
         Name,
         email,
         Address,
-        phoneno
+        phoneno,
+        RoomResvID,
+        price
     ) => {
         const reservationDetails = {
             Checkindate,
@@ -24,7 +26,9 @@ const useAddRoomReserve = () => {
             Name,
             email,
             Address,
-            phoneno
+            phoneno,
+            RoomResvID,
+            price
         };
 
         setIsLoading(true);
