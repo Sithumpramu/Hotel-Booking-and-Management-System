@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { usePaymentSubmission } from '../hooks/usePayment';
 import { useFormState } from '../hooks/usePayment';
 
@@ -13,22 +13,36 @@ function AddPayment() {
     });
 
     const { submitOrder, sendThankYouEmail } = usePaymentSubmission();
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Validation
+        if (!formData.c_name || !formData.email || !formData.card_number || !formData.card_expiration) {
+            setError("All fields are required.");
+            return;
+        }
+
+        setError(null);
+
         try {
-            const response = await submitOrder(formData);
+            const { c_name, email, card_number, card_expiration} = formData;
+            const orderData = { c_name, email, card_number, card_expiration};
+
+            const response = await submitOrder(orderData);
             if (response.ok) {
-                console.log("Order added to cart:", await response.json());
-                await sendThankYouEmail(formData.email);
-                console.log("Thank you email sent to:", formData.email);
-                alert("Order added to Cart!");
+                console.log("Reservation added:", await response.json());
+                await sendThankYouEmail(email);
+                console.log("Thank you email sent to:", email);
+                alert("Reservation Complete!");
+                
+                
             } else {
-                throw new Error("Failed to add order");
+                throw new Error("Failed to add reservation");
             }
         } catch (error) {
-            console.error("Error adding order or sending email:", error);
+            console.error("Error adding reservation or sending email:", error);
             alert("An error occurred while processing your request. Please try again later.");
         }
     };
@@ -47,6 +61,8 @@ function AddPayment() {
                 <input type="number" id="cvc" name="cvc" value={formData.cvc} onChange={handleOnChange} /><br />
                 <label>Card Expiration:</label>
                 <input type="date" id="card_expiration" name="card_expiration" value={formData.card_expiration} onChange={handleOnChange} /><br />
+                
+                {error && <div className="error">{error}</div>}
                 <button id="addbtn">Add Payment</button>
             </form><br />
         </div>
