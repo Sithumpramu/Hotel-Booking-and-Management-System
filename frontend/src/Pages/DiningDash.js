@@ -96,9 +96,9 @@ function DiningDash() {
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="card ">
-              <img src="indian.jpg" class="card-img-top" alt="..."></img>
+              <img src="burger1.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
-                <h5 class="card-title">Indian</h5>
+                <h5 class="card-title">Burgers & Sandwiches</h5>
                 <a href="#" class="btn btn-primary">View Products</a>
               </div>
             </div>
@@ -123,7 +123,7 @@ function DiningDash() {
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="card ">
-              <img src="pizza.jpg" class="card-img-top" alt="..."></img>
+              <img src="Pizzaedit.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Pizzas & Pasta</h5>
                 <a href="#" class="btn btn-primary">View Products</a>
