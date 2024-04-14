@@ -8,6 +8,7 @@ function Staffmanage() {
   const { managerList, staffList } = useManagerList();
   const { deleteUser } = useDelete()
   const [emailToDelete, setEmailToDelete] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const { updateUser, isLoading, error, status } = useUpdate()
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -20,6 +21,14 @@ function Staffmanage() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const filteredManagers = managerList.filter(manager =>
+    manager.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredStaff = staffList.filter(staff =>
+    staff.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handledelete = async (email) => {
     await deleteUser(emailToDelete)
@@ -41,10 +50,16 @@ function Staffmanage() {
       </div>
       <div className="col-md-9">
         <div className="row">
-          <h2 className="mb-5 mt-3">Staff Accounts</h2>
+          <h2 className="mb-3 mt-3">Staff Accounts</h2>
+          <div><input
+                type="search"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              /></div>
           <div className="col">
             <h5 className="mb-4">Managers</h5>
-            {managerList.map(manager => (
+            {filteredManagers.map(manager => (
               <div className="card pt-3 bg-dark text-white mb-2" key={manager.email}>
                 <div>
                   <div>Name: {manager.name}</div>
@@ -60,7 +75,7 @@ function Staffmanage() {
           </div>
           <div className="col">
             <h5 className="mb-4">Staff</h5>
-            {staffList.map(staff => (
+            {filteredStaff.map(staff => (
               <div className='card pt-3 mb-4 bg-dark text-white' key={staff.email}>
                 <div>
                   <div>Name: {staff.name}</div>
