@@ -29,7 +29,9 @@ const AddNewMenu = () => {
     <div className="row">
       <div className="col">
         <div>
+        <h2>Add New Item</h2>
           <div className="d-flex align-items-center justify-content-center mb-3 mt-5">
+            
             <form
               onSubmit={handleSubmit}
               method="Post"

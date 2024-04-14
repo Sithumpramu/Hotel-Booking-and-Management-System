@@ -11,12 +11,15 @@ const getAllOrders = async (req, res) => {
 
 //create a new reservation
 const createOrder = async (req, res) => {
-  const { Name,email, contactNumber } = req.body;
+  const { productName,Quantity,Price,cusName,email, contactNumber } = req.body;
 
   //add doc to db
   try {
     const order = await Order.create({
-      Name,
+      productName,
+      Quantity,
+      Price,
+      cusName,
       email,
       contactNumber,
     });

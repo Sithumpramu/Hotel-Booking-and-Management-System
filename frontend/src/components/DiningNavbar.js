@@ -12,22 +12,22 @@ const DiningDash= () => {
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="/DiningDashboard">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Buffets</a>
+              <a class="nav-link" href="/DisplayBuffet">Buffets</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="DisplayMenu.js" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/displaymenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Food & Beverages
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Srilankan</a></li>
-                <li><a class="dropdown-item" href="#">Chinese</a></li>
-                <li><a class="dropdown-item" href="#">Indian</a></li>
-                <li><a class="dropdown-item" href="#">Pizzas & Pasta</a></li>
-                <li><a class="dropdown-item" href="#">Cakes</a></li>
-                <li><a class="dropdown-item" href="#">Desserts</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Srilankan</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Chinese</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Indian</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Pizzas & Pasta</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Cakes</a></li>
+                <li><a class="dropdown-item" href="/displaymenu">Desserts</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">

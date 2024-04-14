@@ -1,10 +1,8 @@
-// MenuByCategoryPage.js
-
 import React from 'react';
-import useMenuList from '../hooks/useMenu'
+import useDisplayBuffet from '../hooks/useDisplayBuffet'
 
-const MenuByCategoryPage = ({ category }) => {
-  const { menuList, isLoading, error } = useMenuList(category);
+const DisplayBuffet = () => {
+  const { buffetItems, isLoading, error } = useDisplayBuffet();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -34,14 +32,13 @@ const MenuByCategoryPage = ({ category }) => {
       {/* <h2>{categoryDetails.title}</h2>
       <p>{categoryDetails.description}</p> */}
       <div className='card'>
-        {menuList.map((item) => (
+        {buffetItems.map((item) => (
             <div className='card'>
           <div key={item._id}>
-            <h3>{item.productName}</h3>
-            <p>Price: Rs.{item.Price}.00</p>
-            <a href="/AddOrder" className="btn btn-info mb-5">
-             Order Now
-          </a>
+            <h2>{item.BuffetName}</h2>
+            <p>{item. Description}</p>
+            <h4>{item.Time}</h4>
+            <h5>Price: Rs.{item.Price}.00</h5>
             {/* Add more details as needed */}
           </div></div>
         ))}
@@ -50,4 +47,4 @@ const MenuByCategoryPage = ({ category }) => {
   );
 };
 
-export default MenuByCategoryPage;
+export default DisplayBuffet;

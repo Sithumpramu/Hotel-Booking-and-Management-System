@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import useOrderList from "../hooks/useDisplayFoodOrders";
 import useDeleteFoodOrders from "../hooks/useDeleteFoodOrders";
+import useAddOrder from "../hooks/useAddOrder";
 
 const DisplayOrders = () => {
   const { OrderList, isLoading, error } = useOrderList();
 
   const [idToDelete, setidToDelete] = useState("");
   const { deleteFoodOrders } = useDeleteFoodOrders();
+  const { AddOrder} = useAddOrder();
 
-  const [Name, setName] = useState("");
+  /*const [productName, setproductName] = useState("");
+  const [Quantity, setQuantity] = useState("");
+  const [Price, setPrice] = useState("");
+  const [cusName, setcusName] = useState("");
   const [email, setemail] = useState("");
   const [contactNumber, setcontactNumber] = useState("");
-
+*/
   if (isLoading) {
     return (
       <div className="alert alert-primary" role="alert">
@@ -24,26 +29,26 @@ const DisplayOrders = () => {
     return <div>Error: {error}</div>;
   }
 
- /* const getUpdateData = (Table) => {
-    setIdToUpdate(Table._id);
-    setDate(Table.Date);
-    setName(Table.Name);
-    setCapacity(Table.Capacity);
-    setemail(Table.email);
-    setcontactNumber(Table.contactNumber);
-  };
-
-  const updateDetails = async () => {
-    await updateReservation(
-      IdToUpdate,
-      Date,
-      Name,
-      Capacity,
-      email,
-      contactNumber
-    );
-  };
-*/
+  /* const getUpdateData = (Table) => {
+     setIdToUpdate(Table._id);
+     setDate(Table.Date);
+     setName(Table.Name);
+     setCapacity(Table.Capacity);
+     setemail(Table.email);
+     setcontactNumber(Table.contactNumber);
+   };
+ 
+   const updateDetails = async () => {
+     await updateReservation(
+       IdToUpdate,
+       Date,
+       Name,
+       Capacity,
+       email,
+       contactNumber
+     );
+   };
+ */
   const handleDelete = async () => {
     await deleteFoodOrders(idToDelete);
     console.log(isLoading, "handleDelete loading");
@@ -51,16 +56,19 @@ const DisplayOrders = () => {
   };
 
   return (
-    
+
     <div>
       <h1 className="mb-4 mt-5">My Orders</h1>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>
           <tr className="border border-black" scope="col">
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact No</th>
+            <th scope="col">productName</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">cusName</th>
+            <th scope="col">email</th>
+            <th scope="col">contactNumber</th>
 
             <th></th>
           </tr>
@@ -68,66 +76,81 @@ const DisplayOrders = () => {
           {OrderList.map((Order) => (
             <tbody key={Order._id}>
               <tr className="border border-black" scope="col">
-                
+
                 <td>
-                  (
-                    <input
-                      className="tabledit-input form-control input-sm"
-                      type="Text"
-                      name="Name"
-                      defaultValue={Order.Name}
-                      disabled=""
-                      onChange={(e) => {
-                        setName(e.target.value);
-                      }}
-                    ></input>
-                  ) : (
-                    <td>{Order.Name}</td>
-                  )
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.productName}
+                    disabled=""
+                  ></input>
                 </td>
 
                 <td>
-                  (
-                    <input
-                      className="tabledit-input form-control input-sm"
-                      type="email"
-                      name="email"
-                      defaultValue={Order.email}
-                      disabled=""
-                      onChange={(e) => {
-                        setemail(e.target.value);
-                      }}
-                    ></input>
-                  ) : (
-                    <td>{Order.email}</td>
-                  )
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.Quantity}
+                    disabled=""
+                  ></input>
                 </td>
 
                 <td>
-                  (
-                    <input
-                      className="tabledit-input form-control input-sm"
-                      type="Number"
-                      name="contactNumber"
-                      defaultValue={Order.contactNumber}
-                      disabled=""
-                      onChange={(e) => {
-                        setcontactNumber(e.target.value);
-                      }}
-                    ></input>
-                  ) : (
-                    <td>{Order.contactNumber}</td>
-                  )
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.Price}
+                    disabled=""
+                  ></input>
+                </td>
+
+                <td>
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.cusName}
+                    disabled=""
+                  ></input>
+                </td>
+
+                <td>
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.email}
+                    disabled=""
+                  ></input>
+                </td>
+
+                <td>
+
+                  <input
+                    className="tabledit-input form-control input-sm"
+                    type="Text"
+                    name="Name"
+                    defaultValue={Order.contactNumber}
+                    disabled=""
+                  ></input>
                 </td>
 
                 <td>
                   <button
                     type="button"
-                    class="btn btn-primary "
+                    class="btn btn-primary  mt-5"
                     className="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#Modal"
-                    onClick={() =>  setidToDelete(Order._id)}
+                    onClick={() => setidToDelete(Order._id)}
                   >
                     Cancel Order
                   </button>

@@ -23,6 +23,8 @@ import MenuByCategoryPage from "./Pages/DisplayMenu"
 import RestaurantNavbar from "./components/RestaurantManagerNavbar"
 import ManageTableReservation from "./Pages/Staff/TableReserManagement"
 import DisplayOrders from "./Pages/DisplayFoodOrders"
+import AddNewOrder from "./Pages/AddOrders"
+import DisplayBuffet from "./Pages/DisplayBuffet"
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -45,7 +47,7 @@ const Layout3 = ({ children }) => (
   <div>
     <RestaurantNavbar/>
     {children}
-    <Footer />
+    
   </div>
 );
 function App() {
@@ -96,7 +98,7 @@ function App() {
 
           <Route
           path="/addMenu"
-          element={<AddNewMenu/>}
+          element={<Layout3><AddNewMenu/></Layout3>}
           />
 
           <Route
@@ -110,11 +112,23 @@ function App() {
           />
          <Route
           path="/displayReservations"
-          element={<ManageTableReservation/>}
+          element={<Layout2><ManageTableReservation/></Layout2>}
           />
            <Route
           path="/displayOrders"
-          element={<DisplayOrders/>}
+          element={<Layout2><DisplayOrders/></Layout2>}
+          />
+          <Route
+          path="/AddOrder"
+          element={<Layout2><AddNewOrder/></Layout2>}
+          />
+          <Route
+          path="/DisplayBuffet"
+          element={<Layout2><DisplayBuffet/></Layout2>}
+          />
+           <Route
+          path="/AdminDashboard"
+          element={<Layout3><AdminDash/></Layout3>}
           />
         </Routes>
       </BrowserRouter>
