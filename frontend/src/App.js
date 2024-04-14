@@ -16,6 +16,7 @@ import Staffmanage from "./Pages/Staff/staffManage";
 import Usermanage from "./Pages/Staff/UserManage";
 import AccountManage from "./Pages/Staff/AccountManage";
 import InitialRedirect from "./context/initialDirect";
+import ManagerDashboard from "./Pages/Staff/ManagerDashboard"
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -37,16 +38,20 @@ function App() {
           <Route path="/ForgotPwd" element={<ForgotPassword />} />
           <Route path="/user/resetPassword/:token" element={<PasswordReset />}/>
 
-          <Route path="/watersport" element={<Watersport />} />
+
+          {/* <Route path="/watersport" element={<Watersport />} /> */}
+
           <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
-          <Route path="/AddActivity" element={<AddActivity />} />
+          {/* <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
           <Route path="/addWatersportsReservation" element={<AddReserv />} />
           <Route path="/selectActivity" element={<SelectActivity />} />
-          <Route path="/watersportReservations" element={<WatersportReservations />}/>
+          <Route path="/watersportReservations" element={<WatersportReservations />}/> */}
 
           
-          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
+
+          {/* <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} /> */}
+
           <Route path="/AdminDashbord" element={<AdminDash />} />
           <Route path="/ManagerDash" element={<ManagerDash />} />
           <Route path="/StaffDashbord" element={<StaffDash />} />
