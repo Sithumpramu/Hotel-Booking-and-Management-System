@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt')
-const validator = require('validator')
+
 
 const Schema = mongoose.Schema;
 const stockSchema = new Schema(
@@ -26,6 +25,9 @@ const stockSchema = new Schema(
       required: true,
     },
   },
+  {
+    timestamps: true
+}
 
 );
 module.exports = mongoose.model('Stock', stockSchema)

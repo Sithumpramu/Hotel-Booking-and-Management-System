@@ -18,7 +18,6 @@ function KitchenInventory () {
     const [searchkey,setsearchkey]=useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [sort, setSort] = useState('');
-    const [sortDirection, setSortDirection] = useState('asc');
 
     //display only unique categories in filter
     useEffect(() => {
@@ -78,6 +77,15 @@ function KitchenInventory () {
         } else if (sort === 'quantityDesc') {
           sortedList.sort((a, b) => b.quantity - a.quantity);
         }
+        else if (sort === 'newestCreated') {
+          sortedList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else if (sort === 'oldestCreated') {
+          sortedList.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        } else if (sort === 'newestUpdated') {
+          sortedList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        } else if (sort === 'oldestUpdated') {
+          sortedList.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
+        }
         return sortedList;
       };
 
@@ -129,6 +137,21 @@ return (
        <option value="quantityDesc">Quantity High to Low</option>
       </select>
         </div>
+        <div className="col-auto">
+              <select
+                className="form-select"
+                value={sort}
+                onChange={(e) => {
+                  setSort(e.target.value);
+                }}
+              >
+                <option value="">Sort by date...</option>
+                <option value="newestCreated">Newest to Oldest (Created)</option>
+                <option value="oldestCreated">Oldest to Newest (Created)</option>
+                <option value="newestUpdated">Newest to Oldest (Updated)</option>
+                <option value="oldestUpdated">Oldest to Newest (Updated)</option>
+              </select>
+            </div>
         </div>
         
 
@@ -149,6 +172,12 @@ return (
             </th>
             <th className="border border-black" scope="col">
               SpeciaNotes
+            </th>
+            <th className="border border-black" scope="col">
+              Added Date and Time
+            </th>
+            <th className="border border-black" scope="col">
+              Last Updated
             </th>
             <th></th>
             <th></th>
@@ -242,6 +271,8 @@ return (
                     <td>{Stock.description}</td>
                   )}
                 </td>
+                <td>{new Date(Stock.createdAt).toLocaleString()}</td>
+                <td>{new Date(Stock.updatedAt).toLocaleString()}</td>
 
                 <td>
                   <a
