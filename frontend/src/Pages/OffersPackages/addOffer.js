@@ -9,12 +9,12 @@ const AddNewOffer = () => {
   const [description, setdescription] = useState("");
   const [Image, setImage] = useState(null);
 
-  const { addOffer, isLoading, error } = useAddOffer();
+  const { addOffers, isLoading, error } = useAddOffer(); // Change this line
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addOffer(
+    await addOffers( // Change this line as well
       offerID,
       offerName,
       Date,
@@ -23,18 +23,11 @@ const AddNewOffer = () => {
     );
   };
 
-  // function validation() {
-  //   var submit = document.getElementById("submit");
+  console.log(offerID)
+  console.log(offerName)
+  console.log(Date)
+  console.log(description)
 
-  //   if (
-  //     offerID === "" &&
-  //     offerName === "" &&
-  //     Date === "" &&
-  //     description === "" &&
-  //    ) {
-  //     document.getElementById("Error").innerHTML = "All fields must be filled.";
-  //   }
-  // }
 
   return (
     <div>
@@ -102,9 +95,6 @@ const AddNewOffer = () => {
             type="submit"
             className="btn btn-primary"
             id="submit"
-            onClick={() => {
-              // validation();
-            }}
           >
             Add Offer
           </button>

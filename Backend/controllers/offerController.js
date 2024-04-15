@@ -29,7 +29,7 @@ const getsingleOffer = async (req, res) => {
   res.status(200).json(offers);
 };
 
-//Add a room
+//Add a room modaii
 const addOffer = async (req, res) => {
   const { offerID, offerName, Date,description} =
     req.body; 
@@ -47,7 +47,7 @@ const addOffer = async (req, res) => {
   }
 
   try {
-    const newOffer = await offer.create({
+    const newOffer = await offers.create({
       offerID,
       offerName,
       Date,
