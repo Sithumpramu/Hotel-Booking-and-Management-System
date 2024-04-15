@@ -12,7 +12,7 @@ const watersportRoutes = require("./Routes/watersport");
 const WatersportReservationRoutes = require("./Routes/WatersportReservation");
 
 const diningReservationRoutes = require("./Routes/DiningReservation");
-const userRoutes = require("./Routes/user");
+
 const hotelRoutes = require("./Routes/HotelSchema");
 
 // express app
