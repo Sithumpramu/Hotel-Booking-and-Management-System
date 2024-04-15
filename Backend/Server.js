@@ -1,13 +1,18 @@
 require("dotenv").config();
 
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+const express = require('express')
+const cors = require('cors');
+const mongoose = require('mongoose')
+const userRoutes = require('./Routes/user')
+const kitchenStockRoutes = require ('./Routes/kitchenStock')
+const paymentRoutes = require ('./Routes/payment')
+const kitchenBulkStockRoutes = require('./Routes/kitchenBulkStock')
+
 const watersportRoutes = require("./Routes/watersport");
 const WatersportReservationRoutes = require("./Routes/WatersportReservation");
 
 const diningReservationRoutes = require("./Routes/DiningReservation");
-const userRoutes = require("./Routes/user");
+
 const hotelRoutes = require("./Routes/HotelSchema");
 
 // express app
@@ -24,11 +29,15 @@ app.use((req, res, next) => {
 
 // routes
 
+app.use('/user', userRoutes)
+app.use('/kitchenStock', kitchenStockRoutes)
+app.use('/payment', paymentRoutes)
+app.use('/kitchenBulkStock',kitchenBulkStockRoutes)
 app.use("/watersport", watersportRoutes);
 app.use("/watersportReservation", WatersportReservationRoutes);
 app.use("/table", diningReservationRoutes);
 
-app.use("/user", userRoutes);
+
 app.use("/hotel", hotelRoutes);
 
 // connect to db
@@ -41,5 +50,10 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
-  });
+    console.log(error)
+  })
+  
+
+
+
+
