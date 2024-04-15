@@ -7,6 +7,7 @@ function UserManage(){
     const { userList,isLoading, error } = useManagerList();
     const {deleteUser} = useDelete()
     const [emailToDelete, setEmailToDelete] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
     if (isLoading) {
         return <div>Loading...</div>;
       }
@@ -19,17 +20,30 @@ function UserManage(){
         await deleteUser(emailToDelete) 
         setEmailToDelete('');
       }
+
+      const filteredusers = userList.filter(user =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
     
     return(
-        <div>
-       <div className=" bg-info-subtle vh-100 row m-0 p-0">
-       <Adminsidebar/>
+      <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3 m-0 p-0">
+          <Adminsidebar />
+        </div>
        <div className="col">
          <div className="row">
-      <h2 className="mb-5 mt-3">User Accounts</h2>
-           <div className="col d-flex justify-content-center align-items-center">
-            {userList.map(user => (
-              <div className="card pt-3 w-50 ">
+      <h2 className="mb-3 mt-3">User Accounts</h2>
+      <div><input
+                type="search"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              /></div>
+           <div className="col d-flex justify-content-center align-items-center mt-4">
+            {filteredusers.map(user => (
+              <div className="card pt-3 w-50 bg-dark text-white ">
                 <div>
                   <div>Name: {user.name}</div>
                   <div>Email: {user.email}</div>
