@@ -47,10 +47,10 @@ function MenuItems() {
     <div className="row p-0">
       <div className="col">
         <div>
-          <h1 className="mb-4 mt-5">Menu</h1>
+          <h1 className="mb-4 mt-5">Menu Management</h1>
 
           <a href="/AddMenu" className="btn btn-info mb-5">
-            Add New Menu
+            Add New Menu Item
           </a>
 
           <div className="row d-flex align-items-center justify-content-around mb-3">
@@ -82,7 +82,7 @@ function MenuItems() {
                       data-bs-target="#Modal"
                       onClick={() => setIdToDelete(menu._id)}
                     >
-                      Delete Activity
+                      Delete Item
                     </a>
                     <a className="btn btn-primary"
                       onClick={() => setIdToDelete(menu._id)}

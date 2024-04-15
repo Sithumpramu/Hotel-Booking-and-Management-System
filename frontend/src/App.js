@@ -26,6 +26,7 @@ import DisplayOrders from "./Pages/DisplayFoodOrders"
 import AddNewOrder from "./Pages/AddOrders"
 import DisplayBuffet from "./Pages/DisplayBuffet"
 import ManageOrders from "./Pages/Staff/DisplayOrders"
+import ManageBuffet from "./Pages/Staff/ManageBuffets"
 
 
 // Layout component with header and footer
@@ -139,6 +140,10 @@ function App() {
           <Route
           path="/manageOrders"
           element={<Layout3><ManageOrders /></Layout3>}
+          />
+          <Route
+          path="/manageBuffet"
+          element={<Layout3><ManageBuffet /></Layout3>}
           />
         </Routes>
       </BrowserRouter>

@@ -33,7 +33,7 @@ function RestaurantNavbar() {
         <a className="nav-link text-white fs-6" aria-current="page" href="/manageOrders">Manage Food Orders</a>
       </li>
       <li className="nav-item border">
-        <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord">Manage Buffet</a>
+        <a className="nav-link text-white fs-6" aria-current="page" href="/manageBuffet">Manage Buffet</a>
       </li>
       <li className="nav-item border">
         <a className="nav-link text-white fs-6" aria-current="page" href="/AdminDashbord"  >Kitchen Inventory</a>
