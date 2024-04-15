@@ -51,16 +51,16 @@ function Rooms(roomId) {
               <div className="card-body">
                 {room.Image && room.Image.data && (
                   <img
-                    // style={{ width: "10rem" }}
-                    // src={`data:${room.Image.contentType};base64,${btoa(
-                    //   String.fromCharCode.apply(null, room.Image.data.data)
-                    // )}`}
                     style={{ width: "10rem" }}
-                    src={URL.createObjectURL(
-                      new Blob([ room.Image.data], {
-                        type: room.Image.contentType
-                      })
-                    )}
+                    src={`data:${room.Image.contentType};base64,${btoa(
+                      String.fromCharCode.apply(null, room.Image.data.data)
+                    )}`}
+                    // style={{ width: "10rem" }}
+                    // src={URL.createObjectURL(
+                    //   new Blob([ room.Image.data], {
+                    //     type: room.Image.contentType
+                    //   })
+                    // )}
                     className="card-img-top mb-1"
                     alt={room.Rtype}
                   />
