@@ -14,6 +14,9 @@ import KitchenInventory from "./Pages/Staff/KitchenInventory";
 import AddPayment from "./Pages/addpayment";
 import AddBulkStock from "./Pages/Staff/AddBulkStock";
 import BulkStock from "./Pages/Staff/BulkStock";
+import CombinedInventory from "./Pages/Staff/CombinedInventory";
+import Dashboard from "./Pages/Staff/ManagerDashboard";
+import RestaurantManager from "./Pages/Staff/RestaurantManager";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -68,6 +71,18 @@ function App() {
            <Route
             path="/BulkStock"
             element={<BulkStock />}
+          />
+          <Route
+            path="/CombinedInventory"
+            element={<CombinedInventory />}
+          />
+          <Route 
+            path="/ManagerDashboard" 
+            element={<Dashboard />}
+          />
+          <Route 
+            path="/RestaurantManager" 
+            element={<RestaurantManager />}
           />
         </Routes>
       </BrowserRouter>
