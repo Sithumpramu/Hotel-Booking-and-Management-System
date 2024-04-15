@@ -10,7 +10,7 @@ const AddNewRoom = () => {
   const [capacity, setcapacity] = useState("");
   const [NoOfBeds, setNoOfBeds] = useState("");
   const [price, setprice] = useState("");
-  const [status, setstatus] = useState("");
+ 
   const [Image, setImage] = useState(null);
 
   const { addRoom, isLoading, error } = useAddRoom();
@@ -25,7 +25,6 @@ const AddNewRoom = () => {
       capacity,
       NoOfBeds,
       price,
-      status,
       Image
     );
   };
@@ -39,8 +38,7 @@ const AddNewRoom = () => {
       description === "" &&
       capacity === "" &&
       NoOfBeds === "" &&
-      price === "" &&
-      status === ""
+      price === "" 
     ) {
       document.getElementById("Error").innerHTML = "All fields must be filled.";
     }
@@ -55,84 +53,80 @@ const AddNewRoom = () => {
         <form
           onSubmit={handleSubmit}
           method="Post"
-          style={{ width: "18rem", height: "40rem" }}
+          style={{ maxWidth: "500px", margin: "auto" }} // Updated inline CSS
         >
-          <div>
-            <label>Room ID:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomId">Room ID:</label>
             <input
               type="text"
-              className=""
               id="roomId"
               onChange={(e) => {
                 setRid(e.target.value);
               }}
             />
+          </div>
 
-            <label>Room Type:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomType">Room Type:</label>
             <input
               type="text"
-              className=""
               id="roomType"
               onChange={(e) => {
                 setRtype(e.target.value);
               }}
             />
+          </div>
 
-            <label>Description:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomDescription">Description:</label>
             <input
               type="text"
-              className=""
               id="roomDescription"
               onChange={(e) => {
                 setdescription(e.target.value);
               }}
             />
+          </div>
 
-            <label>Capacity:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomCapacity">Capacity:</label>
             <input
               type="number"
-              className=""
               id="roomCapacity"
               onChange={(e) => {
                 setcapacity(e.target.value);
               }}
             />
+          </div>
 
-            <label>No of Beds:</label>
-
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roombeds">No of Beds:</label>
             <input
               type="number"
-              className=""
               id="roombeds"
               onChange={(e) => {
                 setNoOfBeds(e.target.value);
               }}
             />
+          </div>
 
-            <label>Price:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomPrice">Price:</label>
             <input
               type="number"
-              className=""
               id="roomPrice"
               onChange={(e) => {
                 setprice(e.target.value);
               }}
             />
+          </div>
 
-            <label>Status:</label>
-            <input
-              type="text"
-              className=""
-              id="roomStatus"
-              onChange={(e) => {
-                setstatus(e.target.value);
-              }}
-            />
+          
 
-            <label>Image file:</label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="roomImage">Image file:</label>
             <input
               type="file"
-              className=""
               id="roomImage"
               onChange={(e) => {
                 setImage(e.target.files[0]);
