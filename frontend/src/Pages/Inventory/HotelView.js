@@ -4,6 +4,7 @@ import searchHeader from '../../components/searchHeader';
 
 const HotelView = () => {
   const [inventory, setInventory] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,11 @@ const HotelView = () => {
 
     fetchData();
   }, []);
+  
+
+  const filter = inventory.filter(item =>
+    item.itemName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -31,6 +37,12 @@ const HotelView = () => {
       <div className="container-fluid col">
         <div className="row flex-nowrap">
           <div className="col py-3">
+          <div><input
+                type="search"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              /></div>
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -43,7 +55,7 @@ const HotelView = () => {
                 </tr>
               </thead>
               <tbody>
-                {inventory.map((item, index) => (
+                {filter.map((item, index) => (
                   <tr key={index}>
                     <td>{item.itemID}</td>
                     <td>{item.itemName}</td>
