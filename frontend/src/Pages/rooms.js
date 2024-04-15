@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import RoomList from "../hooks/useRoomList";
 
 function Rooms() {
+  
+  
+  
   const location = useLocation();
   const navigate = useNavigate();
   const { rooms } = RoomList();
@@ -16,6 +19,13 @@ function Rooms() {
   console.log('Check-in Date:', Checkindate);
   console.log('Check-out Date:', Checkoutdate);
   console.log('Number of Guests:', NoOfGuests);
+
+  const bufferToBase64 = (buf) => {
+    var binstr = Array.prototype.map.call(buf, function (ch) {
+        return String.fromCharCode(ch);
+    }).join('');
+    return btoa(binstr);
+};
 
   const handleRoomSelect = (roomId, price) => {
     // Call the token check function before navigating
@@ -52,12 +62,10 @@ function Rooms() {
               <div className="card-body" >
                 {room.Image && room.Image.data && (
                   <img
-                    style={{ width: "10rem" }}
-                     src={`data:${room.Image.contentType};base64,${btoa(
-                     String.fromCharCode.apply(null, room.Image.data.data)
-                     )}`}
-                    className="card-img-top mb-1"
-                    alt={room.Rtype}
+                  style={{ width: "10rem" }}
+                  src={`data:${room.Image.contentType};base64,${bufferToBase64(room.Image.data.data)}`}
+                  className="card-img-top mb-1"
+                  alt={room.Rtype}
                   />
                 )}
 
