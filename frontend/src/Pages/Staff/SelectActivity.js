@@ -50,22 +50,27 @@ function SelectActivity() {
             <h1 className="mb-4 mt-5">Watersport Activities</h1>
 
             <div className="d-flex align-items-center justify-content-around mb-3">
-              <table className="table table-info" style={{ width: "50rem" }}>
-                <tr>
-                  <th></th>
-                  <th className="border border-black" scope="col">
-                    Activity Name
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Estimated Time
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Price
-                  </th>
-                  <th className="border border-black" scope="col">
-                    Qty per Ride
-                  </th>
-                </tr>
+              <table
+                className="table table-striped"
+                style={{ width: "50rem" }}
+              >
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th className="border border-black" scope="col">
+                      Activity Name
+                    </th>
+                    <th className="border border-black" scope="col">
+                      Estimated Time
+                    </th>
+                    <th className="border border-black" scope="col">
+                      Price
+                    </th>
+                    <th className="border border-black" scope="col">
+                      Qty per Ride
+                    </th>
+                  </tr>
+                </thead>
 
                 {ActivityList.map((Watersport) => (
                   <tbody>
