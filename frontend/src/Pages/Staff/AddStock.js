@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAddStock  from "../../hooks/useAddStock";
+import KitchenSidebar from "../../components/KitchenSideBar";
 
 const AddStock = () => {
 
@@ -41,7 +42,9 @@ const AddStock = () => {
     };
 
     return (
-        <div>
+        <div className="row p-0">
+            <KitchenSidebar/>
+            <div className="col">
             <div className="d-flex align-items-center justify-content-center mb-3 mt-5">
                 <form onSubmit={handleSubmit} method="Post" style={{ width: "18rem" }}>
                     <div className="mb-3">
@@ -69,6 +72,7 @@ const AddStock = () => {
 
                     <p id="Error"></p>
                 </form>
+            </div>
             </div>
         </div>
     );

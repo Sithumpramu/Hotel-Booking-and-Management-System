@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import useBulkStockDisplay from '../../hooks/useBulkStockDisplay';
 import useDeleteBulkStock from '../../hooks/useDeleteBulkStock';
 import useUpdateBulkStock from '../../hooks/useUpdateBulkStock';
+import KitchenSidebar from '../../components/KitchenSideBar';
 
 function BulkStock () {
     const {BStockList, isLoading, error} = useBulkStockDisplay();
@@ -93,7 +94,9 @@ function BulkStock () {
     
     
 return (
-  <div>
+  <div className="row p-0">
+        <KitchenSidebar/>
+        <div className="col">
     <div>
       <h1 className="mb-4 mt-5">Bulk Inventory</h1>
       <a href="/AddBulkStock" className="btn btn-primary mb-5">
@@ -376,6 +379,7 @@ return (
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 );

@@ -32,9 +32,11 @@ function Dashboard() {
           </a>
         </div>
       </div>
+
+
       <div
         class="d-grid gap-4 col-3 mx-auto"
-        style={{ position: "relative", top: "140px" }}
+        style={{ position: "relative", top: "60px" }}
       >
         <a
           href={
@@ -72,6 +74,32 @@ function Dashboard() {
           type="button"
         >
           Event & Activity Manager
+        </a>
+        <a
+          href={
+            userEmail && userEmail.includes("inventorymanager") ? "" : "#"
+          }
+          className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
+            userEmail && userEmail.includes("inventorymanager")
+              ? ""
+              : "disabled"
+          }`}
+          type="button"
+        >
+          Room Inventory Manager
+        </a>
+        <a
+          href={
+            userEmail && userEmail.includes("kitchenmanager") ? "" : "#"
+          }
+          className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
+            userEmail && userEmail.includes("kitchenmanager")
+              ? ""
+              : "disabled"
+          }`}
+          type="button"
+        >
+          Kitchen Inventory Manager
         </a>
       </div>
       <div></div>

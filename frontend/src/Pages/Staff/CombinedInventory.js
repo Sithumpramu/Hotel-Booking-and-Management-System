@@ -5,6 +5,7 @@ import useUpdateBulkStock from '../../hooks/useUpdateBulkStock';
 import useKitchenStockDisplay from '../../hooks/useKitchenStockDisplay';
 import useDeleteStock from '../../hooks/useDeleteStock';
 import useUpdateStock from '../../hooks/useUpdateStock';
+import KitchenSidebar from '../../components/KitchenSideBar';
 
 function CombinedInventory() {
     const { BStockList, isLoading: bulkLoading, error: bulkError } = useBulkStockDisplay();
@@ -98,7 +99,9 @@ function CombinedInventory() {
     };
 
     return (
-        <div>
+        <div className="row p-0">
+        <KitchenSidebar/>
+        <div className="col">
             <div>
                 <h1 className="mb-4 mt-5">Combined Inventory</h1>
                 {/* Add New Stock buttons for bulk and kitchen inventory */}
@@ -172,6 +175,7 @@ function CombinedInventory() {
             {/* Update Modal */}
             <div className="modal fade" id="UpdateModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 {/* Modal content */}
+            </div>
             </div>
         </div>
     );

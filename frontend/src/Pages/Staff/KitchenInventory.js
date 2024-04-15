@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import useKitchenStockDisplay from '../../hooks/useKitchenStockDisplay';
 import useDeleteStock from '../../hooks/useDeleteStock';
 import useUpdateStock from '../../hooks/useUpdateStock';
+import KitchenSidebar from '../../components/KitchenSideBar';
 
 function KitchenInventory () {
     const {StockList, isLoading, error} = useKitchenStockDisplay();
@@ -92,7 +93,9 @@ function KitchenInventory () {
     
     
 return (
-  <div>
+  <div className="row p-0">
+            <KitchenSidebar/>
+            <div className="col">
     <div>
       <h1 className="mb-4 mt-5">Kitchen Inventory</h1>
       <a href="/AddStock" className="btn btn-primary mb-5">
@@ -356,6 +359,7 @@ return (
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 );
