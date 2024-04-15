@@ -1,27 +1,29 @@
 import React, { useState } from "react";
-import useMenuList from "../../hooks/useMenu";
-import useUpdateMenu from "../../hooks/useUpdateMenuItem";
+import useDisplayBuffet from "../../hooks/useDisplayBuffet";
+import useUpdateBuffet from "../../hooks/useUpdateBuffet";
 
-function UpdateMenu() {
-  const { updateMenuItem } = useUpdateMenu();
-  const [productName, setProductName] = useState("");
+function UpdateBuffet() {
+  const { buffetDetails  } = useUpdateBuffet();
+  const { buffetItems, isLoading, error } = useDisplayBuffet();
+  const [BuffetName, setBuffetName] = useState("");
+  const [ Description, setDescription] = useState("");
+  const [Time, setTime] = useState("");
   const [Price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const { menuList, isLoading, error } = useMenuList();
+  const [Image, setImage] = useState("");
   const [ID, setIdToUpdate] = useState("");
-   const [Image, setImage] = useState("");
+   
 
 
 
   const handleupdate = async (ID) => {
 
     setIdToUpdate('');
-    await updateMenuItem(ID)
+    await buffetDetails(ID)
 
   }
   return (
     <div className="row">
-      <h2>Update Product Details</h2>
+      <h2>Update Buffet Details</h2>
       <div className="col">
         <div>
           <div className="d-flex align-items-center justify-content-center mb-3 mt-5">
@@ -32,15 +34,39 @@ function UpdateMenu() {
             >
               <div className="mb-3">
                 <label for="ProductName" className="form-label">
-                  Product Name:
+                Buffet Name:
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="ProductName"
+                  id="BuffetName"
                   //   value={menu.productName}
                   onChange={(e) => {
-                    setProductName(e.target.value);
+                    setBuffetName(e.target.value);
+                  }}
+                />
+              </div>
+              
+              <div class="mb-3">
+                <label className="form-label">Description:</label>
+                <input
+                  type="textarea"
+                  className="form-control"
+                  id="Description"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div class="mb-3">
+                <label className="form-label">Time:</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="Time"
+                  onChange={(e) => {
+                    setTime(e.target.value);
                   }}
                 />
               </div>
@@ -53,18 +79,6 @@ function UpdateMenu() {
                   id="Price"
                   onChange={(e) => {
                     setPrice(e.target.value);
-                  }}
-                />
-              </div>
-
-              <div class="mb-3">
-                <label className="form-label">category:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="category"
-                  onChange={(e) => {
-                    setCategory(e.target.value);
                   }}
                 />
               </div>
@@ -107,4 +121,4 @@ function UpdateMenu() {
   )
 }
 
-export default UpdateMenu;
+export default UpdateBuffet;

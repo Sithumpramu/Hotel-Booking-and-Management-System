@@ -3,13 +3,16 @@
 import React, { useState } from "react";
 import useMenuList from "../../hooks/useMenu";
 import useDeleteMenu from "../../hooks/useDeleteMenuItem";
+import useUpdateMenu from "../../hooks/useUpdateMenuItem";
 
 
 function MenuItems() {
   const { menuList, isLoading, error } = useMenuList();
   const [ID, setIdToDelete] = useState("");
   const { deleteMenuItem } = useDeleteMenu();
+  const { updateMenu } = useUpdateMenu();
   
+  const [IdToUpdate, setIdToUpdate] = useState("");
   const [productName, setProductName] = useState("");
   const [Price, setPrice] = useState("");
   const [category, setCategory] = useState("");
@@ -27,6 +30,25 @@ function MenuItems() {
     return <div>Error: {error}</div>;
   }
 
+  const getUpdateMenu = (menu) => {
+    setIdToUpdate(menu._id);
+    setProductName(menu. productName);
+    setPrice(menu.Price);
+    setCategory(menu.category);
+    //setImage(menu.image);
+   
+  };
+
+  const updateDetails = async () => {
+    await updateMenu(
+      IdToUpdate,
+      productName,
+      Price,
+      category,
+      //image
+      
+    );
+  };
 
   const handleDelete = async () => {
     await deleteMenuItem(ID);
@@ -70,11 +92,20 @@ function MenuItems() {
                         alt={menu.productName}
                       />
                     )}
-                    <h5 className="card-title">{menu.productName}</h5>
+                    <h5 className="card-title">{menu.productName}
+                    onChange={(e) => {
+                        setProductName(e.target.value);
+                      }}</h5>
                     <p className="card-text fw-medium">
                       Rs.{menu.Price}.00
+                      onChange={(e) => {
+                         setPrice(e.target.value);
+                      }}
                     </p>
-                    <p className="card-text fw-medium">{menu.category}</p>
+                    <p className="card-text fw-medium">{menu.category}
+                    onChange={(e) => {
+                         setCategory(e.target.value);
+                      }}</p>
                     <a
                       href="#"
                       className="btn btn-danger"
@@ -85,7 +116,8 @@ function MenuItems() {
                       Delete Item
                     </a>
                     <a className="btn btn-primary"
-                      onClick={() => setIdToDelete(menu._id)}
+                      onClick={() => getUpdateMenu(menu._id)}
+                      href="/updateMenu"
                     >Update</a>
                   </div>
                 </div>

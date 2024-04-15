@@ -43,6 +43,10 @@ const ManageBuffet = () => {
                   >
                     Delete Buffet Details
                   </button>
+                  <a className="btn btn-primary"
+                      onClick={() => setidToDelete(item._id)}
+                      href="/updateBuffet"
+                    >Update</a>
 
             {/* Add more details as needed */}
           </div></div>
