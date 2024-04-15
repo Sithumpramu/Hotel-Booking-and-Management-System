@@ -52,6 +52,17 @@ const roomreservationSchema = new Schema({
         require:true
     },
 
+    RoomResvID:{
+        type:String,
+        require:true
+    },
+
+    price:{
+        type:Number,
+        require:true
+    }
+
+
 
 
 

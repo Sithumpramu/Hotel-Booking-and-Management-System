@@ -31,17 +31,19 @@ const getsinglereservation = async (req,res) =>{
 
 //make a room reservation
 const roomReservation = async (req, res) => {
-  const { Checkindate,Checkoutdate,Rtype,NoOfGuests } = req.body; // Correct the variable name 'status' to 'Status'
+  const { Checkindate, Checkoutdate, NoOfGuests,RoomID, Name, email, Address, phoneno ,RoomResvID,price} = req.body; // Correct the variable name 'status' to 'Status'
 
   try {
-      const newReservation = new roomreservation({ Checkindate,Checkoutdate,Rtype,NoOfGuests }); // Create a new room object
-      await newReservation.save(); // Save the new room to the database
-      res.status(201).json(newReservation); // Respond with the newly created room
+
+      const Reserv = await testreserv.create({
+          Checkindate, Checkoutdate, NoOfGuests,Rid,Name, email, Address, phoneno,RoomResvID,price
+      });
+      res.status(201).json(Reserv);
   } catch (error) {
+      console.log(error, "error");
       res.status(400).json({ error: error.message });
   }
 };
-
 
 //cancel a reservation
 const cancelreservation = async (req, res) => {

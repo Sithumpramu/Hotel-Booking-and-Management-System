@@ -2,62 +2,59 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RoomList from "../hooks/useRoomList";
 
-function Rooms(roomId) {
+function Rooms() {
   const location = useLocation();
   const navigate = useNavigate();
   const { rooms } = RoomList();
-  const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
+  const { Checkindate, Checkoutdate, NoOfGuests } = location.state || {};
+
+  // Check if location state exists
+  if (!Checkindate || !Checkoutdate || !NoOfGuests) {
+    return <div>No check-in date, check-out date, or number of guests provided.</div>;
+  }
 
   console.log('Check-in Date:', Checkindate);
   console.log('Check-out Date:', Checkoutdate);
   console.log('Number of Guests:', NoOfGuests);
 
-  const handleRoomSelect = (roomId,price) => {
+  const handleRoomSelect = (roomId, price) => {
     // Call the token check function before navigating
-    TokenCheckAndNavigate(roomId,price);
+    TokenCheckAndNavigate(roomId, price);
   };
 
-
-  const TokenCheckAndNavigate = (roomId,price) => {
+  const TokenCheckAndNavigate = (roomId, price) => {
     const token = localStorage.getItem('user');
-    console.log(roomId)
     if (!token) {
-      navigate('/login'); 
+      navigate('/login');
       return;
     }
 
     // If token is present
-    else{
     navigate('/CustomerDetails', {
       state: {
-        Rid:roomId,
+        Rid: roomId,
         Checkindate,
         Checkoutdate,
         NoOfGuests,
         price: price
       }
-    });}
+    });
   };
 
   localStorage.removeItem('prevPath');
-
 
   return (
     <div>
       <div className="row bs">
         {rooms.map((room) => (
-          <div className="col-md-7" key={room.id}>
+          <div className="col-md-7" key={room.Rid}>
             <div className="card">
               <div className="card-body">
                 {room.Image && room.Image.data && (
                   <img
-                    // style={{ width: "10rem" }}
-                    // src={`data:${room.Image.contentType};base64,${btoa(
-                    //   String.fromCharCode.apply(null, room.Image.data.data)
-                    // )}`}
                     style={{ width: "10rem" }}
                     src={URL.createObjectURL(
-                      new Blob([ room.Image.data], {
+                      new Blob([room.Image.data], {
                         type: room.Image.contentType
                       })
                     )}
@@ -80,7 +77,6 @@ function Rooms(roomId) {
                   </button>
                 </div>
               </div>
-              
             </div>
           </div>
         ))}
