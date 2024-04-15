@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import offerList from "../hooks/useOfferList";
+import searchHeader from '../../components/searchHeader';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function offer() {

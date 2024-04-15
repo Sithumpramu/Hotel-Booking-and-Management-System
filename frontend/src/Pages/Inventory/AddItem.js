@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Inventorysidebar from '../../components/InventoryManagerSideBar';
+import searchHeader from '../../components/searchHeader';
 
 const AddItem = () => {
     const navigate = useNavigate();

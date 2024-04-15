@@ -9,12 +9,12 @@ const useDeleteOffer = () => {
   const navigate = useNavigate();
   const { dispatch } = useAuthContext();
 
-  const deleteOffer = async (Rid) => {
+  const deleteOffer = async (id) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/offer/deleteOffer/${OfferID}`, {
+      const response = await fetch(http://localhost:4000/offer/deleteOffer/${id}, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -36,7 +36,7 @@ const useDeleteOffer = () => {
     }
   };
 
-  return { deleteOffer, isLoading, error, status };
+  return { deleteOffer, isLoading, error };
 };
 
 export default useDeleteOffer;

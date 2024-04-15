@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Inventorysidebar from '../../components/InventoryManagerSideBar';
+import searchHeader from '../../components/searchHeader';
 
 
 export const EditItem = () => {
