@@ -1,42 +1,44 @@
-import { useState } from "react"
-import { FaBed, FaUsers, FaUserCog } from 'react-icons/fa';
-import { BiBook, BiCheck, BiExit, BiBarChart } from 'react-icons/bi';
-import { AiOutlineDashboard, AiOutlineDollar } from 'react-icons/ai';
+import { useState } from "react";
+import { FaUsers, FaUserCog } from 'react-icons/fa';
 import { IoMdCalendar, IoMdSettings } from 'react-icons/io';
+import RestaurantNavbar from "../../components/RestaurantManagerNavbar";
+
 function AdminDash(){
 
-
-return(
-
-<div className=" bg-info-subtle vh-100 row">
-<div className="col-3">
-<ul className="nav flex-column bg-black vh-100">
-<img src="logo.jpg"style={{width:"150px", position:"relative", left:"107px"}} className="mt-4"></img>
-<div className="d-flex flex-column bg-info h-25 mt-5 justify-content-around">
-  <li className="nav-item ">
-    <a className="nav-link active" aria-current="page" href="#">Manage Users</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link " aria-current="page" href="#">Manage Staff</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link" aria-current="page" href="#">Create Staff</a>
-  </li>
-</div>
-</ul>
-</div>
-<div className="col d-flex justify-content-between">
-    <div className="row">Admin Dashbord</div>
-    <div className="bg-primary col-2 h-25"><FaUsers size={50}/></div>
-    <div className="bg-primary col-2 h-25"><FaUserCog size={50}/></div>
-    <div className="bg-primary col-2 h-25"><IoMdSettings size={50}/></div>
-    
-    
-</div>
-</div>
-  
-);
+  return(
+    <div className="container-fluid p-0">
+      <div className="row m-0 p-0">
+        <div className="col-md-3 p-0">
+          <RestaurantNavbar/>
+        </div>
+        <div className="col-md-9">
+          <div className="row h4 mb-5" style={{height:"75px"}}>
+            <div><p className="mt-5">Restaurant Manager Dashboard</p></div>
+          </div>
+          <div className="row d-flex justify-content-around h-25">
+            <div className="card col-2 pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUsers size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Staffmanage">Staff Management</a></div>
+            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUserCog size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Usermanage">User Management</a></div>
+            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><IoMdSettings size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Accountmanage">Account Manage</a></div>
+          </div>
+          <hr></hr>
+          <iframe
+            style={{
+              background: '#FFFFFF',
+              border: 'none',
+              borderRadius: '2px',
+              boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)',
+              width: '100%', // Set the width to 100%
+              maxWidth: '540px', // Limit the maximum width
+              height: '380px'
+            }}
+            src="https://charts.mongodb.com/charts-project-0-sqqdz/embed/charts?id=660ab80c-c20d-4b70-84cf-523695f27b2a&maxDataAge=60&theme=light&autoRefresh=true"
+            title="MongoDB Chart"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  );
 
 }
 
-export default AdminDash
+export default AdminDash;

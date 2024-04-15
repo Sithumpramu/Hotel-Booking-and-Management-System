@@ -25,6 +25,8 @@ import ManageTableReservation from "./Pages/Staff/TableReserManagement"
 import DisplayOrders from "./Pages/DisplayFoodOrders"
 import AddNewOrder from "./Pages/AddOrders"
 import DisplayBuffet from "./Pages/DisplayBuffet"
+import ManageOrders from "./Pages/Staff/DisplayOrders"
+
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -129,6 +131,14 @@ function App() {
            <Route
           path="/AdminDashboard"
           element={<Layout3><AdminDash/></Layout3>}
+          />
+          <Route
+          path="/manageTables"
+          element={<Layout3><ManageTableReservation/></Layout3>}
+          />
+          <Route
+          path="/manageOrders"
+          element={<Layout3><ManageOrders /></Layout3>}
           />
         </Routes>
       </BrowserRouter>

@@ -1,19 +1,16 @@
-/*import { useEffect, useState } from "react";
-import useTableList from "../hooks/useTableResvList";
-import useDeleteReservation from "../hooks/useDeleteTableReservation";
+import { useEffect, useState } from "react";
+import useTableList from "../../hooks/useTableResvList";
+import useDeleteReservation from "../../hooks/useDeleteTableReservation";
 
 
 const ManageTableReservation = () => {
   const { TableList, isLoading, error } = useTableList();
+
   const [nameToDelete, setNameToDelete] = useState("");
   const { deleteTableReservation } = useDeleteReservation();
 
+ 
   
-  const [Date, setDate] = useState("");
-  const [Name, setName] = useState("");
-  const [Capacity, setCapacity] = useState("");
-  const [email, setemail] = useState("");
-  const [contactNumber, setcontactNumber] = useState("");
 
   if (isLoading) {
     return (
@@ -27,6 +24,7 @@ const ManageTableReservation = () => {
     return <div>Error: {error}</div>;
   }
 
+  
 
   const handleDelete = async () => {
     await deleteTableReservation(nameToDelete);
@@ -35,10 +33,9 @@ const ManageTableReservation = () => {
   };
 
   return (
-    
-
+   
     <div>
-      <h1 className="mb-4 mt-5">My Reservations</h1>
+      <h1 className="mb-4 mt-5">Table Reservations</h1>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>
@@ -56,91 +53,68 @@ const ManageTableReservation = () => {
             <tbody key={Table._id}>
               <tr className="border border-black" scope="col">
                 <td>
-                  (
+                   
                     <input
                       className="tabledit-input form-control input-sm"
                       type="Date"
                       name="Date"
                       defaultValue={Table.Date}
                       disabled=""
-                      onChange={(e) => {
-                        setDate(e.target.value);
-                      }}
+                     
                     ></input>
-                  ) : (
-                    <td>{Table.Date}</td>
-                  )
+                  
                 </td>
 
                 <td>
-                   (
+                  
                     <input
                       className="tabledit-input form-control input-sm"
                       type="Text"
                       name="Name"
                       defaultValue={Table.Name}
                       disabled=""
-                      onChange={(e) => {
-                        setName(e.target.value);
-                      }}
                     ></input>
-                  ) : (
-                    <td>{Table.Name}</td>
-                  )
+                  
                 </td>
 
                 <td>
-                   (
+                   
                     <input
                       className="tabledit-input form-control input-sm"
                       type="number"
                       name="Capacity"
                       defaultValue={Table.Capacity}
                       disabled=""
-                      onChange={(e) => {
-                        setCapacity(e.target.value);
-                      }}
+                     
                     ></input>
-                  ) : (
-                    <td>{Table.Capacity}</td>
-                  )
+                  
                 </td>
 
                 <td>
-                   (
+                   
                     <input
                       className="tabledit-input form-control input-sm"
                       type="email"
                       name="email"
                       defaultValue={Table.email}
                       disabled=""
-                      onChange={(e) => {
-                        setemail(e.target.value);
-                      }}
+                      
                     ></input>
-                  ) : (
-                    <td>{Table.email}</td>
-                  )
+                 
                 </td>
 
                 <td>
-                   (
+                  
                     <input
                       className="tabledit-input form-control input-sm"
                       type="Number"
                       name="contactNumber"
                       defaultValue={Table.contactNumber}
                       disabled=""
-                      onChange={(e) => {
-                        setcontactNumber(e.target.value);
-                      }}
+                     
                     ></input>
-                  ) : (
-                    <td>{Table.contactNumber}</td>
-                  )
+                  
                 </td>
-
-
 
                 <td>
                   <button
@@ -162,7 +136,7 @@ const ManageTableReservation = () => {
         </table>
       </div>
 
-      {//delete model  }
+      {/*delete model  */}
       <div
         className="modal fade"
         id="Modal"
@@ -207,10 +181,8 @@ const ManageTableReservation = () => {
           </div>
         </div>
       </div>
-
-    </div>
-  );
-};
+      </div>
+    );
+}
 
 export default ManageTableReservation;
-*/
