@@ -151,7 +151,7 @@ function MenuItems() {
                 ></button>
               </div>
               <div className="modal-body">
-                Are you sure you want to delete this Activity?
+                Are you sure you want to delete this Menu Item?
               </div>
               <div className="modal-footer">
                 <button

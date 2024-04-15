@@ -75,7 +75,7 @@ const ManageBuffet = () => {
           ></button>
         </div>
         <div className="modal-body">
-          Are you sure you want to cancel this Reservation?
+          Are you sure you want to delete this Buffet Details?
         </div>
         <div className="modal-footer">
           <button

@@ -160,7 +160,7 @@ const ManageOrders = () => {
               ></button>
             </div>
             <div className="modal-body">
-              Are you sure you want to cancel this Reservation?
+              Are you sure you want to cancel this Order?
             </div>
             <div className="modal-footer">
               <button

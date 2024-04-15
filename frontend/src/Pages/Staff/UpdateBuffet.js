@@ -22,18 +22,17 @@ function UpdateBuffet() {
 
   }
   return (
-    <div className="row">
-      <h2>Update Buffet Details</h2>
-      <div className="col">
-        <div>
-          <div className="d-flex align-items-center justify-content-center mb-3 mt-5">
+    <div className="row d-flex align-items-center justify-content-center mb-4 mt-1">
+      <h1 className="mt-2 mb-3 ">Update Buffet Details</h1>
+      
             <form
+             className="bg-primary bg-opacity-50"
               onSubmit={handleupdate}
               method="Post"
               style={{ width: "18rem" }}
             >
               <div className="mb-3">
-                <label for="ProductName" className="form-label">
+                <label for="ProductName" className="form-label mt-3">
                 Buffet Name:
                 </label>
                 <input
@@ -48,7 +47,7 @@ function UpdateBuffet() {
               </div>
               
               <div class="mb-3">
-                <label className="form-label">Description:</label>
+                <label className="form-label mt-3">Description:</label>
                 <input
                   type="textarea"
                   className="form-control"
@@ -60,7 +59,7 @@ function UpdateBuffet() {
               </div>
 
               <div class="mb-3">
-                <label className="form-label">Time:</label>
+                <label className="form-label mt-3">Time:</label>
                 <input
                   type="number"
                   className="form-control"
@@ -72,7 +71,7 @@ function UpdateBuffet() {
               </div>
 
               <div class="mb-3">
-                <label className="form-label">Price:</label>
+                <label className="form-label mt-3">Price:</label>
                 <input
                   type="number"
                   className="form-control"
@@ -83,7 +82,7 @@ function UpdateBuffet() {
                 />
               </div>
               <div class="mb-3">
-                <label for="formFile" className="form-label">
+                <label for="formFile" className="form-label mt-3">
                   Image File
                 </label>
                 <input
@@ -114,10 +113,10 @@ function UpdateBuffet() {
               <p id="Error"></p>
             </form>
           </div>
-        </div>
-      </div>
+        
+      
 
-    </div>
+   
   )
 }
 
