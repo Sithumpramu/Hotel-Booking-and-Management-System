@@ -14,6 +14,8 @@ import WatersportActivities from "./Pages/WatersportActivities";
 
 //manager's dashboard
 import Dashboard from "./Pages/Staff/ManagerDashboard";
+import TableReservation from "./Pages/Staff/DiningReservations";
+import ReservationNavbar from "./components/reservationNavBar";
 
 //Event & Activity Manager
 import AddActivity from "./Pages/Staff/AddActivity";
@@ -67,6 +69,7 @@ function App() {
           <Route path="/Watersports" element={<WatersportActivities />} />
 
           <Route path="/ManagerDashboard" element={<Dashboard />} />
+          <Route path="/reservationNavbar" element={<ReservationNavbar />} />
 
           <Route path="/AddActivity" element={<AddActivity />} />
           <Route path="/WatersportsManagement" element={<WatersportManage />} />
@@ -76,6 +79,7 @@ function App() {
             path="/watersportReservations"
             element={<WatersportReservations />}
           />
+          <Route path="/DiningReservations" element={<TableReservation />} />
 
           <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
           <Route path="/AdminDashbord" element={<AdminDash />} />

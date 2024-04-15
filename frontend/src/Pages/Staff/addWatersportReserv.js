@@ -92,39 +92,47 @@ const AddReserv = () => {
       handleSubmit();
     }
 
-    // const errorElement = document.getElementById("Error");
-    // if (!allFieldsFilled) {
-    //   errorElement.innerHTML = "All fields must be filled.";
-    //   return false;
-    // } else {
-    //   errorElement.innerHTML = "";
-    //   return true;
-    // }
+    const errorElement = document.getElementById("Error");
+    if (!allFieldsFilled) {
+      errorElement.innerHTML = "All fields must be filled.";
+      return false;
+    } else {
+      errorElement.innerHTML = "";
+      return true;
+    }
   };
 
   const checkIsActivityAlreadyBooked = (activities, selectedActivities) => {
-    return activities && activities.some((activity) => {
-      return activity.activityList.some((alreadyBookedActivity) => {
-        return selectedActivities.some((selectedActivity) => {
-          return selectedActivity.id === alreadyBookedActivity.id;
+    return (
+      activities &&
+      activities.some((activity) => {
+        return activity.activityList.some((alreadyBookedActivity) => {
+          return selectedActivities.some((selectedActivity) => {
+            return selectedActivity.id === alreadyBookedActivity.id;
+          });
         });
-      });
-    });
+      })
+    );
   };
 
   return (
     <div className="row">
+      <div className="col-2" style={{ width: "0rem" }}>
       <ReceptionNavbar />
+      </div>
+      
       <div className="col">
-        <div className="m-3">
-          <h3>Selected Activities</h3>
+
+        <div className="mt-5 mb-4">
+          <h3 className="text-primary fw-bolder fs-4">Selected Activities</h3>
         </div>
 
         <div>
           <div>
             <div className="row d-flex align-items-center justify-content-center">
-              <table style={{ width: "48rem" }}>
-                <tr>
+              <table style={{ width: "48rem" }} >
+                <thead className="bg-primary bg-opacity-25">
+                  <tr>
                   <th className="border border-black">Activity Name</th>
                   <th className="border border-black">Price per round (Rs.)</th>
                   <th className="border border-black">Qty per round</th>
@@ -132,6 +140,8 @@ const AddReserv = () => {
                   <th className="border border-black">Rounds</th>
                   <th className="border border-black">Total Price (Rs.)</th>
                 </tr>
+                </thead>
+                
 
                 {activityList &&
                   activityList.map((activity) => (
@@ -200,7 +210,6 @@ const AddReserv = () => {
 
               {/* display total bill */}
               <div className="mt-2 mb-4 bg-warning bg-opacity-50">
-                {" "}
                 <span className="fw-bolder text-danger">Total Bill: </span>
                 <span className="fw-bolder">Rs.{totalPrice}.00</span>
               </div>
@@ -210,7 +219,11 @@ const AddReserv = () => {
               </p>
 
               <div className="row d-flex align-items-center justify-content-center">
-                <form onSubmit={validate} style={{ width: "18rem" }}>
+                <form
+                  onSubmit={validate}
+                  style={{ width: "18rem" }}
+                  className="bg-primary bg-opacity-25 rounded"
+                >
                   <div className="mb-3">
                     <label htmlFor="customerName" className="form-label">
                       Customer Name
@@ -244,17 +257,17 @@ const AddReserv = () => {
                       onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
-                  
+
                   <div className="mb-3">
                     <label htmlFor="checkinDate" className="form-label">
                       Check-in Date
                     </label>
-                    
+
                     <input
                       type="Date"
                       className="form-control"
                       id="checkinDate"
-                      min={new Date().toISOString().split('T')[0]}
+                      min={new Date().toISOString().split("T")[0]}
                       onChange={(e) => setcheckinDate(e.target.value)}
                     />
                   </div>
