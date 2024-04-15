@@ -22,6 +22,23 @@ const EditHall = () => {
   // State for success message
   const [successMessage, setSuccessMessage] = useState("");
 
+  // State to manage modal visibility
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+  // Function to handle form submission
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+     // Prevent default form submission behavior
+    setShowConfirmationModal(true); // Show confirmation modal when form is submitted
+  };
+
+  // Function to confirm the update
+  const confirmUpdate = (e) => {
+    handleSubmit(e); // Submit the form data
+    setSuccessMessage("Hall updated successfully!");
+    setShowConfirmationModal(false); // Hide the confirmation modal
+  };
+
   // Display loading state while fetching hall data
   if (loading || !hallData) {
     return <p>Loading...</p>;
@@ -39,7 +56,7 @@ const EditHall = () => {
         {priceError && <div className="alert alert-danger">{priceError}</div>}
 
         {/* Form for editing hall */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <div className="rounded-container">
             {/* Display success message if any */}
             {successMessage && (
@@ -140,19 +157,39 @@ const EditHall = () => {
                 onChange={(e) => handlePictureUpload(e.target.files[0])}
               />
             </div>
+            {/* Other input fields */}
+            {/* ... */}
 
             {/* Save Changes button */}
             <div className="mb-3 d-flex justify-content-end">
               <button
                 type="submit"
                 className="btn btn-save-changes"
-                onClick={() => setSuccessMessage("Hall updated successfully!")}
               >
                 Save Changes
               </button>
             </div>
           </div>
         </form>
+      </div>
+
+      {/* Confirmation Modal */}
+      <div className={`modal fade ${showConfirmationModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showConfirmationModal ? 'block' : 'none' }}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Confirmation</h5>
+              <button type="button" className="btn-close" onClick={() => setShowConfirmationModal(false)}></button>
+            </div>
+            <div className="modal-body">
+              Are you sure you want to update the hall details?
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-danger" onClick={() => setShowConfirmationModal(false)}>Cancel</button>
+              <button type="button" className="btn btn-primary" onClick={confirmUpdate}>Confirm</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

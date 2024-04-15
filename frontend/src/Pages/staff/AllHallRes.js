@@ -1,10 +1,10 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const AdminBookHall = () => {
   const [hallReserves, setHallReserves] = useState(null);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedEmail, setSelectedEmail] = useState('');
 
   useEffect(() => {
     fetchBookings();
@@ -38,16 +38,45 @@ const AdminBookHall = () => {
     }
   };
 
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setSelectedEmail(e.target.value);
+  };
+
+  const filteredReservations = hallReserves
+    ? hallReserves.filter((reservation) => {
+        const dateMatch = !selectedDate || reservation.selectdate === selectedDate;
+        const emailMatch = !selectedEmail || reservation.email === selectedEmail;
+        return dateMatch && emailMatch;
+      })
+    : [];
+
   return (
     <div className="container mt-5">
       <div className="mb-4">
         <h1 className="fw-bold display-4 serif">All user Reservations</h1>
+        <input
+          type="date"
+          className="form-control mb-2"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+        <input
+          type="text"
+          className="form-control mb-4"
+          placeholder="Filter by email"
+          value={selectedEmail}
+          onChange={handleEmailChange}
+        />
       </div>
       <div className="row">
         <table className="table table-striped">
           <thead>
             <tr>
-            <th scope="col">user</th>
+              <th scope="col">User</th>
               <th scope="col">Hall</th>
               <th scope="col">Event Type</th>
               <th scope="col">Capacity</th>
@@ -58,10 +87,10 @@ const AdminBookHall = () => {
             </tr>
           </thead>
           <tbody>
-            {hallReserves ? (
-              hallReserves.map((hallReserve) => (
+            {filteredReservations.length > 0 ? (
+              filteredReservations.map((hallReserve) => (
                 <tr key={hallReserve._id}>
-                    <td>{hallReserve.userid}</td>
+                  <td>{hallReserve.email}</td>
                   <td>{hallReserve.hall}</td>
                   <td>{hallReserve.eventtype}</td>
                   <td>{hallReserve.capacity}</td>
@@ -82,7 +111,7 @@ const AdminBookHall = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="7" className="text-center">Loading...</td>
+                <td colSpan="8" className="text-center">No matching reservations found</td>
               </tr>
             )}
           </tbody>

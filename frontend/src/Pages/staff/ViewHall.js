@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBed, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons';
 
@@ -66,7 +66,7 @@ const ViewHall = () => {
                   <h5 className="card-title fw-bold" style={{ fontSize: "2.5rem" }}>Description</h5>
                   <p className="card-text">{hall.description}</p>
                   <h5 className="card-title fw-bold" style={{ fontSize: "2.25rem" }}>Price</h5>
-                  <p className="card-text">{hall.price}</p>
+                  <p className="card-text">{hall.price} per Hour</p>
                   <h5 className="card-title mt-4 fw-bold" style={{ fontSize: "2.25rem" }}>Capacity</h5>
                   <p className="card-text">{hall.capacity}</p>
                 </div>
@@ -102,7 +102,7 @@ const ViewHall = () => {
           <div className="card-body">
             <h5 className="card-title">Check Availability</h5>
             <p className="card-text">Click here to check availability for your dates</p>
-            <button className="btn btn-secondary">Check Availability</button>
+            <Link to="/availability" className="btn btn-secondary">Check Availability</Link>
           </div>
         </div>
       </div>

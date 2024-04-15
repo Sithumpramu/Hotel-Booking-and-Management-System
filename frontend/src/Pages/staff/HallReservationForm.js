@@ -1,9 +1,11 @@
-import React, { useState } from 'react'; // Import useState
+import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import moment from 'moment';
+import { AuthContext } from '../../context/AuthContext';
 
 const HallReservationForm = () => {
-  const [formData, setFormData] = useState({ // Define formData and setFormData using useState
+  const { user } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
     bookingName: '',
     eventType: '',
     capacity: '',
@@ -13,19 +15,40 @@ const HallReservationForm = () => {
     decorArrangement: '',
   });
 
-  const [cateringNeeded, setCateringNeeded] = useState(false); // Define cateringNeeded and setCateringNeeded using useState
-  const [decorNeeded, setDecorNeeded] = useState(false); // Define decorNeeded and setDecorNeeded using useState
+  const [cateringNeeded, setCateringNeeded] = useState(false);
+  const [decorNeeded, setDecorNeeded] = useState(false);
+  const [capacityError, setCapacityError] = useState('');
+  const [chairError, setChairError] = useState('');
+  const [tableError, setTableError] = useState('');
+  const [maxCapacityError, setMaxCapacityError] = useState('');
+  const [showSuccessToast, setShowSuccessToast] = useState(false); // Add state for success toast
 
-  const handleInputChange = (e) => { // Define handleInputChange function
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Reset error message when input value is valid
+    if (name === 'capacity' && parseInt(value) >= 0) {
+      setCapacityError('');
+      if (parseInt(value) > maxCapacity) {
+        setMaxCapacityError(`Maximum capacity for ${hallName} is ${maxCapacity}`);
+      } else {
+        setMaxCapacityError('');
+      }
+    }
+    if (name === 'numberOfChairs' && parseInt(value) >= 0) {
+      setChairError('');
+    }
+    if (name === 'numberOfTables' && parseInt(value) >= 0) {
+      setTableError('');
+    }
   };
 
-  const handleCateringChange = (e) => { // Define handleCateringChange function
+  const handleCateringChange = (e) => {
     setCateringNeeded(e.target.checked);
   };
 
-  const handleDecorChange = (e) => { // Define handleDecorChange function
+  const handleDecorChange = (e) => {
     setDecorNeeded(e.target.checked);
   };
 
@@ -37,8 +60,10 @@ const HallReservationForm = () => {
   const toTime = searchParams.get('toTime');
   const hallName = searchParams.get('hallName');
 
+  let maxCapacity = hallName === 'Hall pearl' ? 199 : 499;
+
   let totalHours = '';
- 
+
   const fromMoment = moment(fromTime, 'HH.mm');
   const toMoment = moment(toTime, 'HH.mm');
 
@@ -51,62 +76,94 @@ const HallReservationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let userid = 'eventmanager@gmail.com'; // Default userid
+    if (user && user.token) {
+      userid = user.email; // Use userid from user if logged in
+    } else {
+      alert('User not found'); // Display alert if user is not found
+      return;
+    }
+    if (
+      !formData.bookingName ||
+      !formData.eventType ||
+      !formData.capacity ||
+      !formData.numberOfChairs ||
+      !formData.numberOfTables
+    ) {
+      alert('Please fill in all required fields'); // Display alert if any required field is empty
+      return;
+    }
+    if (parseInt(formData.capacity) < 0) {
+      setCapacityError('Capacity cannot be negative');
+      return;
+    }
+    if (parseInt(formData.numberOfChairs) < 0) {
+      setChairError('Number of chairs cannot be negative');
+      return;
+    }
+    if (parseInt(formData.numberOfTables) < 0) {
+      setTableError('Number of tables cannot be negative');
+      return;
+    }
+    if (parseInt(formData.capacity) > maxCapacity) {
+      setMaxCapacityError(`Maximum capacity for ${hallName} is ${maxCapacity}`);
+      return;
+    }
     // Set the fixed userid and hallid
-    const userid = '65f47fd2435e6437ddcb9eb1';
     const hallid = '66091b49a3b21f794f0e29aa';
 
     try {
-        // Construct the reservation data object
-        const reservationData = {
-            hall:formData.bookingName,
-            hallid: hallid,
-            userid: userid,
-            eventtype: formData.eventType,
-            capacity: formData.capacity,
-            selectdate: selectedDate,
-            fromTime: fromTime,
-            toTime: toTime,
-            totalhours: totalHours,
-            status: 'booked',
-            Resources: [{
-              arrangementStyle: formData.arrangementStyle,
-              foodArrangement: cateringNeeded ? formData.foodArrangement : null,
-              barArrangement: cateringNeeded ? formData.barArrangement : null,
-              decorArrangement: decorNeeded ? formData.decorArrangement : null,
-                // Add other resources as needed
-            }
-            ]
-        };
+      // Construct the reservation data object
+      const reservationData = {
+        hall: formData.bookingName,
+        hallid: hallName,
+        email: userid,
+        eventtype: formData.eventType,
+        capacity: formData.capacity,
+        selectdate: selectedDate,
+        fromTime: fromTime,
+        toTime: toTime,
+        totalhours: totalHours,
+        status: 'booked',
+        Resources: [
+          {
+            arrangementStyle: formData.arrangementStyle,
+            foodArrangement: cateringNeeded ? formData.foodArrangement : null,
+            barArrangement: cateringNeeded ? formData.barArrangement : null,
+            decorArrangement: decorNeeded ? formData.decorArrangement : null,
+            numberOfChairs: formData.numberOfChairs,
+            numberOfTables: formData.numberOfTables,
+          },
+        ],
+      };
 
-        // Log the constructed reservation data
-        console.log('Sending reservation data:', reservationData);
+      // Log the constructed reservation data
+      console.log('Sending reservation data:', reservationData);
 
-        // Make the POST request to the backend API
-        const response = await fetch('http://localhost:4000/hallR/addres', {
-            method: 'POST',
+      // Make the POST request to the backend API
+      const response = await fetch('http://localhost:4000/hallR/addres', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reservationData),
+      });
 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(reservationData),
-        });
+      // Check if the request was successful
+      if (!response.ok) {
+        throw new Error('Failed to create reservation');
+      }
 
-        // Check if the request was successful
-        if (!response.ok) {
-            throw new Error('Failed to create reservation');
-        }
-
-        // Parse the response data
-        const data = await response.json();
-        console.log('Reservation created:', data);
-        // Optionally, you can handle the response according to your application's needs
+      // Parse the response data
+      const data = await response.json();
+      console.log('Reservation created:', data);
+      alert('reservation added successfully')
+      setShowSuccessToast(true); // Show success toast
     } catch (error) {
-        console.error('Error creating reservation:', error.message);
-        // Optionally, you can handle errors gracefully (e.g., displaying an error message to the user)
+      console.error('Error creating reservation:', error.message);
+      // Optionally, you can handle errors gracefully (e.g., displaying an error message to the user)
     }
-};
-
+  };
 
   return (
     <div className="container mt-5 serif bold">
@@ -115,7 +172,7 @@ const HallReservationForm = () => {
         <h3>Booking Details For {hallName}</h3>
         <p>From Time: {fromTime}</p>
         <p>To Time: {toTime}</p>
-       
+
         <div className="mb-3">
           <input
             type="text"
@@ -127,14 +184,18 @@ const HallReservationForm = () => {
           />
         </div>
         <div className="mb-3">
-          <input
-            type="text"
-            placeholder="Event Type"
+          <select
             name="eventType"
             value={formData.eventType}
             onChange={handleInputChange}
-            className="form-control"
-          />
+            className="form-select"
+          >
+            <option value="">Select Event Type</option>
+            <option value="wedding">Wedding</option>
+            <option value="conference">Conference</option>
+            <option value="party">Party</option>
+            <option value="party">Other</option>
+          </select>
         </div>
         <div className="mb-3">
           <p className="form-control">Selected Date: {selectedDate}</p>
@@ -160,7 +221,11 @@ const HallReservationForm = () => {
             value={formData.capacity}
             onChange={handleInputChange}
             className="form-control"
+            min="0"
+            max={maxCapacity}
           />
+          {capacityError && <p className="text-danger">{capacityError}</p>}
+          {maxCapacityError && <p className="text-danger">{maxCapacityError}</p>}
         </div>
         <div className="mb-3">
           <select
@@ -173,9 +238,34 @@ const HallReservationForm = () => {
             <option value="theatre">Theatre</option>
             <option value="boardroom">Boardroom</option>
             <option value="banquet">Banquet</option>
+            <option value="none">None needed</option>
           </select>
         </div>
-         {/* Catering */}
+        <div className="mb-3">
+          <input
+            type="number"
+            placeholder="Number of Chairs"
+            name="numberOfChairs"
+            value={formData.numberOfChairs}
+            onChange={handleInputChange}
+            className="form-control"
+            min="0"
+          />
+          {chairError && <p className="text-danger">{chairError}</p>}
+        </div>
+        <div className="mb-3">
+          <input
+            type="number"
+            placeholder="Number of Tables"
+            name="numberOfTables"
+            value={formData.numberOfTables}
+            onChange={handleInputChange}
+            className="form-control"
+            min="0"
+          />
+          {tableError && <p className="text-danger">{tableError}</p>}
+        </div>
+        {/* Catering */}
         <h3>Catering</h3>
         <div className="mb-3">
           <input
@@ -249,15 +339,41 @@ const HallReservationForm = () => {
             </select>
           </div>
         )}
+        {/* Additional requirements textarea */}
+        <div className="mb-3">
+          <label htmlFor="otherRequirements" className="form-label">
+            Other Requirements
+          </label>
+          <textarea
+            id="otherRequirements"
+            name="otherRequirements"
+            value={formData.otherRequirements}
+            onChange={handleInputChange}
+            className="form-control"
+            rows="4"
+            placeholder="Please specify any other requirements or changes here..."
+          ></textarea>
+        </div>
 
-      
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
       <p>For further details please email or contact us</p>
+       {/* Success Toast */}
+       <div className={`toast align-items-center text-white bg-success ${showSuccessToast ? 'show' : ''}`} role="alert">
+        <div className="d-flex">
+          <div className="toast-body">Reservation added successfully</div>
+          <button
+            type="button"
+            className="btn-close btn-close-white me-2 m-auto"
+            onClick={() => setShowSuccessToast(false)}
+          ></button>
+        </div>
+      </div>
     </div>
   );
 };
+
 
 export default HallReservationForm;
