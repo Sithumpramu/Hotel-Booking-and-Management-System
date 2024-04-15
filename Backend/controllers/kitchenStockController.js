@@ -4,15 +4,25 @@ const Stock = require("../Models/KitchenStockModel");
 
 // add a product
 const addStock = async (req, res) => {
-    const { name, category,quantity, price,description } = req.body;
-  
-    try {
-      
-      const stock = await Stock.create({ name, category,quantity, price,description });
-      res.status(201).json(stock); 
-    } catch (error) {
+  const { name, category, quantity, price, description } = req.body;
+
+  try {
+      let existingStock = await Stock.findOne({ name });
+
+      if (existingStock) {
+          // If a record with the same name exists, merge the data
+          existingStock.quantity += parseInt(quantity);
+          existingStock.description += `\n${description}`;
+          await existingStock.save();
+          res.status(200).json(existingStock);
+      } else {
+          // If no record with the same name exists, create a new entry
+          const stock = await Stock.create({ name, category, quantity, price, description });
+          res.status(201).json(stock);
+      }
+  } catch (error) {
       res.status(400).json({ error: error.message });
-    }
+  }
 };
 
 //  get all Stocks

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
- const useDeleteStock = () => {
+const useDeleteBulkStock = () => {
     const [error, setError] = useState(null);
     const [status, setStatus] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    const deleteStock = async (stockName) => {
+    const deleteBulkStock = async (stockBName) => {
         setIsLoading(true);
         setError(null);
     
         try {
-          const response = await fetch(`http://localhost:4000/kitchenStock/delete/${stockName}`, {
+          const response = await fetch(`http://localhost:4000/kitchenBulkStock/delete/${stockBName}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
           });
@@ -38,7 +38,6 @@ import { useState } from 'react';
         }
       };
     
-      return { deleteStock, isLoading, error, status };
+      return { deleteBulkStock, isLoading, error, status };
     };
-  export default useDeleteStock;  
-    
+    export default useDeleteBulkStock;

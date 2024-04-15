@@ -44,6 +44,8 @@ const useUpdateStock = () => {
   return { updateStock, isLoading, error };
 };
 
+
 export default useUpdateStock;
+
         
         

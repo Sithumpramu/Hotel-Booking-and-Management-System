@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
 const kitchenStockRoutes = require ('./Routes/kitchenStock')
 const paymentRoutes = require ('./Routes/payment')
+const kitchenBulkStockRoutes = require('./Routes/kitchenBulkStock')
 
 // express app
 const app = express()
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/user', userRoutes)
 app.use('/kitchenStock', kitchenStockRoutes)
 app.use('/payment', paymentRoutes)
+app.use('/kitchenBulkStock',kitchenBulkStockRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)

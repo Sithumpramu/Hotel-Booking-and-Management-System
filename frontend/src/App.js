@@ -12,6 +12,8 @@ import ForgotPassword from "./Pages/ForgotPwd";
 import AddStock from './Pages/Staff/AddStock';
 import KitchenInventory from "./Pages/Staff/KitchenInventory";
 import AddPayment from "./Pages/addpayment";
+import AddBulkStock from "./Pages/Staff/AddBulkStock";
+import BulkStock from "./Pages/Staff/BulkStock";
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -58,6 +60,14 @@ function App() {
             <Route
             path="/AddPayment"
             element={<AddPayment />}
+          />
+          <Route
+            path="/AddBulkStock"
+            element={<AddBulkStock />}
+          />
+           <Route
+            path="/BulkStock"
+            element={<BulkStock />}
           />
         </Routes>
       </BrowserRouter>

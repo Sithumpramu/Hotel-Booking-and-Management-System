@@ -24,10 +24,20 @@ const AddStock = () => {
         if (!allFieldsFilled) {
             errorElement.innerHTML = "All fields must be filled.";
             return false;
-        } else {
+        } 
+        //check if quantity is negative
+        if(quantity<0){
+            errorElement.innerHTML = "Quantity cannot be negative.";
+            return false;
+        }
+        if(price<0){
+            errorElement.innerHTML = "Price cannot be negative.";
+            return false;
+        }
+        
             errorElement.innerHTML = "";
             return true;
-        }
+        
     };
 
     return (
@@ -47,7 +57,7 @@ const AddStock = () => {
                         <input type="number" className="form-control" id="productQuantity" onChange={(e) => setQuantity(e.target.value)} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="productPrice" className="form-label">Latest Purchased Price at</label>
+                        <label htmlFor="productPrice" className="form-label">Latest Purchased Price at per 1kg</label>
                         <input type="number" className="form-control" id="productPrice" onChange={(e) => setPrice(e.target.value)} />
                     </div>
                     <div className="mb-3">
@@ -63,6 +73,7 @@ const AddStock = () => {
         </div>
     );
 };
+export default AddStock;
 
 /*const AddStock = () => {
     const [name, setName] = useState('')
@@ -125,4 +136,4 @@ const AddStock = () => {
 
     )}*/
 
-    export default AddStock;
+    
