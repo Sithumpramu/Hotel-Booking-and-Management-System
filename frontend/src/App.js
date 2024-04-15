@@ -2,26 +2,18 @@ import React from "react";
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-<<<<<<< HEAD
-import Home from './Pages/Home';
-import Signup from './Pages/signup';
-import Login from './components/Login';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import PasswordReset from './Pages/PasswordReset'
-import {Route, Routes, BrowserRouter} from "react-router-dom";
 
-import ForgotPassword from "./Pages/ForgotPwd";
+
+
 import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";
 import Details from "./Pages/CustomerDetails"
-import ManagerPanel from "./components/RoomManagerNavbar.js";
+
 import Profile from "./Pages/Staff/Profile";
 import Bookings from "./Pages/Staff/Bookings";
 import AddRoom from "./Pages/Staff/AddRoom.js";
 import Mybookings from "./Pages/MyBookings";
 import ManageRoom from "./Pages/Staff/ManageRoom.js";
-=======
 //client side pages
 import Home from "./Pages/Home";
 import Signup from "./Pages/signup";
@@ -63,7 +55,6 @@ import Staffmanage from "./Pages/Staff/staffManage";
 import Usermanage from "./Pages/Staff/UserManage";
 import AccountManage from "./Pages/Staff/AccountManage";
 import InitialRedirect from "./context/initialDirect";
->>>>>>> 65c25d13c88bb4d6bc68a5e70b63e727acb517ad
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -96,7 +87,6 @@ function App() {
             element={<PasswordReset />}
           />
           <Route
-<<<<<<< HEAD
             path="/rooms"
             element={<Layout><Room/></Layout>}
           />
@@ -137,7 +127,7 @@ function App() {
             path="/ManageRoom"
             element={<ManageRoom/>}
           />
-=======
+          <Route
             path="/AddStock"
             element={<AddStock />}
           />
@@ -185,7 +175,6 @@ function App() {
           <Route path="/Staffmanage" element={<Staffmanage />} />
           <Route path="/Usermanage" element={<Usermanage />} />
           <Route path="/Accountmanage" element={<AccountManage />} />
->>>>>>> 65c25d13c88bb4d6bc68a5e70b63e727acb517ad
         </Routes>
       </BrowserRouter>
     </div>
