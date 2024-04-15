@@ -1,59 +1,90 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+//import useAddRoomReserve from "../hooks/useAddRoomReserve";
 
-const ReservationList = () => {
-  const [room, setReservation] = useState(null);
+const AddNewRoomReserve = () => {
+  const [Checkindate, setCheckindate] = useState("");
+  const [Checkoutdate, setCheckoutdate] = useState("");
+  const [NoOfGuests, setNoOfGuests] = useState("");
 
-  useEffect(() => {
-    const room = async () => {
-      try {
-        const response = await fetch("http://localhost:4000//");
-        if (!response.ok) {
-          throw new Error("Failed to fetch rooms");
-        }
-        const json = await response.json();
-        setReservation(json);
-      } catch (error) {
-        console.error("Error fetching rooms data:", error);
+
+
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    // Pass data to rooms page
+    navigate('/rooms', {
+      state: {
+        Checkindate,
+        Checkoutdate,
+        NoOfGuests
       }
-    };
-    setReservation();
-  }, []);
+    });
+  };
+
+  return (
+    <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
+      <div className="card" style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "400px", textAlign: "center" }}>
+
+        <form onSubmit={handleNext} style={{ display: "flex", flexDirection: "column" }}>
+          <label>
+            Check-in Date:
+          </label>
+          <input type="date"
+            className=""
+            id="checkindate"
+            onChange={(e) => {
+              setCheckindate(e.target.value);
+            }} min={new Date().toISOString().split('T')[0]} />
+
+          <label>
+            Check-out Date:
+          </label>
+          <input type="date"
+            className=""
+            id="checkoutdate"
+            onChange={(e) => {
+              setCheckoutdate(e.target.value);
+            }} min={new Date().toISOString().split('T')[0]} />
 
 
+          <label>
+            Number of Guests:
+          </label>
+          <input type="number"
+            className=""
+            id="NoOfGuests"
+            onChange={(e) => {
+              setNoOfGuests(e.target.value);
+            }} />
 
-  function Rooms() {
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [numberOfPeople, setNumberOfPeople] = useState('');
+          <button
+            type="submit"
+            className="btn btn-info"
+            id="submit"
+            style={{
+              backgroundColor: "#17a2b8",
+              color: "white",
+              padding: "10px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+              marginTop: "20px", // Adjust margin as needed
+            }}
+          >
+            Next
+          </button>
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
 
-    }
+          <p id="Error"></p>
+        </form>
 
-    return (
-      <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
-        <div className="card">
-
-          <form onSubmit={handleSubmit}>
-            <label>
-              Check-in Date:
-              <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
-            </label>
-            <label>
-              Check-out Date:
-              <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
-            </label>
-            <label>
-              Number of People:
-              <input type="number" value={numberOfPeople} onChange={(e) => setNumberOfPeople(e.target.value)} />
-            </label>
-
-          </form>
-          <button type="submit">Book Now</button>
-        </div>
       </div>
-    )
-  }
+    </div>
+
+  )
 }
-export default ReservationList;
+
+export default AddNewRoomReserve;

@@ -7,6 +7,7 @@ const userRoutes = require('./Routes/user')
 const RoomReservation = require('./Routes/RoomReservation')
 const room = require('./Routes/room')
 
+
 // express app
 const app = express()
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/user', userRoutes)
 app.use('/roomreservation', RoomReservation)
 app.use('/room', room)
+
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URL)

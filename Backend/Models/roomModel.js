@@ -5,16 +5,16 @@ const { Double } = require("mongodb");
 
 const Schema = mongoose.Schema;
 
-// const imageSchema = new Schema({
-//   data: Buffer,
-//   contentType: String,
-// });
+const imageSchema = new Schema({
+  data: Buffer,
+  contentType: String,
+});
 
 const roomSchema = new Schema({
 
 
   Rid: {
-    type: Number,
+    type: String,
     required: true,
   },
 
@@ -47,7 +47,7 @@ const roomSchema = new Schema({
     type: String,
     required: true
   },
-  //Image:imageSchema,
+  Image:imageSchema,
 
 });
 
