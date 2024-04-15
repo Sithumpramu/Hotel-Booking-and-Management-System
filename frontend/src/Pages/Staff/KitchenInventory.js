@@ -18,6 +18,7 @@ function KitchenInventory () {
     const [searchkey,setsearchkey]=useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [sort, setSort] = useState('');
+    const [sortDirection, setSortDirection] = useState('asc');
 
     //display only unique categories in filter
     useEffect(() => {
@@ -66,13 +67,19 @@ function KitchenInventory () {
       }
       );
       // Sort data function
-       const sortData = () => {
-         if (sort === 'price') {
-          filteredStockList.sort((a, b) => a.price - b.price);
-         } else if (sort === 'quantity') {
-          filteredStockList.sort((a, b) => a.quantity - b.quantity);
-       }
-     };
+      const sortData = () => {
+        const sortedList = [...filteredStockList];
+        if (sort === 'priceAsc') {
+          sortedList.sort((a, b) => a.price - b.price);
+        } else if (sort === 'priceDesc') {
+          sortedList.sort((a, b) => b.price - a.price);
+        } else if (sort === 'quantityAsc') {
+          sortedList.sort((a, b) => a.quantity - b.quantity);
+        } else if (sort === 'quantityDesc') {
+          sortedList.sort((a, b) => b.quantity - a.quantity);
+        }
+        return sortedList;
+      };
 
     
     
@@ -108,17 +115,22 @@ return (
             </select>
           </div>
           <div className="col-auto">
-            <select
-              className="form-select"
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-            >
-              <option value="">Sort by...</option>
-              <option value="price">Price (Low to High)</option>
-              <option value="quantity">Quantity (Low to High)</option>
-            </select>
-          </div>
+               <select
+                className="form-select"
+                value={sort}
+                onChange={(e) => {
+          setSort(e.target.value);
+         }}
+         >
+       <option value="">Sort by...</option>
+       <option value="priceAsc">Price Low to High</option>
+       <option value="priceDesc">Price High to Low</option>
+       <option value="quantityAsc">Quantity Low to High</option>
+       <option value="quantityDesc">Quantity High to Low</option>
+      </select>
         </div>
+        </div>
+        
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>
@@ -142,8 +154,8 @@ return (
             <th></th>
           </tr>
 
-          {sortData()}
-          {filteredStockList.map((Stock) => (
+          
+          {sortData().map((Stock) => (
             <tbody key={Stock._id}>
               <tr>
                 <td>
