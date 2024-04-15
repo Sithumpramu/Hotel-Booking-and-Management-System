@@ -80,66 +80,66 @@ const DisplayOrders = () => {
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className="form-control input-sm"
                     type="Text"
                     name="Name"
-                    defaultValue={Order.productName}
-                    disabled=""
+                     Value={Order.productName}
+                    readOnly
                   ></input>
                 </td>
 
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className=" form-control input-sm"
                     type="Text"
                     name="Name"
                     defaultValue={Order.Quantity}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className=" form-control input-sm"
                     type="Text"
                     name="Name"
                     defaultValue={Order.Price}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className=" form-control input-sm"
                     type="Text"
                     name="Name"
                     defaultValue={Order.cusName}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className=" form-control input-sm"
                     type="Text"
                     name="Name"
                     defaultValue={Order.email}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
                 <td>
 
                   <input
-                    className="tabledit-input form-control input-sm"
+                    className=" form-control input-sm"
                     type="Text"
                     name="Name"
                     defaultValue={Order.contactNumber}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 

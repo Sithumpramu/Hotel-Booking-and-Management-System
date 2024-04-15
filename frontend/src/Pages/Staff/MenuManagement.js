@@ -16,8 +16,7 @@ function MenuItems() {
   const [productName, setProductName] = useState("");
   const [Price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  // const [Image, setImage] = useState("");
-
+ 
   if (isLoading) {
     return (
       <div className="alert alert-primary" role="alert">
@@ -35,7 +34,7 @@ function MenuItems() {
     setProductName(menu. productName);
     setPrice(menu.Price);
     setCategory(menu.category);
-    //setImage(menu.image);
+    
    
   };
 
@@ -45,9 +44,18 @@ function MenuItems() {
       productName,
       Price,
       category,
-      //image
+      
       
     );
+  };
+
+  const bufferToBase64 = (buf) => {
+    var binstr = Array.prototype.map
+      .call(buf, function (ch) {
+        return String.fromCharCode(ch);
+      })
+      .join("");
+    return btoa(binstr);
   };
 
   const handleDelete = async () => {
@@ -82,30 +90,22 @@ function MenuItems() {
                   <div className="card-body">
                     {menu.Image && menu.Image.data && (
                       <img
-                        style={{ width: "10rem" }}
-                        src={URL.createObjectURL(
-                          new Blob([menu.Image.data], {
-                            type: menu.Image.contentType
-                          })
-                        )}
-                        className="card-img-top mb-1"
-                        alt={menu.productName}
-                      />
+                      style={{ width: "10rem" }}
+                      src={`data:${
+                        menu.Image.contentType
+                      };base64,${bufferToBase64(menu.Image.data.data)}`}
+                      className="card-img-top mb-1"
+                      alt={menu.Image}
+                    />
                     )}
                     <h5 className="card-title">{menu.productName}
-                    onChange={(e) => {
-                        setProductName(e.target.value);
-                      }}</h5>
+                    </h5>
                     <p className="card-text fw-medium">
                       Rs.{menu.Price}.00
-                      onChange={(e) => {
-                         setPrice(e.target.value);
-                      }}
+                      
                     </p>
                     <p className="card-text fw-medium">{menu.category}
-                    onChange={(e) => {
-                         setCategory(e.target.value);
-                      }}</p>
+                   </p>
                     <a
                       href="#"
                       className="btn btn-danger "

@@ -96,7 +96,7 @@ function AddNewOrder() {
                     id="submit"
                     onClick={validate}
                 >
-                   Place Order
+                  Proceed to Checkout
                 </button>
 
                 {formError && <div id="Error" className="error">{formError}</div>}

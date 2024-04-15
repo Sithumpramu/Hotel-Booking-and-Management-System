@@ -19,24 +19,24 @@ const createMenuItem = async (req, res) => {
   const { category, productName, Price } = req.body;
   let imageData = {};
 
-  // console.log(req.file, "file");
+  console.log(req.file, "file");
 
-  // if (req.file) {
-  //   //Assuming the file is uploaded and accessible via req.file
-  //   imageData = {
-  //     data: req.file.buffer, // Buffer containing file data
-  //     contentType: req.file.mimetype, // Mime type of the file
-  //   };
-  // } else {
-  //   return res.status(400).json({ error: "No image file provided." });
-  // }
+  if (req.file) {
+    //Assuming the file is uploaded and accessible via req.file
+    imageData = {
+      data: req.file.buffer, // Buffer containing file data
+      contentType: req.file.mimetype, // Mime type of the file
+    };
+  } else {
+    return res.status(400).json({ error: "No image file provided." });
+  }
 
   try {
     const newMenu = await menu.create({
-        category,
+      category,
       productName,
       Price,
-      // Image: imageData, // Store the image data directly
+      Image: imageData, // Store the image data directly
     });
     res.status(201).json(newMenu); // Respond with the created document
   } catch (error) {
@@ -110,7 +110,7 @@ const getMenuItemsByCategory = async (req, res) => {
 
 module.exports = {
   getAllMenuDetails,
-  
+
   createMenuItem,
   updateMenuItem,
   deleteMenuItem,
