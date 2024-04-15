@@ -5,10 +5,12 @@ import { useUpdate } from '../hooks/useUpdate';
 import { useDelete } from '../hooks/useDelete';
 import { useLocation } from 'react-router-dom';
 
+
 const Header = () => {
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const location = useLocation();
+
 
    const [password, setPassword] = useState('')
    const [newpassword, setNewPassword] = useState('') 
@@ -20,17 +22,7 @@ const Header = () => {
    
 
 
-  // Define an array of routes where the header should be hidden
-  const hiddenHeaderRoutes = ['/Signup', '/Login','/Forgot','/user/resetPassword/:token'];
 
-  // Check if the current location matches any of the routes where the header should hidden
-  const hideHeader = hiddenHeaderRoutes.some(route => location.pathname.includes(route));
-
-  // If hideHeader is true, return null to hide the header
-  if (hideHeader) {
-    return null;
-  }
-  
     const handleSubmit = async (e) => {
       e.preventDefault();
       await Update(password,newpassword)    
@@ -68,56 +60,55 @@ const Header = () => {
 
     return(
       <div >
-        <nav className="navbar navbar-expand-lg bg-body-tertiary border border border-primary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-3" >
           <div className="container-fluid">
-          <img src="logo.jpg" style={{width:"130px"}}></img>
+         
+          <img src="Sunset Araliya horizontal.png" style={{width:"170px", height:"70px"}}></img>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 fs-6">
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Accomadation</a>
+              </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Dining</a>
+              </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Events</a>
               </li>
              
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown me-3">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Reservation
+                  Offers and Packages
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Accomadation</a></li>
-                  <li><a className="dropdown-item" href="#">Dine-in</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
+                  <li><a className="dropdown-item" href="#">Offers</a></li>
+                  <li><a className="dropdown-item" href="#">Packages</a></li>
                 </ul>
               </li>
 
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
 
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Packages & offers
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Accomadation</a></li>
-                  <li><a className="dropdown-item" href="#">Dine-in</a></li>
-      
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
               
             </ul>
 
+
            {user &&(
             <div>
-              <a data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample" class="btn btn-outline-primary mt-2 ms-5 me-3">Profile</a>
-              <a href ="" id="userStatus" className="btn btn-secondary ms-4 mt-2" onClick={handlelogout}>Logout</a>
+              <a data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample" class="btn btn-outline-primary ms-5 me-3 btn-sm" style={{position:"relative", top:"5px"}}>Profile</a>
+              <a href ="" id="userStatus" className="btn ms-4 mt-2 btn-sm" style={{backgroundColor:"rgb(85, 180, 254)"}} onClick={handlelogout}>Logout</a>
             </div>
             )}
             {!user &&(
             <div>
-            <a href ="/Login" id="userStatus" className="btn btn-secondary ms-4 mt-2">Sign in</a>
+            <a href ="/Login" id="userStatus" className="btn  ms-4 mt-2" style={{backgroundColor:"rgb(85, 180, 254)"}}>Sign in</a>
             </div>
             )}
             </div>
@@ -140,26 +131,32 @@ const Header = () => {
                  </div>
                  )}
                    <hr></hr>
+                   <div style={{position: "relative", top: "23px"}}>
+                      <h5 className="ps-1">Reservations History</h5>
+                      <div type="submit" className="btn btn-danger btn-sm mt-3 mb-5" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
+                    </div>
+                    <hr></hr>
                  <form onSubmit={handleSubmit} method="post" className="mt-4">
                      <h5 className="mb-4 ps-1">Change Password</h5>
-                     <div className="row ps-2 bg-secondary">
+                     <div className="row ps-2 ">
                        <input type={showPassword ? 'text' : 'password'} placeholder="Current Password" id="Password1" name="Password1" className="w-75 col-9" onChange={(e)=>{setPassword(e.target.value);}}></input>
                        <div className="btn col" onClick={handleTogglePwd}>{showPassword ? 'Hide' : 'Show'}</div>
                      </div><br/>
-                     <div className="row ps-2 bg-secondary">
+                     <div className="row ps-2">
                        <input type={showNewPassword ? 'text' : 'password'} placeholder="New Password" id="Password2" name="Password2" className=" w-75 col-9" onChange={(e)=>{setNewPassword(e.target.value);}}></input>
                        <div className="btn col" onClick={handleToggleNewPwd}>{showNewPassword ? 'Hide' : 'Show'}</div>
                      </div>
 
                      <span id="pwdError" style={{color: "red"}}></span>
-                     <button className="btn btn-outline-primary mt-4" name="submit" id="submit" disabled={isLoading}>Change</button>
+                     <button className="btn btn-outline-primary mt-4 btn-sm mb-2" name="submit" id="submit" disabled={isLoading}>Change</button>
                      {error && <div className="error bg-danger my-2" style={{color:"white"}}>{error}</div>}
                      {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
                   </form>
                   <hr></hr>
-                    <div style={{position: "relative", top: "60px"}}>
-                      <h5 className="ps-1">Delete account</h5>
-                      <div type="submit" className="btn btn-danger mt-3" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
+
+                
+                    <div style={{position: "relative", top: "80px"}}>
+                      <div type="submit" className="btn btn-sm btn-danger mt-1" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
                     </div>
                
                   </div>
