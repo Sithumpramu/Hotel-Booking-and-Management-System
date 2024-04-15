@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
-import ManagerPanel from "../../components/RoomManagerNavbar";
+
+import RoomSideBar from "../../components/RoomSideBar";
 import useAddRoom from "../../hooks/useAddRoom";
 
 const AddNewRoom = () => {
@@ -47,16 +48,21 @@ const AddNewRoom = () => {
   }
 
   return (
-    <div>
-      <ManagerPanel />
-      <h2>Add Room</h2>
+    <div className="row p-0 m-0">
+   
+      <RoomSideBar />
+     
+      <div className="col p-0 m-0" >
+      
       <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
       <div className="card" style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "400px", textAlign: "center" }}>
+        
         <form
           onSubmit={handleSubmit}
           method="Post"
-          style={{ display: "flex", flexDirection: "column" }}
+          style={{ display: "flex", flexDirection: "column",  height:"400px"}}
         >
+          <h2 className="m-4">Add Room</h2>
           <div>
             <label>Room ID:</label>
             <input
@@ -154,6 +160,7 @@ const AddNewRoom = () => {
           <p id="Error"></p>
         </form>
       </div>
+    </div>
     </div>
     </div>
   );

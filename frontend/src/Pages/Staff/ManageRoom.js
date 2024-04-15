@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import RoomList from "../../hooks/useRoomList";
 import useDeleteRoom from "../../hooks/useDeleteRoom";
 import useUpdateRoom from "../../hooks/useUpdateRoom";
-import ManagerPanel from '../../components/RoomManagerNavbar';
+//import ManagerPanel from '../../components/RoomManagerNavbar';
+import RoomSideBar from "../../components/RoomSideBar";
 
 function ManageRoom() {
   const { rooms, isLoading, error } = RoomList();
@@ -55,7 +56,7 @@ function ManageRoom() {
 
   return (
     <div>
-       <ManagerPanel/>
+       <RoomSideBar/>
       <div className="row bs">
         {rooms.map((room) => (
           <div key={room._id} className="col-md-4 mb-3">

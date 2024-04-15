@@ -1,6 +1,7 @@
 import React from 'react';
 import ManagerPanel from '../../components/RoomManagerNavbar';
 import RoomReservationList from '../../hooks/useRoomReservationList';
+import RoomSideBar from '../../components/RoomSideBar';
 
 function Bookings() {
 
@@ -21,13 +22,14 @@ function Bookings() {
     return <div>Error: {error}</div>;
   }
     return (
-        <div className='vh-100'>
-           <ManagerPanel/>
+        <div className='vh-100 row p-0 m-0'>
+           <RoomSideBar/>
+           
             <h2>Bookings</h2>
            {roomreservation.map((reservation)=> (
                 <div className="card">
                 {/* List of bookings */}
-                <table className="table">
+                <table className="table col p-0 m-0">
                     <thead>
                         <tr>
                            
