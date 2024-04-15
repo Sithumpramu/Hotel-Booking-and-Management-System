@@ -16,7 +16,7 @@ import AddPayment from "./Pages/addpayment";
 import AddBulkStock from "./Pages/Staff/AddBulkStock";
 import BulkStock from "./Pages/Staff/BulkStock";
 import CombinedInventory from "./Pages/Staff/CombinedInventory";
-import Dashboard from "./Pages/Staff/ManagerDashboard";
+
 
 import WatersportActivities from "./Pages/WatersportActivities";
 
