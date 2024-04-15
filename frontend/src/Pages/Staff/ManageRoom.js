@@ -75,13 +75,13 @@ function ManageRoom() {
                 </div>
 
                 <div className="ms-3">
-                  <p className="card-text">{room.Rid}</p>
-                  <p className="card-text">{room.Rtype}</p>
-                  <p className="card-text">{room.description}</p>
-                  <p className="card-text">{room.capacity}</p>
-                  <p className="card-text">{room.NoOfBeds}</p>
-                  <p className="card-text">{room.price}</p>
-                  <p className="card-text">{room.status}</p>
+                <p className="card-text">Room Id: {room.Rid}</p>
+                <p className="card-text">Room Type: {room.Rtype}</p>
+                <p className="card-text">{room.description}</p>
+                <p className="card-text">Capacity: {room.capacity}</p>
+                <p className="card-text">No.of.Beds: {room.NoOfBeds}</p>
+                <p className="card-text">Price: {room.price}</p>
+               
                 </div>
               </div>
               <div className="card-footer d-flex justify-content-center bg-secondary">

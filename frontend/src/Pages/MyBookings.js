@@ -29,14 +29,13 @@ function Mybookings () {
 
 
 
-//function MyBookings() {
-   // const {reservation} =  RoomReservationList();
+
     return (
         <div className='vh-100'>
             <h2>My Bookings</h2>
            {roomreservation.map((reservation)=> (
                 <div className="card">
-                {/* List of bookings */}
+                
                 <table className="table">
                     <thead>
                         <tr>
@@ -59,7 +58,7 @@ function Mybookings () {
                               handleDelete();
                               }}>Cancel</button></td>
                         </tr>
-                        {/* Add more rows for additional bookings */}
+                        
                     </tbody>
                 </table>
             </div>

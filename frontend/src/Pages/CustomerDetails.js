@@ -9,6 +9,8 @@ function ReservationDetails() {
     const navigate = useNavigate();
     const { Checkindate , Checkoutdate, NoOfGuests ,Rid,price} = location.state;
     const {user}=useAuthContext()
+    const { addRoomReserve } = useAddRoomReserve();
+
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -16,12 +18,12 @@ function ReservationDetails() {
   const [phoneno, setphoneno] = useState('');
   const [Email, setEmail] = useState('');
 
-    //const handleSubmit = () => {
+  const handleSubmit = () => {
 
-        //console.log('Submitting reservation details:', { Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email });
+        console.log('Submitting reservation details:', { Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email });
 
-       // addRoomReserve(Checkindate, Checkoutdate, NoOfGuests,Rid, firstName, lastName, Email, Address, phoneno,price);
-   // };
+        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests,Rid, firstName, lastName, Email, Address, phoneno,price);
+    };
 
 
    const RandomRoomResvID = () => {
@@ -64,8 +66,8 @@ function ReservationDetails() {
 
 
     return (
-        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "url(frontend/public/kal.jpg)" }}>
-            <div className="card" style={{ backgroundColor: "white", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "600px", textAlign: "center" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: 'url("katha.jpg")' }}>
+            <div className="card" style={{ backgroundColor: "white", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "800px", textAlign: "center" }}>
                 <h1>Enter Customer Details</h1>
                 <form onSubmit={handleNext} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
                     
@@ -94,7 +96,7 @@ function ReservationDetails() {
                         Phone Number:
                         <input type="tel" value={phoneno} onChange={(e) => setphoneno(e.target.value)} style={{ padding: "8px", marginBottom: "20px", border: "1px solid #ccc", borderRadius: "4px", boxSizing: "border-box", flex: "1" }} />
                     </label>
-                    <button type="submit" onClick={handleNext} style={{ backgroundColor: "#007bff", color: "white", padding: "10px", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s ease", width: "100%" }}>Submit</button>
+                    <button type="submit" style={{ backgroundColor: "#007bff", color: "white", padding: "10px", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s ease", width: "100%" }}>Submit</button>
                     
                     </form>
             </div>

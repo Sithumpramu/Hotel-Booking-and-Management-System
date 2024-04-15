@@ -9,9 +9,9 @@ function Rooms() {
   const { Checkindate, Checkoutdate, NoOfGuests } = location.state || {};
 
   // Check if location state exists
-  if (!Checkindate || !Checkoutdate || !NoOfGuests) {
-    return <div>No check-in date, check-out date, or number of guests provided.</div>;
-  }
+ // if (!Checkindate || !Checkoutdate || !NoOfGuests) {
+   // return <div>No check-in date, check-out date, or number of guests provided.</div>;
+  //}
 
   console.log('Check-in Date:', Checkindate);
   console.log('Check-out Date:', Checkoutdate);
@@ -49,7 +49,7 @@ function Rooms() {
         {rooms.map((room) => (
           <div className="col-md-7" key={room.Rid}>
             <div className="card">
-              <div className="card-body">
+              <div className="card-body" >
                 {room.Image && room.Image.data && (
                   <img
                     style={{ width: "10rem" }}
@@ -63,12 +63,12 @@ function Rooms() {
                   />
                 )}
 
-                <p className="card-text">{room.Rid}</p>
-                <p className="card-text">{room.Rtype}</p>
+                <p className="card-text">Room Id: {room.Rid}</p>
+                <p className="card-text">Room Type: {room.Rtype}</p>
                 <p className="card-text">{room.description}</p>
-                <p className="card-text">{room.capacity}</p>
-                <p className="card-text">{room.NoOfBeds}</p>
-                <p className="card-text">{room.price}</p>
+                <p className="card-text">Capacity: {room.capacity}</p>
+                <p className="card-text">No.of.Beds: {room.NoOfBeds}</p>
+                <p className="card-text">Price: {room.price}</p>
                 <p className="card-text">{room.status}</p>
 
                 <div style={{ float: "right" }}>

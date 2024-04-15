@@ -9,7 +9,7 @@ const AddNewRoomReserve = () => {
   const [NoOfGuests, setNoOfGuests] = useState("");
 
 
-  
+
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -25,9 +25,9 @@ const AddNewRoomReserve = () => {
 
   return (
     <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
-      <div className="card">
+      <div className="card" style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "400px", textAlign: "center" }}>
 
-        <form onSubmit={handleNext}>
+        <form onSubmit={handleNext} style={{ display: "flex", flexDirection: "column" }}>
           <label>
             Check-in Date:
           </label>
@@ -36,7 +36,7 @@ const AddNewRoomReserve = () => {
             id="checkindate"
             onChange={(e) => {
               setCheckindate(e.target.value);
-            } } min={new Date().toISOString().split('T')[0]}/>
+            }} min={new Date().toISOString().split('T')[0]} />
 
           <label>
             Check-out Date:
@@ -48,7 +48,7 @@ const AddNewRoomReserve = () => {
               setCheckoutdate(e.target.value);
             }} min={new Date().toISOString().split('T')[0]} />
 
-          
+
           <label>
             Number of Guests:
           </label>
@@ -61,18 +61,29 @@ const AddNewRoomReserve = () => {
 
           <button
             type="submit"
-            className= "btn btn-info"
+            className="btn btn-info"
             id="submit"
-            onClick={handleNext}
+            style={{
+              backgroundColor: "#17a2b8",
+              color: "white",
+              padding: "10px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+              marginTop: "20px", // Adjust margin as needed
+            }}
           >
             Next
           </button>
+
 
           <p id="Error"></p>
         </form>
 
       </div>
     </div>
+
   )
 }
 

@@ -10,7 +10,7 @@ const AddNewRoom = () => {
   const [capacity, setcapacity] = useState("");
   const [NoOfBeds, setNoOfBeds] = useState("");
   const [price, setprice] = useState("");
- 
+  const [status, setstatus] = useState("");
   const [Image, setImage] = useState(null);
 
   const { addRoom, isLoading, error } = useAddRoom();
@@ -25,6 +25,7 @@ const AddNewRoom = () => {
       capacity,
       NoOfBeds,
       price,
+      status,
       Image
     );
   };
@@ -38,7 +39,8 @@ const AddNewRoom = () => {
       description === "" &&
       capacity === "" &&
       NoOfBeds === "" &&
-      price === "" 
+      price === "" &&
+      status === ""
     ) {
       document.getElementById("Error").innerHTML = "All fields must be filled.";
     }
@@ -48,85 +50,89 @@ const AddNewRoom = () => {
     <div>
       <ManagerPanel />
       <h2>Add Room</h2>
-
-      <div className="card">
+      <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
+      <div className="card" style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "400px", textAlign: "center" }}>
         <form
           onSubmit={handleSubmit}
           method="Post"
-          style={{ maxWidth: "500px", margin: "auto" }} // Updated inline CSS
+          style={{ display: "flex", flexDirection: "column" }}
         >
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomId">Room ID:</label>
+          <div>
+            <label>Room ID:</label>
             <input
               type="text"
+              className=""
               id="roomId"
               onChange={(e) => {
                 setRid(e.target.value);
               }}
             />
-          </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomType">Room Type:</label>
+            <label>Room Type:</label>
             <input
               type="text"
+              className=""
               id="roomType"
               onChange={(e) => {
                 setRtype(e.target.value);
               }}
             />
-          </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomDescription">Description:</label>
+            <label>Description:</label>
             <input
               type="text"
+              className=""
               id="roomDescription"
               onChange={(e) => {
                 setdescription(e.target.value);
               }}
             />
-          </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomCapacity">Capacity:</label>
+            <label>Capacity:</label>
             <input
               type="number"
+              className=""
               id="roomCapacity"
               onChange={(e) => {
                 setcapacity(e.target.value);
               }}
             />
-          </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roombeds">No of Beds:</label>
+            <label>No of Beds:</label>
+
             <input
               type="number"
+              className=""
               id="roombeds"
               onChange={(e) => {
                 setNoOfBeds(e.target.value);
               }}
             />
-          </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomPrice">Price:</label>
+            <label>Price:</label>
             <input
               type="number"
+              className=""
               id="roomPrice"
               onChange={(e) => {
                 setprice(e.target.value);
               }}
             />
-          </div>
 
-          
+            <label>Status:</label>
+            <input
+              type="text"
+              className=""
+              id="roomStatus"
+              onChange={(e) => {
+                setstatus(e.target.value);
+              }}
+            />
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="roomImage">Image file:</label>
+            <label>Image file:</label>
             <input
               type="file"
+              className=""
               id="roomImage"
               onChange={(e) => {
                 setImage(e.target.files[0]);
@@ -149,7 +155,7 @@ const AddNewRoom = () => {
         </form>
       </div>
     </div>
+    </div>
   );
-};
-
+}
 export default AddNewRoom;
