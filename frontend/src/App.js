@@ -21,7 +21,10 @@ import BookHall from "./Pages/BookHall";
 import HallResources from "./Pages/staff/HallResources";
 
 import AdminBookHall from "./Pages/staff/AllHallRes";
-
+import Bug from "./Pages/Bug";
+import HallBookingData from "./Pages/HallBookingData";
+import HallCalender from "./Pages/staff/HallCalender";
+import Alldates from "./Pages/staff/Alldates";
 
 
 // Layout component with header and footer
@@ -104,8 +107,29 @@ function App() {
             element={<AdminBookHall/>}
           />
           
-          
-         
+           <Route
+            path="/AllReservations"
+            element={<AdminBookHall/>}
+          />
+            
+            <Route
+            path="/bug"
+            element={<Bug/>}
+          />
+             <Route
+            path="/bookingdata/:id"
+            element={<Layout><HallBookingData/></Layout>}
+          />
+          <Route
+            path="/HallCalender"
+            element={<HallCalender/>}
+          />
+             <Route
+            path="/alldates"
+            element={<Alldates/>}
+          />
+            
+            
       
           
          

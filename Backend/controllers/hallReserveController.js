@@ -35,6 +35,27 @@ const getReservationById = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+const getReservationByEmail = async (req, res) => {
+    try {
+        const { email } = req.params;
+
+        // Constructing the filter object with the email property
+        const filter = { email: email };
+
+        // Find reservations based on the provided email
+        const reservations = await HallReserve.find(filter);
+
+        if (!reservations) {
+            return res.status(404).json({ success: false, message: 'No reservations found for the provided email' });
+        }
+
+        res.status(200).json({ success: true, data: reservations });
+    } catch (error) {
+        console.error('Error retrieving reservations by email:', error.message);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+};
+
 
 const editReservation = async (req, res) => {
     try {
@@ -82,26 +103,22 @@ const editReservation = async (req, res) => {
 const addReservation = async (req, res) => {
     try {
         // Destructure request body
-        const { hallid, userid } = req.body;
+        const {  email} = req.body;
 
         // Check if the provided userid exists
-        const userExists = await User.findById(userid);
+        const userExists = await User.findOne({ email: email });
         if (!userExists) {
-            return res.status(400).json({ success: false, message: 'Invalid userid' });
+            return res.status(400).json({ success: false, message: 'Invalid user' });
         }
 
         // Check if the provided hallid exists
-        const hallExists = await Hall.findById(hallid);
-        if (!hallExists) {
-            return res.status(400).json({ success: false, message: 'Invalid hallid' });
-        }
-
+      
         // If userid and hallid are valid, proceed with creating the reservation
-        const { hall,eventtype,capacity, selectdate, fromTime, toTime, totalhours, status, Resources } = req.body;
+        const { hall,hallid,eventtype,capacity, selectdate, fromTime, toTime, totalhours, status, Resources } = req.body;
         const reservation = new HallReserve({
             hall,
             hallid,
-            userid,
+            email,
             eventtype,
             capacity,
             selectdate,
@@ -138,4 +155,4 @@ const deleteReservation = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-module.exports={addReservation,editReservation,getAllReservations,getReservationById,deleteReservation}
+module.exports={addReservation,editReservation,getAllReservations,getReservationById,deleteReservation,getReservationByEmail}

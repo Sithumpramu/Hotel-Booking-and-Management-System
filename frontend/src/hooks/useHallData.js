@@ -6,6 +6,8 @@ const useHallData = (id) => {
   const [showNotification, setShowNotification] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [priceError, setPriceError] = useState("");
+  const [originalHallData, setOriginalHallData] = useState(null); // Define original hall data
+  const [successMessage, setSuccessMessage] = useState(""); // Define success message
 
   useEffect(() => {
     const fetchHall = async () => {
@@ -17,6 +19,7 @@ const useHallData = (id) => {
         }
         const data = await response.json();
         setHallData(data);
+        setOriginalHallData(data); // Store the initial hall data
         setLoading(false);
       } catch (error) {
         console.error("Error fetching hall data:", error);
@@ -28,13 +31,20 @@ const useHallData = (id) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    let capacityConstraint = 500;
+    if (id === "6609fbe5b406cd8830d34293") {
+      capacityConstraint = 200; // Update capacity constraint
+    }
     if (name === "capacity") {
-      if (value < 1 || value > 300) {
-        setErrorMessage("Capacity must be between 1 and 300");
+      const numericValue = parseInt(value); // Parse value as an integer
+      if (isNaN(numericValue) || numericValue <= 0 || numericValue > capacityConstraint) {
+        setErrorMessage(`Capacity must be between 1 and ${capacityConstraint}`);
         return;
       } else {
         setErrorMessage("");
       }
+        
+     
     } else if (name === "price") {
       if (value < 0) {
         setPriceError("Price cannot be negative");
@@ -42,12 +52,23 @@ const useHallData = (id) => {
       } else {
         setPriceError("");
       }
+    }else if (name === "facilities") {
+      // Split the input value by comma and trim whitespace
+      const facilitiesArray = value.split(",").map(item => item.trim());
+      setHallData(prevHallData => ({
+        ...prevHallData,
+        [name]: facilitiesArray
+      }));
+    } else {
+      setHallData(prevHallData => ({
+        ...prevHallData,
+        [name]: value
+      }));
     }
-    setHallData({ ...hallData, [name]: value });
-    const newValue =
-      name === "facilities" ? value.split(",").map((item) => item.trim()) : value;
-    setHallData({ ...hallData, [name]: newValue });
+
     setShowNotification(true);
+
+   
   };
 
   const handlePriceChange = (amount) => {
@@ -92,11 +113,14 @@ const useHallData = (id) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+   console.log(originalHallData)
+    const isDataChanged = JSON.stringify(hallData) !== JSON.stringify(originalHallData);
 
-    const confirmed = window.confirm("Are you sure you want to make changes?");
-
-    if (!confirmed) {
-      return;
+    if (!isDataChanged) {
+      // No changes were made
+      setSuccessMessage("No changes were made.");
+      setShowNotification(true);
+      return; // Exit early
     }
 
     try {
@@ -119,7 +143,9 @@ const useHallData = (id) => {
     } catch (error) {
       console.error("Error updating hall:", error);
     }
+    
   };
+  
 
   return {
     hallData,
@@ -132,6 +158,7 @@ const useHallData = (id) => {
     handlePictureUpload,
     handleSubmit,
     setShowNotification,
+    successMessage, // Add successMessage to the return object
   };
 };
 

@@ -5,7 +5,8 @@ const {
     editReservation,
     getAllReservations,
     getReservationById,
-    deleteReservation
+    deleteReservation,
+    getReservationByEmail
 } = require('../controllers/hallReserveController');
 
 // Route to add a new reservation
@@ -19,6 +20,7 @@ router.get('/hallres', getAllReservations);
 
 // Route to get a reservation by ID
 router.get('/hallres/:id', getReservationById);
+router.get('/hallresbyemail/:email', getReservationByEmail);
 
 router.delete('/hallres/:id', deleteReservation);
 

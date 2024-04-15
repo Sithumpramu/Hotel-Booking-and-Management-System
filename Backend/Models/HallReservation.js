@@ -8,13 +8,13 @@ const hallReserveSchema = new Schema({
         required: true
     },
     hallid: {
-        type: Schema.Types.ObjectId, // Change type to ObjectId
-        ref: 'Hall', // Reference the Hall model
+        // Change type to ObjectId
+        type:String, // Reference the Hall model
         required: true
     },
-    userid: {
-        type: Schema.Types.ObjectId, // Change type to ObjectId
-        ref: 'User', // Reference the User model
+    email: {
+       type:String, // Change type to ObjectId
+       // Reference the User model
         required: true
     },
      eventtype:{
