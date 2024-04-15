@@ -23,11 +23,18 @@ const AddNewOffer = () => {
     );
   };
 
-  console.log(offerID)
-  console.log(offerName)
-  console.log(Date)
-  console.log(description)
+  function validation() {
+    var submit = document.getElementById("submit");
 
+    if (
+      offerID === "" &&
+      offerName === "" &&
+      description === "" &&
+      Date === "" 
+    ) {
+      document.getElementById("Error").innerHTML = "All fields must be filled.";
+    }
+  }
 
   return (
     <div>
@@ -95,6 +102,9 @@ const AddNewOffer = () => {
             type="submit"
             className="btn btn-primary"
             id="submit"
+            onClick={() => {
+              validation();
+            }}
           >
             Add Offer
           </button>

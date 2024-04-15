@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Inventorysidebar from '../../components/InventoryManagerSideBar';
-import searchHeader from '../../components/searchHeader';
+
 
 const RoomManagerView = () => {
   const [inventory, setInventory] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -21,6 +22,10 @@ const RoomManagerView = () => {
 
     fetchInventory();
   }, []);
+
+  const filter = inventory.filter(item =>
+    item.itemName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const onDelete = async (id) => {
     try {
@@ -46,6 +51,12 @@ const RoomManagerView = () => {
       <div className="container-fluid pt-5 col">
         <div className="row flex-nowrap">
           <div className="col py-3">
+          <div><input
+                type="search"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              /></div>
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -58,7 +69,7 @@ const RoomManagerView = () => {
                 </tr>
               </thead>
               <tbody>
-                {inventory.map((item, index) => (
+                {filter.map((item, index) => (
                   <tr key={index}>
                     <td>{item.itemID}</td>
                     <td>{item.itemName}</td>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import OfferList from "../../hooks/useOfferList";
-import searchHeader from '../../components/searchHeader';
+
 
 // import { useLocation, useNavigate } from 'react-router-dom';
 

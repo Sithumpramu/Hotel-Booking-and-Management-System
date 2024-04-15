@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Inventorysidebar from '../../components/InventoryManagerSideBar';
-import searchHeader from '../../components/searchHeader';
+
 
 const HotelView = () => {
   const [inventory, setInventory] = useState([]);
