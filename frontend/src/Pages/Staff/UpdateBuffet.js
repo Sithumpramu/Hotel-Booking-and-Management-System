@@ -101,13 +101,13 @@ function UpdateBuffet() {
 
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-success m-4"
                 id="submit"
                 onClick={() => {
 
                 }}
               >
-                Submit
+                Add Buffet Details
               </button>
 
               <p id="Error"></p>

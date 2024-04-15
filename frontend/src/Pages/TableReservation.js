@@ -8,8 +8,12 @@ const TableReservation = () => {
 
   const [nameToDelete, setNameToDelete] = useState("");
   const { deleteTableReservation } = useDeleteReservation();
-
   const { updateReservation } = useUpdateReservation();
+  const [filterDate, setFilterDate] = useState(""); // State for filter date
+  const [searchKeyword, setSearchKeyword] = useState(""); // State for search keyword
+  const [sortedTableList, setSortedTableList] = useState([]); // State for sorted table list
+  const [sortOrder, setSortOrder] = useState("asc"); // State for sort order
+
 
   const [IdToUpdate, setIdToUpdate] = useState("");
   const [Date, setDate] = useState("");
@@ -17,6 +21,30 @@ const TableReservation = () => {
   const [Capacity, setCapacity] = useState("");
   const [email, setemail] = useState("");
   const [contactNumber, setcontactNumber] = useState("");
+
+  useEffect(() => {
+    // Filter TableList based on filterDate
+    const filteredData = TableList.filter(
+      (table) => table.Date.includes(filterDate)
+    );
+
+    // Apply search filtering based on searchKeyword
+    const searchedData = filteredData.filter((table) =>
+      table.Name.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+
+    // Apply sorting based on sortOrder
+    const sortedData = searchedData.sort((a, b) => {
+      if (sortOrder === "asc") {
+        return new Date(a.Date) - new Date(b.Date);
+      } else {
+        return new Date(b.Date) - new Date(a.Date);
+      }
+    });
+
+    setSortedTableList(sortedData);
+  }, [TableList, filterDate, searchKeyword, sortOrder]);
+
 
   if (isLoading) {
     return (
@@ -29,6 +57,8 @@ const TableReservation = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  
 
   const getUpdateData = (Table) => {
     setIdToUpdate(Table._id);
@@ -50,6 +80,22 @@ const TableReservation = () => {
     );
   };
 
+   // Function to handle filtering
+   const handleFilter = (e) => {
+    setFilterDate(e.target.value);
+  };
+
+  // Function to handle search
+  const handleSearch = (e) => {
+    setSearchKeyword(e.target.value);
+  };
+
+  // Function to handle sorting
+  const handleSort = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
+
+
   const handleDelete = async () => {
     await deleteTableReservation(nameToDelete);
     console.log(isLoading, "handleDelete loading");
@@ -60,6 +106,36 @@ const TableReservation = () => {
     
     <div>
       <h1 className="mb-4 mt-5">My Reservations</h1>
+
+
+      {/* Filter, Search, and Sort Inputs */}
+      <div className="mb-3">
+        <label className="me-2">Filter by Date:</label>
+        <input
+          type="date"
+          value={filterDate}
+          onChange={handleFilter}
+          className="form-control me-3"
+          placeholder="YYYY-MM-DD"
+        />
+        <label>Search by Name:</label>
+        <input
+          type="text"
+          value={searchKeyword}
+          onChange={handleSearch}
+          className="form-control me-3"
+          placeholder="Search..."
+        />
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleSort}
+        >
+          {sortOrder === "asc" ? "Sort Asc" : "Sort Desc"}
+        </button>
+      </div>
+
+
 
       <div className="d-flex align-items-center justify-content-around mb-3">
         <table className="table" style={{ width: "75rem" }}>

@@ -31,14 +31,14 @@ const DisplayBuffet = () => {
     <div>
       {/* <h2>{categoryDetails.title}</h2>
       <p>{categoryDetails.description}</p> */}
-      <div className='card'>
+      <div className='card m-5 mt-5 mb-5'>
         {buffetItems.map((item) => (
-            <div className='card'>
+            <div className='card '>
           <div key={item._id}>
             <h2>{item.BuffetName}</h2>
             <p>{item. Description}</p>
-            <h4>{item.Time}</h4>
-            <h5>Price: Rs.{item.Price}.00</h5>
+            <h4>from: {item.Time}</h4>
+            <h4>Price: Rs.{item.Price}.00</h4>
             {/* Add more details as needed */}
           </div></div>
         ))}

@@ -108,7 +108,7 @@ function MenuItems() {
                       }}</p>
                     <a
                       href="#"
-                      className="btn btn-danger"
+                      className="btn btn-danger "
                       data-bs-toggle="modal"
                       data-bs-target="#Modal"
                       onClick={() => setIdToDelete(menu._id)}

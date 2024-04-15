@@ -87,13 +87,13 @@ function UpdateMenu() {
 
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-success m-4"
                 id="submit"
                 onClick={() => {
 
                 }}
               >
-                Submit
+                Update Details
               </button>
 
               <p id="Error"></p>

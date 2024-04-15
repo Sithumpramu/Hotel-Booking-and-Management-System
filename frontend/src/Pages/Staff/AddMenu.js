@@ -93,13 +93,13 @@ const AddNewMenu = () => {
 
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-success m-4"
                 id="submit"
                 onClick={() => {
                   validation();
                 }}
               >
-                Submit
+               Add Menu Item
               </button>
 
               <p id="Error"></p>
