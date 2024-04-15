@@ -6,7 +6,7 @@ import useAddRoomReserve from '../hooks/useAddRoomReserve';
 function ReservationDetails() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { Rid = '', Checkindate = '', Checkoutdate = '', NoOfGuests = '' } = location.state || {};
+    const { Rid, Checkindate, Checkoutdate, NoOfGuests,price } = location.state;
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -15,11 +15,17 @@ function ReservationDetails() {
     const [phoneno, setphoneno] = useState('');
     const { addRoomReserve, isLoading, error } = useAddRoomReserve();
 
+    console.log('Check-in Date:', Checkindate);
+    console.log('Check-out Date:', Checkoutdate);
+    console.log('Number of Guests:', NoOfGuests);
+    console.log(' id:', Rid);
+    console.log('price:', price);
+
     const handleSubmit = () => {
 
         console.log('Submitting reservation details:', { Checkindate, Checkoutdate, NoOfGuests, firstName, lastName, Email });
 
-        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests,Rid, firstName, lastName, Email, Address, phoneno);
+        addRoomReserve(Checkindate, Checkoutdate, NoOfGuests,Rid, firstName, lastName, Email, Address, phoneno,price);
     };
 
     return (

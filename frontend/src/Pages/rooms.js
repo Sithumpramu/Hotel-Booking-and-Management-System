@@ -1,65 +1,92 @@
-import React, { useState } from "react";
-import RoomList from "../hooks/useRoomList";
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import RoomList from "../hooks/useRoomList";
 
-function Room() {
-  const { rooms } = RoomList();
+function Rooms(roomId) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { Checkindate = '', Checkoutdate = '', NoOfGuests = '' } = location.state || {};
+  const { rooms } = RoomList();
+  const { Checkindate, Checkoutdate, NoOfGuests } = location.state;
 
-  console.log('Check-in Date:', Checkoutdate);
-  console.log('Check-out Date:', Checkindate);
+  console.log('Check-in Date:', Checkindate);
+  console.log('Check-out Date:', Checkoutdate);
   console.log('Number of Guests:', NoOfGuests);
 
-  const handleRoomSelect = (Rid) => {
-  navigate('/CustomerDetails', {
-    state: {
-      Rid,
-      Checkoutdate,
-      Checkindate,
-      NoOfGuests
+  const handleRoomSelect = (roomId,price) => {
+    // Call the token check function before navigating
+    TokenCheckAndNavigate(roomId,price);
+  };
+
+
+  const TokenCheckAndNavigate = (roomId,price) => {
+    const token = localStorage.getItem('user');
+    console.log(roomId)
+    if (!token) {
+      navigate('/login'); 
+      return;
     }
-  })
+
+    // If token is present
+    else{
+    navigate('/CustomerDetails', {
+      state: {
+        Rid:roomId,
+        Checkindate,
+        Checkoutdate,
+        NoOfGuests,
+        price: price
+      }
+    });}
+  };
+
+  localStorage.removeItem('prevPath');
+
 
   return (
     <div>
-      <div className="row" style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", marginTop: "20px", borderRadius: "5px", padding: "20px" }}>
-        {rooms.map((rooms) => (
-          <div className="col-md-7">
+      <div className="row bs">
+        {rooms.map((room) => (
+          <div className="col-md-7" key={room.id}>
             <div className="card">
               <div className="card-body">
-                {rooms.Image && rooms.Image.data && (
+                {room.Image && room.Image.data && (
                   <img
+                    // style={{ width: "10rem" }}
+                    // src={`data:${room.Image.contentType};base64,${btoa(
+                    //   String.fromCharCode.apply(null, room.Image.data.data)
+                    // )}`}
                     style={{ width: "10rem" }}
-                    src={`data:${rooms.Image.contentType};base64,${btoa(
-                      String.fromCharCode.apply(null, rooms.Image.data.data)
-                    )}`}
+                    src={URL.createObjectURL(
+                      new Blob([ room.Image.data], {
+                        type: room.Image.contentType
+                      })
+                    )}
                     className="card-img-top mb-1"
-                    alt={rooms.Rtype}
+                    alt={room.Rtype}
                   />
                 )}
 
-                <p className="card-text">{rooms.Rid}</p>
-                <p className="card-text">{rooms.Rtype}</p>
-                <p className="card-text">{rooms.description}</p>
-                <p className="card-text">{rooms.capacity}</p>
-                <p className="card-text">{rooms.NoOfBeds}</p>
-                <p className="card-text">{rooms.price}</p>
-                <p className="card-text">{rooms.status}</p>
+                <p className="card-text">{room.Rid}</p>
+                <p className="card-text">{room.Rtype}</p>
+                <p className="card-text">{room.description}</p>
+                <p className="card-text">{room.capacity}</p>
+                <p className="card-text">{room.NoOfBeds}</p>
+                <p className="card-text">{room.price}</p>
+                <p className="card-text">{room.status}</p>
 
                 <div style={{ float: "right" }}>
-                  <a href="/CustomerDetails" className="btn btn-info" onClick={() => handleRoomSelect(rooms.Rid)}>
+                  <button className="btn btn-info" onClick={() => handleRoomSelect(room.Rid, room.price)}>
                     Book Now
-                  </a>
+                  </button>
                 </div>
               </div>
+              
             </div>
           </div>
         ))}
       </div>
     </div>
   );
+}
 
-}}
-export default Room;
+export default Rooms;
