@@ -14,7 +14,7 @@ const useDeleteOffer = () => {
     setError(null);
 
     try {
-      const response = await fetch(http://localhost:4000/offer/deleteOffer/${id}, {
+      const response = await fetch('http://localhost:4000/offer/deleteOffer/${id}', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });

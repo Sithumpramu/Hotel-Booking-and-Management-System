@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 
-const offerList = () => {
+const OfferList = () => {
     const [offers, setOffer] = useState([]);
   
     useEffect(() => {
-      const fetchRoom = async () => {
+      const fetchOffer = async () => {
         try {
           const response = await fetch("http://localhost:4000/offer/getOffer");
           if (!response.ok) {
@@ -22,4 +22,4 @@ const offerList = () => {
     return {offers};
 };
 
-export default offerList;
+export default OfferList;

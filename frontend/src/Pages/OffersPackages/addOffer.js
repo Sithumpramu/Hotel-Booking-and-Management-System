@@ -23,18 +23,18 @@ const AddNewOffer = () => {
     );
   };
 
-  function validation() {
-    var submit = document.getElementById("submit");
+  // function validation() {
+  //   var submit = document.getElementById("submit");
 
-    if (
-      offerID === "" &&
-      offerName === "" &&
-      Date === "" &&
-      description === "" &&
-     ) {
-      document.getElementById("Error").innerHTML = "All fields must be filled.";
-    }
-  }
+  //   if (
+  //     offerID === "" &&
+  //     offerName === "" &&
+  //     Date === "" &&
+  //     description === "" &&
+  //    ) {
+  //     document.getElementById("Error").innerHTML = "All fields must be filled.";
+  //   }
+  // }
 
   return (
     <div>
@@ -103,7 +103,7 @@ const AddNewOffer = () => {
             className="btn btn-primary"
             id="submit"
             onClick={() => {
-              validation();
+              // validation();
             }}
           >
             Add Offer

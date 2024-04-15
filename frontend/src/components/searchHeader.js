@@ -1,12 +1,12 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
-import { setLogout } from "../state/state.js";
-import { useNavigate } from 'react-router-dom';
+// import { useDispatch } from "react-redux";
+// import { setLogout } from "../state/state.js";
+// import { useNavigate } from 'react-router-dom';
 
 
 const searchHeader = ({dashboard}) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
     
     
 

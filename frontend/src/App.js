@@ -6,8 +6,8 @@ import EditItem from "./Pages/Inventory/EditItem";
 import HotelView from "./Pages/Inventory/HotelView";
 import RoomManagerView from "./Pages/Inventory/RoomManagerView";
 
-import offer from "./Pages/OffersPackages/offerPackage";
-import addOffer from "./Pages/Staff/addOffer.js";
+import Offer from "./Pages/OffersPackages/offerPackage";
+// import addOffer from "./Pages/Staff/addOffer.js";
 
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
@@ -19,6 +19,7 @@ import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AdminDash from "./Pages/Staff/AdminDash";
 import Inventorysidebar from "./components/InventoryManagerSideBar";
+import AddNewOffer from "./Pages/OffersPackages/addOffer";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -75,7 +76,11 @@ function App() {
           />
           <Route
             path="/offerPackage"
-            element={<Layout><offer/></Layout>}
+            element={<Layout><Offer/></Layout>}
+          />
+          <Route
+            path="/Addoffer"
+            element={<AddNewOffer/>}
           />
 
         </Routes>

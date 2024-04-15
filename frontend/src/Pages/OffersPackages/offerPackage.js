@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import offerList from "../hooks/useOfferList";
+import OfferList from "../../hooks/useOfferList";
 import searchHeader from '../../components/searchHeader';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
-function offer() {
-    const { offers } = offerList();
-    const location = useLocation();
-    const navigate = useNavigate();
+function Offer() {
+    const { offers } = OfferList();
+    // const location = useLocation();
+    // const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="vh-100">
       <div className="row" style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", marginTop: "20px", borderRadius: "5px", padding: "20px" }}>
         {offers.map((offers) => (
           <div className="col-md-7">
@@ -47,4 +47,4 @@ function offer() {
   );
 
 }
-export default offer;
+export default Offer;
