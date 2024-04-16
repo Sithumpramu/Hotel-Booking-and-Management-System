@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import useWatersportReservation from "../../hooks/useWatersportReservations";
 import useDeleteReservation from "../../hooks/useDeleteReservation";
 import useUpdateReserv from "../../hooks/useUpdateWatersportReservation";
+import useCheckoutReserv from "../../hooks/useCheckoutReserv";
 import ReceptionNavbar from "../../components/receptionNavbar";
 import ReservationNavbar from "../../components/reservationNavBar";
 
@@ -15,6 +16,8 @@ function WatersportReservations() {
 
   const { deleteReservation } = useDeleteReservation();
   const { updateReserv } = useUpdateReserv();
+  const { handleCheckOut } = useCheckoutReserv();
+
   const [nameToDelete, setNameToDelete] = useState("");
   const [nameToUpdate, setNameToUpdate] = useState("");
 
@@ -72,6 +75,10 @@ function WatersportReservations() {
     setNameToDelete("");
   };
 
+  const handleCheckoutReserv = async () => {
+   
+  }
+
   // Handle search
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -86,6 +93,8 @@ function WatersportReservations() {
   const filteredReservationsOther = otherReservations.filter((reservation) =>
     reservation.CusName.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  
 
   const getUpdateData = (reservation) => {
     setNameToUpdate(reservation._id);
@@ -280,9 +289,8 @@ function WatersportReservations() {
                               <button
                                 className="btn btn-outline-success"
                                 style={{ width: "10rem" }}
-                                data-bs-toggle="modal"
-                                data-bs-target="#Modal"
-                                onClick={() => setNameToDelete(reservation._id)}
+                             
+                                onClick={() => handleCheckOut(reservation._id)}
                               >
                                 CheckOut
                               </button>
@@ -483,7 +491,7 @@ function WatersportReservations() {
                                 style={{ width: "10rem" }}
                                 data-bs-toggle="modal"
                                 data-bs-target="#Modal"
-                                onClick={() => setNameToDelete(reservation._id)}
+                                onClick={() => handleCheckOut(reservation._id)}
                               >
                                 CheckOut
                               </button>
