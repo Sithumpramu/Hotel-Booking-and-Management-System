@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useOrderList from "../../hooks/useDisplayFoodOrders";
 import useDeleteFoodOrders from "../../hooks/useDeleteFoodOrders";
 import useAddOrder from "../../hooks/useAddOrder";
+import RestaurantNavbar from "../../components/RestaurantManagerNavbar";
 
 const ManageOrders = () => {
   const { OrderList, isLoading, error } = useOrderList();
@@ -32,11 +33,12 @@ const ManageOrders = () => {
 
   return (
 
-    <div>
+    <div className="row p-0">
+    <RestaurantNavbar />
       <h1 className="mb-4 mt-5">Manage Orders</h1>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
-        <table className="table" style={{ width: "75rem" }}>
+        <table className="table" style={{ width: "50rem" }}>
           <tr className="border border-black" scope="col">
             <th scope="col">productName</th>
             <th scope="col">Quantity</th>

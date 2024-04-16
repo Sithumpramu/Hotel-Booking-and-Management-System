@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useDisplayBuffet from '../../hooks/useDisplayBuffet'
 import useDeleteBuffet from '../../hooks/useDeleteBuffet'
+import RestaurantNavbar from "../../components/RestaurantManagerNavbar";
 
 const ManageBuffet = () => {
   const { buffetItems, isLoading, error } = useDisplayBuffet();
@@ -31,14 +32,16 @@ const ManageBuffet = () => {
   };
 
   return (
-    <div>
-     <h1 class="topic mb-5">Buffet Management</h1>
+    <div className="row p-0">
+    <RestaurantNavbar />
+    <div className="col">
+     <h1 class="mb-4 mt-5">Buffet Management</h1>
 
-     <a href="/addBuffet" className="btn btn-info mb-5">
+     <a href="/addBuffet" className="btn btn-info mb-5" >
             Add New Buffet
           </a>
 
-     <div className="row d-flex align-items-center justify-content-around mb-3">
+     <div className="row d-flex align-items-center justify-content-around mb-3" style={{width:"50rem"}}> 
             {buffetItems.map((item) => (
               <div key={item._id} className="col-lg-3">
                 <div className="card mb-4">
@@ -127,6 +130,7 @@ const ManageBuffet = () => {
         </div>
       </div>
     </div>
+  </div>
   </div>
   </div>
   );

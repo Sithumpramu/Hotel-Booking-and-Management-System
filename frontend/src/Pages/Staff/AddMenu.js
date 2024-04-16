@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAddMenu from "../../hooks/useAddMenu";
+import RestaurantNavbar from "../../components/RestaurantManagerNavbar";
 
 const AddNewMenu = () => {
   const [productName, setProductName] = useState("");
@@ -26,6 +27,8 @@ const AddNewMenu = () => {
   }
 
   return (
+    <div className="row p-0">
+      <RestaurantNavbar />
     <div className="row d-flex align-items-center justify-content-center mb-4 mt-1">
 
         <h1 className="mt-2 mb-3 ">Add New Item</h1>
@@ -105,7 +108,7 @@ const AddNewMenu = () => {
               <p id="Error"></p>
             </form>
           </div>
-       
+          </div>
       
 
   );

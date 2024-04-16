@@ -34,7 +34,7 @@ const ManageTableReservation = () => {
         <h1 className="mb-4 mt-5">Manage Reservations</h1>
 
         <div className="d-flex align-items-center justify-content-around mb-3">
-          <table className="table" style={{ width: "55rem" }}>
+          <table className="table" style={{ width: "50rem" }}>
             <tr className="border border-black" scope="col">
               <th scope="col">Date</th>
               <th scope="col">Name</th>

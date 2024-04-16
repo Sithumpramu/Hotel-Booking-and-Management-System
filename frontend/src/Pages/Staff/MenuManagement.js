@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import useMenuList from "../../hooks/useMenu";
 import useDeleteMenu from "../../hooks/useDeleteMenuItem";
 import useUpdateMenu from "../../hooks/useUpdateMenuItem";
+import RestaurantNavbar from "../../components/RestaurantManagerNavbar";
 
 
 function MenuItems() {
@@ -75,15 +76,16 @@ function MenuItems() {
 
   return (
     <div className="row p-0">
+      <RestaurantNavbar />
       <div className="col">
-        <div>
+        
           <h1 className="mb-4 mt-5">Menu Management</h1>
 
           <a href="/AddMenu" className="btn btn-info mb-5">
             Add New Menu Item
           </a>
 
-          <div className="row d-flex align-items-center justify-content-around mb-3">
+          <div className="row d-flex align-items-center justify-content-around mb-3" style={{width:"50rem"}}>
             {menuList.map((menu) => (
               <div key={menu._id} className="col-lg-3">
                 <div className="card mb-4">
@@ -127,7 +129,7 @@ function MenuItems() {
             
             {/* </div> */}
           </div>
-        </div>
+        
 
         {/* model  */}
         <div

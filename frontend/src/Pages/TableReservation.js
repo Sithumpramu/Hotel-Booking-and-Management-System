@@ -21,14 +21,28 @@ const TableReservation = () => {
     setFilterDate(e.target.value);
   };
 
-  const getUpdateData = (Table) => {
+ /* const getUpdateData = (Table) => {
     // Your existing code for updating data
+    setIdToUpdate(Table._id);
+    setDate(Table.Date);
+    setName(Table.Name);
+    setCapacity(Table.Capacity);
+    setemail(Table.email);
+    setcontactNumber(Table.contactNumber);
   };
 
   const updateDetails = async () => {
     // Your existing code for updating details
+    await updateReservation(
+      IdToUpdate,
+      Date,
+      Name,
+      Capacity,
+      email,
+      contactNumber
+    );
   };
-
+*/
   const handleDelete = async () => {
     await deleteTableReservation(idToDelete);
     console.log(isLoading, "handleDelete loading");
@@ -85,7 +99,12 @@ const TableReservation = () => {
                 <td>{Table.email}</td>
                 <td>{Table.contactNumber}</td>
                 <td>
+
+
                   {/* Your update and delete buttons */}
+
+               
+                
                   <button
                     type="button"
                     class="btn btn-primary  mt-5"

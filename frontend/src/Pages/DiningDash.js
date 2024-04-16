@@ -101,7 +101,7 @@ function DiningDash() {
               <img src="srilankan.jpg" class="card-img-top" alt="Sri Lankan Food"></img>
               <div class="card-body">
                 <h5 class="card-title">Sri Lankan</h5>
-                <button class="btn btn-primary" onClick={handleViewProducts}>
+                <button class="btn btn-primary" href="/displaymenu" onClick={handleViewProducts}>
                   View Products
                 </button>
               </div>
@@ -112,7 +112,7 @@ function DiningDash() {
               <img src="burger1.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Burgers & Sandwiches</h5>
-                <a href="#" class="btn btn-primary">
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
                 </a>
               </div>
@@ -123,7 +123,7 @@ function DiningDash() {
               <img src="chinese.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Chinese</h5>
-                <a href="#" class="btn btn-primary">
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
                 </a>
               </div>
@@ -134,7 +134,7 @@ function DiningDash() {
               <img src="cakes.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Cakes</h5>
-                <a href="#" class="btn btn-primary">
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
                 </a>
               </div>
@@ -145,7 +145,7 @@ function DiningDash() {
               <img src="Pizzaedit.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Pizzas & Pasta</h5>
-                <a href="#" class="btn btn-primary">
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
                 </a>
               </div>
@@ -157,7 +157,7 @@ function DiningDash() {
               <img src="desserts.jpg" class="card-img-top" alt="..."></img>
               <div class="card-body">
                 <h5 class="card-title">Desserts</h5>
-                <a href="#" class="btn btn-primary">
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
                 </a>
               </div>
