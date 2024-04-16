@@ -1,6 +1,14 @@
 import React from "react";
 import './App.css';
 
+import AddItem from "./Pages/Inventory/AddItem";
+import EditItem from "./Pages/Inventory/EditItem";
+import HotelView from "./Pages/Inventory/HotelView";
+import RoomManagerView from "./Pages/Inventory/RoomManagerView";
+
+import Offer from "./Pages/OffersPackages/offerPackage";
+// import addOffer from "./Pages/Staff/addOffer.js";
+
 import Home from './Pages/Home';
 import Signup from './Pages/signup';
 import Login from './components/Login';
@@ -36,6 +44,8 @@ import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
 //User management
 import AdminDash from "./Pages/Staff/AdminDash";
+import Inventorysidebar from "./components/InventoryManagerSideBar";
+import AddNewOffer from "./Pages/OffersPackages/addOffer";
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -306,21 +316,6 @@ function App() {
             path="/AdminDashbord"
             element={<AdminDash />}
           />
-            <Route
-            path="/editBooking/:id"
-            element={<EditBooking/>}
-          />
-            
-      
-          
-         
-          
-         
-        
-        
-        
-        
-         
         </Routes>
       </BrowserRouter>
     </div>
