@@ -25,6 +25,7 @@ import WatersportManage from "./Pages/Staff/WatersportManagement";
 import AddReserv from "./Pages/Staff/addWatersportReserv";
 import SelectActivity from "./Pages/Staff/SelectActivity";
 import WatersportReservations from "./Pages/Staff/watersportReservations";
+import PastWatersportReservations from "./Pages/Staff/pastWatersportReserv";
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
 //User management
@@ -78,6 +79,10 @@ function App() {
           <Route
             path="/watersportReservations"
             element={<WatersportReservations />}
+          />
+          <Route
+            path="/PastReservations"
+            element={<PastWatersportReservations />}
           />
           <Route path="/DiningReservations" element={<TableReservation />} />
 

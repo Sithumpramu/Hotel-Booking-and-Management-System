@@ -30,6 +30,11 @@ const ReservationSchema = new Schema({
     type: Array,
     required: true,
   },
+  checkout: { // Adding this new field
+    type: Boolean,
+    required: true,
+    default: false // Set default value to false
+  }
 });
 
 module.exports = mongoose.model("WatersportReservation", ReservationSchema);

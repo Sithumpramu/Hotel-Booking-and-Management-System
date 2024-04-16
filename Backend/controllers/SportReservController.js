@@ -1,10 +1,11 @@
 const { default: mongoose } = require("mongoose");
 const watersportReservModel = require("../Models/watersportReservModel");
 
+
 // Function to add a new reservation
 const addReservation = async (req, res) => {
   console.log("addReservation");
-  const { CusName, TelNo, Address, checkinDate, checkinTime, activityList } =
+  const { CusName, TelNo, Address, checkinDate, checkinTime, activityList, checkout = false } =
     req.body;
 
   try {
@@ -15,6 +16,7 @@ const addReservation = async (req, res) => {
       checkinDate,
       checkinTime,
       activityList,
+      checkout,
     });
     res.status(201).json(newReserv); // Respond with the created document
   } catch (error) {
@@ -23,10 +25,20 @@ const addReservation = async (req, res) => {
   }
 };
 
-// Function to get all reservations
+// Function to get upcoming reservations
 const getReservations = async (req, res) => {
   try {
-    const reservations = await watersportReservModel.find({});
+    const reservations = await watersportReservModel.find({ checkout: false });
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Function to get past reservations
+const getPastReservations = async (req, res) => {
+  try {
+    const reservations = await watersportReservModel.find({ checkout: true });
     res.status(200).json(reservations);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -119,10 +131,30 @@ const updateReservation = async (req, res) => {
   }
 };
 
+//function to checkout a reservation
+const checkoutRserv = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { checkout } = req.body;
+
+    // Update the checkout status of the reservation with the given ID
+    const updatedReservation = await watersportReservModel.findByIdAndUpdate(id, { checkout }, { new: true });
+    if (updatedReservation) {
+      res.status(200).json(updatedReservation);
+    } else {
+      res.status(404).send('Reservation not found');
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   addReservation,
   getReservations,
+  getPastReservations,
   getReservationsByDateTime,
   deleteReservation,
   updateReservation,
+  checkoutRserv,
 };

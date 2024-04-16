@@ -80,6 +80,10 @@ const Header = () => {
               <li className="nav-item me-3">
                 <a className="nav-link active" aria-current="page" href="/">Dining</a>
               </li>
+
+              <li className="nav-item me-3">
+                <a className="nav-link active" aria-current="page" href="/">Events</a>
+              </li>
              
               <li className="nav-item dropdown me-3">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -127,6 +131,11 @@ const Header = () => {
                  </div>
                  )}
                    <hr></hr>
+                   <div style={{position: "relative", top: "23px"}}>
+                      <h5 className="ps-1">Reservations History</h5>
+                      <div type="submit" className="btn btn-danger btn-sm mt-3 mb-5" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
+                    </div>
+                    <hr></hr>
                  <form onSubmit={handleSubmit} method="post" className="mt-4">
                      <h5 className="mb-4 ps-1">Change Password</h5>
                      <div className="row ps-2 ">
@@ -139,17 +148,14 @@ const Header = () => {
                      </div>
 
                      <span id="pwdError" style={{color: "red"}}></span>
-                     <button className="btn btn-outline-primary mt-4" name="submit" id="submit" disabled={isLoading}>Change</button>
+                     <button className="btn btn-outline-primary mt-4 btn-sm mb-2" name="submit" id="submit" disabled={isLoading}>Change</button>
                      {error && <div className="error bg-danger my-2" style={{color:"white"}}>{error}</div>}
                      {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
                   </form>
                   <hr></hr>
-                   <div style={{position: "relative", top: "23px"}}>
-                      <h5 className="ps-1">My Reservations</h5>
-                      <div type="submit" className="btn btn-danger mt-3 mb-5" id="submit" data-bs-toggle="modal" data-bs-target="#Modal" style={{backgroundColor:"rgb(85, 180, 254)"}}>View</div>
-                    </div>
-                   <hr></hr>
-                    <div style={{position: "relative", top: "100px"}}>
+
+                
+                    <div style={{position: "relative", top: "80px"}}>
                       <div type="submit" className="btn btn-sm btn-danger mt-1" id="submit" data-bs-toggle="modal" data-bs-target="#Modal">Delete My Account</div>
                     </div>
                
