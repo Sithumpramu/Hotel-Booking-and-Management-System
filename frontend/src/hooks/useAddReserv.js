@@ -23,6 +23,7 @@ const useAddReserv = () => {
       checkinTime,
       Qty,
       activityList,
+      checkout: false,
     };
 
     setIsLoading(true);

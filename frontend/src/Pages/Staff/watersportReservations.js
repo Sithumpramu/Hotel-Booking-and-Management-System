@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import useWatersportReservation from "../../hooks/useWatersportReservations";
 import useDeleteReservation from "../../hooks/useDeleteReservation";
 import useUpdateReserv from "../../hooks/useUpdateWatersportReservation";
+import useCheckoutReserv from "../../hooks/useCheckoutReserv";
 import ReceptionNavbar from "../../components/receptionNavbar";
 import ReservationNavbar from "../../components/reservationNavBar";
 
@@ -11,8 +12,12 @@ function WatersportReservations() {
   const [otherReservations, setOtherReservations] = useState([]);
   const [todaysReservations, setTodaysReservations] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const { deleteReservation } = useDeleteReservation();
   const { updateReserv } = useUpdateReserv();
+  const { handleCheckOut } = useCheckoutReserv();
+
   const [nameToDelete, setNameToDelete] = useState("");
   const [nameToUpdate, setNameToUpdate] = useState("");
 
@@ -70,6 +75,27 @@ function WatersportReservations() {
     setNameToDelete("");
   };
 
+  const handleCheckoutReserv = async () => {
+   
+  }
+
+  // Handle search
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Filter reservations based on the search term
+  const filteredReservationsToday = todaysReservations.filter((reservation) =>
+    reservation.CusName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Filter reservations based on the search term
+  const filteredReservationsOther = otherReservations.filter((reservation) =>
+    reservation.CusName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  
+
   const getUpdateData = (reservation) => {
     setNameToUpdate(reservation._id);
     setCusName(reservation.CusName);
@@ -93,17 +119,23 @@ function WatersportReservations() {
     );
   };
 
-  // const getActivityIds = (event) => {
-  //   const selectedOptions = Array.from(event.target.selectedOptions);
-  //   const ids = selectedOptions.map((option) => option.value);
-  //   setActivityList(ids);
-  // };
 
   return (
     <div className="row">
       <ReceptionNavbar />
       <div className="col">
         <ReservationNavbar />
+        <div>
+          {/* Search Input */}
+          <input
+            type="text"
+            placeholder="Search Customer Name"
+            className="form-control m-3 border-primary"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            style={{ width: "15rem" }}
+          />
+        </div>
         <div className="col">
           <div>
             <div>
@@ -115,8 +147,8 @@ function WatersportReservations() {
                   className="table table-dark table-striped"
                   style={{ width: "75rem" }}
                 >
-                  {todaysReservations.length > 0 ? (
-                    todaysReservations.map((reservation) => (
+                  {filteredReservationsToday.length > 0 ? (
+                    filteredReservationsToday.map((reservation) => (
                       <tbody key={reservation._id}>
                         <tr className="border border-black">
                           <td className="border border-black">Customer Name</td>
@@ -257,9 +289,8 @@ function WatersportReservations() {
                               <button
                                 className="btn btn-outline-success"
                                 style={{ width: "10rem" }}
-                                data-bs-toggle="modal"
-                                data-bs-target="#Modal"
-                                onClick={() => setNameToDelete(reservation._id)}
+                             
+                                onClick={() => handleCheckOut(reservation._id)}
                               >
                                 CheckOut
                               </button>
@@ -314,8 +345,8 @@ function WatersportReservations() {
                   className="table table-dark table-striped"
                   style={{ width: "75rem" }}
                 >
-                  {otherReservations.length > 0 ? (
-                    otherReservations.map((reservation) => (
+                  {filteredReservationsOther.length > 0 ? (
+                    filteredReservationsOther.map((reservation) => (
                       <tbody key={reservation._id}>
                         <tr className="border border-black">
                           <td className="border border-black">Customer Name</td>
@@ -460,7 +491,7 @@ function WatersportReservations() {
                                 style={{ width: "10rem" }}
                                 data-bs-toggle="modal"
                                 data-bs-target="#Modal"
-                                onClick={() => setNameToDelete(reservation._id)}
+                                onClick={() => handleCheckOut(reservation._id)}
                               >
                                 CheckOut
                               </button>

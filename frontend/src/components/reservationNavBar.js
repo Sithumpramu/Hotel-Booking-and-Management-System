@@ -16,7 +16,7 @@ function ReservationNavbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/PastReservations">
                 Past Reservations
               </a>
             </li>

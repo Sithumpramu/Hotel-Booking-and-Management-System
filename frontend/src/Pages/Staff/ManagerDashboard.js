@@ -33,7 +33,6 @@ function Dashboard() {
         </div>
       </div>
 
-
       <div
         class="d-grid gap-4 col-3 mx-auto"
         style={{ position: "relative", top: "60px" }}
@@ -64,10 +63,16 @@ function Dashboard() {
         </a>
         <a
           href={
-            userEmail && userEmail.includes("eventactivitymanager") ? "" : "#"
+            userEmail &&
+            (userEmail.includes("eventactivitymanager") ||
+              userEmail.includes("activitymanager"))
+              ? ""
+              : "#"
           }
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
-            userEmail && userEmail.includes("eventactivitymanager")
+            userEmail &&
+            (userEmail.includes("eventactivitymanager") ||
+              userEmail.includes("activitymanager"))
               ? ""
               : "disabled"
           }`}
@@ -76,9 +81,7 @@ function Dashboard() {
           Event & Activity Manager
         </a>
         <a
-          href={
-            userEmail && userEmail.includes("inventorymanager") ? "" : "#"
-          }
+          href={userEmail && userEmail.includes("inventorymanager") ? "" : "#"}
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
             userEmail && userEmail.includes("inventorymanager")
               ? ""
@@ -93,9 +96,7 @@ function Dashboard() {
             userEmail && userEmail.includes("kitchenmanager") ? "/CombinedInventory" : "#"
           }
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
-            userEmail && userEmail.includes("kitchenmanager")
-              ? ""
-              : "disabled"
+            userEmail && userEmail.includes("kitchenmanager") ? "" : "disabled"
           }`}
           type="button"
         >
