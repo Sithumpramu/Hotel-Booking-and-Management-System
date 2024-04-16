@@ -1,26 +1,13 @@
 import React from "react";
-import "./App.css";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import './App.css';
 
-
-
-
-import Room from "./Pages/rooms";
-import Reservation from "./Pages/reservation";
-import Details from "./Pages/CustomerDetails"
-
-import Profile from "./Pages/Staff/Profile";
-import Bookings from "./Pages/Staff/Bookings";
-import AddRoom from "./Pages/Staff/AddRoom.js";
-import Mybookings from "./Pages/MyBookings";
-import ManageRoom from "./Pages/Staff/ManageRoom.js";
-//client side pages
-import Home from "./Pages/Home";
-import Signup from "./Pages/signup";
-import Login from "./components/Login";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import PasswordReset from "./Pages/PasswordReset";
+import Home from './Pages/Home';
+import Signup from './Pages/signup';
+import Login from './components/Login';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PasswordReset from './Pages/PasswordReset'
+import {Route, Routes, BrowserRouter} from "react-router-dom";
 import ForgotPassword from "./Pages/ForgotPwd";
 import AddStock from './Pages/Staff/AddStock';
 import KitchenInventory from "./Pages/Staff/KitchenInventory";
@@ -49,31 +36,6 @@ import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 
 //User management
 import AdminDash from "./Pages/Staff/AdminDash";
-import ManagerDash from "./Pages/Staff/ManagerDash";
-import StaffDash from "./Pages/Staff/StaffDash";
-import Staffmanage from "./Pages/Staff/staffManage";
-import Usermanage from "./Pages/Staff/UserManage";
-import AccountManage from "./Pages/Staff/AccountManage";
-import InitialRedirect from "./context/initialDirect";
-import HallList from "./Pages/staff/HallList";
-import ViewHall from "./Pages/staff/ViewHall";
-import EditHall from "./Pages/staff/EditHall";
-
-import HallAdminDash from "./Pages/staff/HallAdminDash";
-import AllHallList from "./Pages/staff/AllHalls";
-import HallReservationForm from "./Pages/staff/HallReservationForm";
-import HallAvailabilty from "./Pages/HallAvailabilty";
-import BookHall from "./Pages/BookHall";
-import HallResources from "./Pages/staff/HallResources";
-
-import AdminBookHall from "./Pages/staff/AllHallRes";
-import Bug from "./Pages/Bug";
-import HallBookingData from "./Pages/HallBookingData";
-import HallCalender from "./Pages/staff/HallCalender";
-import Alldates from "./Pages/staff/Alldates";
-import EditBooking from "./Pages/EditBooking";
-
-
 // Layout component with header and footer
 const Layout = ({ children }) => (
   <div>
@@ -83,6 +45,20 @@ const Layout = ({ children }) => (
   </div>
 );
 
+const Layout2 = ({ children }) => (
+  <div>
+    <DiningNavbar />
+    {children}
+    <Footer />
+  </div>
+);
+
+const Layout3 = ({ children }) => (
+  <div>
+    <RestaurantNavbar />
+    {children}
+  </div>
+);
 function App() {
   return (
     <div className="App">
@@ -158,69 +134,20 @@ function App() {
             element={<AddPayment />}
           />
           <Route
-            path="/AddBulkStock"
-            element={<AddBulkStock />}
-          />
-           <Route
-            path="/BulkStock"
-            element={<BulkStock />}
+            path=""
+            element={<Layout><Home /></Layout>}
           />
           <Route
-            path="/CombinedInventory"
-            element={<CombinedInventory />}
-          />
-          
-          
-          <Route path="/Watersports" element={<WatersportActivities />} />
-
-          <Route path="/ManagerDashboard" element={<Dashboard />} />
-          <Route path="/reservationNavbar" element={<ReservationNavbar />} />
-
-          <Route path="/AddActivity" element={<AddActivity />} />
-          <Route path="/WatersportsManagement" element={<WatersportManage />} />
-          <Route path="/addWatersportsReservation" element={<AddReserv />} />
-          <Route path="/selectActivity" element={<SelectActivity />} />
-          <Route
-            path="/watersportReservations"
-            element={<WatersportReservations />}
-          />
-          <Route path="/DiningReservations" element={<TableReservation />} />
-
-          <Route path="/ReceptionDashboard" element={<ReceptionDashboard />} />
-          <Route path="/AdminDashbord" element={<AdminDash />} />
-          <Route path="/ManagerDash" element={<ManagerDash />} />
-          <Route path="/StaffDashbord" element={<StaffDash />} />
-          <Route path="/Staffmanage" element={<Staffmanage />} />
-          <Route path="/Usermanage" element={<Usermanage />} />
-          <Route path="/Accountmanage" element={<AccountManage />} />
-           <Route
-            path="/halls"
-            element={<HallList />}
+            path="/Signup"
+            element={<Layout><Signup /></Layout>}
           />
           <Route
-            path="/ViewHall/:id"
-            element={<ViewHall />}s
-          />
-           <Route
-            path="/EditHall/:id"
-            element={<EditHall />}
-          />
-          
-            <Route
-            path="/HallAdminDash"
-            element={<HallAdminDash />}
-          />
-         <Route
-            path="/AllHalls"
-            element={<AllHallList/>}
-          />
-            <Route
-            path="/AllHalls"
-            element={<AllHallList/>}
+            path="/Login"
+            element={<Layout><Login /></Layout>}
           />
           <Route
-            path="/AddHall/:id"
-            element={<HallReservationForm/>}
+            path="/ForgotPwd"
+            element={<Layout><ForgotPassword /></Layout>}
           />
           <Route
             path="/availability"
@@ -249,13 +176,135 @@ function App() {
             path="/bookingdata/:id"
             element={<Layout><HallBookingData/></Layout>}
           />
+          <Route path="/AdminDashbord" element={<AdminDash />} />
           <Route
-            path="/HallCalender"
-            element={<HallCalender/>}
+            path="/DiningDashboard"
+            element={
+              <Layout2>
+                <DiningDash />
+              </Layout2>
+            }
           />
-             <Route
-            path="/alldates"
-            element={<Alldates/>}
+          <Route
+            path="/TableReservations"
+            element={
+              <Layout2>
+                <TableReservation />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/AddReservations"
+            element={
+              <Layout2>
+                <AddReservation />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/menu"
+            element={
+              <Layout3>
+                <MenuItems />
+              </Layout3>
+            }
+          />
+
+          <Route
+            path="/addMenu"
+            element={
+              <Layout3>
+                <AddNewMenu />
+              </Layout3>
+            }
+          />
+
+          <Route
+            path="/updateMenu"
+            element={
+              <Layout3>
+                <UpdateMenu />
+              </Layout3>
+            }
+          />
+
+          <Route
+            path="/displaymenu"
+            element={
+              <Layout2>
+                <MenuByCategoryPage />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/displayReservations"
+            element={
+              <Layout2>
+                <ManageTableReservation />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/displayOrders"
+            element={
+              <Layout2>
+                <DisplayOrders />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/AddOrder"
+            element={
+              <Layout2>
+                <AddNewOrder />
+              </Layout2>
+            }
+          />
+          <Route
+            path="/DisplayBuffet"
+            element={
+              <Layout2>
+                <DisplayBuffet />
+              </Layout2>
+            }
+          />
+          <Route path="/navBar" element={<RestaurantNavbar />} />
+          <Route
+            path="/AdminDashboard"
+            element={
+              <Layout3>
+                <AdminDash />
+              </Layout3>
+            }
+          />
+          <Route path="/manageTables" element={<ManageTableReservation />} />
+          <Route
+            path="/manageOrders"
+            element={
+              <Layout3>
+                <ManageOrders />
+              </Layout3>
+            }
+          />
+          <Route
+            path="/manageBuffet"
+            element={
+              <Layout3>
+                <ManageBuffet />
+              </Layout3>
+            }
+          />
+          <Route
+            path="/updateBuffet"
+            element={
+              <Layout3>
+                <UpdateBuffet />
+              </Layout3>
+            }
+          />
+          <Route
+            path="/AdminDashbord"
+            element={<AdminDash />}
           />
             <Route
             path="/editBooking/:id"
