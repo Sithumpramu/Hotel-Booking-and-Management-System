@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 
 const tableSchema = new Schema ({
  Date: {
-    type:Date,
-    default: Date.now,
+    type:String,
     required:true
  },
 
@@ -28,9 +27,9 @@ const tableSchema = new Schema ({
  contactNumber:{
     type: Number,
     required:true
- }
+ },
 
-}, {timestamps:true})
+});
 
 module.exports = mongoose.model('table',tableSchema)
 
