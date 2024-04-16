@@ -19,13 +19,16 @@ const AddNew = () => {
   };
 
   function validation() {
-    var submit = document.getElementById("submit");
+    let valid = true;
+    const errorMessages = [];
 
-    if (Activity === "" && Time === "" && Price === "" && Description === "" && qtyPerRound === "" && ExtraPrice === "") {
-      // document.getElementById("emailError").innerHTML = "Can't be empty";
-
-      document.getElementById("Error").innerHTML = "All fields must be filled.";
+    if (!Activity || !Time || !Price || !Description || !qtyPerRound || !ExtraPrice) {
+      errorMessages.push("All fields must be filled.");
+      valid = false;
     }
+
+    document.getElementById("Error").innerHTML = errorMessages.join(" ");
+    return valid;
   }
 
   return (
@@ -76,6 +79,7 @@ const AddNew = () => {
                   type="number"
                   className="form-control"
                   id="exampleInputEmail1"
+                  min="0"
                   aria-describedby="emailHelp"
                   onChange={(e) => {
                     setPrice(e.target.value);
@@ -104,6 +108,7 @@ const AddNew = () => {
                   type="number"
                   className="form-control"
                   id="qtyPerRound"
+                  min="0"
                   aria-describedby="emailHelp"
                   onChange={(e) => {
                     setqtyPerRound(e.target.value);
@@ -118,6 +123,7 @@ const AddNew = () => {
                   type="number"
                   className="form-control"
                   id="ExtraPrice"
+                  min="0"
                   onChange={(e) => {
                     setExtraPrice(e.target.value);
                   }}
