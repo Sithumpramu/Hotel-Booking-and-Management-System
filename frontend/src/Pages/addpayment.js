@@ -50,7 +50,7 @@ function AddPayment() {
     return (
         <div className="add-paym">
             <form onSubmit={handleSubmit}>
-                <h2>Payment Form</h2>
+                <h2 className='hed2'>Payment Form</h2>
                 <label>Customer Name:</label>
                 <input type="text" id="c_name" name="c_name" value={formData.c_name} onChange={handleOnChange} /><br />
                 <label>Email:</label>

@@ -56,7 +56,7 @@ export const useLogin = () => {
         navigation('/ReceptionDashboard')  
         break;
       default:
-        navigation('/');
+        navigation(-1);
     }
   };
 

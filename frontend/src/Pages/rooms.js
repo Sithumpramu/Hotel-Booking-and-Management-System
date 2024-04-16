@@ -39,6 +39,7 @@ function Rooms() {
     }
 
     // If token is present
+    else{
     navigate("/CustomerDetails", {
       state: {
         Rid: roomId,
@@ -47,7 +48,7 @@ function Rooms() {
         NoOfGuests,
         price: price,
       },
-    });
+    });}
   };
 
   localStorage.removeItem("prevPath");
