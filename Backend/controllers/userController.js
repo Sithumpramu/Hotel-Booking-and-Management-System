@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose')
 const User = require('../Models/userModel')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
-const nodemailer = require('nodemailer')
+const { sendEmail } = require('../Utils/email');
 
 const createToken = (_id) => {
   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
@@ -10,25 +10,42 @@ const createToken = (_id) => {
 
 // login a user
 const loginUser = async (req, res) => {
-  const {email, password} = req.body
+  const { email, password } = req.body;
 
   try {
-    const user = await User.login(email, password)
+    const user = await User.login(email, password);
 
-    // create a token
-    const token = createToken(user._id)
-    res.status(200).json({email, token})
+    // Determine the user's role
+    const role = determineRole(email);
+
+    // Create a token
+    const token = createToken(user._id);
+
+    res.status(200).json({ email, token, role });
   } catch (error) {
-    res.status(400).json({error: error.message})
+    res.status(400).json({ error: error.message });
   }
-}
+};
+
+const determineRole = (email) => {
+  // login based on the email
+  if (email.includes('admin')) {
+    return 'admin';
+  } else if (email.includes('manager')) {
+    return 'manager';
+  } else if (email.includes('staff')) {
+    return 'staff';
+  }else{
+    return 'user'
+  }
+};
 
 // signup a user
 const signupUser = async (req, res) => {
-  const {email, password,name} = req.body
+  const {email, password,name,role,isAdminCreation} = req.body
 
   try {
-    const user = await User.signup(email, password,name)
+    const user = await User.signup(email, password,name,role,isAdminCreation)
 
     // create a token
     const token = createToken(user._id)
@@ -40,34 +57,11 @@ const signupUser = async (req, res) => {
 }
 
 
-//get all users
-const getuser = async (req,res) =>{
-  const user = await User.find({})//get all data
-  res.status(200).json(user)//send to browser
-}
-
-//get single user
-const getsingleuser = async (req,res) =>{
-
-  const {id} = req.params
-
-  if(!mongoose.Types.ObjectId.isValid(id)){
-    res.status(404).json({error: 'invalid id'})
-  }
-
-  const user = await User.findById(id)
-
-  if(!user){
-    res.status(404).json({error: 'No such user'})
-  }
-
-  res.status(200).json(user)
-}
 
 
 //delete user
 const deleteuser = async (req, res) => {
-  const { email } = req.params; // Change id to email
+  const { email } = req.params; 
 
   if (!email) {
     return res.status(400).json({ error: 'Invalid email' });
@@ -165,34 +159,19 @@ const forgotpwd = async (req,res)=>{
   //hash
   user.hashtoken= crypto.createHash('sha256').update(resettoken).digest('hex');
  
-  user.hashtokenexpires =  Date.now() + 60000000; 
+  user.hashtokenexpires =  Date.now() + 600000; 
   await user.save()
-
-  console.log(resettoken)
  
 
-  const transporter = nodemailer.createTransport({
-    host:process.env.EmailHost,
-    port:process.env.EmailPort,
-    auth:{
-       user:process.env.EmailUser,
-       pass:process.env.EmailPassword,
-    }
-  })
-
-  
-  const mailOptions = {
-    from: "support@Cd.com",
-    to: email,
-    subject: 'Password Reset',
-    text: 'You are receiving this email because you (or someone else) have requested to reset the password for your account.\n\n'
+   const subject= 'Password Reset';
+   const text= 'You are receiving this email because you (or someone else) have requested to reset the password for your account.\n\n'
     + `Please click on the following link, or paste it into your browser to complete the process:\n\n`
     + `http://localhost:3000/user/resetPassword/${resettoken}\n\n`
-    + `If you did not request this, please ignore this email and your password will remain unchanged.`,
-  }
+    + `If you did not request this, please ignore this email and your password will remain unchanged.`;
   
   
-    await transporter.sendMail(mailOptions);
+  
+    await sendEmail(email,subject,text);
     res.status(200).json({ status: 'Password reset link sent to your email' });
 
     } catch (error) {
@@ -258,4 +237,79 @@ try{
   }
 
 
-module.exports = { signupUser, loginUser, getuser, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}
+
+
+
+
+  //get managers
+const getmanagers = async (req,res) =>{
+  try {
+      const selectedFields = ['name' ,'email', 'role'];
+      const staffMembers = await User.find({ role: 'manager' }).select(selectedFields);
+  
+      if (staffMembers.length === 0) {
+        return res.status(404).json({ message: 'No manager members found' });
+      }
+  
+      res.status(200).json(staffMembers);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+  
+  const getstaff = async (req,res) =>{
+    try {
+        const selectedFields = ['name' ,'email', 'role'];
+        const staffMembers = await User.find({ role: 'staff' }).select(selectedFields);
+  
+        if (staffMembers.length === 0) {
+          return res.status(404).json({ message: 'No staff members found' });
+        }
+    
+        res.status(200).json(staffMembers);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    };
+  
+  
+    const getusers = async (req,res) =>{
+      try {
+          const selectedFields = ['name' ,'email'];
+          const userMembers = await User.find({ role: 'user' }).select(selectedFields);
+    
+          if (userMembers.length === 0) {
+            return res.status(404).json({ message: 'No members found' });
+          }
+      
+          res.status(200).json(userMembers);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal server error' });
+        }
+      };
+    
+  
+  //get single user
+  const getsingleuser = async (req,res) =>{
+  
+    const {id} = req.params
+  
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      res.status(404).json({error: 'invalid id'})
+    }
+  
+    const user = await User.findById(id)
+  
+    if(!user){
+      res.status(404).json({error: 'No such user'})
+    }
+  
+    res.status(200).json(user)
+  }
+  
+
+
+module.exports = { signupUser, loginUser, getmanagers ,getusers ,  getstaff, getsingleuser, deleteuser, Updateuserpwd, forgotpwd, resetpwd}
