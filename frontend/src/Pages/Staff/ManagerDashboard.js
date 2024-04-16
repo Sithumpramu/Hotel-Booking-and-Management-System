@@ -81,7 +81,7 @@ function Dashboard() {
           Event & Activity Manager
         </a>
         <a
-          href={userEmail && userEmail.includes("inventorymanager") ? "" : "#"}
+          href={userEmail && userEmail.includes("inventorymanager") ? "RoomManagerView" : "#"}
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
             userEmail && userEmail.includes("inventorymanager")
               ? ""

@@ -38,6 +38,7 @@ function UserManage(){
       <div><input
                 type="search"
                 placeholder="Search by name..."
+                className="form-control"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               /></div>

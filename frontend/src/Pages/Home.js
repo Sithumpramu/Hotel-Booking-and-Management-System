@@ -249,7 +249,7 @@ function Home(){
              <div className="card-img-overlay">
                
                <h4 className="card-text">"Experience comfort beyond measure, book your stay today!"</h4>
-               <a href="" className="text-white fw-bold btn btn-outline-primary">Book Now</a>
+               <a href="/reservation" className="text-white fw-bold btn btn-outline-primary">Book Now</a>
              </div>
            </div>
 
