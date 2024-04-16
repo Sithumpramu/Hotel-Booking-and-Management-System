@@ -2,6 +2,18 @@ import React from "react";
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+
+
+
+import Room from "./Pages/rooms";
+import Reservation from "./Pages/reservation";
+import Details from "./Pages/CustomerDetails"
+
+import Profile from "./Pages/Staff/Profile";
+import Bookings from "./Pages/Staff/Bookings";
+import AddRoom from "./Pages/Staff/AddRoom.js";
+import Mybookings from "./Pages/MyBookings";
+import ManageRoom from "./Pages/Staff/ManageRoom.js";
 //client side pages
 import Home from "./Pages/Home";
 import Signup from "./Pages/signup";
@@ -73,6 +85,47 @@ function App() {
           <Route
             path="/user/resetPassword/:token"
             element={<PasswordReset />}
+          />
+          <Route
+            path="/rooms"
+            element={<Layout><Room/></Layout>}
+          />
+
+          <Route
+            path="/reservation"
+            element={<Layout><Reservation/></Layout>}
+          />
+
+           <Route
+            path="/CustomerDetails"
+            element={<Layout><Details/></Layout>}
+          />
+
+
+
+           <Route
+            path="/Profile"
+            element={<Profile/>}
+          />
+
+           <Route
+            path="/Bookings"
+            element={<Bookings/>}
+          />
+
+          <Route
+            path="/AddRoom"
+            element={<AddRoom/>}
+          />
+
+           <Route
+            path="/MyBookings"
+            element={<Layout><Mybookings/></Layout>}
+          />
+
+           <Route
+            path="/ManageRoom"
+            element={<ManageRoom/>}
           />
           <Route
             path="/AddStock"

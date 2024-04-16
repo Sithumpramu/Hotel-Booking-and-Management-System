@@ -14,6 +14,9 @@ const WatersportReservationRoutes = require("./Routes/WatersportReservation");
 const diningReservationRoutes = require("./Routes/DiningReservation");
 
 const hotelRoutes = require("./Routes/HotelSchema");
+const RoomReservation = require('./Routes/RoomReservation')
+const room = require('./Routes/room')
+
 
 // express app
 const app = express();
@@ -39,6 +42,9 @@ app.use("/table", diningReservationRoutes);
 
 
 app.use("/hotel", hotelRoutes);
+app.use('/roomreservation', RoomReservation)
+app.use('/room', room)
+
 
 // connect to db
 mongoose
@@ -52,8 +58,6 @@ mongoose
   .catch((error) => {
     console.log(error)
   })
-  
-
 
 
 
