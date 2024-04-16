@@ -10,9 +10,10 @@ function Forgotpassword(){
     forgotPassword ();
   };
   return (
-    <div className='vh-100 container d-flex align-items-center justify-content-center'>
-      <div><h2>Forgot Password</h2></div>
-      <div className="container bg-body-tertiary w-50 pt-4 rounded">
+    <div className='vh-100 container-fluid d-flex align-items-center' style={{backgroundImage: 'url("Wave.svg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <div className='row w-100'>
+      <div className='col-6 container bg-body-tertiary ms-4 border d-flex align-items-center justify-content-center '><h3>Forgot Password</h3></div> 
+      <div className="container bg-body-tertiary w-50 py-4 col">
       <form onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Enter Registered Email address</label>
@@ -25,6 +26,7 @@ function Forgotpassword(){
       {status && <div className="error bg-primary my-2" style={{color:"white"}}>{status}</div>}
       </form>
       </div>
+    </div>
     </div>
   );
   }

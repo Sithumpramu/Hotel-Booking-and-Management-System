@@ -1,15 +1,10 @@
 require("dotenv").config();
 
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const userRoutes = require("./Routes/user");
-const staffRoutes = require("./Routes/staff");
-const tableRoutes = require("./Routes/table");
-const menuRoutes = require("./Routes/menu");
-const orderRoutes = require("./Routes/order")
-const buffetRoutes = require("./Routes/buffet")
-
+const express = require('express')
+const cors = require('cors');
+const mongoose = require('mongoose')
+const userRoutes = require('./Routes/user')
+const staffRoutes = require('./Routes/staff')
 // express app
 const app = express();
 
@@ -24,12 +19,8 @@ app.use((req, res, next) => {
 
 // routes
 
-app.use("/user", userRoutes);
-app.use("/staff", staffRoutes);
-app.use("/table", tableRoutes);
-app.use("/menu", menuRoutes);
-app.use("/order", orderRoutes);
-app.use("/buffet", buffetRoutes);
+app.use('/user', userRoutes)
+app.use('/staff',staffRoutes)
 // connect to db
 mongoose
   .connect(process.env.MONGODB_URL)
