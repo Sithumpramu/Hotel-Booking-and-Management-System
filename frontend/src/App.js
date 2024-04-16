@@ -40,10 +40,12 @@ import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";
 import Details from "./Pages/CustomerDetails"
 import Profile from "./Pages/Staff/Profile";
+import RestaurantNavbar from "./components/RestaurantManagerNavbar";
 import Bookings from "./Pages/Staff/Bookings";
 import AddRoom from "./Pages/Staff/AddRoom.js";
 import Mybookings from "./Pages/MyBookings";
 import ManageRoom from "./Pages/Staff/ManageRoom.js";
+import DiningNavbar from "./components/DiningNavbar";
 import RoomManagerView from "./Pages/Inventory/RoomManagerView";
 import Offer from "./Pages/OffersPackages/offerPackage";
 import AddNewOffer from "./Pages/OffersPackages/addOffer";
@@ -83,6 +85,20 @@ const Layout = ({ children }) => (
     {children}
     <Footer />
   </div>)
+  const Layout2 = ({ children }) => (
+    <div>
+      <DiningNavbar />
+      {children}
+      <Footer />
+    </div>
+  );
+  
+  const Layout3 = ({ children }) => (
+    <div>
+      <RestaurantNavbar />
+      {children}
+    </div>
+  );
 
 function App() {
   return (
@@ -103,7 +119,7 @@ function App() {
           <Route path="/Accountmanage" element={<AccountManage />} />
 
 
-          <Route path="/DiningDashboard" element={<DiningDash />} />
+          <Route path="/DiningDashboard" element={<Layout2><DiningDash /></Layout2>} />
           <Route path="/TableReservations" element={<TableReservation />} />
           <Route path="/AddReservations" element={<AddReservation />} />
           <Route path="/menu" element={<MenuItems />} />
