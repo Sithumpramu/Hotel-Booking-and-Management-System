@@ -8,9 +8,16 @@ const TableReservation = () => {
   const { deleteTableReservation } = useDeleteReservation();
   const { updateReservation } = useUpdateReservation();
   const [idToDelete, setidToDelete] = useState("");
-  
+
   const [filterDate, setFilterDate] = useState(""); // State variable to store the filtered date
   const [nameToDelete, setNameToDelete] = useState("");
+
+  const [IdToUpdate, setIdToUpdate] = useState("");
+  const [Date, setDate] = useState("");
+  const [Name, setName] = useState("");
+  const [Capacity, setCapacity] = useState("");
+  const [email, setemail] = useState("");
+  const [contactNumber, setcontactNumber] = useState("");
 
   // Filtering function
   const filteredTableList = TableList.filter((table) => {
@@ -21,7 +28,7 @@ const TableReservation = () => {
     setFilterDate(e.target.value);
   };
 
- /* const getUpdateData = (Table) => {
+  const getUpdateData = (Table) => {
     // Your existing code for updating data
     setIdToUpdate(Table._id);
     setDate(Table.Date);
@@ -42,7 +49,7 @@ const TableReservation = () => {
       contactNumber
     );
   };
-*/
+
   const handleDelete = async () => {
     await deleteTableReservation(idToDelete);
     console.log(isLoading, "handleDelete loading");
@@ -93,18 +100,92 @@ const TableReservation = () => {
           <tbody>
             {filteredTableList.map((Table) => (
               <tr key={Table._id} className="border border-black" scope="col">
-                <td>{Table.Date}</td>
-                <td>{Table.Name}</td>
-                <td>{Table.Capacity}</td>
-                <td>{Table.email}</td>
-                <td>{Table.contactNumber}</td>
                 <td>
+                  {IdToUpdate === Table._id ? (
+                    <input
+                      className="tabledit-input form-control input-sm"
+                      type="Date"
+                      name="Date"
+                      defaultValue={Table.Date}
+                      disabled=""
+                      onChange={(e) => {
+                        setDate(e.target.value);
+                      }}
+                    ></input>
+                  ) : (
+                    <td>{Table.Date}</td>
+                  )}
+                </td>
+                <td>
+                  {IdToUpdate === Table._id ? (
+                    <input
+                      className="tabledit-input form-control input-sm"
+                      type="text"
+                      name="Name"
+                      defaultValue={Table.Name}
+                      disabled=""
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    ></input>
+                  ) : (
+                    <td>{Table.Name}</td>
+                  )}
+                </td>
+                <td>
+                  {IdToUpdate === Table._id ? (
+                    <input
+                      className="tabledit-input form-control input-sm"
+                      type="number"
+                      name="Capacity"
+                      defaultValue={Table.Capacity}
+                      disabled=""
+                      onChange={(e) => {
+                        setCapacity(e.target.value);
+                      }}
+                    ></input>
+                  ) : (
+                    <td>{Table.Capacity}</td>
+                  )}
+                </td>
 
+                <td>
+                  {IdToUpdate === Table._id ? (
+                    <input
+                      className="tabledit-input form-control input-sm"
+                      type="email"
+                      name="email"
+                      defaultValue={Table.email}
+                      disabled=""
+                      onChange={(e) => {
+                        setemail(e.target.value);
+                      }}
+                    ></input>
+                  ) : (
+                    <td>{Table.email}</td>
+                  )}
+                </td>
 
+                <td>
+                  {IdToUpdate === Table._id ? (
+                    <input
+                      className="tabledit-input form-control input-sm"
+                      type="number"
+                      name="contactNumber"
+                      defaultValue={Table.contactNumber}
+                      disabled=""
+                      onChange={(e) => {
+                        setcontactNumber(e.target.value);
+                      }}
+                    ></input>
+                  ) : (
+                    <td>{Table.contactNumber}</td>
+                  )}
+                </td>
+
+                <td>
                   {/* Your update and delete buttons */}
 
-               
-                
                   <button
                     type="button"
                     class="btn btn-primary  mt-5"
@@ -115,6 +196,26 @@ const TableReservation = () => {
                   >
                     Cancel Reservation
                   </button>
+                </td>
+
+                <td>
+                  {IdToUpdate === Table._id ? (
+                    <a
+                      href="#"
+                      className="btn btn-primary"
+                      onClick={() => updateDetails()}
+                    >
+                      Save
+                    </a>
+                  ) : (
+                    <a
+                      href="#"
+                      className="btn btn-primary"
+                      onClick={() => getUpdateData(Table)}
+                    >
+                      Update Details
+                    </a>
+                  )}
                 </td>
               </tr>
             ))}
@@ -167,9 +268,7 @@ const TableReservation = () => {
           </div>
         </div>
       </div>
-
     </div>
-   
   );
 };
 
