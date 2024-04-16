@@ -28,6 +28,7 @@ import DisplayBuffet from "./Pages/DisplayBuffet"
 import ManageOrders from "./Pages/Staff/DisplayOrders"
 import ManageBuffet from "./Pages/Staff/ManageBuffets"
 import UpdateBuffet from "./Pages/Staff/UpdateBuffet"
+import AddBuffet from "./Pages/Staff/AddBuffet"
 
 
 // Layout component with header and footer
@@ -149,6 +150,10 @@ function App() {
          <Route
             path="/updateBuffet"
             element={<Layout3><UpdateBuffet /></Layout3>}
+          />
+           <Route
+            path="/addBuffet"
+            element={<Layout3><AddBuffet /></Layout3>}
           />
         </Routes>
       </BrowserRouter>

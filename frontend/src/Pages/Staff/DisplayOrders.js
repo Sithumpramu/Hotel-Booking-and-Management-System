@@ -59,7 +59,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.productName}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
@@ -70,7 +70,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.Quantity}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
@@ -81,7 +81,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.Price}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
@@ -92,7 +92,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.cusName}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
@@ -103,7 +103,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.email}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 
@@ -114,7 +114,7 @@ const ManageOrders = () => {
                     type="Text"
                     name="Name"
                     defaultValue={Order.contactNumber}
-                    disabled=""
+                    readOnly
                   ></input>
                 </td>
 

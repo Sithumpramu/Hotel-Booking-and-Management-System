@@ -15,6 +15,15 @@ const ManageBuffet = () => {
     return <div>Error: {error}</div>;
   }
 
+  const bufferToBase64 = (buf) => {
+    var binstr = Array.prototype.map
+      .call(buf, function (ch) {
+        return String.fromCharCode(ch);
+      })
+      .join("");
+    return btoa(binstr);
+  };
+
   const handleDelete = async () => {
     await deleteBuffetItem(id);
     console.log(isLoading, "handleDelete loading");
@@ -24,35 +33,56 @@ const ManageBuffet = () => {
   return (
     <div>
      <h1 class="topic mb-5">Buffet Management</h1>
-      <div className='card'>
-        
-        {buffetItems.map((item) => (
-            <div className='card'>
-          <div key={item._id}>
-            <h2>{item.BuffetName}</h2>
-            <p>{item. Description}</p>
-            <h4>{item.Time}</h4>
-            <h5>Price: Rs.{item.Price}.00</h5>
-            <button
-                    type="button"
-                    class="btn btn-primary  mt-5"
-                    className="btn btn-danger"
-                    data-bs-toggle="modal"
-                    data-bs-target="#Modal"
-                    onClick={() => setidToDelete(item._id)}
-                  >
-                    Delete Buffet Details
-                  </button>
-                  <a className="btn btn-primary"
+
+     <a href="/addBuffet" className="btn btn-info mb-5">
+            Add New Buffet
+          </a>
+
+     <div className="row d-flex align-items-center justify-content-around mb-3">
+            {buffetItems.map((item) => (
+              <div key={item._id} className="col-lg-3">
+                <div className="card mb-4">
+                  <div className="card-body">
+                    {item.Image && item.Image.data && (
+                      <img
+                      style={{ width: "10rem" }}
+                      src={`data:${
+                        item.Image.contentType
+                      };base64,${bufferToBase64(item.Image.data.data)}`}
+                      className="card-img-top mb-1"
+                      alt={item.Image}
+                    />
+                    )}
+                    <h2 className="card-title">{item.BuffetName}
+                    </h2>
+                    <p className="card-text fw-medium">
+                    {item. Description}
+                    </p>
+                    <h4>{item.Time}</h4>
+
+                    <h5>Price: Rs.{item.Price}.00</h5>
+
+                    <a
+                      href="#"
+                      className="btn btn-danger "
+                      data-bs-toggle="modal"
+                      data-bs-target="#Modal"
                       onClick={() => setidToDelete(item._id)}
+                    >
+                     Delete Buffet Details
+                    </a>
+                    <a className="btn btn-primary"
+                      //onClick={() => getUpdateMenu(item._id)}
                       href="/updateBuffet"
                     >Update</a>
+                  </div>
+                </div>
+              </div>
+            ))}
 
-            {/* Add more details as needed */}
-          </div></div>
-        ))}
-      </div>
-    
+            
+            {/* </div> */}
+          </div>
     {/*delete model  */}
     <div
     className="modal fade"
@@ -91,7 +121,7 @@ const ManageBuffet = () => {
               className="btn btn-outline-danger"
               onClick={handleDelete}
             >
-              CANCEL
+             Delete
             </button>
           </form>
         </div>

@@ -19,17 +19,17 @@ const createBuffet= async (req, res) => {
   const { BuffetName,  Description, Time, Price } = req.body;
   let imageData = {};
 
-  // console.log(req.file, "file");
+   console.log(req.file, "file");
 
-  // if (req.file) {
-  //   //Assuming the file is uploaded and accessible via req.file
-  //   imageData = {
-  //     data: req.file.buffer, // Buffer containing file data
-  //     contentType: req.file.mimetype, // Mime type of the file
-  //   };
-  // } else {
-  //   return res.status(400).json({ error: "No image file provided." });
-  // }
+  if (req.file) {
+     //Assuming the file is uploaded and accessible via req.file
+    imageData = {
+      data: req.file.buffer, // Buffer containing file data
+      contentType: req.file.mimetype, // Mime type of the file
+    };
+   } else {
+    return res.status(400).json({ error: "No image file provided." });
+  }
 
   try {
     const buffet = await Buffet.create({
@@ -37,7 +37,7 @@ const createBuffet= async (req, res) => {
         Description,
         Time,
         Price,
-      // Image: imageData, // Store the image data directly
+        Image: imageData, // Store the image data directly
     });
     res.status(201).json(buffet); // Respond with the created document
   } catch (error) {

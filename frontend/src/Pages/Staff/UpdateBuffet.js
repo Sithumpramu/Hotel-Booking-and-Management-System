@@ -29,7 +29,7 @@ function UpdateBuffet() {
              className="bg-primary bg-opacity-50"
               onSubmit={handleupdate}
               method="Post"
-              style={{ width: "18rem" }}
+              style={{ width: "25rem" }}
             >
               <div className="mb-3">
                 <label for="ProductName" className="form-label mt-3">

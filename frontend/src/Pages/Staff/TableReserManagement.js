@@ -59,8 +59,7 @@ const ManageTableReservation = () => {
                       type="Date"
                       name="Date"
                       defaultValue={Table.Date}
-                      disabled=""
-                     
+                      readOnly
                     ></input>
                   
                 </td>
@@ -72,7 +71,8 @@ const ManageTableReservation = () => {
                       type="Text"
                       name="Name"
                       defaultValue={Table.Name}
-                      disabled=""
+                      readOnly
+
                     ></input>
                   
                 </td>
@@ -84,7 +84,7 @@ const ManageTableReservation = () => {
                       type="number"
                       name="Capacity"
                       defaultValue={Table.Capacity}
-                      disabled=""
+                      readOnly
                      
                     ></input>
                   
@@ -97,7 +97,7 @@ const ManageTableReservation = () => {
                       type="email"
                       name="email"
                       defaultValue={Table.email}
-                      disabled=""
+                      readOnly
                       
                     ></input>
                  
@@ -110,7 +110,7 @@ const ManageTableReservation = () => {
                       type="Number"
                       name="contactNumber"
                       defaultValue={Table.contactNumber}
-                      disabled=""
+                      readOnly
                      
                     ></input>
                   
