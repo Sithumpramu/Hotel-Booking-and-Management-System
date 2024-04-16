@@ -17,6 +17,9 @@ const hotelRoutes = require("./Routes/HotelSchema");
 const RoomReservation = require('./Routes/RoomReservation')
 const room = require('./Routes/room')
 
+const  hallRoutes  =require('./Routes/hallRoutes');
+
+const HallReservations =require('./Routes/hallReservations')
 
 // express app
 const app = express();
@@ -45,6 +48,8 @@ app.use("/hotel", hotelRoutes);
 app.use('/roomreservation', RoomReservation)
 app.use('/room', room)
 
+app.use('/hall',hallRoutes)
+app.use('/hallR',HallReservations)
 
 // connect to db
 mongoose

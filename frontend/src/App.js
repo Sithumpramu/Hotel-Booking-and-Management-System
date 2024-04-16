@@ -55,6 +55,24 @@ import Staffmanage from "./Pages/Staff/staffManage";
 import Usermanage from "./Pages/Staff/UserManage";
 import AccountManage from "./Pages/Staff/AccountManage";
 import InitialRedirect from "./context/initialDirect";
+import HallList from "./Pages/staff/HallList";
+import ViewHall from "./Pages/staff/ViewHall";
+import EditHall from "./Pages/staff/EditHall";
+
+import HallAdminDash from "./Pages/staff/HallAdminDash";
+import AllHallList from "./Pages/staff/AllHalls";
+import HallReservationForm from "./Pages/staff/HallReservationForm";
+import HallAvailabilty from "./Pages/HallAvailabilty";
+import BookHall from "./Pages/BookHall";
+import HallResources from "./Pages/staff/HallResources";
+
+import AdminBookHall from "./Pages/staff/AllHallRes";
+import Bug from "./Pages/Bug";
+import HallBookingData from "./Pages/HallBookingData";
+import HallCalender from "./Pages/staff/HallCalender";
+import Alldates from "./Pages/staff/Alldates";
+import EditBooking from "./Pages/EditBooking";
+
 
 // Layout component with header and footer
 const Layout = ({ children }) => (
@@ -175,6 +193,85 @@ function App() {
           <Route path="/Staffmanage" element={<Staffmanage />} />
           <Route path="/Usermanage" element={<Usermanage />} />
           <Route path="/Accountmanage" element={<AccountManage />} />
+           <Route
+            path="/halls"
+            element={<HallList />}
+          />
+          <Route
+            path="/ViewHall/:id"
+            element={<ViewHall />}s
+          />
+           <Route
+            path="/EditHall/:id"
+            element={<EditHall />}
+          />
+          
+            <Route
+            path="/HallAdminDash"
+            element={<HallAdminDash />}
+          />
+         <Route
+            path="/AllHalls"
+            element={<AllHallList/>}
+          />
+            <Route
+            path="/AllHalls"
+            element={<AllHallList/>}
+          />
+          <Route
+            path="/AddHall/:id"
+            element={<HallReservationForm/>}
+          />
+          <Route
+            path="/availability"
+            element={<HallAvailabilty/>}
+          />
+             <Route
+            path="/bookHall"
+            element={<BookHall/>}
+          />
+           <Route
+            path="/HallResource"
+            element={<HallResources/>}
+          />
+           <Route
+            path="/AllReservations"
+            element={<AdminBookHall/>}
+          />
+          
+           <Route
+            path="/AllReservations"
+            element={<AdminBookHall/>}
+          />
+            
+          
+             <Route
+            path="/bookingdata/:id"
+            element={<Layout><HallBookingData/></Layout>}
+          />
+          <Route
+            path="/HallCalender"
+            element={<HallCalender/>}
+          />
+             <Route
+            path="/alldates"
+            element={<Alldates/>}
+          />
+            <Route
+            path="/editBooking/:id"
+            element={<EditBooking/>}
+          />
+            
+      
+          
+         
+          
+         
+        
+        
+        
+        
+         
         </Routes>
       </BrowserRouter>
     </div>
