@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { uselocation, useState } from "react";
 import useMenuByCategory from "../hooks/useDisplayMenu";
+import { useNavigate } from 'react-router-dom';
 
 const bufferToBase64 = (buf) => {
   var binstr = Array.prototype.map
@@ -14,6 +15,9 @@ const MenuDisplay = () => {
   const [category, setCategory] = useState("");
   //const { menuList, isLoading, error } = useMenuList(category);
   const { menuItems, isLoading, error } = useMenuByCategory(category);
+  const navigate = useNavigate();
+  const [productname, setProduct] = useState('');
+  const [price, setprice] = useState('');
 
   const handleCategoryChange = (selectedCategory) => {
     setCategory(selectedCategory);
@@ -26,6 +30,24 @@ const MenuDisplay = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+
+ // MenuDisplay.js
+const handleSelect = (name, price) => {
+  // Call the token check function before navigating
+  CheckAndNavigate(name, price);
+};
+
+const CheckAndNavigate = (name, price) => {
+  // If token is present
+  navigate('/AddOrder', {
+    state: {
+      productname: name,
+      price: price
+    }
+  });
+};
+
 
   return (
     <div>
@@ -62,10 +84,10 @@ const MenuDisplay = () => {
                       alt={menu.productName}
                     />
                   )}
-                  <h5 className="card-title">{menu.productName}</h5>
-                  <p className="card-text fw-medium">Rs.{menu.Price}.00</p>
+                  <h5 className="card-title" onChange={(e) => setProduct(e.target.value)} >{menu.productName}</h5>
+                  <p className="card-text fw-medium" onChange={(e) => setprice(e.target.value)} >Rs.{menu.Price}.00</p>
                   <p className="card-text fw-medium">{menu.category}</p>
-                  <a href="/AddOrder" className="btn btn-info mb-5">
+                  <a href="/AddOrder" className="btn btn-info mb-5" onClick={() => handleSelect(menu.productName, menu.Price)}>
                     Order Now
                   </a>
                 </div>

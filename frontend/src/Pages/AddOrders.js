@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import useAddOrder from "../hooks/useAddOrder";
+import { useLocation } from "react-router-dom"; // Correct import statement
 
 function AddNewOrder() {
     const [productName, setproductName] = useState("");
@@ -10,6 +11,10 @@ function AddNewOrder() {
     const [contactNumber, setcontactNumber] = useState("");
     const [formError, setFormError] = useState("");
     const { AddOrder, isLoading, error } = useAddOrder();
+    
+    const location = useLocation(); // Correct usage
+
+    const { productname, price } = location.state || {};
 
     const handleSubmit = async (e) => {
         //await AddResev(Date, Name, Capacity, email, ContactNumber);
@@ -40,32 +45,35 @@ function AddNewOrder() {
                 onSubmit={handleSubmit}
                 style={{ width: "25rem" }}
             >
-                <lable className="form-label mt-3">Enter productName:</lable>
+                <label className="form-label mt-3">Enter productName:</label>
                 <input
                     type="text"
                     id="productName"
                     name="productName"
                     className="form-control"
+                    value={productname}
                     onChange={(e) => setproductName(e.target.value)}
                 />
 
-                <lable className="form-label mt-3">Quantity:</lable>
+                <label className="form-label mt-3">Quantity:</label>
                 <input
                     type="number"
                     className="form-control"
+                    value={1}
                     onChange={(e) => setQuantity(e.target.value)}
                 />
-                <lable className="form-label mt-3">Price:</lable>
+                <label className="form-label mt-3">Price:</label>
                 <input
                     type="number"
                     className="form-control"
                     id="Price"
+                    value={price}
                     onChange={(e) => {
                         setPrice(e.target.value);
                     }}
                 />
 
-                <lable className="form-label mt-3">Enter Customer Name:</lable>
+                <label className="form-label mt-3">Enter Customer Name:</label>
                 <input
                     type="text"
                     className="form-control"
@@ -74,7 +82,7 @@ function AddNewOrder() {
 
 
 
-                <lable className="form-label mt-3">Email:</lable>
+                <label className="form-label mt-3">Email:</label>
                 <input
                     type="email"
                     id="email"
@@ -83,7 +91,7 @@ function AddNewOrder() {
                     onChange={(e) => setemail(e.target.value)}
                 />
 
-                <lable className="form-label mt-3">Contact Number:</lable>
+                <label className="form-label mt-3">Contact Number:</label>
                 <input
                     type="number"
                     className="form-control"
