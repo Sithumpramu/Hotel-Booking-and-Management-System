@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHotel, faCalendarAlt, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import "./halllist.css";
 import { Link } from 'react-router-dom';
+import HallAdminsidebar from '../../components/HallAdminSidebar';
 
 function HallAdminDash() {
   const [reservationCount, setReservationCount] = useState(0);
@@ -34,8 +35,14 @@ function HallAdminDash() {
   
 
   return (
-    <div className="bg-white">
-      <NewHallDash />
+    
+      <div className="row">
+      
+          <HallAdminsidebar />
+       
+        <div className="col-md-9">
+    <div className="">
+   
       <div className="">
         <div className="row justify-content-center mt-5">
           <div className="col-md-3 mb-4 ">
@@ -68,7 +75,7 @@ function HallAdminDash() {
             <div className="card h-100 rounded bg-light">
               <div className="card-body d-flex flex-column align-items-center justify-content-center">
                 <h5 className="card-title pt-5 pb-5"><FontAwesomeIcon icon={faDatabase} className="mr-2" />Resources</h5>
-                <Link to="/HallResource" className="btn btn-primary">View</Link>
+                <Link to="/HallResource" className="btn btn-primary" >View</Link>
               </div>
             </div>
           </div>
@@ -76,6 +83,9 @@ function HallAdminDash() {
         </div>
       </div>
     </div>
+    </div>
+    </div>
+   
   );
 }
 

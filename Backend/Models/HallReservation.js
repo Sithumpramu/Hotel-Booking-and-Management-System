@@ -11,42 +11,33 @@ const hallReserveSchema = new Schema({
         // Change type to ObjectId
         type:String, // Reference the Hall model
         required: true
-    },
-    email: {
+    },email: {
        type:String, // Change type to ObjectId
        // Reference the User model
         required: true
-    },
-     eventtype:{
+    },eventtype:{
         type:String,
         require:true
-    },
-    capacity:{
+    },capacity:{
           type:String,
           require:true
-    },
-    selectdate: {
+    },selectdate: {
         type: String,
         required: true
-    },
-    fromTime: {
+    },fromTime: {
         type: String,
         required: true
-    },
-    toTime: {
+    },toTime: {
         type: String,
         required: true
-    },
-    totalhours: {
+    },totalhours: {
         type: Number,
         required: true
-    },
-    status: {
+    },status: {
         type: String,
         required: true,
         default: 'booked'
-    },
-    Resources: []
+    },Resources: []
 }, {
     timestamps: true
 });

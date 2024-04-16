@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import "./halllist.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
 import SearchHeader from '../../components/SearchHeader';
@@ -60,12 +59,19 @@ const AllHallList = () => {
           {halls ? (
             halls.map((hall) => (
               <div key={hall._id} className="col-md-4 mb-4">
-                <div className="card  rounded h-100 bg-light-blue hover-bg-light-blue serif">
+                <div className="card rounded h-100 hover-bg-light-blue serif text-black  fw-bold" style={{ 
+                  backgroundImage: `url(${hall.photos && hall.photos.length > 0 ? hall.photos[0] : ''})`, 
+                  backgroundSize: 'cover', 
+                  backgroundPosition: 'center',
+                   // Add transition for smooth scaling
+                }}>
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold"> {hall.Name}</h5>
                     <p className="card-text"> {hall.description}</p>
-                    <p className="card-text">Capacity: {hall.capacity}</p>
-                    <p className="card-text">Price: {hall.price}</p>
+                    <p>            </p>
+                     <p>            </p>
+                    <p className="card-text fs-5">Capacity: {hall.capacity}</p>
+                    <p className="card-text ">Price: {hall.price}</p>
                     <div className="d-flex mt-auto justify-content-end">
                       <Link to={`/ViewHall/${hall._id}`} className="btn btn-primary rounded-pill me-2" style={{ minWidth: '100px' }}>
                         View
