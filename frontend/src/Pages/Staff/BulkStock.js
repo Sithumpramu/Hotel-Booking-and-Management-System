@@ -160,7 +160,8 @@ return (
         
 
       <div className="d-flex align-items-center justify-content-around mb-3">
-        <table className="table" style={{ width: "75rem" }}>
+        <table className="table table-dark table-striped" style={{ width: "75rem" }}>
+          <thead>
           <tr>
             <th className="border border-black" scope="col">
               Product Name
@@ -189,6 +190,7 @@ return (
             <th></th>
             <th></th>
           </tr>
+          </thead>
 
           
           {sortData().map((BulkStock) => (
@@ -300,7 +302,8 @@ return (
                 <td>
                   <a
                     href="#"
-                    className="btn btn-danger"
+                    style={{ width: "5rem" }}
+                    className="btn btn-outline-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#Modal"
                     onClick={() => setNameToDelete(BulkStock.bname)}
@@ -321,7 +324,8 @@ return (
                   ) : (
                     <a
                       href="#"
-                      className="btn btn-primary"
+                      className="btn btn-outline-primary"
+                      style={{ width: "5rem" }}
                       onClick={() => getUpdateBulkStock(BulkStock)}
                     >
                       Update

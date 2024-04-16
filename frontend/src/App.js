@@ -18,6 +18,7 @@ import BulkStock from "./Pages/Staff/BulkStock";
 import CombinedInventory from "./Pages/Staff/CombinedInventory";
 
 
+
 import WatersportActivities from "./Pages/WatersportActivities";
 
 //manager's dashboard
@@ -98,6 +99,7 @@ function App() {
             path="/CombinedInventory"
             element={<CombinedInventory />}
           />
+          
           
           
           <Route path="/Watersports" element={<WatersportActivities />} />

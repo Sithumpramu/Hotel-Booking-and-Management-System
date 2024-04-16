@@ -97,7 +97,7 @@ return (
             <KitchenSidebar/>
             <div className="col">
     <div>
-      <h1 className="mb-4 mt-5">Kitchen Inventory</h1>
+      <h1 className="mb-4 mt-5">Fresh Produce Inventory</h1>
       <a href="/AddStock" className="btn btn-primary mb-5">
               Add New Stock
             </a>
@@ -158,9 +158,10 @@ return (
         </div>
         
 
-      <div className="d-flex align-items-center justify-content-around mb-3">
-        <table className="table" style={{ width: "75rem" }}>
-          <tr>
+      <div className="d-flex justify-content-around mb-3">
+        <table className="table table-dark table-striped" style={{ width: "75rem" }}>
+          <thead>
+          <tr className="border border-black">
             <th className="border border-black" scope="col">
               Product Name
             </th>
@@ -185,6 +186,7 @@ return (
             <th></th>
             <th></th>
           </tr>
+          </thead>
 
           
           {sortData().map((Stock) => (
@@ -280,7 +282,8 @@ return (
                 <td>
                   <a
                     href="#"
-                    className="btn btn-danger"
+                    style={{ width: "5rem" }}
+                    className="btn btn-outline-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#Modal"
                     onClick={() => setNameToDelete(Stock.name)}
@@ -301,7 +304,8 @@ return (
                   ) : (
                     <a
                       href="#"
-                      className="btn btn-primary"
+                      className="btn btn-outline-primary"
+                      style={{ width: "5rem" }}
                       onClick={() => getUpdateStock(Stock)}
                     >
                       Update

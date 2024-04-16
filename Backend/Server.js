@@ -7,6 +7,7 @@ const userRoutes = require('./Routes/user')
 const kitchenStockRoutes = require ('./Routes/kitchenStock')
 const paymentRoutes = require ('./Routes/payment')
 const kitchenBulkStockRoutes = require('./Routes/kitchenBulkStock')
+const combinedStockRoutes = require ('./Routes/combinedStock')
 
 const watersportRoutes = require("./Routes/watersport");
 const WatersportReservationRoutes = require("./Routes/WatersportReservation");
@@ -36,6 +37,8 @@ app.use('/kitchenBulkStock',kitchenBulkStockRoutes)
 app.use("/watersport", watersportRoutes);
 app.use("/watersportReservation", WatersportReservationRoutes);
 app.use("/table", diningReservationRoutes);
+app.use("/combinedStock", combinedStockRoutes)
+
 
 
 app.use("/hotel", hotelRoutes);
