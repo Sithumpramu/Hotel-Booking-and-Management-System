@@ -5,12 +5,7 @@ import { useUpdate } from '../hooks/useUpdate';
 import { useDelete } from '../hooks/useDelete';
 import { useLocation } from 'react-router-dom';
 
-<<<<<<< HEAD
 const Header = () => { 
-=======
-
-const Header = () => {
->>>>>>> 9115fea6536ef3a9f13c0eafa75aa28d94e68f18
   const {logout}=useLogout()
   const {user}=useAuthContext()
   const location = useLocation();
