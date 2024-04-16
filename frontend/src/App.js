@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 
-import AddItem from "./Pages/Inventory/AddItem";
+import AddItem from "../src/Pages/";
 import EditItem from "./Pages/Inventory/EditItem";
 import HotelView from "./Pages/Inventory/HotelView";
 import RoomManagerView from "./Pages/Inventory/RoomManagerView";
