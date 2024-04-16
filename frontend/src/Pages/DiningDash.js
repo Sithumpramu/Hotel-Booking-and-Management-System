@@ -51,7 +51,7 @@ function DiningDash() {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="banner1.jpg"
+                src="banner2 (2).jpg"
                 className="d-block w-75 mx-auto"
                 alt="Image 1"
               ></img>
