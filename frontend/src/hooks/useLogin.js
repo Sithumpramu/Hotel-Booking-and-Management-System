@@ -53,7 +53,7 @@ export const useLogin = () => {
         navigation('/ManagerDashboard');
         break;
       case 'staff':
-        navigation('/ReceptionDashboard')  
+        navigation('/receptionDashboard')  
         break;
       default:
         navigation(-1);

@@ -73,7 +73,7 @@ function Dashboard() {
             userEmail &&
             (userEmail.includes("eventactivitymanager") ||
               userEmail.includes("activitymanager"))
-              ? ""
+              ? "/receptionDashboard"
               : "disabled"
           }`}
           type="button"

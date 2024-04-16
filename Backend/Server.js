@@ -6,7 +6,14 @@ const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
 const roominventoryRoutes = require('./Routes/roominventory')
 const offerRoutes = require('./Routes/offers')
+const watersportRoutes = require("./Routes/watersport");
+const WatersportReservationRoutes = require("./Routes/WatersportReservation");
+const tableRoutes = require("./Routes/table");
+const menuRoutes = require("./Routes/menu");
+const orderRoutes = require("./Routes/order")
+const buffetRoutes = require("./Routes/buffet")
 
+const diningReservationRoutes = require("./Routes/DiningReservation");
 // express app
 const app = express();
 
@@ -24,6 +31,13 @@ app.use((req, res, next) => {
 app.use('/user', userRoutes)
 app.use('/roominventory',roominventoryRoutes)
 app.use('/offer',offerRoutes)
+app.use("/watersport", watersportRoutes);
+app.use("/watersportReservation", WatersportReservationRoutes);
+// app.use("/table", diningReservationRoutes);
+app.use("/table", tableRoutes);
+app.use("/menu", menuRoutes);
+app.use("/order", orderRoutes);
+app.use("/buffet", buffetRoutes);
 
 // connect to db
 mongoose
