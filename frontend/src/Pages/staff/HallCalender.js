@@ -33,7 +33,8 @@ const HallCalendar = () => {
                 dataset.push({
                     "start":new Date(`${d['selectdate']}T${d['fromTime']}`), //2024-02-03T13:00:00Z
                     "end": new Date(`${d['selectdate']}T${d['toTime']}`),
-                    "title": d['hall']
+                    "title": d['hallid'] + "-" + d['eventtype']+" " + "by "+ d["hall"]
+                    
                 })
             })
            setEvents(dataset);
@@ -90,6 +91,7 @@ const HallCalendar = () => {
             value={newEvent.title}
             onChange={handleInputChange}
           />
+          
           <input
             type="datetime-local"
             className="form-control mb-2"

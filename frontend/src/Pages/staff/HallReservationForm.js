@@ -221,7 +221,7 @@ const HallReservationForm = () => {
             value={formData.capacity}
             onChange={handleInputChange}
             className="form-control"
-            min="0"
+            
             max={maxCapacity}
           />
           {capacityError && <p className="text-danger">{capacityError}</p>}
@@ -249,7 +249,7 @@ const HallReservationForm = () => {
             value={formData.numberOfChairs}
             onChange={handleInputChange}
             className="form-control"
-            min="0"
+           
           />
           {chairError && <p className="text-danger">{chairError}</p>}
         </div>
@@ -261,7 +261,7 @@ const HallReservationForm = () => {
             value={formData.numberOfTables}
             onChange={handleInputChange}
             className="form-control"
-            min="0"
+           
           />
           {tableError && <p className="text-danger">{tableError}</p>}
         </div>

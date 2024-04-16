@@ -25,6 +25,7 @@ import Bug from "./Pages/Bug";
 import HallBookingData from "./Pages/HallBookingData";
 import HallCalender from "./Pages/staff/HallCalender";
 import Alldates from "./Pages/staff/Alldates";
+import EditBooking from "./Pages/EditBooking";
 
 
 // Layout component with header and footer
@@ -112,10 +113,7 @@ function App() {
             element={<AdminBookHall/>}
           />
             
-            <Route
-            path="/bug"
-            element={<Bug/>}
-          />
+          
              <Route
             path="/bookingdata/:id"
             element={<Layout><HallBookingData/></Layout>}
@@ -128,7 +126,10 @@ function App() {
             path="/alldates"
             element={<Alldates/>}
           />
-            
+            <Route
+            path="/editBooking/:id"
+            element={<EditBooking/>}
+          />
             
       
           

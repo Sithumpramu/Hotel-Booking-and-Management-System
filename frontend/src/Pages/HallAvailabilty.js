@@ -24,13 +24,13 @@ const HallAvailability = ({ halls }) => {
   };
   
   return (
-    <div>
+    <div className='mt-5 '>
       <h1>Hall Availability</h1>
       <p>
         Let's find the perfect time for your event! Please choose the date and time you have in mind, and we'll check hall availability for you.
       </p>
-      <div className="row mt-5 serif">
-        <div className="col-md-3">
+      <div className="row mt-5 serif ">
+        <div className="col-md-4 mx-auto">
           <div className="mb-3">
             <label htmlFor="datePicker" className="form-label">Select Date</label>
             <input type="date" id="datePicker" className="form-control" onChange={handleDateChange} />
@@ -44,10 +44,10 @@ const HallAvailability = ({ halls }) => {
             <input type="time" id="toTimePicker" className="form-control" onChange={handleToTimeChange} />
           </div>
         </div>
-        <div className="row">
+        <div className="row mx-auto">
           {halls ? (
             halls.map((hall) => (
-              <div key={hall._id} className="col-md-4 mb-4">
+              <div key={hall._id} className="col-md-4 mb-4 ">
                 <div className="card  rounded h-100 bg-light-blue hover-bg-light-blue serif">
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold"> {hall.Name}</h5>

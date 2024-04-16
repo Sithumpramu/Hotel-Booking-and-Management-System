@@ -14,7 +14,7 @@ const BookHall = () => {
       return
     } 
     else if(!user){
-      alert('you are not logged in ')
+     
     }
   }, [user]);
   const [alerted, setAlerted] = useState(false);

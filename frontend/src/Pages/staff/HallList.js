@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import SearchHeader from '../../components/SearchHeader';
 import Footer from '../../components/Footer';
+import HallAdminsidebar from '../../components/HallAdminSidebar';
 
 
 const HallList = () => {
@@ -26,10 +27,10 @@ const HallList = () => {
   }, []);
 
   return (
-    <div>
-
-    
-    <div className="container">
+    <div className='row'>
+<HallAdminsidebar />
+<div className="col-md-9">
+    <div className="container ">
       <div className="mt-5 mb-4">
         <h1 className="fw-bold display-4 text-light-blue serif">All Available Halls</h1>
       </div>
@@ -60,7 +61,7 @@ const HallList = () => {
         )}
       </div>
     </div>
- 
+ </div>
     </div>
     
   );
