@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useMenuList from "../hooks/useMenu";
 import useMenuByCategory from "../hooks/useDisplayMenu";
 
 const bufferToBase64 = (buf) => {
@@ -11,11 +10,8 @@ const bufferToBase64 = (buf) => {
   return btoa(binstr);
 };
 
-
-
-
 const MenuDisplay = () => {
-  const [category, setCategory] = useState(""); 
+  const [category, setCategory] = useState("");
   //const { menuList, isLoading, error } = useMenuList(category);
   const { menuItems, isLoading, error } = useMenuByCategory(category);
 
