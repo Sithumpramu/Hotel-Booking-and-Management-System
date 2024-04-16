@@ -18,7 +18,7 @@ const RoomReservation = require('./Routes/RoomReservation')
 const room = require('./Routes/room')
 
 const  hallRoutes  =require('./Routes/hallRoutes');
-const HallReservation = require('./Models/HallReservation');
+
 const HallReservations =require('./Routes/hallReservations')
 
 // express app
