@@ -8,6 +8,7 @@ const {
   createMenuItem,
   deleteMenuItem,
   updateMenuItem,
+  getCategoryByName,
   getMenuItemsByCategory
 } = require("../controllers/menuController");
 
@@ -19,6 +20,9 @@ router.post("/add", upload.single("Image"), createMenuItem);
 
 //get all reservations
 router.get("/get", getAllMenuDetails);
+
+// Update the route to get menu items by category
+router.get("/get/:category", getCategoryByName);
 
 //DELETE reservation
 router.delete("/:id", deleteMenuItem);

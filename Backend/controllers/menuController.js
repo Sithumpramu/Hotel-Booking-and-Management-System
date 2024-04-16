@@ -13,6 +13,27 @@ const getAllMenuDetails = async (req, res) => {
   }
 };
 
+//get category by category name
+const getCategoryByName = async (req, res) => {
+  const { category } = req.params;  // Get the category from the request parameters
+  try {
+    if (!category) {
+      return res.status(400).json({ error: 'Category is required' });
+    }
+
+    const menuList = await menu.find({ category: category });
+
+    if (menuList.length === 0) {
+      return res.status(404).json({ message: 'No menu items found for this category' });
+    }
+
+    res.status(200).json(menuList);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 
 //create a menu 
 const createMenuItem = async (req, res) => {
@@ -110,7 +131,7 @@ const getMenuItemsByCategory = async (req, res) => {
 
 module.exports = {
   getAllMenuDetails,
-
+  getCategoryByName,
   createMenuItem,
   updateMenuItem,
   deleteMenuItem,
