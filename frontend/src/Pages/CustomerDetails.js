@@ -45,7 +45,7 @@ function ReservationDetails() {
   
   const handleNext = () => {
     // Pass data to rooms page
-    navigate('/payment', {
+    navigate('/AddPayment', {
       state: {
         Checkindate,
         Checkoutdate,

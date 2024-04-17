@@ -1,3 +1,6 @@
+
+
+
 import { useState } from "react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +27,7 @@ const AddNewRoomReserve = () => {
   };
 
   return (
-    <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("katha.jpg")' }}>
+    <div className="background vh-100 d-flex justify-content-center align-items-center" style={{ backgroundImage: 'url("Deluxe Room.jpg")' }}>
       <div className="card" style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "20px", width: "400px", textAlign: "center" }}>
 
         <form onSubmit={handleNext} style={{ display: "flex", flexDirection: "column" }}>

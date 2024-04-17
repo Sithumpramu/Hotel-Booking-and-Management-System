@@ -18,6 +18,15 @@ function ManageRoom() {
   const [updatedPrice, setUpdatedPrice] = useState("");
   const [roomIdToUpdate, setRoomIdToUpdate] = useState(""); // Hold the id of the room to update
 
+
+  const bufferToBase64 = (buf) => {
+    var binstr = Array.prototype.map
+      .call(buf, function (ch) {
+        return String.fromCharCode(ch);
+      })
+      .join("");
+    return btoa(binstr);
+  };
   if (isLoading) {
     return (
       <div className="alert alert-primary" role="alert">
@@ -55,9 +64,9 @@ function ManageRoom() {
   };
 
   return (
-    <div>
-       <RoomSideBar/>
-      <div className="row bs">
+    <div className="row p-0 m-0"> 
+      <RoomSideBar />
+      <div className="col p-0 m-0">
         {rooms.map((room) => (
           <div key={room._id} className="col-md-4 mb-3">
             <div className="card">
@@ -66,23 +75,23 @@ function ManageRoom() {
                   {room.Image && room.Image.data && (
                     <img
                       style={{ width: "10rem" }}
-                      src={`data:${room.Image.contentType};base64,${btoa(
-                        String.fromCharCode.apply(null, room.Image.data.data)
-                      )}`}
+                      src={`data:${room.Image.contentType
+                        };base64,${bufferToBase64(room.Image.data.data)}`}
                       className="card-img-top mb-1"
                       alt={room.Rtype}
                     />
                   )}
+
                 </div>
 
                 <div className="ms-3">
-                <p className="card-text">Room Id: {room.Rid}</p>
-                <p className="card-text">Room Type: {room.Rtype}</p>
-                <p className="card-text">{room.description}</p>
-                <p className="card-text">Capacity: {room.capacity}</p>
-                <p className="card-text">No.of.Beds: {room.NoOfBeds}</p>
-                <p className="card-text">Price: {room.price}</p>
-               
+                  <p className="card-text">Room Id: {room.Rid}</p>
+                  <p className="card-text">Room Type: {room.Rtype}</p>
+                  <p className="card-text">{room.description}</p>
+                  <p className="card-text">Capacity: {room.capacity}</p>
+                  <p className="card-text">No.of.Beds: {room.NoOfBeds}</p>
+                  <p className="card-text">Price: {room.price}</p>
+
                 </div>
               </div>
               <div className="card-footer d-flex justify-content-center bg-secondary">

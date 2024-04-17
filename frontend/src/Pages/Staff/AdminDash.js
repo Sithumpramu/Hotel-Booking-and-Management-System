@@ -16,9 +16,10 @@ function AdminDash(){
             <div><p className="mt-5">Admin Dashboard</p></div>
           </div>
           <div className="row d-flex justify-content-around h-25">
-            <div className="card col-2 pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUsers size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Staffmanage">Staff Management</a></div>
-            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUserCog size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Usermanage">User Management</a></div>
-            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><IoMdSettings size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Accountmanage">Account Manage</a></div>
+            <div className="card col-2 pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUsers size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Profile">Profile</a></div>
+            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><FaUserCog size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/Bookings">Bookings</a></div>
+            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><IoMdSettings size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/AddRoom">Add Room</a></div>
+            <div className="card col-2  pt-4 d-flex justify-content-center align-items-center bg-dark opacity-75"><IoMdSettings size={50} color="white"/><a className="nav-link mt-5 fs-5 text-white" aria-current="page" href="/ManageRoom">Manage Room</a></div>
           </div>
           <hr></hr>
           <iframe
@@ -30,7 +31,7 @@ function AdminDash(){
               width: '100%', // Set the width to 100%
               maxWidth: '540px', // Limit the maximum width
               height: '380px'
-            }}
+            }}          N
             src="https://charts.mongodb.com/charts-project-0-sqqdz/embed/charts?id=660ab80c-c20d-4b70-84cf-523695f27b2a&maxDataAge=60&theme=light&autoRefresh=true"
             title="MongoDB Chart"
           ></iframe>
