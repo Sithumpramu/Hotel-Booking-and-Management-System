@@ -34,7 +34,7 @@ app.use('/roominventory',roominventoryRoutes)
 app.use('/offer',offerRoutes)
 app.use("/watersport", watersportRoutes);
 app.use("/watersportReservation", WatersportReservationRoutes);
-// app.use("/table", diningReservationRoutes);
+app.use("/tables", diningReservationRoutes);
 app.use("/table", tableRoutes);
 app.use("/menu", menuRoutes);
 app.use("/order", orderRoutes);

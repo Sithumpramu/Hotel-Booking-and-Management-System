@@ -35,6 +35,7 @@ import AddReserv from "./Pages/Staff/addWatersportReserv";
 import SelectActivity from "./Pages/Staff/SelectActivity";
 import WatersportReservations from "./Pages/Staff/watersportReservations";
 import PastWatersportReservations from "./Pages/Staff/pastWatersportReserv";
+import DiningReservations from "./Pages/Staff/DiningReservations.js";
 import ReceptionDashboard from "./Pages/Staff/receptionDashboard";
 import Room from "./Pages/rooms";
 import Reservation from "./Pages/reservation";
@@ -147,6 +148,7 @@ function App() {
           <Route path="/watersportReservations" element={<WatersportReservations />} />
           <Route path="/PastReservations" element={<PastWatersportReservations />} />
           <Route path="/receptionDashboard" element={<ReceptionDashboard />} />
+          <Route path="/DiningReservations" element={<DiningReservations />} />
 
 
           <Route path="/rooms" element={<Layout><Room /></Layout>} />
