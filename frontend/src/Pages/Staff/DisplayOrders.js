@@ -35,6 +35,7 @@ const ManageOrders = () => {
 
     <div className="row p-0">
     <RestaurantNavbar />
+    <div className="col">
       <h1 className="mb-4 mt-5">Manage Orders</h1>
 
       <div className="d-flex align-items-center justify-content-around mb-3">
@@ -185,6 +186,8 @@ const ManageOrders = () => {
           </div>
         </div>
       </div>
+    </div>
+      
 
     </div>
   );

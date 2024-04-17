@@ -85,7 +85,7 @@ function MenuItems() {
             Add New Menu Item
           </a>
 
-          <div className="row d-flex align-items-center justify-content-around mb-3" style={{width:"50rem"}}>
+          <div className="row d-flex align-items-center justify-content-around mb-3">
             {menuList.map((menu) => (
               <div key={menu._id} className="col-lg-3">
                 <div className="card mb-4">

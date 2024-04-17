@@ -41,7 +41,7 @@ const ManageBuffet = () => {
             Add New Buffet
           </a>
 
-     <div className="row d-flex align-items-center justify-content-around mb-3" style={{width:"50rem"}}> 
+     <div className="row d-flex align-items-center justify-content-around mb-3"> 
             {buffetItems.map((item) => (
               <div key={item._id} className="col-lg-3">
                 <div className="card mb-4">

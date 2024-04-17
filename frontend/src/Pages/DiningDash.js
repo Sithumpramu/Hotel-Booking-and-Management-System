@@ -101,9 +101,9 @@ function DiningDash() {
               <img src="srilankan.jpg" class="card-img-top" alt="Sri Lankan Food"></img>
               <div class="card-body">
                 <h5 class="card-title">Sri Lankan</h5>
-                <button class="btn btn-primary" href="/displaymenu" onClick={handleViewProducts}>
+                <a href="/displaymenu" class="btn btn-primary">
                   View Products
-                </button>
+                </a>
               </div>
             </div>
           </div>

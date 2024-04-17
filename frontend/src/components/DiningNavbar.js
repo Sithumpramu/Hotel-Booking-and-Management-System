@@ -5,7 +5,7 @@ const DiningDash= () => {
     return(
       <nav class="navbar navbar-expand-lg bg-body-primary">
       <div class="container-fluid">
-      <img src="logo.jpg" style={{width:"130px"}}></img>
+      <img src="Sunset Araliya horizontal.png" style={{width:"130px"}}></img>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

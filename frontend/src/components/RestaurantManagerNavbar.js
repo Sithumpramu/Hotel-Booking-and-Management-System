@@ -17,12 +17,12 @@ function RestaurantNavbar() {
   };
 
   return (
-    <div className="col-6">
+    <div className="col-2 pe-2">
       <ul className="nav flex-column bg-black vh-100 position-fixed ">
         <div className="d-flex flex-column  mt-5 justify-content-around fs-5"
           >
           <img
-            src="logo.jpg"
+            src="Sunset Araliya horizontal.png"
             style={{ width: "150px" }}
             className="mt-4 justify-content-center"
           ></img>
