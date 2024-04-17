@@ -60,10 +60,7 @@ const SearchHeader = ({ type }) => {
             <FontAwesomeIcon icon={faHotel} />
             <span>Venues</span>
           </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCalendarDays} /> 
-            <span>Calendar</span>
-          </div>
+         
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCopy} />
             <span>

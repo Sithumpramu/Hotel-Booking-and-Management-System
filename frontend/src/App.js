@@ -21,11 +21,12 @@ import BookHall from "./Pages/BookHall";
 import HallResources from "./Pages/staff/HallResources";
 
 import AdminBookHall from "./Pages/staff/AllHallRes";
-import Bug from "./Pages/Bug";
+
 import HallBookingData from "./Pages/HallBookingData";
 import HallCalender from "./Pages/staff/HallCalender";
 import Alldates from "./Pages/staff/Alldates";
 import EditBooking from "./Pages/EditBooking";
+import EventDashboard from "./Pages/staff/HallActivityManager";
 
 
 // Layout component with header and footer
@@ -130,7 +131,12 @@ function App() {
             path="/editBooking/:id"
             element={<EditBooking/>}
           />
+            <Route
+            path="/ManagerDashboard"
+            element={<EventDashboard/>}
+          />
             
+      
       
           
          

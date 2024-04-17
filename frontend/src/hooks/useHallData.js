@@ -111,10 +111,10 @@ const useHallData = (id) => {
   const handlePictureUpload = async (file) => {
     try {
       const formData = new FormData();
-      formData.append("picture", file);
+      formData.append("photos", file);
 
       const response = await fetch(`http://localhost:4000/hall/update/${id}`, {
-        method: "PUT",
+        method: "POST",
         body: formData,
       });
 

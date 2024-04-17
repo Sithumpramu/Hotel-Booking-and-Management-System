@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
 import SearchHeader from '../../components/SearchHeader';
+import Footer from '../../components/Footer';
 
 const AllHallList = () => {
   const [halls, setHalls] = useState(null);
@@ -66,7 +67,7 @@ const AllHallList = () => {
                    // Add transition for smooth scaling
                 }}>
                   <div className="card-body d-flex flex-column">
-                    <h5 className="card-title fw-bold"> {hall.Name}</h5>
+                    <h5 className="card-title fw-bold fs-3"> {hall.Name}</h5>
                     <p className="card-text"> {hall.description}</p>
                     <p>            </p>
                      <p>            </p>
@@ -88,10 +89,13 @@ const AllHallList = () => {
         {/* Reserve Now Button */}
         <div className="row justify-content-center mt-5">
           <div className="col-md-6">
-            <button className="btn btn-primary" onClick={handleReserveNow}>Reserve Now</button>
+          <Link to='/' className='btn btn-primary'>
+                       Back to home
+                      </Link>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

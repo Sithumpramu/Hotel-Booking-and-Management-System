@@ -20,7 +20,8 @@ const EditHall = () => {
   } = useHallData(id);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(""); // Define success message state
+  const [successMessage, setSuccessMessage] = useState(""); 
+  // Define success message state
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

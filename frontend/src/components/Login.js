@@ -4,10 +4,12 @@ import { useLogin } from "../hooks/useLogin";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
+
   const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin()
+    
     
   
     const handleSubmit = async (e) => {
@@ -21,8 +23,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
     return(
-    <div className="container  container d-flex align-items-center justify-content-center vh-100">
-         <img src="logo.jpg" alt="logo" style={{width: "200px", position:"absolute", top:"12vh"}}></img>
+    <div className="container-fluid d-flex align-items-center justify-content-center vh-100 " style={{backgroundImage: 'url("Wave.svg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      
+         <img src="Sunset Araliya horizontal.png" style={{width: "200px", position:"absolute", top:"12vh"}}></img>
         <div className="container bg-body-tertiary w-50 pt-4 rounded">
           <form action="" onSubmit={handleSubmit} >
            <div className="mb-3">

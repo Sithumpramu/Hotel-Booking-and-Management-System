@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams ,Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBed, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons';
+import Footer from "../../components/Footer";
 
 
 const ViewHall = () => {
@@ -32,7 +33,7 @@ const ViewHall = () => {
    
       <div className="container">
         <div className="mt-5 mb-4">
-          <h1 className="fw-bold display-4 text-light-blue serif" style={{ fontSize: "2.5rem" }}>venue Details</h1>
+          <h1 className="fw-bold display-4 text-light-blue serif" style={{ fontSize: "2.5rem" }}>Hall Details</h1>
         </div>
         {loading ? (
           <p>Loading...</p>
@@ -106,6 +107,10 @@ const ViewHall = () => {
           </div>
         </div>
       </div>
+      <Link to='/AllHalls' className='btn btn-primary'>
+                       Back 
+                      </Link>
+      <Footer />
     </div>
   );
 };
