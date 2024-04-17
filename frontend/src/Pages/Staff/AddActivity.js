@@ -22,7 +22,7 @@ const AddNew = () => {
     let valid = true;
     const errorMessages = [];
 
-    if (!Activity || !Time || !Price || !Description || !qtyPerRound || !ExtraPrice) {
+    if (!Activity || !Time || !Price || !qtyPerRound || !Image) {
       errorMessages.push("All fields must be filled.");
       valid = false;
     }
