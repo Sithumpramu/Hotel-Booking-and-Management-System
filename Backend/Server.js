@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use("/watersport", watersportRoutes);
 app.use("/watersportReservation", WatersportReservationRoutes);
-app.use("/table", diningReservationRoutes);
+app.use("/tables", diningReservationRoutes);
 
 app.use("/user", userRoutes);
 app.use("/hotel", hotelRoutes);

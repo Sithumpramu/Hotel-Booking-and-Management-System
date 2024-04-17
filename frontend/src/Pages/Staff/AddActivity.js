@@ -6,23 +6,23 @@ const AddNew = () => {
   const [Activity, setName] = useState("");
   const [Time, setTime] = useState("");
   const [Price, setPrice] = useState("");
-  const [Description, setDescription] = useState("");
+  
   const [qtyPerRound, setqtyPerRound] = useState("");
-  const [ExtraPrice, setExtraPrice] = useState("");
+  
   const [Image, setImage] = useState("");
   const { addActivity, isLoading, error } = useAddNew();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addActivity(Activity, Time, Price, Description, qtyPerRound, ExtraPrice, Image);
+    await addActivity(Activity, Time, Price, qtyPerRound, Image);
   };
 
   function validation() {
     let valid = true;
     const errorMessages = [];
 
-    if (!Activity || !Time || !Price || !Description || !qtyPerRound || !ExtraPrice) {
+    if (!Activity || !Time || !Price || !qtyPerRound || !Image) {
       errorMessages.push("All fields must be filled.");
       valid = false;
     }
@@ -86,20 +86,7 @@ const AddNew = () => {
                   }}
                 />
               </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" className="form-label">
-                  Description
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                />
-              </div>
+              
               <div class="mb-3">
                 <label for="qtyPerRound" className="form-label">
                   Qty Per Round
@@ -115,20 +102,7 @@ const AddNew = () => {
                   }}
                 />
               </div>
-              <div class="mb-3">
-                <label for="ExtraPrice" className="form-label">
-                Extra Person Price
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="ExtraPrice"
-                  min="0"
-                  onChange={(e) => {
-                    setExtraPrice(e.target.value);
-                  }}
-                />
-              </div>
+              
               <div class="mb-3">
                 <label for="formFile" className="form-label">
                   Image File

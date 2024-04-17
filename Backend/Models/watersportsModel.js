@@ -23,18 +23,11 @@ const watersportsSchema = new Schema({
     type: Number,
     required: true,
   },
-  ExtraPrice: {
-    type: Number,
-    required: true,
-  },
   qtyPerRound: {
     type: Number,
     required: true,
   },
-  Description: {
-    type: String,
-    required: false,
-  },
+
   Image: imageSchema,
 });
 

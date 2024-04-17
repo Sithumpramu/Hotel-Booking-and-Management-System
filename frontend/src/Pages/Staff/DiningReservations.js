@@ -1,7 +1,7 @@
 import useTableList from "../../hooks/useDiningReserv";
 import ReceptionNavbar from "../../components/receptionNavbar";
 
-const TableReservation = () => {
+const DiningReservations = () => {
   const { TableList, isLoading, error } = useTableList();
 
   if (isLoading) {
@@ -71,4 +71,4 @@ const TableReservation = () => {
   );
 };
 
-export default TableReservation;
+export default DiningReservations;

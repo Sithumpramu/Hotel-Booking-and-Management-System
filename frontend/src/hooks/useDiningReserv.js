@@ -11,7 +11,7 @@ const useTableList = () => {
       setIsLoading(true);
       try {
         // Fetch Table list
-        const Response = await fetch("http://localhost:4000/table/");
+        const Response = await fetch("http://localhost:4000/tables/");
         if (!Response.ok) {
           throw new Error("Failed to fetch Table list");
         }
