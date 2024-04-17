@@ -40,7 +40,7 @@ function Dashboard() {
         <a
           href={
             userEmail && userEmail.includes("roommanager")
-              ? "/ManagerDash"
+              ? "/ManageRoom"
               : "#"
           }
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
@@ -51,7 +51,7 @@ function Dashboard() {
           Room Manager
         </a>
         <a
-          href={userEmail && userEmail.includes("restaurantmanager") ? "" : "#"}
+          href={userEmail && userEmail.includes("restaurantmanager") ? "/menu" : "#"}
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
             userEmail && userEmail.includes("restaurantmanager")
               ? ""
