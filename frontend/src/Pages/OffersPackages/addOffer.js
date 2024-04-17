@@ -24,16 +24,26 @@ const AddNewOffer = () => {
   };
 
   function validation() {
-    var submit = document.getElementById("submit");
+    let valid = true;
+    const errorMessages = [];
 
-    if (
-      offerID === "" &&
-      offerName === "" &&
-      description === "" &&
-      Date === "" 
-    ) {
-      document.getElementById("Error").innerHTML = "All fields must be filled.";
+    if (!offerID || !offerName || !description || !Date || !Image) {
+      errorMessages.push("All fields must be filled.");
+      valid = false;
     }
+
+    document.getElementById("Error").innerHTML = errorMessages.join(" ");
+    return valid;
+    // var submit = document.getElementById("submit");
+
+    // if (
+    //   offerID === "" &&
+    //   offerName === "" &&
+    //   description === "" &&
+    //   Date === "" 
+    // ) {
+    //   document.getElementById("Error").innerHTML = "All fields must be filled.";
+    // }
   }
 
   return (

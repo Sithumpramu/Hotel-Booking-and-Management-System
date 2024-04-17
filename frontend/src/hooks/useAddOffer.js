@@ -6,18 +6,9 @@ const useAddOffer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addOffers = async (
-    offerID,
-    offerName,
-    Date,
-    description, 
-    ImageFile
-  ) => {
-
+  const addOffers = async (offerID, offerName, Date, description, ImageFile) => {
     setIsLoading(true);
     setError(null);
-
-    console.log(ImageFile,"file")
 
     const formData = new FormData();
     formData.append("offerID", offerID);
@@ -34,15 +25,18 @@ const useAddOffer = () => {
         body: formData,
       });
 
+      const json = await response.json();  // Always parsing JSON to handle both success and error
+
       if (!response.ok) {
-        const json = await response.json();
-        setError(json.error);
+        setError(json.error ? json.error : "An unexpected error occurred");
+        console.error("Error from server:", json);
       } else {
         navigate("/Offers");
         alert("Offer Added successfully");
       }
     } catch (error) {
-      setError("An unexpected error occurred");
+      setError("Failed to fetch: " + error.message);
+      console.error("Fetch error:", error);
     } finally {
       setIsLoading(false);
     }
