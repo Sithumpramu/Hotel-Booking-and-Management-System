@@ -112,7 +112,7 @@ function CombinedInventory() {
             <div className="col">
                 <div>
                     <h1 className="mb-4 mt-5">Kitchen Inventory</h1>
-                    <a href="/AddBulkStock" className="btn btn-primary mb-5">
+                    <a href="/AddBulkStock" className="btn btn-primary mb-5"style={{marginRight:"2rem"}}>
                         Add New Bulk Stock
                     </a>
                     <a href="/AddStock" className="btn btn-primary mb-5">
