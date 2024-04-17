@@ -3,7 +3,7 @@ const roominventory = require('../Models/roominventoryModel');
 
 const router = express.Router();
 
-//adding data
+//adding item
 router.route("/add").post((req, res) => {
     const itemID = req.body.itemID;
     const itemName = req.body.itemName;

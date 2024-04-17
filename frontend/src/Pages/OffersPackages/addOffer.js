@@ -39,7 +39,7 @@ const AddNewOffer = () => {
   return (
     <div>
       <h2>Add Offer</h2>
-
+{error && <p>{error}</p>}
       <div className="card">
         <form
           onSubmit={handleSubmit}

@@ -31,11 +31,11 @@ const getsingleOffer = async (req, res) => {
 
 //Add a offer
 const addOffer = async (req, res) => {
-  const { offerID, offerName, Date,description} =
-    req.body; 
+  const { offerID, offerName, Date,description} =req.body; 
+  console.log("contorller")
+  console.log(req.body)
   let imageData = {};
 
-  console.log(req.file, "fileee");
 
   if (req.file) {
     imageData = {
