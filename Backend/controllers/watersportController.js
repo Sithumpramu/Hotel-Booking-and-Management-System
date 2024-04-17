@@ -20,7 +20,7 @@ const Watersport = require("../Models/watersportsModel");
 // };
 
 const AddActivity = async (req, res) => {
-  const { Activity, Time, Price, Description, qtyPerRound, ExtraPrice } = req.body;
+  const { Activity, Time, Price, qtyPerRound } = req.body;
   let imageData = {};
 
   console.log(req.file, "file");
@@ -40,9 +40,9 @@ const AddActivity = async (req, res) => {
       Activity,
       Time,
       Price,
-      Description,
+      
       qtyPerRound,
-      ExtraPrice,
+      
       Image: imageData, // Store the image data directly
     });
     res.status(201).json(newActivity); // Respond with the created document
@@ -64,12 +64,12 @@ const getActivity = async (req, res) => {
 // Function to update an existing activity
 const updateActivity = async (req, res) => {
   const { activityName } = req.params; // The name of the activity to update
-  const { Activity, Time, Price, Description, qtyPerRound, ExtraPrice } = req.body; // The new data for the activity
+  const { Activity, Time, Price, qtyPerRound } = req.body; // The new data for the activity
 
   try {
     const updatedActivity = await Watersport.findOneAndUpdate(
       { Activity: activityName }, // Find a document by its activity name
-      { Activity, Time, Price, Description, qtyPerRound, ExtraPrice }, // The new values
+      { Activity, Time, Price, qtyPerRound }, // The new values
       { new: true } // Option to return the document after update
     );
 
