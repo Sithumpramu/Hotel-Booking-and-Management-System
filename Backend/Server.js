@@ -15,6 +15,7 @@ const buffetRoutes = require("./Routes/buffet")
 const RoomReservation = require('./Routes/RoomReservation')
 const diningReservationRoutes = require("./Routes/DiningReservation");
 const room = require('./Routes/room')
+const hotelRoutes = require('./Routes/HotelSchema')
 // express app
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/order", orderRoutes);
 app.use("/buffet", buffetRoutes);
 app.use('/roomreservation', RoomReservation)
 app.use('/room', room)
+app.use('/hotel', hotelRoutes)
 
 // connect to db
 mongoose
