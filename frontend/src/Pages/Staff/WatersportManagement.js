@@ -40,47 +40,47 @@ function WatersportManage() {
 
           <div className="row d-flex align-items-center justify-content-around mb-3">
             {/* <div className="row"> */}
-              {ActivityList.map((Watersport) => (
-                <div className="col-lg-3">
-                  <div className="card mb-4">
-                    <div className="card-body">
-                      {Watersport.Image && Watersport.Image.data && (
-                        <img
-                          style={{ width: "10rem" }}
-                          src={`data:${
-                            Watersport.Image.contentType
-                          };base64,${btoa(
-                            String.fromCharCode.apply(
-                              null,
-                              Watersport.Image.data.data
-                            )
-                          )}`}
-                          className="card-img-top mb-1"
-                          alt={Watersport.Activity}
-                        />
-                      )}
-                      <h5 className="card-title">{Watersport.Activity}</h5>
-                      <p className="card-text fw-medium">{Watersport.Time}</p>
-                      <p className="card-text fw-medium text-dark bg-warning bg-opacity-50">Rs.{Watersport.Price}.00</p>
-
-                      Qty Per Round
-                      <p className="card-text fw-medium">{Watersport.qtyPerRound}</p>
-                      
-                      
-                      <p className="card-text fw-medium">{Watersport.Description}</p>
-                      <a
-                        href="#"
-                        className="btn btn-danger"
-                        data-bs-toggle="modal"
-                        data-bs-target="#Modal"
-                        onClick={() => setNameToDelete(Watersport._id)}
-                      >
-                        Delete Activity
-                      </a>
-                    </div>
+            {ActivityList.map((Watersport) => (
+              <div className="col-lg-3">
+                <div className="card mb-4">
+                  <div className="card-body">
+                    {Watersport.Image && Watersport.Image.data && (
+                      <img
+                        style={{ width: "10rem" }}
+                        src={`data:${
+                          Watersport.Image.contentType
+                        };base64,${btoa(
+                          String.fromCharCode.apply(
+                            null,
+                            Watersport.Image.data.data
+                          )
+                        )}`}
+                        className="card-img-top mb-1"
+                        alt={Watersport.Activity}
+                      />
+                    )}
+                    <h5 className="card-title">{Watersport.Activity}</h5>
+                    <p className="card-text fw-medium">{Watersport.Time}</p>
+                    <p className="card-text fw-medium text-dark bg-warning bg-opacity-50">
+                      Rs.{Watersport.Price}.00
+                    </p>
+                    Qty Per Round
+                    <p className="card-text fw-medium">
+                      {Watersport.qtyPerRound}
+                    </p>
+                    <a
+                      href="#"
+                      className="btn btn-danger"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Modal"
+                      onClick={() => setNameToDelete(Watersport._id)}
+                    >
+                      Delete Activity
+                    </a>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
             {/* </div> */}
           </div>
         </div>
