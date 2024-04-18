@@ -66,14 +66,14 @@ function Dashboard() {
             userEmail &&
             (userEmail.includes("eventactivitymanager") ||
               userEmail.includes("activitymanager"))
-              ? ""
+              ? "/receptionDashboard"
               : "#"
           }
           className={`btn btn-outline-primary mb-3 lh-lg fs-5 ${
             userEmail &&
             (userEmail.includes("eventactivitymanager") ||
               userEmail.includes("activitymanager"))
-              ? "/receptionDashboard"
+              ? ""
               : "disabled"
           }`}
           type="button"

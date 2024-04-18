@@ -186,7 +186,7 @@ function Home(){
                       <h4 className="card-title" style={{backgroundColor:"rgb(85, 180, 254)"}}>Entertainment</h4>
                       {hoveredElement === 4 && (<div className='bg-dark py-3 px-2'>
                       <p className="card-description fs-6 fw-bold">"Dive into adventure with watersports activities, where every wave brings excitement."</p>
-                      <button className="btn btn-primary">Explore</button></div>)}
+                      <button className="btn btn-primary" href="/Watersports">Explore</button></div>)}
                     </div>
                   </div>
                 </div>
