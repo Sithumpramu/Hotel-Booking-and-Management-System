@@ -50,20 +50,19 @@ import DiningNavbar from "./components/DiningNavbar";
 import RoomManagerView from "./Pages/Inventory/RoomManagerView";
 import Offer from "./Pages/OffersPackages/offerPackage";
 import AddNewOffer from "./Pages/OffersPackages/addOffer";
-// import HallList from "./Pages/staff/HallList";
-// import ViewHall from "./Pages/staff/ViewHall";
-// import EditHall from "./Pages/staff/EditHall";
-// import HallAdminDash from "./Pages/staff/HallAdminDash";
-// import AllHallList from "./Pages/staff/AllHalls";
-// import HallReservationForm from "./Pages/staff/HallReservationForm";
-// import HallAvailabilty from "./Pages/HallAvailabilty";
-// import BookHall from "./Pages/BookHall";
-// import HallResources from "./Pages/staff/HallResources";
-// import AdminBookHall from "./Pages/staff/AllHallRes";
-// import Bug from "./Pages/Bug";
-// import HallBookingData from "./Pages/HallBookingData";
-// import HallCalender from "./Pages/staff/HallCalender";
-// import Alldates from "./Pages/staff/Alldates";
+import HallList from "./Pages/Staff/HallList.js";
+import ViewHall from "./Pages/Staff/ViewHall.js";
+import EditHall from "./Pages/Staff/EditHall.js";
+import HallAdminDash from "./Pages/Staff/HallAdminDash.js";
+import AllHallList from "./Pages/Staff/AllHalls.js";
+import HallReservationForm from "./Pages/Staff/HallReservationForm.js";
+import HallAvailabilty from "./Pages/HallAvailabilty.js";
+import BookHall from "./Pages/BookHall.js";
+import HallResources from "./Pages/Staff/HallResources.js";
+import AdminBookHall from "./Pages/Staff/AllHallRes.js";
+import HallBookingData from "./Pages/HallBookingData.js";
+import HallCalender from "./Pages/Staff/HallCalender.js";
+import Alldates from "./Pages/Staff/Alldates.js";
 import EditBooking from "./Pages/EditBooking";
 import AddItem from "./Pages/Inventory/AddItem";
 import Home from "./Pages/Home";
@@ -166,7 +165,7 @@ function App() {
           <Route path="/Addoffer" element={<AddNewOffer />} />
 
 
-          {/* <Route path="/halls" element={<HallList />} />
+          <Route path="/halls" element={<HallList />} />
           <Route path="/ViewHall/:id" element={<ViewHall />} />
           <Route path="/EditHall/:id" element={<EditHall />} />
           <Route path="/HallAdminDash" element={<HallAdminDash />} />
@@ -178,7 +177,7 @@ function App() {
           <Route path="/AllReservations" element={<AdminBookHall />} />
           <Route path="/bookingdata/:id" element={<HallBookingData />} />
           <Route path="/HallCalender" element={<HallCalender />} />
-          <Route path="/alldates" element={<Alldates />} /> */}
+          <Route path="/alldates" element={<Alldates />} />
           <Route path="/editBooking/:id" element={<EditBooking />} />
           <Route path="/AddItem" element={<AddItem />} />
 
