@@ -69,7 +69,7 @@ const handleNext = () => {
       <label>Name:</label>
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br />
       <label>Email:</label>
-      <input type="email" value={user.email} onChange={(e) => setEmail(user.email)} /><br />
+      <input type="email" value={guests} onChange={(e) => setEmail({guests})} /><br />
       <label>Address:</label>
       <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} /><br />
       <label>Phone Number:</label>

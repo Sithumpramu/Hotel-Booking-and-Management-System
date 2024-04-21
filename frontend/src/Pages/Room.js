@@ -12,6 +12,14 @@ function Rooms(roomId) {
   console.log('Check-out Date:', checkoutDate);
   console.log('Number of Guests:', guests);
 
+  const bufferToBase64 = (buf) => {
+    var binstr = Array.prototype.map.call(buf, function (ch) {
+        return String.fromCharCode(ch);
+    }).join('');
+    return btoa(binstr);
+};
+
+
   const handleRoomSelect = (roomId,price) => {
     // Call the token check function before navigating
     TokenCheckAndNavigate(roomId,price);
@@ -52,8 +60,9 @@ function Rooms(roomId) {
                 {room.Image && room.Image.data && (
                   <img
                     style={{ width: "10rem" }}
-                    src={`data:${room.Image.contentType};base64,${btoa(
-                      String.fromCharCode.apply(null, room.Image.data.data)
+                    src={`data:${room.Image.contentType};base64,
+                    ${bufferToBase64(room.Image.data.data)}}
+
                     )}`}
                     // style={{ width: "10rem" }}
                     // src={URL.createObjectURL(
