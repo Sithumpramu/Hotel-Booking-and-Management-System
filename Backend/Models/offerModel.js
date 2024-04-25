@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema
 
-const imageSchema = new Schema({
-    data: Buffer,
-    contentType: String,
-  });
+//const imageSchema = new Schema({
+    //data: Buffer,
+   // contentType: String,
+ //. });
 
 const offerSchema = new mongoose.Schema({
     offerID: {
@@ -17,14 +17,15 @@ const offerSchema = new mongoose.Schema({
         required: true
     },
     Date: {
-        type: Date,
+        type: String,
         required: true
     },
     description: {
         type: String,
         required: true
     },
-    Image:imageSchema,
+    //Image:imageSchema,
+    Image:[]
 })
 
 module.exports = mongoose.model('offers', offerSchema);

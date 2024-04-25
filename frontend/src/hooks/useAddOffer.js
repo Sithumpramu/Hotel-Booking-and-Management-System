@@ -34,6 +34,7 @@ const useAddOffer = () => {
         body: formData,
       });
 
+      console.log(response)
       if (!response.ok) {
         const json = await response.json();
         setError(json.error);

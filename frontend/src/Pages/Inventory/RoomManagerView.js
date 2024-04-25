@@ -13,7 +13,8 @@ const RoomManagerView = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch inventory data');
         }
-        const data = await response.json();
+        const data = await response.json(); 
+        console.log(data);
         setInventory(data);
       } catch (error) {
         console.error(error);
