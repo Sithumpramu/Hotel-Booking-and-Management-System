@@ -59,5 +59,3 @@ export const useDelete = () => {
 
   return { Deleteuser, isLoading, error,status };
 };
-
-
